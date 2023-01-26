@@ -1,0 +1,122 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../../../public/fonts/icon/icomoon.eot?uhicum');
+  src:  url('../../../public/fonts/icon/icomoon.eot?uhicum#iefix') format('embedded-opentype'),
+  url('../../../public/fonts/icon/icomoon.ttf?uhicum') format('truetype'),
+  url('../../../public/fonts/icon/icomoon.woff?uhicum') format('woff'),
+  url('../../../public/fonts/icon/icomoon.svg?uhicum#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+
+.root {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  $icons: (
+          notify_solid: "\e900",
+          notify_stroke: "\e901",
+          wallet_stroke: "\e902",
+          collection_stroke: "\e903",
+          collections_solid: "\e904",
+          home_solid: "\e905",
+          home_stroke: "\e906",
+          square-user_solid: "\e907",
+          square-user_stroke: "\e908",
+          trade_stroke: "\e909",
+          image_solid: "\e90a",
+          image_stroke: "\e90b",
+          settings_outlined: "\e90c",
+          share_filled: "\e90d",
+          share_outlined: "\e90e",
+          success_outlined: "\e90f",
+          swap_outlined: "\e910",
+          token_filled: "\e911",
+          trade_outlined: "\e912",
+          trade_outlined-1: "\e913",
+          txt_filled: "\e914",
+          user-profile_filled: "\e915",
+          off_outlined: "\e916",
+          password_filled: "\e917",
+          password_outlined: "\e918",
+          plus_outlined: "\e919",
+          quest_filled: "\e91a",
+          refresh_outlined: "\e91b",
+          rejection_outlined: "\e91c",
+          search_outlined: "\e91d",
+          settings_filled: "\e91e",
+          menu_filled: "\e91f",
+          location_filled: "\e920",
+          logout_filled: "\e921",
+          logout_outlined: "\e922",
+          more-menu_filled: "\e923",
+          new_user_outlined: "\e924",
+          new-nft_outlined: "\e925",
+          note_filled: "\e926",
+          number_filled: "\e927",
+          edit_filled: "\e928",
+          file_filled: "\e929",
+          filters_outlined: "\e92a",
+          fire_filled: "\e92b",
+          fixed-price_filled: "\e92c",
+          info: "\e92d",
+          like_filled: "\e92e",
+          like_outlined: "\e92f",
+          chevron-up-down_outlined: "\e930",
+          clock_filled: "\e931",
+          close_outlined: "\e932",
+          copy_filled: "\e933",
+          dao: "\e934",
+          delete_filled: "\e935",
+          Discount-Square_filled: "\e936",
+          calendar_filled: "\e937",
+          cart_filled: "\e938",
+          cash_filled: "\e939",
+          change-wallet_outlined: "\e93a",
+          check_outlined: "\e93b",
+          chevron-left-right_outlined: "\e93c",
+          alert_filled: "\e93d",
+          add-collection_filled: "\e93e",
+          add-collection_outlined: "\e93f",
+          arrow-right_outlined: "\e940",
+          bibs_filled: "\e941",
+          collect_filled: "\e942",
+          fin-assets_filled: "\e943",
+          game_filled: "\e944",
+          logictics_filled: "\e945",
+          stack_filled: "\e946",
+          trade_solid: "\e947",
+  );
+
+  @each $name, $content in $icons {
+    &.#{$name} {
+      &:before {
+        content: $content;
+      }
+    }
+  }
+
+  $colors: (
+          default: var(--black-color),
+          primary: var(--primary-color),
+          white: #FFFFFF
+  );
+
+  @each $theme, $color in $colors {
+    &.#{$theme} {
+      color: $color;
+    }
+  }
+}
+
+

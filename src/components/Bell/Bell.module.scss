@@ -1,0 +1,27 @@
+.root {
+  cursor: pointer;
+  position: relative;
+
+  .bell {
+    font-size: 24px;
+  }
+
+  .counter {
+    top: -6px;
+    right: -6px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    color: #FFFFFF;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 10px;
+    user-select: none;
+    position: absolute;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #FFFFFF;
+    background: var(--primary-color);
+  }
+}

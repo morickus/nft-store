@@ -1,0 +1,128 @@
+@import '../../styles/_vars.scss';
+
+.root {
+  width: 100%;
+  max-width: 323px;
+
+  &:hover {
+    .header .buttons {
+      transform: translate(-50%, 0);
+    }
+
+    .body {
+      background: #F6F6F6;
+    }
+  }
+
+  .header {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .buttons {
+      left: 50%;
+      bottom: 10px;
+      display: flex;
+      position: absolute;
+      transition: transform .3s ease;
+      transform: translate(-50%, calc(100% + 15px));
+
+      .icon-btn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        cursor: pointer;
+        margin-left: 10px;
+        background: #FFFFFF;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #F7F7F7;
+        transition: all .3s ease;
+
+        &:hover {
+          background: #F6F6F6;
+        }
+
+        &:active {
+          border: 2px solid #D6D6D6;
+          background: #D6D6D6;
+        }
+
+        &.rotate i {
+          transform: rotate(90deg);
+        }
+
+        i {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .body {
+    background: #FFFFFF;
+    padding: 12px 20px 20px;
+    border: 2px solid #F7F7F7;
+    transition: background .3s ease;
+    border-top: none;
+
+    .grid {
+      display: grid;
+      margin-top: 16px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .name {
+      height: 18px;
+      display: block;
+      font-size: 16px;
+      margin-top: 6px;
+      font-weight: 700;
+      line-height: 18px;
+    }
+
+    .label {
+      height: 12px;
+      color: #D6D5D8;
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 12px;
+    }
+
+    .text {
+      height: 12px;
+      display: block;
+      margin-top: 8px;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+}
+
+@media (max-width: map-get($media, xl)) {
+
+}
+
+@media (max-width: map-get($media, lg)) {
+
+}
+
+@media (max-width: map-get($media, md)) {
+
+}
+
+@media (max-width: map-get($media, sm)) {
+
+}
+
+@media (max-width: map-get($media, xs)) {
+
+}

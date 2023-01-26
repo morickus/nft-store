@@ -1,0 +1,22 @@
+.root {
+  width: 48px;
+  height: 48px;
+  position: relative;
+
+  img {
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  &.online:before {
+    width: 8px;
+    height: 8px;
+    right: 2px;
+    bottom: 2px;
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: #17B158;
+    border: 2px solid #FFFFFF;
+  }
+}

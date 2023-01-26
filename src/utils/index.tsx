@@ -1,0 +1,1 @@
+export const convertingCount = (count: number) => count > 999 ? `${`${count}`.substring(0, `${count}`.length - 3)}K` : count

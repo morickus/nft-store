@@ -1,0 +1,219 @@
+@import '../../styles/_vars.scss';
+
+.root {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  height: 80px;
+  position: fixed;
+  background: #FCFCFC;
+
+  .wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 16px 0 16px 126px;
+    justify-content: space-between;
+
+    .left-side {
+      display: flex;
+      align-items: center;
+      transition: transform .3s ease-in-out;
+
+      .burger {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .menu {
+        &__item {
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 16px;
+          color: var(--black-color);
+          transition: color .3s ease;
+
+          &:hover {
+            color: #8f8f8f;
+          }
+
+          &:not(:last-child) {
+            margin-right: 56px;
+          }
+        }
+      }
+    }
+
+    .right-side {
+      gap: 64px;
+      display: flex;
+      align-items: center;
+      transform: translateX(172px);
+      transition: transform .3s ease-in-out;
+
+      .language-selector {
+        display: flex;
+        align-items: center;
+
+        span {
+          font-size: 12px;
+          margin-left: 4px;
+          font-weight: 700;
+          line-height: 12px;
+          text-transform: uppercase;
+        }
+      }
+
+      .balance-view {
+        display: flex;
+        align-items: center;
+
+        .icon {
+          font-size: 16px;
+        }
+
+        span {
+          font-size: 12px;
+          font-weight: 700;
+          margin-left: 4px;
+          line-height: 12px;
+        }
+      }
+
+      .personal {
+        display: flex;
+        align-items: center;
+
+        .avatar {
+          cursor: pointer;
+          margin-left: 20px;
+        }
+
+        .name {
+          opacity: 0;
+          width: 170px;
+          font-size: 18px;
+          font-weight: 700;
+          overflow: hidden;
+          user-select: none;
+          margin-left: 12px;
+          line-height: 18px;
+          visibility: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          transition: visibility 0.3s linear, opacity .3s linear;
+        }
+
+        .logout {
+          opacity: 0;
+          cursor: pointer;
+          font-size: 18px;
+          visibility: hidden;
+          margin: 0 24px 0 4px;
+          transition: visibility 0.3s linear, opacity .3s linear;
+        }
+      }
+
+      &.user-menu {
+        transform: translateX(0);
+
+        .personal {
+          .name {
+            opacity: 1;
+            visibility: visible;
+          }
+
+          .logout {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($media, xl)) {
+  .root {
+    .wrapper {
+      .right-side {
+        transform: translateX(210px);
+
+        .personal {
+
+        }
+
+        &.user-menu {
+
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($media, lg)) {
+  .root {
+    height: 60px;
+
+    .wrapper {
+      padding: 6px 0 6px 84px;
+
+      .right-side {
+        transform: translateX(216px);
+        gap: 24px;
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($media, md)) {
+  .root {
+    .wrapper {
+      padding-left: 12px;
+
+      .left-side {
+        .menu {
+          display: none;
+        }
+
+        .burger {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($media, sm)) {
+  .root {
+    .wrapper {
+      .right-side {
+        .balance-view,
+        .language-selector {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($media, xs)) {
+  .root {
+    .wrapper {
+      .left-side.user-menu {
+        transform: translateX(-216px);
+      }
+
+      .right-side {
+        width: 178px;
+        transform: translateX(-6px);
+
+        &.user-menu {
+          transform: translateX(-226px);
+        }
+      }
+    }
+  }
+}

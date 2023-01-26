@@ -1,0 +1,281 @@
+@import '../../styles/_vars.scss';
+
+.main {
+  position: relative;
+
+  .background {
+    top: 0;
+    left: 0;
+    width: 100%;
+    content: '';
+    z-index: -1;
+    height: 1080px;
+    position: absolute;
+    background-size: cover;
+    background-position: top center;
+    background-image: url("../../../public/bg-main.jpg");
+
+    &:after {
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      content: '';
+      height: 504px;
+      position: absolute;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
+    }
+  }
+
+  .content {
+    z-index: 1;
+    display: flex;
+    position: relative;
+    text-align: center;
+    padding-top: 230px;
+    align-items: center;
+    flex-direction: column;
+
+    &:after {
+      top: 113px;
+      z-index: -1;
+      content: '';
+      width: 1030px;
+      height: 508px;
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .title {
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 64px;
+    }
+
+    .text {
+      margin: 24px 0;
+      font-size: 24px;
+      max-width: 851px;
+      font-weight: 300;
+      line-height: 36px;
+    }
+  }
+
+  .nft-items {
+    display: flex;
+    margin-top: 200px;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.subtitle {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 42px;
+  line-height: 42px;
+}
+
+.section {
+  margin-top: 100px;
+
+  .subtitle {
+    margin-bottom: 18px;
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.nft-items-wrapper {
+  display: grid;
+  grid-gap: 24px;
+  margin-bottom: 36px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.nft-collections-wrapper {
+  width: 100%;
+  display: grid;
+  grid-gap: 24px;
+  margin-bottom: 36px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: map-get($media, xl)) {
+  .main {
+    .background {
+      height: 816px;
+
+      &:after {
+        height: 289px;
+      }
+    }
+
+    .content {
+      &:after {
+        height: 481px;
+      }
+    }
+
+    .nft-items {
+      margin-top: 100px;
+    }
+  }
+
+  .nft-items-wrapper {
+    grid-template-columns: repeat(4, 1fr);
+
+    & > div:nth-child(5) {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: map-get($media, lg)) {
+  .main {
+    .background {
+      height: 580px;
+
+      &:after {
+        height: 239px;
+      }
+    }
+
+    .content {
+      padding-top: 160px;
+
+      &:after {
+        top: 81px;
+        width: 642px;
+        height: 345px;
+      }
+
+      .title {
+        font-size: 42px;
+        line-height: 42px;
+      }
+
+      .text {
+        margin: 12px 0;
+        font-size: 16px;
+        max-width: 552px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  .section {
+    margin-top: 80px;
+  }
+
+  .nft-items-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+
+    & > div:nth-child(4) {
+      display: none;
+    }
+  }
+
+  .nft-collections-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: map-get($media, md)) {
+  .main {
+    .background {
+      height: 537px;
+    }
+
+    .content {
+      padding-top: 150px;
+
+      &:after {
+        top: 92px;
+        width: 643px;
+        height: 290px;
+      }
+    }
+  }
+
+  .nft-items-wrapper {
+    grid-gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .nft-collections-wrapper {
+    grid-gap: 16px;
+    margin-bottom: 24px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: map-get($media, sm)) {
+  .main {
+    .content {
+      &:after {
+        top: 116px;
+        width: 480px;
+        height: 266px;
+      }
+
+      .text {
+        max-width: 432px;
+      }
+    }
+  }
+
+  .section {
+    margin-top: 60px;
+  }
+
+  .nft-items-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+
+    & > div:nth-child(3) {
+      display: none;
+    }
+  }
+
+  .nft-collections-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: map-get($media, xs)) {
+  .main {
+    .content {
+      &:after {
+        top: 60px;
+        width: 320px;
+        height: 365px;
+      }
+
+      .text {
+        padding: 0 12px;
+        max-width: 100%;
+      }
+    }
+
+    .nft-items {
+      margin-top: 80px;
+    }
+  }
+
+  .nft-items-wrapper {
+    grid-template-columns: 1fr;
+
+    & > div:nth-child(2) {
+      display: none;
+    }
+  }
+
+  .subtitle {
+    font-size: 32px;
+    line-height: 32px;
+  }
+}

@@ -1,4 +1,5 @@
 import { IconNamesMap } from '@/components/Icon/types'
+import styles from '@/containers/Home/Home.module.scss'
 
 export const sideMenuArray = [
   {
@@ -188,4 +189,67 @@ export const nftCollectionsArray = [
     name: 'Sidekast Stage 1-1',
     mintable: true
   },
+]
+
+export const users = [
+  {
+    image: "/assets/avatar/avatar-7.png",
+    follow: 26000,
+    name: "LUX"
+  },
+  {
+    image: "/assets/avatar/avatar-8.png",
+    follow: 26000,
+    name: "Nitters"
+  },
+  {
+    image: "/assets/avatar/avatar-9.png",
+    follow: 26000,
+    name: "flowmaster"
+  },
+  {
+    image: "/assets/avatar/avatar-10.png",
+    follow: 26000,
+    name: "burakY"
+  },
+  {
+    image: "/assets/avatar/avatar-11.png",
+    follow: 26000,
+    name: "hominums"
+  },
+  {
+    image: "/assets/avatar/avatar-7.png",
+    follow: 26000,
+    name: "LUX"
+  },
+  {
+    image: "/assets/avatar/avatar-8.png",
+    follow: 26000,
+    name: "Nitters"
+  },
+  {
+    image: "/assets/avatar/avatar-9.png",
+    follow: 26000,
+    name: "flowmaster"
+  },
+  {
+    image: "/assets/avatar/avatar-10.png",
+    follow: 26000,
+    name: "burakY"
+  },
+  {
+    image: "/assets/avatar/avatar-11.png",
+    follow: 26000,
+    name: "hominums"
+  },
+  {
+    image: "/assets/avatar/avatar-7.png",
+    follow: 26000,
+    name: "LUX"
+  },
+  {
+    image: "/assets/avatar/avatar-8.png",
+    follow: 26000,
+    name: "Nitters"
+  }
 ]

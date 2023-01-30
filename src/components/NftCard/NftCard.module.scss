@@ -116,7 +116,11 @@
 }
 
 @media (max-width: map-get($media, md)) {
-
+  .root {
+    .header .buttons {
+      transform: translate(-50%, 0);
+    }
+  }
 }
 
 @media (max-width: map-get($media, sm)) {

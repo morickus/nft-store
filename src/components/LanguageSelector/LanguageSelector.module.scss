@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+
+  span {
+    font-size: 12px;
+    margin-left: 4px;
+    font-weight: 700;
+    line-height: 12px;
+    text-transform: uppercase;
+  }
+}

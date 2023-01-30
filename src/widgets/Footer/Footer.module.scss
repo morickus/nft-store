@@ -86,7 +86,7 @@
           transition: color .3s ease-in-out;
 
           &:hover {
-            color: #8f8f8f;
+            color: var(--primary-color);
           }
 
           &:not(:last-child) {

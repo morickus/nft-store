@@ -9,10 +9,11 @@ interface ICollectionCard {
   ethereum: boolean
   bitcoin: boolean
   countNft: number
-  status: number
+  status?: number
   avatar: string
   name: string
   mintable: boolean
+  size?: 'small'
 }
 
 const CollectionCard: FC<ICollectionCard> = (props) => {
@@ -24,7 +25,8 @@ const CollectionCard: FC<ICollectionCard> = (props) => {
     status,
     avatar,
     name,
-    mintable
+    mintable,
+    size
   } = props
 
   const statusRender = (status: number) => {
@@ -45,14 +47,14 @@ const CollectionCard: FC<ICollectionCard> = (props) => {
   }
 
   return (
-    <div className={styles.root}>
+    <div className={`${styles.root} ${styles[`size_${size}`]}`}>
       <div className={styles.top}>
         <Image src={image} alt={image} width={556} height={229} />
         <div className={styles.panel}>
           <div className={styles['panel__top']}>
             {bitcoin && <Icon name="fin-assets_filled" className={styles.icon} />}
             {ethereum && <Icon name="token_filled" className={styles.icon} />}
-            {statusRender(status)}
+            {!!status && statusRender(status)}
           </div>
           <div className={styles['panel__bottom']}>
             <span>{convertingCount(countNft)} NFTs</span>
@@ -60,11 +62,11 @@ const CollectionCard: FC<ICollectionCard> = (props) => {
         </div>
       </div>
       <div className={styles.bottom}>
-        <div className={styles.right}>
+        <div className={styles.left}>
           <Image src={avatar} alt={avatar} width={32} height={32} />
           <span className={styles.title}>{name}</span>
         </div>
-        <div className={styles.left}>
+        <div className={styles.right}>
           <span className={`${styles.mintable} ${styles[`${mintable}`]}`}>mintable</span>
         </div>
       </div>

@@ -51,7 +51,7 @@
       display: flex;
       align-items: center;
       transform: translateX(172px);
-      transition: transform .3s ease-in-out;
+      transition: transform .3s linear;
 
       .balance-view {
         display: flex;

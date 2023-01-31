@@ -35,26 +35,58 @@ body {
   padding: 0 56px 0 126px;
 }
 
+.wrapper-page {
+  margin: 0 auto;
+  max-width: 1900px;
+  padding: 144px 56px 100px 126px;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 42px;
+}
+
 @media (max-width: map-get($media, xl)) {
   .container {
+    max-width: 1296px;
     padding: 0 18px 0 126px;
+  }
+
+  .wrapper-page {
+    max-width: 1296px;
+    padding-bottom: 18px;
   }
 }
 
 @media (max-width: map-get($media, lg)) {
   .container {
+    max-width: 928px;
     padding: 0 12px 0 84px;
+  }
+
+  .wrapper-page {
+    max-width: 928px;
+    padding: 124px 12px 80px 84px;
   }
 }
 
 @media (max-width: map-get($media, md)) {
   .container {
+    max-width: 744px;
     padding: 0 12px;
+  }
+
+  .wrapper-page {
+    max-width: 744px;
+    padding: 96px 12px 80px;
   }
 }
 
 @media (max-width: map-get($media, sm)) {
-
+  .wrapper-page {
+    padding: 96px 12px 60px;
+  }
 }
 
 @media (max-width: map-get($media, xs)) {

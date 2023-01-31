@@ -3,7 +3,6 @@ import Button from '@/components/Button'
 import { nftCollectionsArray, nftItemsArray, nftItemsTradingArray, users } from '../../../store'
 import NftCard from '@/components/NftCard'
 import CollectionCard from '@/components/CollectionCard'
-import Footer from '@/widgets/Footer'
 import Image from 'next/image'
 import UserFollow from '@/components/UserFollow'
 import RadioButton from '@/components/RadioButton'
@@ -185,9 +184,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
-      <section className={styles.section}>
-        <Footer />
       </section>
     </div>
   );

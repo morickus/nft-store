@@ -2,6 +2,7 @@ import { FC, PropsWithChildren, useState } from 'react'
 import styles from './MainLayout.module.scss'
 import SideMenu from '@/widgets/SideMenu'
 import Header from '@/widgets/Header'
+import Footer from '@/widgets/Footer'
 
 const MainLayout: FC<PropsWithChildren> = (props) => {
   const { children } = props
@@ -14,6 +15,7 @@ const MainLayout: FC<PropsWithChildren> = (props) => {
       <div className={styles.content}>
         {children}
       </div>
+      <Footer />
     </div>
   );
 };

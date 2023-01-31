@@ -1,5 +1,7 @@
 .root {
+  display: flex;
   border-radius: 0;
+  align-items: center;
   transition: all .3s ease-in-out;
 
   &.type_primary {

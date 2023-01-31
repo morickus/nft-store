@@ -3,7 +3,32 @@
 .root {
   width: 100%;
   height: 283px;
-  max-width: 556px;
+
+  &.size_small {
+    height: 198px;
+
+    .top {
+      height: calc(100% - 36px);
+    }
+
+    .bottom {
+      height: 36px;
+      padding: 8px 8px 10px;
+
+      .left {
+        img {
+          width: 18px;
+          height: 18px;
+        }
+
+        .title {
+          font-size: 12px;
+          margin-left: 6px;
+          line-height: 12px;
+        }
+      }
+    }
+  }
 
   &:hover {
     .bottom {
@@ -13,11 +38,11 @@
 
   .top {
     width: 100%;
-    height: calc(100% - 54px);
     display: flex;
     overflow: hidden;
     position: relative;
     align-items: center;
+    height: calc(100% - 54px);
 
     img {
       width: 100%;
@@ -102,7 +127,7 @@
     transition: background .3s ease;
     border-top: none;
 
-    .right {
+    .left {
       display: flex;
       align-items: center;
 
@@ -114,7 +139,7 @@
       }
     }
 
-    .left {
+    .right {
       .mintable {
         color: var(--red-color);
         font-size: 12px;

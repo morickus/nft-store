@@ -144,14 +144,14 @@ const Header: FC<IHeader> = (props) => {
           <div className={styles.buttons}>
             <div className={styles['buttons__item']}>
               <span className={styles.text}>Подключить</span>
-              <Icon name="plus_outlined" className={styles.icon} />
+              <Icon name="plus_outlined" className={styles.icon} color="primary" />
             </div>
             <div className={styles['buttons__item']}>
               <span className={styles.text}>Сменить</span>
-              <Icon name="change-wallet_outlined" className={styles.icon} />
+              <Icon name="change-wallet_outlined" className={styles.icon} color="primary" />
             </div>
             <div className={styles['buttons__item']}>
-              <Icon name="settings_outlined" className={styles.icon} />
+              <Icon name="settings_outlined" className={styles.icon} color="primary" />
             </div>
           </div>
         </div>

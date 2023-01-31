@@ -356,6 +356,7 @@
 
   .attention {
     .users-wrapper {
+      grid-gap: 12px;
       grid-template-columns: repeat(4, 1fr);
     }
   }

@@ -14,6 +14,7 @@ interface ICollectionCard {
   name: string
   mintable: boolean
   size?: 'small'
+  className?: string
 }
 
 const CollectionCard: FC<ICollectionCard> = (props) => {
@@ -26,7 +27,8 @@ const CollectionCard: FC<ICollectionCard> = (props) => {
     avatar,
     name,
     mintable,
-    size
+    size,
+    className
   } = props
 
   const statusRender = (status: number) => {
@@ -47,7 +49,7 @@ const CollectionCard: FC<ICollectionCard> = (props) => {
   }
 
   return (
-    <div className={`${styles.root} ${styles[`size_${size}`]}`}>
+    <div className={`${styles.root} ${styles[`size_${size}`]} ${className}`}>
       <div className={styles.top}>
         <Image src={image} alt={image} width={556} height={229} />
         <div className={styles.panel}>

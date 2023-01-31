@@ -2,6 +2,7 @@ import { FC } from 'react'
 import styles from './UserFollow.module.scss'
 import Image from 'next/image'
 import { convertingCount } from '@/utils'
+import Link from 'next/link'
 
 interface IUserFollow {
   image: string
@@ -17,7 +18,7 @@ const UserFollow: FC<IUserFollow> = (props) => {
     <div className={`${styles.root} ${className}`}>
       <div className={styles.user}>
         <Image src={image} alt="avatar" width={42} height={42} />
-        <span className={styles.name}>{name}</span>
+        <Link href="/" className={styles.name}>{name}</Link>
       </div>
       <div className={styles.follow}>
         <span className={styles.label}>Follow</span>

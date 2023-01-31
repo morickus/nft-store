@@ -10,11 +10,11 @@ const Collections = () => {
       <div className="wrapper-page">
         <h1 className="title">Collections</h1>
         <div className={styles['my-collections']}>
-          <div className={styles['wrapper-card']}>
+          <div className={`${styles['wrapper-card']} ${styles['wrapper-card_top']}`}>
             {nftCollectionsArray.map((i, index) => {
               if (index > 4) return
               return (
-                <CollectionCard key={i.image} {...i} size="small" />
+                <CollectionCard key={i.image} {...i} size="small" className={styles.item} />
               )
             })}
           </div>

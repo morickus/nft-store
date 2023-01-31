@@ -10,14 +10,6 @@
     .user img {
       transform: scale(1);
     }
-
-    .follow {
-      background: var(--primary-color);
-
-      .label {
-        color: #FFFFFF;
-      }
-    }
   }
 
   .user {
@@ -41,6 +33,7 @@
 
   .follow {
     display: flex;
+    cursor: pointer;
     align-items: center;
     background: #FFFFFF;
     padding: 5px 5px 5px 6px;
@@ -48,10 +41,19 @@
     transition: background .3s ease-in-out;
     box-shadow: 0 0 20px rgba(43, 43, 43, 0.05);
 
+    &:hover {
+      background: var(--primary-color);
+
+      .label {
+        color: #FFFFFF;
+      }
+    }
+
     .label {
       font-size: 10px;
       font-weight: 700;
       line-height: 10px;
+      user-select: none;
       transition: color .3s ease;
     }
 
@@ -60,6 +62,7 @@
       padding: 1px 2px;
       font-weight: 800;
       margin-left: 6px;
+      user-select: none;
       line-height: 10px;
       background: #F7F7F7;
       color: var(--primary-color);

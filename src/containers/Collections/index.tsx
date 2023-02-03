@@ -3,12 +3,16 @@ import { nftCollectionsArray } from '../../../store'
 import CollectionCard from '@/components/CollectionCard'
 import Button from '@/components/Button'
 import Icon from '@/components/Icon'
+import CollectionsForm from '@/widgets/SearchForms/CollectionsForm'
 
 const Collections = () => {
   return (
     <div className={styles.root}>
       <div className="wrapper-page">
         <h1 className="title">Collections</h1>
+        <div className={styles.form}>
+          <CollectionsForm />
+        </div>
         <div className={styles['my-collections']}>
           <div className={`${styles['wrapper-card']} ${styles['wrapper-card_top']}`}>
             {nftCollectionsArray.map((i, index) => {

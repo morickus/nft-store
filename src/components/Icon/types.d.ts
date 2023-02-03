@@ -1,6 +1,6 @@
 import { IconNamesMap } from './types'
 
-type IconColor = 'default' | 'primary' | 'white' | 'pink'
+export type IconColor = 'default' | 'primary' | 'white' | 'pink'
 
 export type IconNamesMap =
   'notify_solid'
@@ -75,6 +75,13 @@ export type IconNamesMap =
   | 'logictics_filled'
   | 'stack_filled'
   | 'trade_solid'
+  | 'immu-x'
+  | 'polygon'
+  | 'flow'
+  | 'tezos'
+  | 'solana'
+  | 'low-high'
+  | 'high-low'
 
 export interface IconProps {
   name: IconNamesMap

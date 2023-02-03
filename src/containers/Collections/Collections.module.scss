@@ -1,6 +1,10 @@
 @import '../../styles/_vars.scss';
 
 .root {
+  .form {
+    margin: 36px 0 24px;
+  }
+
   .wrapper-card {
     display: grid;
     grid-gap: 24px;
@@ -54,7 +58,11 @@
 }
 
 @media (max-width: map-get($media, md)) {
-
+  .root {
+    .wrapper-button {
+      margin-top: 24px;
+    }
+  }
 }
 
 @media (max-width: map-get($media, sm)) {
@@ -66,6 +74,13 @@
         & > .item:nth-child(n+3) {
           display: none;
         }
+      }
+    }
+
+    .my-collections {
+      .wrap-btn {
+        margin: 16px 0 40px;
+        justify-content: center;
       }
     }
   }

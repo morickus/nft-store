@@ -96,6 +96,13 @@
           logictics_filled: "\e945",
           stack_filled: "\e946",
           trade_solid: "\e947",
+          immu-x: "\e948",
+          polygon: "\e949",
+          flow: "\e94a",
+          tezos: "\e94b",
+          solana: "\e94c",
+          low-high: "\e94d",
+          high-low: "\e94e",
   );
 
   @each $name, $content in $icons {

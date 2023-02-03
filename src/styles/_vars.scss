@@ -5,3 +5,10 @@ $media: (
         lg: 1439.98px,
         xl: 1899.98px
 );
+
+$z-index: (
+        header: 99,
+        side-menu: 99,
+        mask-modal: 129,
+        modal: 130,
+);

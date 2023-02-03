@@ -1,6 +1,7 @@
 import React, { ReactElement, ReactNode } from 'react'
 import { AppContextType, AppInitialProps } from 'next/dist/shared/lib/utils'
 import { NextPage } from 'next'
+import '@/styles/antd.scss'
 import '@/styles/globals.scss'
 import Head from 'next/head'
 

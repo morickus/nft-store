@@ -1,5 +1,4 @@
 import { IconNamesMap } from '@/components/Icon/types'
-import styles from '@/containers/Home/Home.module.scss'
 
 export const sideMenuArray = [
   {
@@ -15,7 +14,7 @@ export const sideMenuArray = [
     iconActive: 'collections_solid' as IconNamesMap
   },
   {
-    href: '/items',
+    href: '/nft',
     text: 'NFT items',
     icon: 'image_stroke' as IconNamesMap,
     iconActive: 'image_solid' as IconNamesMap
@@ -251,5 +250,59 @@ export const users = [
     image: "/assets/avatar/avatar-8.png",
     follow: 26000,
     name: "Nitters"
+  }
+]
+
+export const optionsCryptoWallet = [
+  {
+    label: 'Ethereum',
+    value: 'eth',
+    prefixIcon: 'token_filled' as IconNamesMap
+  },
+  {
+    label: 'Flow',
+    value: 'flow',
+    prefixIcon: 'flow' as IconNamesMap
+  },
+  {
+    label: 'Immutable-x',
+    value: 'immu-x',
+    prefixIcon: 'immu-x' as IconNamesMap
+  },
+  {
+    label: 'Polygon',
+    value: 'polygon',
+    prefixIcon: 'polygon' as IconNamesMap
+  },
+  {
+    label: 'Solana',
+    value: 'solana',
+    prefixIcon: 'solana' as IconNamesMap
+  },
+  {
+    label: 'Tezos',
+    value: 'tezos',
+    prefixIcon: 'tezos' as IconNamesMap
+  }
+]
+
+export const optionsTrending = [
+  {
+    label: 'Trending',
+    value: 'trending'
+  },
+  {
+    label: 'New items',
+    value: 'new-items'
+  },
+  {
+    label: 'Price l-h',
+    value: 'price_l-h',
+    suffixIcon: 'low-high' as IconNamesMap
+  },
+  {
+    label: 'Price h-l',
+    value: 'price_h-l',
+    suffixIcon: 'high-low' as IconNamesMap
   }
 ]

@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  align-items: center;
+
+  & > span {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+    font-family: 'Inter', sans-serif;
+  }
+}

@@ -1,0 +1,64 @@
+@import '../../styles/_vars.scss';
+
+.root {
+  .form {
+    margin: 36px 0 24px;
+  }
+
+  .wrapper-card {
+    display: grid;
+    grid-gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+
+  .wrapper-button {
+    display: flex;
+    margin-top: 36px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: map-get($media, xl)) {
+  .root {
+    .wrapper-card {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+}
+
+@media (max-width: map-get($media, lg)) {
+  .root {
+    .wrapper-card {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+@media (max-width: map-get($media, md)) {
+  .root {
+    .wrapper-card {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .wrapper-button {
+      margin-top: 24px;
+    }
+  }
+}
+
+@media (max-width: map-get($media, sm)) {
+  .root {
+    .wrapper-card {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: map-get($media, xs)) {
+  .root {
+    .wrapper-card {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import Image from 'next/image'
 import styles from './NftCard.module.scss'
-import Button from "@/components/Button";
-import Icon from '@/components/Icon'
+import Button from "@/components/Button"
+import IconButton from '@/components/IconButton'
 
 interface INftCard {
   number: number
@@ -22,12 +22,8 @@ const NftCard: FC<INftCard> = (props) => {
         <Image src={image} alt={name} width={323} height={280} />
         <div className={styles.buttons}>
           <Button size="medium">BuyNow</Button>
-          <div className={styles['icon-btn']}>
-            <Icon name="cart_filled" color="primary" />
-          </div>
-          <div className={`${styles['icon-btn']} ${styles.rotate}`}>
-            <Icon name="more-menu_filled" color="primary" />
-          </div>
+          <IconButton icon="cart_filled" className={styles['icon-btn']} />
+          <IconButton icon="more-menu_filled" className={`${styles['icon-btn']} ${styles.rotate}`} />
         </div>
       </div>
       <div className={styles.body}>

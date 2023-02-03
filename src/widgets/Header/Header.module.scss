@@ -4,10 +4,10 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 99;
   height: 80px;
   position: fixed;
   background: #FCFCFC;
+  z-index: map-get($z-index, header);
 
   .wrapper {
     height: 100%;
@@ -118,7 +118,6 @@
   .user-menu-wrap {
     right: 0;
     top: 80px;
-    z-index: 99;
     width: 300px;
     height: 860px;
     display: flex;
@@ -131,6 +130,7 @@
     max-height: calc(100vh - 80px);
     justify-content: space-between;
     transition: transform .3s linear;
+    z-index: map-get($z-index, header);
 
     -ms-overflow-style: none;
     scrollbar-width: none;

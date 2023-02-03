@@ -1,29 +1,27 @@
 import { FC } from 'react'
 import { Radio } from 'antd'
-import styles from './RadioButton.module.scss'
+import styles from './RadioButtonForm.module.scss'
 
 interface Button {
   text: string
   value: string
-  onClick?(): void
 }
 
-interface IRadioButton {
+interface IRadioButtonForm {
+  value?: string
   buttons: Button[]
-  defaultValue?: string
   onChange?(): void
 }
 
-const RadioButton: FC<IRadioButton> = (props) => {
-  const { buttons, defaultValue, onChange } = props
+const RadioButtonForm: FC<IRadioButtonForm> = (props) => {
+  const { buttons, value, onChange } = props
 
   return (
-    <Radio.Group defaultValue={defaultValue} buttonStyle="solid" className={styles.root} onChange={onChange}>
+    <Radio.Group value={value} buttonStyle="solid" className={styles.root} onChange={onChange}>
       {buttons.map(i => (
         <Radio.Button
           key={i.value}
           value={i.value}
-          onClick={i.onClick}
           className={styles.item}
         >
           {i.text}
@@ -33,4 +31,4 @@ const RadioButton: FC<IRadioButton> = (props) => {
   );
 };
 
-export default RadioButton
+export default RadioButtonForm

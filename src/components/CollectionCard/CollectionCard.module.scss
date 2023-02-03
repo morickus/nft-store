@@ -75,7 +75,7 @@
           display: flex;
           color: #FFFFFF;
           font-size: 16px;
-          margin-right: 4px;
+          margin-left: 4px;
           align-items: center;
           justify-content: center;
           background: var(--primary-color);
@@ -84,6 +84,7 @@
         .status {
           height: 24px;
           padding: 0 7px;
+          margin-left: 4px;
           background: var(--orange-color);
 
           &_red {
@@ -131,11 +132,16 @@
       display: flex;
       align-items: center;
 
+      img {
+        border-radius: 50%;
+      }
+
       .title {
         font-size: 16px;
         font-weight: 800;
         line-height: 16px;
         margin-left: 11px;
+        color: var(--black-color);
       }
     }
 

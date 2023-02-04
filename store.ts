@@ -8,7 +8,7 @@ export const sideMenuArray = [
     iconActive: 'home_solid' as IconNamesMap
   },
   {
-    href: '/collections',
+    href: '/collection',
     text: 'NFT collections',
     icon: 'collection_stroke' as IconNamesMap,
     iconActive: 'collections_solid' as IconNamesMap
@@ -26,7 +26,7 @@ export const sideMenuArray = [
     iconActive: 'trade_solid' as IconNamesMap
   },
   {
-    href: '/top-users',
+    href: '/user',
     text: 'TOP users',
     icon: 'square-user_stroke' as IconNamesMap,
     iconActive: 'square-user_solid' as IconNamesMap
@@ -192,63 +192,75 @@ export const nftCollectionsArray = [
 
 export const users = [
   {
-    image: "/assets/avatar/avatar-7.png",
+    avatar: "/assets/avatar/avatar-7.png",
+    image: '/assets/collection/isekai-meta.jpg',
     follow: 26000,
     name: "LUX"
   },
   {
-    image: "/assets/avatar/avatar-8.png",
+    avatar: "/assets/avatar/avatar-8.png",
+    image: '/assets/collection/project-j.jpg',
     follow: 26000,
     name: "Nitters"
   },
   {
-    image: "/assets/avatar/avatar-9.png",
+    avatar: "/assets/avatar/avatar-9.png",
+    image: '/assets/collection/mystics.jpg',
     follow: 26000,
     name: "flowmaster"
   },
   {
-    image: "/assets/avatar/avatar-10.png",
-    follow: 26000,
+    avatar: "/assets/avatar/avatar-10.png",
+    image: '/assets/collection/stage-1-1.jpg',
+    follow: 12000,
     name: "burakY"
   },
   {
-    image: "/assets/avatar/avatar-11.png",
+    avatar: "/assets/avatar/avatar-11.png",
+    image: '/assets/collection/drji.jpg',
     follow: 26000,
     name: "hominums"
   },
   {
-    image: "/assets/avatar/avatar-7.png",
+    avatar: "/assets/avatar/avatar-12.png",
+    image: '/assets/collection/fart.jpg',
     follow: 26000,
-    name: "LUX"
+    name: "KK Man"
   },
   {
-    image: "/assets/avatar/avatar-8.png",
-    follow: 26000,
+    avatar: "/assets/avatar/avatar-8.png",
+    image: '/assets/collection/isekai-meta.jpg',
+    follow: 11000,
     name: "Nitters"
   },
   {
-    image: "/assets/avatar/avatar-9.png",
+    avatar: "/assets/avatar/avatar-9.png",
+    image: '/assets/collection/project-j.jpg',
     follow: 26000,
     name: "flowmaster"
   },
   {
-    image: "/assets/avatar/avatar-10.png",
+    avatar: "/assets/avatar/avatar-10.png",
+    image: '/assets/collection/mystics.jpg',
     follow: 26000,
     name: "burakY"
   },
   {
-    image: "/assets/avatar/avatar-11.png",
+    avatar: "/assets/avatar/avatar-11.png",
+    image: '/assets/collection/stage-1-1.jpg',
     follow: 26000,
     name: "hominums"
   },
   {
-    image: "/assets/avatar/avatar-7.png",
+    avatar: "/assets/avatar/avatar-7.png",
+    image: '/assets/collection/drji.jpg',
     follow: 26000,
     name: "LUX"
   },
   {
-    image: "/assets/avatar/avatar-8.png",
-    follow: 26000,
+    avatar: "/assets/avatar/avatar-8.png",
+    image: '/assets/collection/fart.jpg',
+    follow: 15000,
     name: "Nitters"
   }
 ]

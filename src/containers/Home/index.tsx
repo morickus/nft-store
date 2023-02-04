@@ -4,7 +4,7 @@ import { nftCollectionsArray, nftItemsArray, nftItemsTradingArray, users } from 
 import NftCard from '@/components/NftCard'
 import CollectionCard from '@/components/CollectionCard'
 import Image from 'next/image'
-import UserFollow from '@/components/UserFollow'
+import UserCard from '@/components/UserCard'
 import RadioButton from '@/components/RadioButton'
 
 const Home = () => {
@@ -93,11 +93,10 @@ const Home = () => {
                 </div>
                 <div className={styles.content}>
                   <div className={styles.users}>
-                    <UserFollow
-                      image="/assets/avatar/avatar-12.png"
+                    <UserCard
+                      withoutImage
+                      {...users[5]}
                       className={styles.user}
-                      follow={26000}
-                      name="KK Man"
                     />
                   </div>
                   <div className={styles.divider} />
@@ -113,17 +112,15 @@ const Home = () => {
                 </div>
                 <div className={styles.content}>
                   <div className={styles.users}>
-                    <UserFollow
-                      image="/assets/avatar/avatar-10.png"
+                    <UserCard
+                      withoutImage
+                      {...users[3]}
                       className={styles.user}
-                      follow={15000}
-                      name="LIRONA"
                     />
-                    <UserFollow
-                      image="/assets/avatar/avatar-11.png"
+                    <UserCard
+                      withoutImage
+                      {...users[4]}
                       className={styles.user}
-                      follow={12000}
-                      name="OCENE"
                     />
                   </div>
                   <div className={styles.divider} />
@@ -139,23 +136,20 @@ const Home = () => {
                 </div>
                 <div className={styles.content}>
                   <div className={styles.users}>
-                    <UserFollow
-                      image="/assets/avatar/avatar-7.png"
+                    <UserCard
+                      withoutImage
+                      {...users[0]}
                       className={styles.user}
-                      follow={10000}
-                      name="Scam likely"
                     />
-                    <UserFollow
-                      image="/assets/avatar/avatar-8.png"
+                    <UserCard
+                      withoutImage
+                      {...users[1]}
                       className={styles.user}
-                      follow={9000}
-                      name="KK Man"
                     />
-                    <UserFollow
-                      image="/assets/avatar/avatar-9.png"
+                    <UserCard
+                      withoutImage
+                      {...users[2]}
                       className={styles.user}
-                      follow={7000}
-                      name="KK Man"
                     />
                   </div>
                   <div className={styles.divider} />
@@ -177,7 +171,7 @@ const Home = () => {
             <div className={styles.flex}>
               <div className={styles['users-wrapper']}>
                 {users.map((i, index) => (
-                  <UserFollow key={index} {...i} />
+                  <UserCard key={index} withoutImage {...i} />
                 ))}
               </div>
               <Button type="stroked" size="large">view all</Button>

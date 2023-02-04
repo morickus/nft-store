@@ -21,6 +21,10 @@
 
 @media (max-width: map-get($media, xl)) {
   .root {
+    .form {
+      margin-bottom: 60px;
+    }
+
     .wrapper-card {
       grid-template-columns: repeat(5, 1fr);
     }
@@ -49,6 +53,10 @@
 
 @media (max-width: map-get($media, sm)) {
   .root {
+    .form {
+      margin-bottom: 40px;
+    }
+
     .wrapper-card {
       grid-template-columns: repeat(2, 1fr);
     }

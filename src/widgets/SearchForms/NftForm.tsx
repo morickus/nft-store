@@ -23,6 +23,7 @@ const NftForm: FC<INftForm> = () => {
       <Form
         form={form}
         initialValues={{
+          type: 'all',
           wallet: 'eth',
           options: ['lazy'],
           sortBy: 'trending',
@@ -56,7 +57,7 @@ const NftForm: FC<INftForm> = () => {
           <div className={styleForm['filter-wrapper__form']}>
             <div className={styleForm['filter-wrapper__form-item']}>
               <p className={styleForm.label}>Type</p>
-              <Form.Item name="functional">
+              <Form.Item name="type">
                 <RadioButtonForm buttons={[
                   {text: 'All', value: 'all'},
                   {text: 'Single editions', value: 'single'},

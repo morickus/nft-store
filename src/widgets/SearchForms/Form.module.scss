@@ -4,7 +4,6 @@
   .rotate180 {
     transform: rotate(180deg);
   }
-
   .rotate90 {
     transform: rotate(90deg);
   }
@@ -217,7 +216,7 @@
 
 @media (max-width: map-get($media, sm)) {
   .root {
-    .form {
+    .form:not(.user-form) {
       flex-wrap: wrap;
       justify-content: space-between;
 

@@ -45,19 +45,18 @@
   &.select-antd-with-prefix {
     .ant-select-selector {
       .ant-select-selection-item {
-        padding-inline-end: 40px;
+        padding-inline-end: 0;
 
-        @media (max-width: map-get($media, xs)) {
-          padding-inline-end: 45px;
+        span {
+          gap: 24px;
+
+          @media (max-width: map-get($media, xs)) {
+            gap: 12px;
+          }
         }
 
         .option-icon {
           display: block;
-          margin-right: 24px;
-
-          @media (max-width: map-get($media, xs)) {
-            margin-right: 12px;
-          }
         }
       }
     }
@@ -66,7 +65,7 @@
   &.ant-select-open {
     .ant-select-selector {
       background: var(--primary-color);
-      border-color: var(--primary-color);
+      border-color: var(--primary-color) !important;
 
       &:hover {
         background: var(--primary-color);
@@ -115,25 +114,30 @@
       font-weight: 700;
       line-height: 16px;
       align-items: center;
-      padding-inline-end: 24px;
+      padding-inline-end: 0;
       color: var(--primary-color);
       font-family: 'Inter', sans-serif;
 
-      @media (max-width: map-get($media, xs)) {
-      }
-
       span {
+        gap: 16px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
         span {
-          width: 67px;
+          // ?
+          width: 62px;
+        }
+
+        .space {
+          width: 16px;
         }
       }
 
       .option-icon {
         display: none;
         font-size: 16px;
+        color: var(--primary-color);
       }
 
       .option_check-icon {
@@ -182,9 +186,15 @@
       background: #FFFFFF;
       color: var(--primary-color);
 
-      .option_check-icon {
-        display: block;
+      .option-icon {
         color: var(--primary-color);
+      }
+
+      .option_check-icon {
+        &, &.suffix-icon {
+          display: block;
+          color: var(--primary-color);
+        }
       }
     }
 
@@ -213,8 +223,13 @@
       }
 
       .option_check-icon {
-        display: none;
+        &.suffix-icon {
+          color: #D6D5D8;
+          display: block;
+        }
+
         font-size: 16px;
+        display: none;
       }
     }
   }

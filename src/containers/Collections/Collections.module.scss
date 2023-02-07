@@ -59,6 +59,10 @@
 
 @media (max-width: map-get($media, md)) {
   .root {
+    .wrapper-card {
+      grid-gap: 16px;
+    }
+
     .wrapper-button {
       margin-top: 24px;
     }

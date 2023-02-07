@@ -186,7 +186,7 @@ export const nftCollectionsArray = [
     status: 1,
     avatar: '/assets/avatar/avatar-6.jpg',
     name: 'Sidekast Stage 1-1',
-    mintable: true
+    mintable: false
   },
 ]
 

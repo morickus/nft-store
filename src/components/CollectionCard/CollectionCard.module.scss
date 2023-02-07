@@ -24,7 +24,7 @@
         .title {
           font-size: 12px;
           margin-left: 6px;
-          line-height: 12px;
+          line-height: 13px;
         }
       }
     }
@@ -83,8 +83,10 @@
 
         .status {
           height: 24px;
+          display: flex;
           padding: 0 7px;
           margin-left: 4px;
+          align-items: center;
           background: var(--orange-color);
 
           &_red {
@@ -138,14 +140,20 @@
 
       .title {
         font-size: 16px;
+        overflow: hidden;
         font-weight: 800;
         line-height: 16px;
         margin-left: 11px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         color: var(--black-color);
       }
     }
 
     .right {
+      display: flex;
+      align-items: center;
+
       .mintable {
         color: var(--red-color);
         font-size: 12px;
@@ -172,7 +180,15 @@
 }
 
 @media (max-width: map-get($media, md)) {
-
+  .root {
+    .bottom {
+      .left {
+        .title {
+          max-width: 110px;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: map-get($media, sm)) {

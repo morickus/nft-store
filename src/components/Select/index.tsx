@@ -34,10 +34,11 @@ const Select: FC<ISelect> = (props) => {
       {options.map(i => (
         <Option value={i.value} key={i.value}>
           <span>
-            {i.prefixIcon && <Icon name={i.prefixIcon} color="primary" className="option-icon" />}
+            {i.prefixIcon && <Icon name={i.prefixIcon} className="option-icon" />}
             <span>{i.label}</span>
+            <span className="space" />
           </span>
-          <Icon name={i.suffixIcon || "check_outlined"} className="option_check-icon" />
+          <Icon name={i.suffixIcon || "check_outlined"} className={`option_check-icon ${i.suffixIcon && 'suffix-icon'}`} />
         </Option>
       ))}
     </SelectAntd>

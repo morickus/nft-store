@@ -48,10 +48,10 @@
         padding-inline-end: 0;
 
         span {
-          gap: 24px;
+          //gap: 24px;
 
           @media (max-width: map-get($media, xs)) {
-            gap: 12px;
+            //gap: 12px;
           }
         }
 
@@ -124,9 +124,13 @@
         align-items: center;
         justify-content: space-between;
 
+        @media (max-width: map-get($media, xs)) {
+          gap: 11px;
+        }
+
         span {
-          // ?
-          width: 62px;
+          width: 86px;
+          justify-content: center;
         }
 
         .space {

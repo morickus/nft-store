@@ -7,8 +7,10 @@
   --light-color: #FCFCFC;
   --red-color: #EB5757;
   --green-color: #17B158;
+  --callow-color: #27AE60;;
   --orange-color: #FF813A;
-  --pink-color: #FF66F0;;
+  --pink-color: #FF66F0;
+  --blue-color: #2D9CDB;
 }
 
 * {
@@ -47,6 +49,12 @@ body {
   padding: 144px 56px 100px 126px;
 }
 
+.container-page {
+  margin: 0 auto;
+  max-width: 1254px;
+  padding: 144px 0 100px 96px;
+}
+
 .title {
   font-size: 42px;
   font-weight: 900;
@@ -75,6 +83,12 @@ body {
     max-width: 1024px;
     padding: 124px 12px 80px 84px;
   }
+
+  .container-page {
+    margin: 0 auto;
+    max-width: 1024px;
+    padding: 124px 12px 80px 84px;
+  }
 }
 
 @media (max-width: map-get($media, md)) {
@@ -87,10 +101,20 @@ body {
     max-width: 768px;
     padding: 96px 12px 80px;
   }
+
+  .container-page {
+    margin: 0 auto;
+    max-width: 768px;
+    padding: 96px 12px 80px;
+  }
 }
 
 @media (max-width: map-get($media, sm)) {
   .wrapper-page {
+    padding: 96px 12px 60px;
+  }
+
+  .container-page {
     padding: 96px 12px 60px;
   }
 }

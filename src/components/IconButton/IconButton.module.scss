@@ -10,6 +10,12 @@
   transition: all .3s ease;
   border: 2px solid #F7F7F7;
 
+  &.width_25 {
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+  }
+
   &:hover {
     background: #F7F7F7;
   }

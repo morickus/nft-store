@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { menuArray, sideMenuArray } from '../../../store'
 import Icon from '@/components/Icon'
+import { getCurPage } from '@/utils'
 
 interface ISideMenu {
   visibleMobile: boolean
@@ -28,7 +29,7 @@ const SideMenu: FC<ISideMenu> = (props) => {
         <nav className={styles.menu}>
           {sideMenuArray.map((i, index) => (
             <Link key={index} href={i.href}>
-              <div className={`${styles['menu__item']} ${router.asPath == i.href && styles.active}`}>
+              <div className={`${styles['menu__item']} ${getCurPage(router.asPath) == getCurPage(i.href) && styles.active}`}>
                 <div className={styles.icon}>
                   <Icon name={i.icon} />
                   <Icon name={i.iconActive} color="white" />

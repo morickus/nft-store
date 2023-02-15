@@ -2,9 +2,9 @@ import { ReactElement } from 'react'
 import Collections from '@/containers/Collections'
 import MainLayout from "@/layouts/MainLayout";
 
-const CollectionsPage = () => <Collections />
+const Page = () => <Collections />
 
-CollectionsPage.getLayout = function getLayout(page: ReactElement) {
+Page.getLayout = function getLayout(page: ReactElement) {
   return (
     <MainLayout>
       {page}
@@ -12,4 +12,4 @@ CollectionsPage.getLayout = function getLayout(page: ReactElement) {
   );
 };
 
-export default CollectionsPage
+export default Page

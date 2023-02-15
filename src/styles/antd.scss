@@ -47,14 +47,6 @@
       .ant-select-selection-item {
         padding-inline-end: 0;
 
-        span {
-          //gap: 24px;
-
-          @media (max-width: map-get($media, xs)) {
-            //gap: 12px;
-          }
-        }
-
         .option-icon {
           display: block;
         }

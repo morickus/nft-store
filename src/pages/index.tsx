@@ -2,9 +2,9 @@ import { ReactElement } from 'react'
 import Home from '@/containers/Home'
 import MainLayout from "@/layouts/MainLayout";
 
-const HomePage = () => <Home />
+const Page = () => <Home />
 
-HomePage.getLayout = function getLayout(page: ReactElement) {
+Page.getLayout = function getLayout(page: ReactElement) {
   return (
     <MainLayout>
       {page}
@@ -12,4 +12,4 @@ HomePage.getLayout = function getLayout(page: ReactElement) {
   );
 };
 
-export default HomePage
+export default Page

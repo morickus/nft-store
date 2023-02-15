@@ -318,3 +318,125 @@ export const optionsTrending = [
     suffixIcon: 'high-low' as IconNamesMap
   }
 ]
+
+export const nftPage = {
+  id: 1,
+  number: 488,
+  like: 26,
+  image: '/assets/nft/6964-3-1.jpg',
+  collection: {
+    id: 1,
+    image: '/assets/avatar/avatar-13.jpg',
+    name: 'KaleidoscopeKids'
+  },
+  owner: {
+    avatar: '/assets/avatar/avatar-12.png',
+    wallet: '0x097df08623412412312312300hd'
+  },
+  creator: {
+    avatar: '/assets/avatar/avatar-8.png',
+    wallet: '0x0755gg771231231231231231288ij'
+  },
+  price: {
+    eth: 70,
+    dollar: 84000,
+    highestBid: 4,
+    highestBidBy: 'by 0x902df023dghde3t4gredsefweduh33'
+  },
+  name: 'Kaleido Kids',
+  description: 'DigiDaigaku is a collection of 2022 unique characters developed by Limit Break, a company founded by world famous game designers Gabriel Leydon and Halbert Nakagawa. The story...',
+  bids: [
+    {
+      user: {
+        avatar: '/assets/avatar/avatar-12.png',
+        name: 'Kim',
+        wallet: '0x097df086sd3d232fe23d300hd'
+      },
+      created_at: 1668249120,
+      price: {
+        wEth: 5.25,
+        dollar: 6747,
+      }
+    },
+    {
+      user: {
+        avatar: '/assets/avatar/avatar-1.jpg',
+        name: 'Untre',
+        wallet: '0x097df086s1wd232fe23d300hd'
+      },
+      created_at: 1667478000,
+      price: {
+        wEth: 1.23,
+        dollar: 2344,
+      }
+    },
+    {
+      user: {
+        avatar: '/assets/avatar/avatar-7.png',
+        name: 'Andrew',
+        wallet: '0x097df086s1wd232fe23d300hd'
+      },
+      created_at: 1665333900,
+      price: {
+        wEth: 5.25,
+        dollar: 6747,
+      }
+    },
+    {
+      user: {
+        avatar: '/assets/avatar/avatar-3.jpg',
+        name: 'Oracle',
+        wallet: '0x097df086s1wd232fe23d300hd'
+      },
+      created_at: 1664608260,
+      price: {
+        wEth: 4.42,
+        dollar: 5443,
+      }
+    },
+    {
+      user: {
+        avatar: '/assets/avatar/avatar-4.jpg',
+        name: 'Droid',
+        wallet: '0x097df086s1wd232fe23d300hd'
+      },
+      created_at: 1664518920,
+      price: {
+        wEth: 5.25,
+        dollar: 6747,
+      }
+    },
+    {
+      user: {
+        avatar: '/assets/avatar/avatar-5.jpg',
+        name: 'SSSs',
+        wallet: '0x097df086s1wd232fe23d300hd'
+      },
+      created_at: 1664094000,
+      price: {
+        wEth: 6.99,
+        dollar: 7722,
+      }
+    },
+  ],
+  properties: [
+    {
+      image: '/assets/icon/crystal-ball.png',
+      label: 'Magic',
+      text: '10 powerpoints',
+      value: 16
+    },
+    {
+      image: '/assets/icon/dna.png',
+      label: 'DNA',
+      text: 'BBNTR',
+      value: 2
+    },
+    {
+      image: '/assets/icon/swords.png',
+      label: 'Fight',
+      text: '24 powerpoints',
+      value: 24
+    }
+  ]
+}

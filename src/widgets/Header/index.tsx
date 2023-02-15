@@ -9,6 +9,7 @@ import Avatar from '@/components/Avatar'
 import LanguageSelector from '@/components/LanguageSelector'
 import Image from 'next/image'
 import Switch from '@/components/Switch'
+import { cutWallet } from '@/utils'
 
 interface IHeader {
   onClickBurger(): void
@@ -109,7 +110,7 @@ const Header: FC<IHeader> = (props) => {
                 <Image src="/fox.svg" alt="fox" width={24} height={24} />
                 <div className={styles.text}>
                   <span className={styles.name}>Ethereum</span>
-                  <span className={styles.number}>0x6d...d0hh</span>
+                  <span className={styles.number}>{cutWallet('0x6dw23s23dw42s232ew2de4bzw23e23ads23flf2d0hh')}</span>
                 </div>
               </div>
               <div className={styles['right-side']}>

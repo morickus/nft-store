@@ -7,15 +7,16 @@ interface IconButtonProps {
   icon: IconNamesMap
   colorIcon?: IconColor
   sizeIcon?: '24' | '18' | '16'
+  width?: '40' | '25'
   className?: string
   onClick?(): void
 }
 
 const IconButton: FC<IconButtonProps> = (props) => {
-  const { icon, colorIcon = 'primary', sizeIcon = '18', className, onClick } = props
+  const { icon, colorIcon = 'primary', width = '40', sizeIcon = '18', className, onClick } = props
 
   return (
-    <div className={`${style.root} ${className}`} onClick={onClick}>
+    <div className={`${style.root} ${className} ${style[`width_${width}`]}`} onClick={onClick}>
       <Icon name={icon} color={colorIcon} className={`${style.icon} ${style[`size_${sizeIcon}`]}`} />
     </div>
   );

@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { Radio } from 'antd'
 import styles from './RadioButton.module.scss'
+import { RadioChangeEvent } from 'antd/es/radio/interface'
 
 interface Button {
   text: string
@@ -11,7 +12,7 @@ interface Button {
 interface IRadioButton {
   buttons: Button[]
   defaultValue?: string
-  onChange?(): void
+  onChange?(e: RadioChangeEvent): void
 }
 
 const RadioButton: FC<IRadioButton> = (props) => {

@@ -178,7 +178,7 @@ const NftPage = () => {
                           {tab === 'history' ? (
                             <span className={styles.date}>{dayjs.unix(i.created_at).utc().format('DD.MM.YYYY, hh:mm')}</span>
                           ) : (
-                            <span className={styles.date}>{dayjs().to(dayjs.unix(1668249120))}</span>
+                            <span className={styles.date}>{dayjs().to(dayjs.unix(i.created_at))}</span>
                           )}
                           <div className={styles.price}>
                             <span>{i.price.wEth} wETH</span>

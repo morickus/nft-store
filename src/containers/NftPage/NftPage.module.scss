@@ -261,13 +261,11 @@
                   justify-content: center;
 
                   .for {
-                    display: block;
                     white-space: nowrap;
                     color: rgba(38, 35, 63, .4);
                   }
 
                   span, p {
-                    display: block;
                     font-size: 12px;
                     font-weight: 600;
                     line-height: 12px;
@@ -653,6 +651,10 @@
                       width: 68px;
                       overflow: hidden;
                       text-overflow: ellipsis;
+                    }
+
+                    .for {
+                      display: block;
                     }
                   }
                 }

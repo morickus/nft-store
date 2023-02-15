@@ -89,7 +89,7 @@ const NftPage = () => {
                         <span>${price.dollar.toLocaleString('en')}</span>
                       </div>
                       <div className={`${styles.item}`}>
-                        <span className={styles.label}>Highest <span className={styles.black}>floor bid</span></span>
+                        <span className={styles.label}>Highest&nbsp;<span className={styles.black}>floor bid</span></span>
                         <p>{price.highestBid} wETH</p>
                         <span>by <span className={styles.link}>{cutWallet(price.highestBidBy)}</span></span>
                       </div>
@@ -171,7 +171,7 @@ const NftPage = () => {
                           <div className={styles.user}>
                             <Image src={i.user.avatar} alt={i.user.avatar} width={36} height={36} className={styles.avatar} />
                             <div className={styles.info}>
-                              <span>{i.user.name} {tab === 'history' && (<span className={styles.for}>listed for</span>)}</span>
+                              <span>{i.user.name}&nbsp;{tab === 'history' && (<span className={styles.for}>listed for</span>)}</span>
                               <p>{cutWallet(i.user.wallet)}</p>
                             </div>
                           </div>

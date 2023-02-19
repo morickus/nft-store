@@ -17,13 +17,14 @@
       display: flex;
       padding: 0 6px;
       position: absolute;
+      align-items: center;
       transform: translateX(-50%);
       backdrop-filter: blur(8px);
       background: rgba(255, 255, 255, 0.3);
       border: 2px solid rgba(214, 213, 216, 0.3);
 
       &__item {
-        height: 36px;
+        height: 28px;
         display: flex;
         cursor: pointer;
         padding: 0 12px;
@@ -33,6 +34,10 @@
 
         &:hover {
           background: rgba(255, 255, 255, 0.2);
+        }
+
+        &:last-child {
+          padding: 0 9px;
         }
 
         &:not(:last-child) {
@@ -81,7 +86,7 @@
       }
 
       .dropdown {
-        height: 413px;
+        height: 427px;
       }
     }
 
@@ -116,8 +121,8 @@
 
       .nested-wrap {
         display: grid;
-        grid-gap: 20px;
-        padding: 50px 20px 22px;
+        grid-gap: 24px;
+        padding: 50px 24px 0;
         justify-content: space-evenly;
         grid-template-columns: 1fr 1fr;
 
@@ -199,10 +204,16 @@
 @media (max-width: map-get($media, lg)) {
   .root {
     .bottom-side {
+      &.open {
+        .dropdown {
+          height: 406px;
+        }
+      }
+
       .dropdown {
         .nested-wrap {
-          grid-gap: 10px;
-          padding: 50px 10px 22px;
+          grid-gap: 12px;
+          padding: 50px 12px 0;
         }
       }
     }
@@ -222,7 +233,7 @@
     .bottom-side {
       &.open {
         .dropdown {
-          height: 365px;
+          height: 356px;
         }
       }
 

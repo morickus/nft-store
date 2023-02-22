@@ -2,7 +2,7 @@
   "token": {
     "fontFamily": "'Inter', sans-serif",
     "colorPrimary": "#4F4CE8",
-    "colorText": "#1F1F1F",
+    "colorTextBase": "#1F1F1F",
     "borderRadius": 0
   },
   "components": {
@@ -15,6 +15,30 @@
       "controlInteractiveSize": 18,
       "fontSize": 12,
       "paddingXS": 6
+    },
+    "Button": {
+      "fontWeight": 700,
+      "borderRadius": 0,
+      "borderRadiusLG": 0,
+      "borderRadiusSM": 0,
+      "colorBorder": "#F7F7F7",
+      "colorPrimary": "#4F4CE8",
+      "colorPrimaryActive": "#4441C4",
+      "colorPrimaryHover": "#5855FF",
+      "colorPrimaryBorder": "#4F4CE8",
+      "colorText": "#4F4CE8",
+      "controlHeightSM": 32,
+      "controlHeight": 40,
+      "controlHeightLG": 56,
+      "controlOutline": "rgba(0,0,0,0)",
+      "fontSize": 16,
+      "fontSizeLG": 18,
+      "fontSizeSM": 12,
+      "paddingContentHorizontal": 16,
+      "paddingContentHorizontalLG": 24,
+      "paddingContentHorizontalXS": 12,
+      "marginXS": 8,
+      "paddingXS": 8
     },
     "Form": {
       "marginLG": 0

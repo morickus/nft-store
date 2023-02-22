@@ -499,6 +499,13 @@
         }
 
         .content-wrap {
+          margin-top: 56px;
+
+          .radio-buttons {
+            display: flex;
+            justify-content: center;
+          }
+
           .content {
             .bids-wrap {
               margin: 8px 0 12px
@@ -592,6 +599,10 @@
           &__image {
             order: -1;
           }
+        }
+
+        .content-wrap {
+          margin-top: 36px;
         }
       }
     }

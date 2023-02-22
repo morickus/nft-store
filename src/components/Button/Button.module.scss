@@ -1,32 +1,12 @@
 .root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all .3s ease-in-out;
-
-  &.type_primary {
-    background: var(--primary-color);
-    color: #FFFFFF;
-    border: none;
-
-    &:hover {
-      background: #353535;
-      color: #FFFFFF;
-    }
-
-    &:active {
-      background: #000000;
-      color: #FFFFFF;
-    }
-  }
+  font-weight: 700;
 
   &.type_default {
-    background: #FFFFFF;
     border: 2px solid #F7F7F7;
-    color: var(--primary-color);
 
     &:hover {
       color: var(--primary-color);
+      border-color: #F7F7F7;
       background: #F7F7F7;
     }
 
@@ -37,27 +17,8 @@
     }
   }
 
-  &.size_large {
-    line-height: 24px;
-    font-weight: 700;
-    font-size: 18px;
-    padding: 0 24px;
-    height: 56px;
-  }
-
-  &.size_middle {
-    line-height: 24px;
-    font-weight: 700;
-    font-size: 16px;
-    padding: 0 16px;
-    height: 40px;
-  }
-
   &.size_small {
-    line-height: 16px;
-    font-weight: 700;
-    font-size: 12px;
-    padding: 0 12px;
-    height: 32px;
+    //font-size: 12px;
+    //padding: 0 12px;
   }
 }

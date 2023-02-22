@@ -23,7 +23,7 @@ const Collections = () => {
             })}
           </div>
           <div className={styles['wrap-btn']}>
-            <Button size="medium">
+            <Button size="middle" type="primary">
               <Icon name="add-collection_filled" color="white" className={styles.icon} />
               <span>Add my collections</span>
             </Button>
@@ -39,7 +39,7 @@ const Collections = () => {
             })}
           </div>
           <div className={styles['wrapper-button']}>
-            <Button type="stroked" size="large">Load more</Button>
+            <Button size="large">Load more</Button>
           </div>
         </div>
       </div>

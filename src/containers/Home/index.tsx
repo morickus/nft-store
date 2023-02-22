@@ -16,7 +16,7 @@ const Home = () => {
           <div className={styles.content}>
             <h1 className={styles.title}>Explore NFTs</h1>
             <p className={styles.text}>Our suite of Web 3.0 tools allows creators and brands to create verifiably unique, connected NFTs that bring utility and joy to their fans and collectors online and off.</p>
-            <Button size="large">NFT store manual</Button>
+            <Button size="large" type="primary">NFT store manual</Button>
           </div>
           <div className={styles['nft-items']}>
             <div className={styles['nft-items-wrapper']}>
@@ -24,7 +24,7 @@ const Home = () => {
                 <NftCard key={i.number} {...i} />
               ))}
             </div>
-            <Button type="stroked" size="large">all NFT items</Button>
+            <Button size="large">all NFT items</Button>
           </div>
         </div>
       </section>
@@ -37,7 +37,7 @@ const Home = () => {
                 <CollectionCard key={i.image} {...i} />
               ))}
             </div>
-            <Button type="stroked" size="large">all collections</Button>
+            <Button size="large">all collections</Button>
           </div>
         </div>
       </section>
@@ -50,7 +50,7 @@ const Home = () => {
                 <NftCard key={i.number} {...i} />
               ))}
             </div>
-            <Button type="stroked" size="large">view all</Button>
+            <Button size="large">view all</Button>
           </div>
         </div>
       </section>
@@ -63,7 +63,7 @@ const Home = () => {
                 <NftCard key={i.number} {...i} />
               ))}
             </div>
-            <Button type="stroked" size="large">view all</Button>
+            <Button size="large">view all</Button>
           </div>
         </div>
       </section>
@@ -174,7 +174,7 @@ const Home = () => {
                   <UserCard key={index} withoutImage {...i} />
                 ))}
               </div>
-              <Button type="stroked" size="large">view all</Button>
+              <Button size="large">view all</Button>
             </div>
           </div>
         </div>

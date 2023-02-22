@@ -1,0 +1,23 @@
+{
+  "token": {
+    "fontFamily": "'Inter', sans-serif",
+    "colorPrimary": "#4F4CE8",
+    "colorText": "#1F1F1F",
+    "borderRadius": 0
+  },
+  "components": {
+    "Checkbox": {
+      "colorBorder": "#F7F7F7",
+      "colorPrimary": "#4F4CE8",
+      "colorText": "#1F1F1F",
+      "colorPrimaryHover": "#4F4CE8",
+      "colorPrimaryBorder": "#4F4CE8",
+      "controlInteractiveSize": 18,
+      "fontSize": 12,
+      "paddingXS": 6
+    },
+    "Form": {
+      "marginLG": 0
+    }
+  }
+}

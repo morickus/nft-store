@@ -38,7 +38,7 @@ const Header: FC<IHeader> = (props) => {
             <Icon name="wallet_stroke" className={styles.icon} />
             <span>0,04 ETH</span>
           </div>
-          <Button size="small">Wallet</Button>
+          <Button size="small" type="primary">Wallet</Button>
           <div className={styles.personal}>
             <Bell count={12} />
             <Avatar

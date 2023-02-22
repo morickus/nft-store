@@ -1,16 +1,16 @@
 import { FC, PropsWithChildren } from 'react';
 import styles from './Button.module.scss'
-import { Button as ButtonAntd } from 'antd'
+import { Button as ButtonAntd, ButtonProps } from 'antd'
 import classnames from 'classnames'
 
 interface IButton {
   className?: string
-  type?: 'primary' | 'stroked'
-  size: 'large' | 'medium' | 'small'
+  type?: 'primary' | 'default'
+  size: 'large' | 'middle' | 'small'
 }
 
-const Button: FC<IButton & PropsWithChildren> = (props) => {
-  const { children, type = 'primary', size, className } = props
+const Button: FC<IButton & ButtonProps & PropsWithChildren> = (props) => {
+  const { children, type = 'default', size, className } = props
 
   return (
     <ButtonAntd
@@ -19,6 +19,7 @@ const Button: FC<IButton & PropsWithChildren> = (props) => {
         [styles[`type_${type}`]]: type,
         [styles[`size_${size}`]]: size,
       }, className)}
+      {...props}
     >
       {children}
     </ButtonAntd>

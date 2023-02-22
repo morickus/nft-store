@@ -1,31 +1,21 @@
 import { FC } from 'react'
-import { Radio } from 'antd'
+import { Radio, RadioGroupProps, RadioProps } from 'antd'
 import styles from './RadioButton.module.scss'
-import { RadioChangeEvent } from 'antd/es/radio/interface'
-
-interface Button {
-  text: string
-  value: string
-  onClick?(): void
-}
 
 interface IRadioButton {
-  buttons: Button[]
-  defaultValue?: string
-  onChange?(e: RadioChangeEvent): void
+  buttons: Array<RadioProps & {text: string}>
 }
 
-const RadioButton: FC<IRadioButton> = (props) => {
+const RadioButton: FC<IRadioButton & RadioGroupProps> = (props) => {
   const { buttons, defaultValue, onChange } = props
 
   return (
-    <Radio.Group defaultValue={defaultValue} buttonStyle="solid" className={styles.root} onChange={onChange}>
-      {buttons.map(i => (
+    <Radio.Group defaultValue={defaultValue} buttonStyle="solid" className={styles.root} onChange={onChange} {...props}>
+      {buttons.map((i, index) => (
         <Radio.Button
-          key={i.value}
-          value={i.value}
-          onClick={i.onClick}
-          className={styles.item}
+          {...i}
+          key={index}
+          className={`${styles.item} ${i.className}`}
         >
           {i.text}
         </Radio.Button>

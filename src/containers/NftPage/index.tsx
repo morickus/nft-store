@@ -95,9 +95,9 @@ const NftPage = () => {
                       </div>
                     </div>
                     <div className={styles['buttons-price-wrap']}>
-                      <Button size="medium">ButNow for {price.eth} ETH</Button>
+                      <Button size="middle" type="primary">ButNow for {price.eth} ETH</Button>
                       <IconButton icon="cart_filled" sizeIcon="18"/>
-                      <Button size="medium" type="stroked">Place a bid</Button>
+                      <Button size="middle">Place a bid</Button>
                     </div>
                   </>
                 ) : (
@@ -143,7 +143,7 @@ const NftPage = () => {
                   <div className={styles.block}>
                     <span className={styles.title}>Description</span>
                     <p className={styles.text}>{description}</p>
-                    <Button size="small" type="stroked">View all</Button>
+                    <Button size="small">View all</Button>
                   </div>
                 )}
                 {tab === 'properties' && (
@@ -187,7 +187,7 @@ const NftPage = () => {
                         </div>
                       ))}
                     </div>
-                    <Button size="small" type="stroked">View all</Button>
+                    <Button size="small">View all</Button>
                   </div>
                 )}
               </div>

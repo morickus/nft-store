@@ -1,28 +1,21 @@
 import { FC } from 'react'
-import { Radio } from 'antd'
+import { Radio, RadioGroupProps, RadioProps } from 'antd'
 import styles from './RadioButtonForm.module.scss'
 
-interface Button {
-  text: string
-  value: string
-}
-
 interface IRadioButtonForm {
-  value?: string
-  buttons: Button[]
-  onChange?(): void
+  buttons: Array<RadioProps & {text: string}>
 }
 
-const RadioButtonForm: FC<IRadioButtonForm> = (props) => {
+const RadioButtonForm: FC<IRadioButtonForm & RadioGroupProps> = (props) => {
   const { buttons, value, onChange } = props
 
   return (
-    <Radio.Group value={value} buttonStyle="solid" className={styles.root} onChange={onChange}>
-      {buttons.map(i => (
+    <Radio.Group value={value} buttonStyle="solid" className={styles.root} onChange={onChange} {...props}>
+      {buttons.map((i, index) => (
         <Radio.Button
-          key={i.value}
-          value={i.value}
-          className={styles.item}
+          {...i}
+          key={index}
+          className={`${styles.item} ${i.className}`}
         >
           {i.text}
         </Radio.Button>

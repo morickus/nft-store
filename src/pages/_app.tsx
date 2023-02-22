@@ -1,9 +1,11 @@
 import React, { ReactElement, ReactNode } from 'react'
 import { AppContextType, AppInitialProps } from 'next/dist/shared/lib/utils'
+import { ConfigProvider } from 'antd'
 import { NextPage } from 'next'
 import '@/styles/antd.scss'
 import '@/styles/globals.scss'
 import Head from 'next/head'
+import theme from '../../antd-theme.json'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -25,7 +27,9 @@ export default function App({Component, pageProps}: AppPropsWithLayout) {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
         <link rel="icon" href="/favicon.ico"/>
       </Head>
-      {getLayout(<Component {...pageProps} />)}
+      <ConfigProvider theme={theme}>
+        {getLayout(<Component {...pageProps} />)}
+      </ConfigProvider>
     </div>
   )
 }

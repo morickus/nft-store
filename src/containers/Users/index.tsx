@@ -34,7 +34,7 @@ const Users = () => {
             })}
           </div>
           <div className={styles['wrapper-button']}>
-            <Button type="stroked" size="large">Load more</Button>
+            <Button size="large">Load more</Button>
           </div>
         </div>
       </div>

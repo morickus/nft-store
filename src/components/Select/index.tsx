@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Icon from '@/components/Icon'
-import { Select as SelectAntd } from 'antd'
+import { Select as SelectAntd, SelectProps } from 'antd'
 import { IconNamesMap } from '@/components/Icon/types'
 
 const { Option } = SelectAntd
@@ -13,14 +13,11 @@ interface IOption {
 }
 
 interface ISelect {
-  value?: string
-  onChange?: (value: string) => void
-
   withPrefix?: boolean
   options: IOption[]
 }
 
-const Select: FC<ISelect> = (props) => {
+const Select: FC<ISelect & SelectProps> = (props) => {
   const { value, onChange, withPrefix, options } = props
 
   return (

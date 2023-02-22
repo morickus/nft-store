@@ -95,9 +95,9 @@ const NftPage = () => {
                       </div>
                     </div>
                     <div className={styles['buttons-price-wrap']}>
-                      <Button size="middle" type="primary">ButNow for {price.eth} ETH</Button>
+                      <Button type="primary">ButNow for {price.eth} ETH</Button>
                       <IconButton icon="cart_filled" sizeIcon="18"/>
-                      <Button size="middle">Place a bid</Button>
+                      <Button>Place a bid</Button>
                     </div>
                   </>
                 ) : (
@@ -126,18 +126,20 @@ const NftPage = () => {
               </div>
             </div>
             <div className={styles['content-wrap']}>
-              <RadioButton
-                buttons={
-                  [
-                    {text: 'Overview', value: 'overview'},
-                    {text: 'Properties', value: 'properties'},
-                    {text: 'Bids', value: 'bids'},
-                    {text: 'History', value: 'history'}
-                  ]
-                }
-                onChange={(e) => setTab(e.target.value)}
-                defaultValue="overview"
-              />
+              <div className={styles['radio-buttons']}>
+                <RadioButton
+                  buttons={
+                    [
+                      {text: 'Overview', value: 'overview'},
+                      {text: 'Properties', value: 'properties'},
+                      {text: 'Bids', value: 'bids'},
+                      {text: 'History', value: 'history'}
+                    ]
+                  }
+                  onChange={(e) => setTab(e.target.value)}
+                  defaultValue="overview"
+                />
+              </div>
               <div className={styles.content}>
                 {tab === 'overview' && (
                   <div className={styles.block}>

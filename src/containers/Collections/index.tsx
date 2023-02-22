@@ -23,7 +23,7 @@ const Collections = () => {
             })}
           </div>
           <div className={styles['wrap-btn']}>
-            <Button size="middle" type="primary">
+            <Button type="primary">
               <Icon name="add-collection_filled" color="white" className={styles.icon} />
               <span>Add my collections</span>
             </Button>

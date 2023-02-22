@@ -21,7 +21,7 @@ const NftCard: FC<INftCard> = (props) => {
       <div className={styles.header}>
         <Image src={image} alt={name} width={323} height={280} />
         <div className={styles.buttons}>
-          <Button size="middle" type="primary">BuyNow</Button>
+          <Button type="primary">BuyNow</Button>
           <IconButton icon="cart_filled" className={styles['icon-btn']} />
           <IconButton icon="more-menu_filled" className={`${styles['icon-btn']} ${styles.rotate}`} />
         </div>

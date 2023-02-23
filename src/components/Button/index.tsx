@@ -21,7 +21,11 @@ const ButtonOther = styled(ButtonAntd)`
 const ButtonDefault = styled(ButtonAntd)`${({ theme: { components: { Button: btn } } }) => css`
   font-weight: ${btn.fontWeight};
   border: 2px solid #F7F7F7 !important;
-
+  
+  & > div {
+    display: none;
+  }
+  
   &:hover {
     color: ${btn.colorPrimary} !important;
     border-color: #F7F7F7 !important;
@@ -30,7 +34,6 @@ const ButtonDefault = styled(ButtonAntd)`${({ theme: { components: { Button: btn
 
   &:active {
     color: ${btn.colorPrimary} !important;
-    border: 2px solid ${btn.colorPrimary} !important;
     background: #D6D6D6 !important;
   }
 `}`;

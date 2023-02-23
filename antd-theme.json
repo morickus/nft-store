@@ -30,7 +30,7 @@
       "controlHeightSM": 32,
       "controlHeight": 40,
       "controlHeightLG": 56,
-      "controlOutline": "rgba(0,0,0,0)",
+      "controlOutline": "rgba(5, 145, 255, 0)",
       "fontSize": 16,
       "fontSizeSM": 12,
       "fontSizeLG": 18,

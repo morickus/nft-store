@@ -46,6 +46,8 @@ const Select: FC<ISelect & SelectProps> = (props) => {
   );
 };
 
+export default Select
+
 const SelectBase = styled(SelectAntd)`${({ theme: { components: { Select: s } } }) => css`
   width: max-content !important;
 
@@ -83,26 +85,24 @@ const SelectBase = styled(SelectAntd)`${({ theme: { components: { Select: s } } 
   .ant-select-selector {
     display: flex;
     align-items: center;
-    height: ${s.controlHeight}px !important;
     padding: 0 12px !important;
     box-shadow: none !important;
     transition: all .3s ease !important;
-    border: 2px solid #F7F7F7 !important;
+    height: ${s.controlHeight}px !important;
+    border: ${s.lineWidth}px solid ${s.colorBorder} !important;
     @media (max-width: 479.98px) {
       padding: 0 6px !important;
     }
     &:hover {
-      background: #F7F7F7;
+      background: ${s.colorBorder};
     }
 
     .ant-select-selection-item {
       display: flex;
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 16px;
       align-items: center;
       padding-inline-end: 0;
       color: ${s.colorPrimary};
+      font-weight: ${s.fontWeight};
 
       span {
         gap: 16px;
@@ -142,5 +142,3 @@ const SelectBase = styled(SelectAntd)`${({ theme: { components: { Select: s } } 
     }
   }
 `}`;
-
-export default Select

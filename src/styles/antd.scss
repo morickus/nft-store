@@ -18,7 +18,6 @@
     padding: 12px;
 
     &.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
-      background: #FFFFFF;
       color: var(--primary-color);
 
       .option-icon {
@@ -31,10 +30,6 @@
           color: var(--primary-color);
         }
       }
-    }
-
-    &.ant-select-item-option-active:not(.ant-select-item-option-disabled) {
-      background: #F7F7F7;
     }
 
     .ant-select-item-option-content {

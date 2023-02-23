@@ -7,6 +7,11 @@
   },
   "components": {
     "Select": {
+      "fontSize": 14,
+      "lineWidth": 2,
+      "fontWeight": 700,
+      "colorBorder": "#F7F7F7",
+      "controlItemBgActive": "#FFFFFF",
       "colorPrimary": "#4F4CE8",
       "controlHeight": 40
     },

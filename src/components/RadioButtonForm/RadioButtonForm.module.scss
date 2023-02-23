@@ -9,13 +9,10 @@
     height: 36px;
     font-size: 12px;
     font-weight: 700;
-    border-radius: 0;
     line-height: 32px;
-    padding-inline: 12px;
-    border: 2px solid #F7F7F7;
     transition: all .3s ease;
+    border: 2px solid #F7F7F7;
     color: var(--primary-color);
-    font-family: 'Inter', sans-serif;
 
     &:hover {
       background: #F7F7F7;

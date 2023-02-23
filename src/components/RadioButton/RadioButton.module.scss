@@ -7,13 +7,8 @@
   .item {
     border: none;
     height: 28px;
-    color: #1F1F1F;
-    font-size: 12px;
     font-weight: 700;
-    border-radius: 0;
     line-height: 28px;
-    padding-inline: 12px;
-    font-family: 'Inter', sans-serif;
 
     &:before {
       display: none;
@@ -25,6 +20,10 @@
 
     span {
       user-select: none;
+    }
+
+    &:hover {
+      color: var(--primary-color);
     }
   }
 }

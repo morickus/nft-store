@@ -1,7 +1,7 @@
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { Button as ButtonAntd, ButtonProps } from 'antd';
-import { FC } from 'react';
+import { FC } from 'react'
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
+import { Button as ButtonAntd, ButtonProps } from 'antd'
 
 const Button: FC<ButtonProps> = (props) => {
   return props.type === 'default'
@@ -38,4 +38,4 @@ const ButtonDefault = styled(ButtonAntd)`${({ theme: { components: { Button: btn
   }
 `}`;
 
-export default Button;
+export default Button

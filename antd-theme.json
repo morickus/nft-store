@@ -6,14 +6,45 @@
     "borderRadius": 0
   },
   "components": {
+    "Select": {
+      "colorPrimary": "#4F4CE8",
+      "controlHeight": 40
+    },
+    "Radio": {
+      "controlHeight": 40,
+      "padding": 12,
+      "controlHeightSM": 28,
+      "fontSize": 12
+    },
+    "Slider": {
+      "controlSize": 8,
+      "railSize": 2,
+      "dotSize": 8,
+      "colorBgContainer": "#ffffff",
+      "colorBgElevated": "#4F4CE8",
+      "colorBorderSecondary": "#4F4CE8",
+      "colorFillContentHover": "rgba(31, 31, 31, 0.15)",
+      "colorPrimaryBorder": "#4F4CE8",
+      "colorPrimaryBorderHover": "#4F4CE8",
+      "handleSize": 12,
+      "handleSizeHover": 14,
+      "handleLineWidth": 0,
+      "handleLineWidthHover": 0,
+      "colorFillTertiary": "#F7F7F7",
+      "borderRadiusXS": 0
+    },
+    "Switch": {
+      "colorTextQuaternary": "#FFFFFF",
+      "colorTextTertiary": "rgba(0, 0, 0, 0.05)"
+    },
     "Checkbox": {
       "colorBorder": "#F7F7F7",
-      "colorPrimary": "#4F4CE8",
       "colorText": "#1F1F1F",
       "colorPrimaryHover": "#4F4CE8",
       "colorPrimaryBorder": "#4F4CE8",
       "controlInteractiveSize": 18,
       "fontSize": 12,
+      "marginXS": 0,
       "paddingXS": 6
     },
     "Button": {
@@ -22,7 +53,6 @@
       "borderRadiusLG": 0,
       "borderRadiusSM": 0,
       "colorBorder": "#F7F7F7",
-      "colorPrimary": "#4F4CE8",
       "colorPrimaryActive": "#4441C4",
       "colorPrimaryHover": "#5855FF",
       "colorPrimaryBorder": "#4F4CE8",
@@ -35,6 +65,7 @@
       "fontSizeSM": 12,
       "fontSizeLG": 18,
       "paddingContentHorizontal": 16,
+      "paddingContentHorizontalXS": 12,
       "paddingContentHorizontalLG": 24,
       "marginXS": 8,
       "paddingXS": 8

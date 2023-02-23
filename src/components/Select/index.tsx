@@ -1,7 +1,9 @@
 import { FC } from 'react'
 import Icon from '@/components/Icon'
+import styled from '@emotion/styled'
 import { Select as SelectAntd, SelectProps } from 'antd'
 import { IconNamesMap } from '@/components/Icon/types'
+import { css } from '@emotion/react'
 
 const { Option } = SelectAntd
 
@@ -15,13 +17,15 @@ interface IOption {
 interface ISelect {
   withPrefix?: boolean
   options: IOption[]
+
+  onChange?(): void
 }
 
 const Select: FC<ISelect & SelectProps> = (props) => {
   const { value, onChange, withPrefix, options } = props
 
   return (
-    <SelectAntd
+    <SelectBase
       value={value}
       onChange={onChange}
       className={`select-antd ${withPrefix && 'select-antd-with-prefix'}`}
@@ -31,15 +35,112 @@ const Select: FC<ISelect & SelectProps> = (props) => {
       {options.map(i => (
         <Option value={i.value} key={i.value}>
           <span>
-            {i.prefixIcon && <Icon name={i.prefixIcon} className="option-icon" />}
+            {i.prefixIcon && <Icon name={i.prefixIcon} className="option-icon" fontSize={16} />}
             <span>{i.label}</span>
             <span className="space" />
           </span>
-          <Icon name={i.suffixIcon || "check_outlined"} className={`option_check-icon ${i.suffixIcon && 'suffix-icon'}`} />
+          <Icon name={i.suffixIcon || "check_outlined"} className={`option_check-icon ${i.suffixIcon && 'suffix-icon'}`} fontSize={16} />
         </Option>
       ))}
-    </SelectAntd>
+    </SelectBase>
   );
 };
+
+const SelectBase = styled(SelectAntd)`${({ theme: { components: { Select: s } } }) => css`
+  width: max-content !important;
+
+  &.select-antd-with-prefix {
+    .ant-select-selector {
+      .ant-select-selection-item {
+        padding-inline-end: 0;
+        .option-icon {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &.ant-select-open {
+    .ant-select-selector {
+      background: ${s.colorPrimary};
+      border-color: ${s.colorPrimary} !important;
+      &:hover {
+        background: ${s.colorPrimary};
+        border-color: ${s.colorPrimary};
+      }
+      .ant-select-selection-item, .option-icon {
+        color: #FFFFFF !important;
+      }
+    }
+    .ant-select-arrow {
+      transform: rotate(180deg);
+      i {
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  .ant-select-selector {
+    display: flex;
+    align-items: center;
+    height: ${s.controlHeight}px !important;
+    padding: 0 12px !important;
+    box-shadow: none !important;
+    transition: all .3s ease !important;
+    border: 2px solid #F7F7F7 !important;
+    @media (max-width: 479.98px) {
+      padding: 0 6px !important;
+    }
+    &:hover {
+      background: #F7F7F7;
+    }
+
+    .ant-select-selection-item {
+      display: flex;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 16px;
+      align-items: center;
+      padding-inline-end: 0;
+      color: ${s.colorPrimary};
+
+      span {
+        gap: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media (max-width: 479.98px) {
+          gap: 11px;
+        }
+        span {
+          width: 83px;
+          justify-content: center;
+        }
+        .space {
+          width: 16px;
+        }
+      }
+
+      .option-icon {
+        display: none;
+        color: ${s.colorPrimary};
+      }
+      .option_check-icon {
+        display: none;
+      }
+    }
+  }
+
+  .ant-select-arrow {
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    inset-inline-end: 12px;
+    transition: all .3s ease !important;
+    @media (max-width: 479.98px) {
+      inset-inline-end: 8px;
+    }
+  }
+`}`;
 
 export default Select

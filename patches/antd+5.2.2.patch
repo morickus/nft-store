@@ -1,12 +1,26 @@
 diff --git a/node_modules/antd/es/button/style/index.js b/node_modules/antd/es/button/style/index.js
-index 83199fd..29076c3 100644
+index 83199fd..a9a6f2c 100644
 --- a/node_modules/antd/es/button/style/index.js
 +++ b/node_modules/antd/es/button/style/index.js
-@@ -302,6 +302,7 @@ const genSizeButtonStyle = function (token) {
+@@ -302,9 +302,10 @@ const genSizeButtonStyle = function (token) {
  const genSizeBaseButtonStyle = token => genSizeButtonStyle(token);
  const genSizeSmallButtonStyle = token => {
    const smallToken = mergeToken(token, {
 +    fontSize: token.fontSizeSM,
      controlHeight: token.controlHeightSM,
      padding: token.paddingXS,
-     buttonPaddingHorizontal: 8,
+-    buttonPaddingHorizontal: 8,
++    buttonPaddingHorizontal: token.paddingContentHorizontalXS,
+     borderRadius: token.borderRadiusSM
+   });
+   return genSizeButtonStyle(smallToken, `${token.componentCls}-sm`);
+@@ -313,7 +314,8 @@ const genSizeLargeButtonStyle = token => {
+   const largeToken = mergeToken(token, {
+     controlHeight: token.controlHeightLG,
+     fontSize: token.fontSizeLG,
+-    borderRadius: token.borderRadiusLG
++    borderRadius: token.borderRadiusLG,
++    buttonPaddingHorizontal: token.paddingContentHorizontalLG,
+   });
+   return genSizeButtonStyle(largeToken, `${token.componentCls}-lg`);
+ };

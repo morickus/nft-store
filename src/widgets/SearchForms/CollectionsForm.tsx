@@ -1,12 +1,13 @@
 import { FC, useState } from 'react'
 import styleForm from './Form.module.scss'
-import { Form, Input, InputNumber, Checkbox as CheckboxAntd, Slider } from 'antd'
+import { Form, Input, InputNumber, Checkbox as CheckboxAntd } from 'antd'
 import IconButton from '@/components/IconButton'
 import Icon from '@/components/Icon'
 import Select from '@/components/Select'
 import { optionsCryptoWallet, optionsTrending } from '../../../store'
 import RadioButtonForm from '@/components/RadioButtonForm'
 import Checkbox from '@/components/Checkbox'
+import Slider from '@/components/Slider'
 
 interface ICollectionsForm {
 
@@ -109,7 +110,7 @@ const CollectionsForm: FC<ICollectionsForm> = () => {
                         max={100}
                         value={slider}
                         defaultValue={[defaultQuantity[0], defaultQuantity[1]]}
-                        className={`antd-slider ${styleForm['slider-wrapper__slider']}`}
+                        className={styleForm['slider-wrapper__slider']}
                         onChange={(value) => {
                           setSlider(value)
                           form.setFieldsValue({ quantity: { from: value[0], to: value[1] } });

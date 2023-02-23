@@ -1,30 +1,38 @@
-import { FC, PropsWithChildren } from 'react';
-import styles from './Button.module.scss'
-import { Button as ButtonAntd, ButtonProps } from 'antd'
-import classnames from 'classnames'
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { Button as ButtonAntd, ButtonProps } from 'antd';
+import { FC } from 'react';
 
-interface IButton {
-  className?: string
-  type?: 'primary' | 'default'
-  size?: 'large' | 'middle' | 'small'
-}
-
-const Button: FC<IButton & ButtonProps & PropsWithChildren> = (props) => {
-  const { children, type = 'default', size = 'middle', className } = props
-
-  return (
-    <ButtonAntd
-      {...props}
-      size={size}
-      type={type}
-      className={classnames(styles.root, {
-        [styles[`type_${type}`]]: type,
-        [styles[`size_${size}`]]: size,
-      }, className)}
-    >
-      {children}
-    </ButtonAntd>
-  );
+const Button: FC<ButtonProps> = (props) => {
+  return props.type === 'default'
+    ? <ButtonDefault {...props} />
+    : <ButtonOther {...props} />;
 };
 
-export default Button
+Button.defaultProps = {
+  type: 'default',
+  size: 'middle',
+};
+
+const ButtonOther = styled(ButtonAntd)`
+    font-weight: ${({ theme }) => theme.components.Button.fontWeight};
+`;
+
+const ButtonDefault = styled(ButtonAntd)`${({ theme: { components: { Button: btn } } }) => css`
+  font-weight: ${btn.fontWeight};
+  border: 2px solid #F7F7F7 !important;
+
+  &:hover {
+    color: ${btn.colorPrimary} !important;
+    border-color: #F7F7F7 !important;
+    background: #F7F7F7 !important;
+  }
+
+  &:active {
+    color: ${btn.colorPrimary} !important;
+    border: 2px solid ${btn.colorPrimary} !important;
+    background: #D6D6D6 !important;
+  }
+`}`;
+
+export default Button;

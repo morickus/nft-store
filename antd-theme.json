@@ -11,6 +11,8 @@
       "controlHeight": 40
     },
     "Radio": {
+      "lineWidth": 2,
+      "colorBorder": "#F7F7F7",
       "controlHeight": 40,
       "padding": 12,
       "controlHeightSM": 28,
@@ -34,6 +36,7 @@
       "borderRadiusXS": 0
     },
     "Switch": {
+      "fontSize": 9,
       "colorTextQuaternary": "#FFFFFF",
       "colorTextTertiary": "rgba(0, 0, 0, 0.05)"
     },

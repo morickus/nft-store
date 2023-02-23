@@ -18,7 +18,7 @@ const SliderBase = styled(SliderAntd)`
       height: 8px;
       content: '';
       position: absolute;
-      background: #F7F7F7;
+      background: ${({ theme }) => theme.components.Slider.colorFillTertiary};
       transform: translateY(-3px);
     }
 

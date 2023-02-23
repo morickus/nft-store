@@ -5,7 +5,7 @@ import IconButton from '@/components/IconButton'
 import Icon from '@/components/Icon'
 import Select from '@/components/Select'
 import { optionsCryptoWallet, optionsTrending } from '../../../store'
-import RadioButtonForm from '@/components/RadioButtonForm'
+import RadioButton from '@/components/RadioButton'
 import Checkbox from '@/components/Checkbox'
 import Slider from '@/components/Slider'
 
@@ -58,36 +58,36 @@ const CollectionsForm: FC<ICollectionsForm> = () => {
             <div className={styleForm['filter-wrapper__form-item']}>
               <p className={styleForm.label}>Functional</p>
               <Form.Item name="functional">
-                <RadioButtonForm buttons={[
+                <RadioButton buttons={[
                   {text: 'Collect', value: 'collect'},
                   {text: 'Stack', value: 'stack'},
                   {text: 'Gaming', value: 'gaming'},
                   {text: 'Finance', value: 'finance'},
                   {text: 'Logistic', value: 'logistic'},
-                ]} />
+                ]} type="tag" />
               </Form.Item>
             </div>
             <div className={styleForm['filter-wrapper__form-item']}>
               <p className={styleForm.label}>Media</p>
               <Form.Item name="media">
-                <RadioButtonForm buttons={[
+                <RadioButton buttons={[
                   {text: 'Image', value: 'image'},
                   {text: 'GIF', value: 'gif'},
                   {text: 'Interactive', value: 'interactive'},
                   {text: '3D', value: '3d'},
                   {text: 'Video', value: 'video'},
-                ]} />
+                ]} type="tag" />
               </Form.Item>
             </div>
             <div className={`${styleForm['filter-wrapper__form-item']} ${styleForm['sort-by']}`}>
               <p className={styleForm.label}>Sort by</p>
               <Form.Item name="sortBy">
-                <RadioButtonForm buttons={[
+                <RadioButton buttons={[
                   {text: 'Trending', value: 'trending'},
                   {text: 'New items', value: 'new-items'},
                   {text: 'Price low-high', value: 'price_l-h'},
                   {text: 'Price high-low', value: 'price_h-l'},
-                ]} />
+                ]} type="tag" />
               </Form.Item>
             </div>
             <div className={styleForm['filter-wrapper__form-item']}>

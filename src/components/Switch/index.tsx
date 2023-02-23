@@ -14,10 +14,6 @@ const SwitchBase = styled(SwitchAntd)`
   height: 16px;
   width: 24px;
   
-  .ant-switch-handle {
-    width: 10px !important;
-    height: 10px !important;
-  }
   .ant-switch-handle:before {
     background: var(--primary-color) !important;
   }

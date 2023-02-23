@@ -51,7 +51,7 @@ const NftForm: FC<INftForm> = () => {
             <span>Filters</span>
             <Icon name="filters_outlined" color="primary" />
           </div>
-          <IconButton icon="refresh_outlined" sizeIcon="16" onClick={() => form.resetFields()} />
+          <IconButton icon="refresh_outlined" sizeIcon={16} onClick={() => form.resetFields()} />
         </div>
         <div className={`${styleForm['filter-wrapper']} ${openFilter && styleForm.visible}`}>
           <div className={styleForm['filter-wrapper__form']}>
@@ -144,7 +144,7 @@ const NftForm: FC<INftForm> = () => {
             </div>
           </div>
           <IconButton
-            sizeIcon="24"
+            sizeIcon={24}
             colorIcon="default"
             className={styleForm.rotate180}
             icon="chevron-up-down_outlined"

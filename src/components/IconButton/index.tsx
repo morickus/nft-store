@@ -6,18 +6,22 @@ import Icon from '@/components/Icon'
 interface IconButtonProps {
   icon: IconNamesMap
   colorIcon?: IconColor
-  sizeIcon?: '24' | '18' | '16'
-  width?: '40' | '25'
+  sizeIcon?: number
+  size?: number
   className?: string
   onClick?(): void
 }
 
 const IconButton: FC<IconButtonProps> = (props) => {
-  const { icon, colorIcon = 'primary', width = '40', sizeIcon = '18', className, onClick } = props
+  const { icon, colorIcon = 'primary', size = 40, sizeIcon = 18, className, onClick } = props
 
   return (
-    <div className={`${style.root} ${className} ${style[`width_${width}`]}`} onClick={onClick}>
-      <Icon name={icon} color={colorIcon} className={`${style.icon} ${style[`size_${sizeIcon}`]}`} />
+    <div
+      onClick={onClick}
+      className={`${style.root} ${className}`}
+      style={{width: `${size}px`, height: `${size}px`}}
+    >
+      <Icon name={icon} color={colorIcon} className={style.icon} fontSize={sizeIcon} />
     </div>
   );
 };

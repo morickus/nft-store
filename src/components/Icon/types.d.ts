@@ -82,10 +82,17 @@ export type IconNamesMap =
   | 'solana'
   | 'low-high'
   | 'high-low'
+  | 'success_filled'
+  | 'twitter_solid'
+  | 'discord_solid'
+  | 'facebook_solid'
+  | 'auction_outlined'
+  | 'auction_filled'
 
 export interface IconProps {
   name: IconNamesMap
   color?: IconColor
   className?: string
+  fontSize?: number
   onClick?(): void
 }

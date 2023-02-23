@@ -10,7 +10,7 @@ const RadioButton: FC<IRadioButton & RadioGroupProps> = (props) => {
   const { buttons, defaultValue, onChange } = props
 
   return (
-    <Radio.Group defaultValue={defaultValue} buttonStyle="solid" className={styles.root} onChange={onChange} {...props}>
+    <Radio.Group {...props} defaultValue={defaultValue} buttonStyle="solid" className={styles.root} onChange={onChange}>
       {buttons.map((i, index) => (
         <Radio.Button
           {...i}

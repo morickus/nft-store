@@ -37,19 +37,19 @@ const NftNested: FC<INftNested> = (props) => {
         {panel && (
           <div className={styles.panel}>
             <div className={styles['panel__item']}>
-              <Icon name="like_outlined" />
+              <Icon name="like_outlined" fontSize={12} color="white" />
               <span>{panel.like}</span>
             </div>
             <div className={styles['panel__item']}>
-              <Icon name="share_outlined" />
+              <Icon name="share_outlined" fontSize={12} color="white" />
               <span>Share</span>
             </div>
             <div className={styles['panel__item']}>
-              <Icon name="refresh_outlined" />
+              <Icon name="refresh_outlined" fontSize={12} color="white" />
               <span>Refresh</span>
             </div>
             <div className={styles['panel__item']}>
-              <Icon name="more-menu_filled" />
+              <Icon name="more-menu_filled" fontSize={12} color="white" />
             </div>
           </div>
         )}
@@ -57,7 +57,7 @@ const NftNested: FC<INftNested> = (props) => {
       <div className={`${styles['bottom-side']} ${nestedOpen && styles.open}`}>
         <div className={styles.button} onClick={() => setNestedOpen(!nestedOpen)}>
           <span>Nested values</span>
-          <Icon name="chevron-up-down_outlined" />
+          <Icon name="chevron-up-down_outlined" fontSize={22} />
         </div>
         <div className={styles.dropdown}>
           <div className={styles['nested-wrap']}>
@@ -70,7 +70,7 @@ const NftNested: FC<INftNested> = (props) => {
                 </div>
               ) : (
                 <div key={i.title} className={styles['nested-wrap__item']}>
-                  <Icon name={i.icon} className={styles.icon} />
+                  <Icon name={i.icon} className={styles.icon} fontSize={64} color="primary" />
                   <div>
                     <span className={styles.title}>{i.title}</span>
                     <p className={styles.subtitle}>{i.subtitle}</p>

@@ -1,4 +1,5 @@
 import { IconNamesMap } from '@/components/Icon/types'
+import { Nested } from '@/components/NftNested'
 
 export const sideMenuArray = [
   {
@@ -324,6 +325,28 @@ export const nftPage = {
   number: 488,
   like: 26,
   image: '/assets/nft/6964-3-1.jpg',
+  nested: [
+    {
+      image: '/assets/nft/2655.jpg',
+      title: 'Kaleido Kids',
+      subtitle: '#514'
+    },
+    {
+      icon: 'note_filled',
+      title: 'Imagine Dragons',
+      subtitle: 'Enemy'
+    },
+    {
+      icon: 'note_filled',
+      title: 'Linkin Park',
+      subtitle: 'Faint Lyrics'
+    },
+    {
+      icon: 'file_filled',
+      title: 'Some Doc',
+      subtitle: 'Title'
+    }
+  ] as Nested[],
   collection: {
     id: 1,
     image: '/assets/avatar/avatar-13.jpg',
@@ -439,4 +462,9 @@ export const nftPage = {
       value: 24
     }
   ]
+}
+
+export const collectionPage = {
+  banner: '/assets/banner.jpg',
+  logo: '/assets/avatar/avatar-13.jpg',
 }

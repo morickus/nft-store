@@ -11,7 +11,7 @@ const Bell: FC<IBell> = (props) => {
 
   return (
     <div className={styles.root}>
-      <Icon name="notify_stroke" className={styles.bell} />
+      <Icon name="notify_stroke" className={styles.bell} fontSize={24} />
       {!!count && <div className={styles.counter}>{count}</div>}
     </div>
   );

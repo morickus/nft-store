@@ -23,7 +23,7 @@ const Header: FC<IHeader> = (props) => {
     <div className={styles.root}>
       <div className={styles.wrapper}>
         <div className={`${styles['left-side']} ${userMenu && styles['user-menu']}`}>
-          <Icon name="menu_filled" className={styles.burger} onClick={onClickBurger} />
+          <Icon name="menu_filled" className={styles.burger} fontSize={24} onClick={onClickBurger} />
           <nav className={styles.menu}>
             {menuArray.map(i => (
               <Link key={i.href} href={i.href} className={styles['menu__item']}>{i.text}</Link>
@@ -35,7 +35,7 @@ const Header: FC<IHeader> = (props) => {
             <LanguageSelector />
           </div>
           <div className={styles['balance-view']}>
-            <Icon name="wallet_stroke" className={styles.icon} />
+            <Icon name="wallet_stroke" className={styles.icon} fontSize={16} />
             <span>0,04 ETH</span>
           </div>
           <Button size="small" type="primary">Wallet</Button>
@@ -48,7 +48,7 @@ const Header: FC<IHeader> = (props) => {
               onClick={() => setUserMenu(!userMenu)}
             />
             <span className={styles.name}>Djasper</span>
-            <Icon name="logout_outlined" color="primary" className={styles.logout} />
+            <Icon name="logout_outlined" className={styles.logout} fontSize={18} color="primary" />
           </div>
         </div>
       </div>
@@ -57,17 +57,17 @@ const Header: FC<IHeader> = (props) => {
           <div className={styles['create-links']}>
             <Link href="/" className={styles['create-links__link']}>
               <div className={styles['left-side']}>
-                <Icon name="collections_solid" className={styles.icon} />
+                <Icon name="collections_solid" className={styles.icon} fontSize={16} />
                 <span className={styles.text}>Create collection</span>
               </div>
-              <Icon name="plus_outlined" className={styles.icon} />
+              <Icon name="plus_outlined" className={styles.icon} fontSize={16} />
             </Link>
             <Link href="/" className={styles['create-links__link']}>
               <div className={styles['left-side']}>
-                <Icon name="image_solid" className={styles.icon} />
+                <Icon name="image_solid" className={styles.icon} fontSize={16} />
                 <span className={styles.text}>Create NFT item</span>
               </div>
-              <Icon name="plus_outlined" className={styles.icon} />
+              <Icon name="plus_outlined" className={styles.icon} fontSize={16} />
             </Link>
           </div>
           <nav className={styles.menu}>
@@ -124,14 +124,14 @@ const Header: FC<IHeader> = (props) => {
               <div className={styles.wallet}>
                 <div className={styles['wallet__item']}>
                   <div className={styles.balance}>
-                    <Icon name="token_filled" className={styles.icon} />
+                    <Icon name="token_filled" className={styles.icon} fontSize={14} />
                     <span>134.1 ETH</span>
                   </div>
                   <Switch defaultChecked />
                 </div>
                 <div className={styles['wallet__item']}>
                   <div className={styles.balance}>
-                    <Icon name="token_filled" className={styles.icon} color="pink" />
+                    <Icon name="token_filled" className={styles.icon} color="pink" fontSize={14} />
                     <span>1233.5 wETH</span>
                   </div>
                   <Switch />
@@ -145,14 +145,14 @@ const Header: FC<IHeader> = (props) => {
           <div className={styles.buttons}>
             <div className={styles['buttons__item']}>
               <span className={styles.text}>Подключить</span>
-              <Icon name="plus_outlined" className={styles.icon} color="primary" />
+              <Icon name="plus_outlined" className={styles.icon} color="primary" fontSize={12} />
             </div>
             <div className={styles['buttons__item']}>
               <span className={styles.text}>Сменить</span>
-              <Icon name="change-wallet_outlined" className={styles.icon} color="primary" />
+              <Icon name="change-wallet_outlined" className={styles.icon} color="primary" fontSize={12} />
             </div>
             <div className={styles['buttons__item']}>
-              <Icon name="settings_outlined" className={styles.icon} color="primary" />
+              <Icon name="settings_outlined" className={styles.icon} color="primary" fontSize={14} />
             </div>
           </div>
         </div>

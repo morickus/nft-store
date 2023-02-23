@@ -10,7 +10,7 @@ const Checkbox: FC<ICheckbox & CheckboxProps> = (props) => {
   const { value, label } = props
 
   return (
-    <CheckboxAntd value={value} className={`antd-checkbox ${styles.root}`} {...props}>
+    <CheckboxAntd {...props} value={value} className={`antd-checkbox ${styles.root}`}>
       {label}
     </CheckboxAntd>
   );

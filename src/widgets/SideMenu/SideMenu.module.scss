@@ -4,11 +4,11 @@
   width: 90px;
   height: 100vh;
   display: flex;
-  padding: 24px;
   position: fixed;
   overflow-y: scroll;
   overflow-x: hidden;
   flex-direction: column;
+  padding: 24px 26px 24px 24px;
   background: var(--light-color);
   transition: width .3s ease-in-out;
   z-index: map-get($z-index, side-menu);
@@ -70,10 +70,6 @@
         margin-bottom: 12px;
 
         .icon {
-          i {
-            font-size: 20px;
-          }
-
           i:nth-child(2) {
             display: none;
           }

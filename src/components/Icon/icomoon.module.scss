@@ -103,6 +103,12 @@
           solana: "\e94c",
           low-high: "\e94d",
           high-low: "\e94e",
+          success_filled: "\e94f",
+          twitter_solid: "\e950",
+          discord_solid: "\e951",
+          facebook_solid: "\e952",
+          auction_outlined: "\e953",
+          auction_filled: "\e954",
   );
 
   @each $name, $content in $icons {

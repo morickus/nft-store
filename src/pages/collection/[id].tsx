@@ -1,8 +1,8 @@
 import { ReactElement } from 'react'
 import MainLayout from '@/layouts/MainLayout'
-import NftPage from '@/containers/NftPage'
+import CollectionPage from '@/containers/CollectionPage'
 
-const Page = () => <NftPage />
+const Page = () => <CollectionPage />
 
 Page.getLayout = function getLayout(page: ReactElement) {
   return (

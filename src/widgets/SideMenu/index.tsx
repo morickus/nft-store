@@ -31,8 +31,8 @@ const SideMenu: FC<ISideMenu> = (props) => {
             <Link key={index} href={i.href}>
               <div className={`${styles['menu__item']} ${getCurPage(router.asPath) == getCurPage(i.href) && styles.active}`}>
                 <div className={styles.icon}>
-                  <Icon name={i.icon} />
-                  <Icon name={i.iconActive} color="white" />
+                  <Icon name={i.icon} fontSize={20} />
+                  <Icon name={i.iconActive} fontSize={20} color="white" />
                 </div>
                 <span className={styles.text}>{i.text}</span>
               </div>
@@ -44,7 +44,7 @@ const SideMenu: FC<ISideMenu> = (props) => {
               <Link key={index} href={i.href}>
                 <div className={`${styles['menu__item']}`}>
                   <div className={styles.icon}>
-                    <Icon name={i.icon} />
+                    <Icon name={i.icon} fontSize={20} />
                   </div>
                   <span className={styles.text}>{i.text}</span>
                 </div>

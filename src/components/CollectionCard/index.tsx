@@ -36,7 +36,7 @@ const CollectionCard: FC<ICollectionCard> = (props) => {
     if (status === 1) {
       return (
         <div className={`${styles.status} ${styles['status_red']}`}>
-          <Icon name="fire_filled" />
+          <Icon name="fire_filled" fontSize={10} color="white" />
           <span>top</span>
         </div>
       )
@@ -56,8 +56,8 @@ const CollectionCard: FC<ICollectionCard> = (props) => {
           <Image src={image} alt={image} width={556} height={229} />
           <div className={styles.panel}>
             <div className={styles['panel__top']}>
-              {bitcoin && <Icon name="fin-assets_filled" className={styles.icon} />}
-              {ethereum && <Icon name="token_filled" className={styles.icon} />}
+              {bitcoin && <Icon name="fin-assets_filled" className={styles.icon} fontSize={16} />}
+              {ethereum && <Icon name="token_filled" className={styles.icon} fontSize={16} />}
               {!!status && statusRender(status)}
             </div>
             <div className={styles['panel__bottom']}>

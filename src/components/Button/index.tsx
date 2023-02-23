@@ -14,13 +14,13 @@ const Button: FC<IButton & ButtonProps & PropsWithChildren> = (props) => {
 
   return (
     <ButtonAntd
+      {...props}
       size={size}
       type={type}
       className={classnames(styles.root, {
         [styles[`type_${type}`]]: type,
         [styles[`size_${size}`]]: size,
       }, className)}
-      {...props}
     >
       {children}
     </ButtonAntd>

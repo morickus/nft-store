@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './NftPage.module.scss'
 import { useRouter } from 'next/router'
-import NftNested, { Nested } from '@/components/NftNested'
+import NftNested from '@/components/NftNested'
 import { nftPage } from '../../../store'
 import Image from 'next/image'
 import IconButton from '@/components/IconButton'
@@ -21,29 +21,7 @@ const NftPage = () => {
   const router = useRouter()
   const [tab, setTab] = useState('overview');
   const { id } = router.query
-  const { image, name, number, collection, owner, creator, price, description, bids, properties, like } = nftPage
-  const nested: Nested[] = [
-    {
-      image: '/assets/nft/2655.jpg',
-      title: 'Kaleido Kids',
-      subtitle: '#514'
-    },
-    {
-      icon: 'note_filled',
-      title: 'Imagine Dragons',
-      subtitle: 'Enemy'
-    },
-    {
-      icon: 'note_filled',
-      title: 'Linkin Park',
-      subtitle: 'Faint Lyrics'
-    },
-    {
-      icon: 'file_filled',
-      title: 'Some Doc',
-      subtitle: 'Title'
-    }
-  ]
+  const { image, name, number, collection, owner, creator, price, description, bids, properties, like, nested } = nftPage
 
   return (
     <div className={styles.root}>
@@ -59,8 +37,8 @@ const NftPage = () => {
                     <span>{collection.name}</span>
                   </Link>
                   <div>
-                    <IconButton icon="fin-assets_filled" sizeIcon="16" colorIcon="default" width="25" className={styles.icon} />
-                    <IconButton icon="token_filled" sizeIcon="16" colorIcon="default" width="25" className={styles.icon} />
+                    <IconButton icon="fin-assets_filled" sizeIcon={16} colorIcon="default" size={25} className={styles.icon} />
+                    <IconButton icon="token_filled" sizeIcon={16} colorIcon="default" size={25} className={styles.icon} />
                   </div>
                 </div>
                 <div className={styles['user-wrap']}>
@@ -96,7 +74,7 @@ const NftPage = () => {
                     </div>
                     <div className={styles['buttons-price-wrap']}>
                       <Button type="primary">ButNow for {price.eth} ETH</Button>
-                      <IconButton icon="cart_filled" sizeIcon="18"/>
+                      <IconButton icon="cart_filled" sizeIcon={18} />
                       <Button>Place a bid</Button>
                     </div>
                   </>
@@ -126,7 +104,7 @@ const NftPage = () => {
               </div>
             </div>
             <div className={styles['content-wrap']}>
-              <div className={styles['radio-buttons']}>
+              <div className={styles['tabs']}>
                 <RadioButton
                   buttons={
                     [

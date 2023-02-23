@@ -1,20 +1,11 @@
 .root {
-  width: 40px;
-  height: 40px;
   display: flex;
   cursor: pointer;
-  min-width: 40px;
   background: #FFFFFF;
   align-items: center;
   justify-content: center;
   transition: all .3s ease;
   border: 2px solid #F7F7F7;
-
-  &.width_25 {
-    width: 25px;
-    height: 25px;
-    min-width: 25px;
-  }
 
   &:hover {
     background: #F7F7F7;
@@ -23,19 +14,5 @@
   &:active {
     background: #D6D6D6;
     border: 2px solid #D6D6D6;
-  }
-
-  .icon {
-    &.size_24 {
-      font-size: 24px;
-    }
-
-    &.size_18 {
-      font-size: 18px;
-    }
-
-    &.size_16 {
-      font-size: 16px;
-    }
   }
 }

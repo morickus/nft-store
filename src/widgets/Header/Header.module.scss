@@ -23,7 +23,6 @@
 
       .burger {
         display: none;
-        font-size: 24px;
         cursor: pointer;
       }
 
@@ -50,10 +49,6 @@
       .balance-view {
         display: flex;
         align-items: center;
-
-        .icon {
-          font-size: 16px;
-        }
 
         span {
           font-size: 12px;
@@ -90,7 +85,6 @@
         .logout {
           opacity: 0;
           cursor: pointer;
-          font-size: 18px;
           visibility: hidden;
           margin: 0 24px 0 4px;
           transition: visibility 0.3s linear, opacity .3s linear;
@@ -163,10 +157,6 @@
 
           &:not(:first-child) {
             margin-top: 12px;
-          }
-
-          .icon {
-            font-size: 16px;
           }
 
           .left-side {
@@ -337,7 +327,6 @@
                 align-items: center;
 
                 .icon {
-                  font-size: 14px;
                   margin-right: 6px;
                 }
 
@@ -417,10 +406,6 @@
             user-select: none;
             margin-right: 8px;
             color: var(--primary-color);
-          }
-
-          .icon {
-            font-size: 12px;
           }
         }
       }

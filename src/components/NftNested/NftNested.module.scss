@@ -62,11 +62,6 @@
           line-height: 12px;
         }
 
-        i {
-          color: #FFFFFF;
-          font-size: 12px;
-        }
-
         i + span {
           margin-left: 6px;
         }
@@ -104,7 +99,6 @@
       }
 
       i {
-        font-size: 22px;
         margin-left: 6px;
         transition: transform .3s ease;
       }
@@ -187,8 +181,7 @@
           }
 
           .icon {
-            color: #D6D5D8;
-            font-size: 64px;
+            opacity: 0.2;
             margin-top: 26px;
           }
         }
@@ -250,7 +243,7 @@
             }
 
             .icon {
-              font-size: 48px;
+              font-size: 48px !important;
             }
           }
         }

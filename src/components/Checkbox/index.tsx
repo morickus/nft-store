@@ -29,17 +29,17 @@ const CheckboxBase = styled(CheckboxAntd)`
   
   &.ant-checkbox-wrapper-checked {
     span {
-      color: var(--primary-color);
+      color: ${({ theme }) => theme.token.colorPrimary};
     }
   }
 
   &:hover {
     span {
-      color: var(--primary-color);
+      color: ${({ theme }) => theme.token.colorPrimary};
     }
 
     .ant-checkbox-inner {
-      border-color: var(--primary-color) !important;
+      border-color: ${({ theme }) => theme.token.colorPrimary} !important;
     }
   }
 
@@ -72,7 +72,7 @@ const CheckboxBase = styled(CheckboxAntd)`
         border: none;
         transition: opacity .2s ease;
         transform: translate(-50%,-50%);
-        background: var(--primary-color);
+        background: ${({ theme }) => theme.token.colorPrimary};
       }
     }
   }

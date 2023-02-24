@@ -9,13 +9,13 @@ const Switch: FC<SwitchProps> = (props) => {
 };
 
 const SwitchBase = styled(SwitchAntd)`
-  border: 1px solid var(--primary-color);
+  border: 1px solid ${({ theme }) => theme.token.colorPrimary};
   min-width: 24px;
   height: 16px;
   width: 24px;
   
   .ant-switch-handle:before {
-    background: var(--primary-color) !important;
+    background: ${({ theme }) => theme.token.colorPrimary} !important;
   }
   &.ant-switch-checked .ant-switch-handle {
     inset-inline-start: calc(100% - 12px) !important;

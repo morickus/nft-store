@@ -53,7 +53,7 @@ const Tag = styled(Radio.Button)`
   transition: all .3s ease;
   border: 2px solid #F7F7F7;
   font-size: 12px !important;
-  color: var(--primary-color);
+  color: ${({ theme }) => theme.token.colorPrimary};
 
   &:hover {
     background: #F7F7F7;
@@ -108,7 +108,7 @@ const Tab = styled(Radio.Button)`
   }
 
   &:hover {
-    color: var(--primary-color);
+    color: ${({ theme }) => theme.token.colorPrimary};
   }
 
   @media (max-width: 767.98px) {

@@ -465,6 +465,20 @@ export const nftPage = {
 }
 
 export const collectionPage = {
+  title: 'KaleidoKids',
+  price: 0.1,
+  subtitle: 'Unusual kids',
+  creator: 'Dj.Snash',
+  smart: '0x0755gg553f3ed34f0lld388ij',
   banner: '/assets/banner.jpg',
   logo: '/assets/avatar/avatar-13.jpg',
+  props: {
+    floor: 74.2,
+    volume: 850.3,
+    items: '10K',
+    users: '9K',
+    owners: '6.6K'
+  },
+  items: [...nftItemsArray, ...nftItemsArray],
+  text: 'The MUTANT APE YACHT CLUB is a collection of up to 20,000 Mutant Apes that can only be created by exposing an existing Bored Ape to a vial of MUTANT SERUM or by minting a Mutant Ape in the public sale.'
 }

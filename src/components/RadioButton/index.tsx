@@ -90,10 +90,10 @@ const TabGroup = styled(Radio.Group)`
 `;
 
 const Tab = styled(Radio.Button)`
-  border: none;
   height: 28px;
   font-weight: 700;
   line-height: 28px;
+  border: none !important;
 
   &:before {
     display: none !important;

@@ -17,7 +17,7 @@ const NftItems = () => {
             {[...nftItemsArray, ...nftItemsArray].map((i, index) => {
               if (index > 9) return
               return (
-                <NftCard key={i.image} {...i} />
+                <NftCard key={index} {...i} />
               )
             })}
           </div>

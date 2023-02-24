@@ -464,6 +464,14 @@ export const nftPage = {
   ]
 }
 
+export type propsType = {
+  floor: number
+  volume: number
+  items: string
+  users: string
+  owners: string
+}
+
 export const collectionPage = {
   title: 'KaleidoKids',
   price: 0.1,
@@ -478,7 +486,7 @@ export const collectionPage = {
     items: '10K',
     users: '9K',
     owners: '6.6K'
-  },
+  } as propsType,
   items: [...nftItemsArray, ...nftItemsArray],
   text: 'The MUTANT APE YACHT CLUB is a collection of up to 20,000 Mutant Apes that can only be created by exposing an existing Bored Ape to a vial of MUTANT SERUM or by minting a Mutant Ape in the public sale.'
 }

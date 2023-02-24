@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import styles from './styles.module.scss'
-import { collectionPage } from '../../../store'
+import { collectionPage, propsType } from '../../../store'
 import Image from 'next/image'
 import IconButton from '@/components/IconButton'
 import Button from '@/components/Button'
@@ -17,6 +17,8 @@ const CollectionPage = () => {
   const [tab, setTab] = useState('items')
   const reWrapper = useRef<HTMLDivElement>(null)
   const { banner, logo, title, subtitle, creator, smart, props, text, price, items } = collectionPage
+
+  type keys = keyof propsType
 
   return (
     <div className={styles.root}>
@@ -67,8 +69,7 @@ const CollectionPage = () => {
                 {Object.keys(props).map((key, index) => (
                   <div key={key} className={`${styles['props__item']} ${styles[`props__item_${key}`]}`}>
                     <span>{key}</span>
-                    {/*TODO: fix error*/}
-                    <p>{props[key]} {(key == 'floor' || key == 'volume') && 'ETH'}</p>
+                    <p>{props[key as keys]} {(key == 'floor' || key == 'volume') && 'ETH'}</p>
                   </div>
                 ))}
               </div>

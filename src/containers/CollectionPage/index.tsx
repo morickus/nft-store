@@ -10,13 +10,15 @@ import Icon from '@/components/Icon'
 import RadioButton from '@/components/RadioButton'
 import { useRouter } from 'next/router'
 import NftCard from '@/components/NftCard'
+import Modal from '@/components/Modal'
 
 const CollectionPage = () => {
   const router = useRouter()
   const { id } = router.query
   const [tab, setTab] = useState('items')
   const reWrapper = useRef<HTMLDivElement>(null)
-  const { banner, logo, title, subtitle, creator, smart, props, text, price, items } = collectionPage
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const { banner, logo, title, subtitle, creator, smart, props, text, price, items, description, aboutProject, team } = collectionPage
 
   type keys = keyof propsType
 
@@ -44,7 +46,7 @@ const CollectionPage = () => {
                 <IconButton icon="token_filled" colorIcon="default" sizeIcon={16} size={32} />
               </div>
               <div>
-                <Button size="small" className={styles.btn}>Read more</Button>
+                <Button size="small" className={styles.btn} onClick={() => setIsModalOpen(true)}>Read more</Button>
                 <IconButton icon="discord_solid" colorIcon="default" sizeIcon={16} size={32} />
                 <IconButton icon="facebook_solid" colorIcon="default" sizeIcon={16} size={32} />
                 <IconButton icon="twitter_solid" colorIcon="default" sizeIcon={16} size={32} />
@@ -74,7 +76,7 @@ const CollectionPage = () => {
                 ))}
               </div>
               <p className={styles.text}>{text}</p>
-              <p className={styles['text-btn']}>Read more</p>
+              <p className={styles['text-btn']} onClick={() => setIsModalOpen(true)}>Read more</p>
               <Button type="primary" >About collection</Button>
             </div>
           </div>
@@ -106,6 +108,55 @@ const CollectionPage = () => {
           </div>
         </div>
       </div>
+      <Modal
+        width={1000}
+        footer={false}
+        open={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+      >
+        <div className={styles.modal}>
+          <div className="modal-wrap">
+            <p className={styles.title}>{title}</p>
+            <p className={styles.subtitle}>{subtitle}</p>
+            <div className={styles.block}>
+              <p className={styles.heading}>Description</p>
+              <p className={styles.text}>{description}</p>
+            </div>
+            <div className={styles.block}>
+              <p className={styles.heading}>Opportunities</p>
+              <div className={styles.props}>
+                {Object.keys(props).map((key, index) => (
+                  <div key={key} className={`${styles['props__item']} ${styles[`props__item_${key}`]}`}>
+                    <span>{key}</span>
+                    <p>{props[key as keys]} {(key == 'floor' || key == 'volume') && 'ETH'}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={styles.block}>
+              <p className={styles.heading}>About project</p>
+              <p className={styles.text}>{aboutProject}</p>
+              <div className={styles.social}>
+                <IconButton icon="discord_solid" colorIcon="default" sizeIcon={16} size={32} />
+                <IconButton icon="facebook_solid" colorIcon="default" sizeIcon={16} size={32} />
+                <IconButton icon="twitter_solid" colorIcon="default" sizeIcon={16} size={32} />
+              </div>
+            </div>
+            <div className={styles.block}>
+              <p className={styles.heading}>Our team</p>
+              <div className={styles.team}>
+                {team.map(i => (
+                  <div key={i.image} className={styles.item}>
+                    <Image src={i.image} alt={i.image} width={150} height={150} />
+                    <p className={styles.name}>{i.name}</p>
+                    <p className={styles.position}>{i.position}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

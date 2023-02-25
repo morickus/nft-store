@@ -488,5 +488,29 @@ export const collectionPage = {
     owners: '6.6K'
   } as propsType,
   items: [...nftItemsArray, ...nftItemsArray],
-  text: 'The MUTANT APE YACHT CLUB is a collection of up to 20,000 Mutant Apes that can only be created by exposing an existing Bored Ape to a vial of MUTANT SERUM or by minting a Mutant Ape in the public sale.'
+  text: 'The MUTANT APE YACHT CLUB is a collection of up to 20,000 Mutant Apes that can only be created by exposing an existing Bored Ape to a vial of MUTANT SERUM or by minting a Mutant Ape in the public sale.',
+  description: 'The Bored Ape Yacht Club is a collection of 10,000 unique Bored Ape NFTs— unique digital collectibles living on the Ethereum blockchain. Your Bored Ape doubles as your Yacht Club membership card, and grants access to members-only benefits, the first of which is access to THE BATHROOM, a collaborative graffiti board. Future areas and perks can be unlocked by the community through roadmap activation. Visit www.BoredApeYachtClub.com for more details.',
+  aboutProject: 'The Bored Ape Yacht Club is a collection of 10,000 unique Bored Ape NFTs— unique digital collectibles living on the Ethereum blockchain. Your Bored Ape doubles as your Yacht Club membership card, and grants access to members-only benefits, the first of which is access to THE BATHROOM, a collaborative graffiti board. Future areas and perks can be unlocked by the community through roadmap activation. Visit www.BoredApeYachtClub.com for more details.',
+  team: [
+    {
+      name: 'Andrew',
+      position: 'Designer',
+      image: '/assets/team/Rectangle7297.jpg'
+    },
+    {
+      name: 'Max',
+      position: 'Proger',
+      image: '/assets/team/Rectangle7298.jpg'
+    },
+    {
+      name: 'Alexa',
+      position: 'Teamlead',
+      image: '/assets/team/Rectangle7299.jpg'
+    },
+    {
+      name: 'Jessica',
+      position: 'Prod.manager',
+      image: '/assets/team/Rectangle7300.jpg'
+    }
+  ]
 }

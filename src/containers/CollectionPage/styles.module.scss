@@ -134,6 +134,7 @@
           display: flex;
           margin-top: 8px;
           text-align: right;
+          margin-bottom: 24px;
           justify-content: flex-end;
 
           span, a {
@@ -154,68 +155,6 @@
 
             &:hover {
               text-decoration-line: none;
-            }
-          }
-        }
-
-        .props {
-          gap: 12px;
-          display: flex;
-          flex-wrap: wrap;
-          margin-top: 24px;
-
-          &__item {
-            padding: 12px 16px;
-            position: relative;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(43, 43, 43, 0.05);
-
-            &:before {
-              top: 0;
-              left: 0;
-              width: 100%;
-              content: '';
-              height: 100%;
-              position: absolute;
-              box-sizing: border-box;
-              border: 2px solid rgba(133, 114, 255, 0.1);
-            }
-
-            span {
-              display: block;
-              font-size: 12px;
-              font-weight: 700;
-              line-height: 12px;
-              text-transform: uppercase;
-              color: rgba(255, 255, 255, 0.5);
-            }
-
-            p {
-              color: #FFFFFF;
-              font-size: 18px;
-              margin-top: 4px;
-              font-weight: 700;
-              line-height: 18px;
-            }
-
-            &_floor {
-              background: linear-gradient(102.79deg, rgba(255, 65, 202, 0.8) -8.44%, rgba(255, 69, 91, 0.8) 108.08%);
-            }
-
-            &_volume {
-              background: linear-gradient(99.98deg, #27FF8B -9.52%, #05AC52 109.52%);
-            }
-
-            &_items {
-              background: linear-gradient(118.5deg, #27D8FF -7.87%, #2260FF 109.26%);
-            }
-
-            &_users {
-              background: linear-gradient(110.17deg, #F0FF44 -7.65%, #FD2E2E 109.77%, #2C8DFF 109.78%);
-            }
-
-            &_owners {
-              background: linear-gradient(110.17deg, #FF44D6 -7.65%, #2C8DFF 109.78%);
             }
           }
         }
@@ -259,6 +198,134 @@
         grid-row-gap: 34px;
         grid-column-gap: 24px;
         grid-template-columns: repeat(6, 1fr);
+      }
+    }
+  }
+}
+
+.props {
+  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    padding: 12px 16px;
+    position: relative;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(43, 43, 43, 0.05);
+
+    &:before {
+      top: 0;
+      left: 0;
+      width: 100%;
+      content: '';
+      height: 100%;
+      position: absolute;
+      box-sizing: border-box;
+      border: 2px solid rgba(133, 114, 255, 0.1);
+    }
+
+    span {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 12px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    p {
+      color: #FFFFFF;
+      font-size: 18px;
+      margin-top: 4px;
+      font-weight: 700;
+      line-height: 18px;
+    }
+
+    &_floor {
+      background: linear-gradient(102.79deg, rgba(255, 65, 202, 0.8) -8.44%, rgba(255, 69, 91, 0.8) 108.08%);
+    }
+
+    &_volume {
+      background: linear-gradient(99.98deg, #27FF8B -9.52%, #05AC52 109.52%);
+    }
+
+    &_items {
+      background: linear-gradient(118.5deg, #27D8FF -7.87%, #2260FF 109.26%);
+    }
+
+    &_users {
+      background: linear-gradient(110.17deg, #F0FF44 -7.65%, #FD2E2E 109.77%, #2C8DFF 109.78%);
+    }
+
+    &_owners {
+      background: linear-gradient(110.17deg, #FF44D6 -7.65%, #2C8DFF 109.78%);
+    }
+  }
+}
+
+.modal {
+  text-align: center;
+
+  .title {
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 42px;
+  }
+
+  .subtitle {
+    font-size: 28px;
+    margin-top: 8px;
+    font-weight: 700;
+    line-height: 28px;
+  }
+
+  .block {
+    display: flex;
+    margin-top: 36px;
+    align-items: center;
+    flex-direction: column;
+
+    .heading {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 18px;
+      margin-bottom: 10px;
+    }
+
+    .text {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .social {
+      gap: 8px;
+      display: flex;
+      margin-top: 12px;
+      justify-content: center;
+    }
+
+    .team {
+      gap: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .item {
+        .name {
+          font-size: 16px;
+          margin-top: 12px;
+          font-weight: 700;
+          line-height: 16px;
+        }
+
+        .position {
+          font-size: 12px;
+          margin-top: 2px;
+          font-weight: 600;
+          line-height: 12px;
+          color: var(--primary-color);
+        }
       }
     }
   }
@@ -411,14 +478,6 @@
             width: 410px;
           }
 
-          .props {
-            gap: 8px;
-
-            &__item {
-              padding: 12px;
-            }
-          }
-
           .text {
             max-width: 432px;
           }
@@ -432,6 +491,14 @@
           grid-template-columns: repeat(2, 1fr);
         }
       }
+    }
+  }
+
+  .props {
+    gap: 8px;
+
+    &__item {
+      padding: 12px;
     }
   }
 }
@@ -475,21 +542,6 @@
               margin-top: 4px;
             }
           }
-
-          .props {
-            gap: 4px;
-            max-width: 260px;
-            justify-content: center;
-
-            &__item {
-              padding: 8px;
-
-              p {
-                font-size: 12px;
-                line-height: 12px;
-              }
-            }
-          }
         }
       }
     }
@@ -499,6 +551,21 @@
         .items {
           grid-template-columns: 1fr;
         }
+      }
+    }
+  }
+
+  .props {
+    gap: 4px;
+    max-width: 260px;
+    justify-content: center;
+
+    &__item {
+      padding: 8px;
+
+      p {
+        font-size: 12px;
+        line-height: 12px;
       }
     }
   }

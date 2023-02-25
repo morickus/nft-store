@@ -6,6 +6,13 @@
     "borderRadius": 0
   },
   "components": {
+    "Modal": {
+      "paddingMD": 0,
+      "paddingContentHorizontalLG": 0,
+      "lineWidth": 2,
+      "boxShadow": "    ",
+      "colorBgMask": "rgba(0, 0, 0, 0.4)"
+    },
     "Select": {
       "fontSize": 14,
       "lineWidth": 2,

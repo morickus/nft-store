@@ -26,6 +26,12 @@ const ModalBase = styled(ModalAntd)`
     height: 36px;
     inset-inline-end: 10px;
   }
+
+  @media (max-width: 767.98px) {
+    .modal-wrap {
+      padding: 56px 12px 36px;
+    }
+  }
 `;
 
 export default Modal

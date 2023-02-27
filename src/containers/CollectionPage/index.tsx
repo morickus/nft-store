@@ -132,6 +132,7 @@ const CollectionPage = () => {
                   </div>
                 ))}
               </div>
+              <Button className={styles.button}>Manual</Button>
             </div>
             <div className={styles.block}>
               <p className={styles.heading}>About project</p>

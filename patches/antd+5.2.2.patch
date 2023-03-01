@@ -24,3 +24,27 @@ index 83199fd..a9a6f2c 100644
    });
    return genSizeButtonStyle(largeToken, `${token.componentCls}-lg`);
  };
+diff --git a/node_modules/antd/es/input-number/style/index.js b/node_modules/antd/es/input-number/style/index.js
+index 436356a..e2cd143 100644
+--- a/node_modules/antd/es/input-number/style/index.js
++++ b/node_modules/antd/es/input-number/style/index.js
+@@ -241,6 +241,7 @@ const genAffixWrapperStyles = token => {
+       width: controlWidth,
+       padding: 0,
+       paddingInlineStart: inputPaddingHorizontal,
++      fontWeight: token.fontWeight,
+       '&-lg': {
+         borderRadius: borderRadiusLG
+       },
+diff --git a/node_modules/antd/es/input/style/index.js b/node_modules/antd/es/input/style/index.js
+index 537cc33..990bad0 100644
+--- a/node_modules/antd/es/input/style/index.js
++++ b/node_modules/antd/es/input/style/index.js
+@@ -104,6 +104,7 @@ export const genBasicInputStyle = token => Object.assign(Object.assign({
+   padding: `${token.inputPaddingVertical}px ${token.inputPaddingHorizontal}px`,
+   color: token.colorText,
+   fontSize: token.fontSize,
++  fontWeight: token.fontWeight,
+   lineHeight: token.lineHeight,
+   backgroundColor: token.colorBgContainer,
+   backgroundImage: 'none',

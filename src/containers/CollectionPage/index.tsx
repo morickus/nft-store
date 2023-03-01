@@ -11,14 +11,18 @@ import RadioButton from '@/components/RadioButton'
 import { useRouter } from 'next/router'
 import NftCard from '@/components/NftCard'
 import Modal from '@/components/Modal'
+import { InputNumber } from 'antd'
 
 const CollectionPage = () => {
   const router = useRouter()
   const { id } = router.query
   const [tab, setTab] = useState('items')
   const reWrapper = useRef<HTMLDivElement>(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const { banner, logo, title, subtitle, creator, smart, props, text, price, items, description, aboutProject, team } = collectionPage
+  const [isReadMore, setIsReadMore] = useState(false)
+  const [isMint, setIsMint] = useState(false)
+  const [isCongratulation, setIsCongratulation] = useState({open: false, nested: false})
+  const [mintValue, setMintValue] = useState<{count: number | '', price: number | ''}>({count: '', price: ''})
+  const { banner, logo, title, subtitle, creator, smart, props, text, price, items, description, aboutProject, team, congratulation } = collectionPage
 
   type keys = keyof propsType
 
@@ -31,12 +35,12 @@ const CollectionPage = () => {
               <Icon name="token_filled" color="primary" fontSize={24} />
               <p>{price} ETH</p>
             </div>
-            <div className={styles.button}>Mint</div>
+            <div className={styles.button} onClick={() => setIsMint(true)}>Mint</div>
           </div>
         </div>
         <div className={styles.header}>
           <div className={styles.banner}>
-            <Image src={banner} alt={banner} layout="fill" className={styles.image} />
+            <Image src={banner} alt={banner} layout="fill" className={styles.image} priority />
             <div className={styles.logo}>
               <Image src={logo} alt={logo} width={120} height={120} />
             </div>
@@ -46,7 +50,7 @@ const CollectionPage = () => {
                 <IconButton icon="token_filled" colorIcon="default" sizeIcon={16} size={32} />
               </div>
               <div>
-                <Button size="small" className={styles.btn} onClick={() => setIsModalOpen(true)}>Read more</Button>
+                <Button size="small" className={styles.btn} onClick={() => setIsReadMore(true)}>Read more</Button>
                 <IconButton icon="discord_solid" colorIcon="default" sizeIcon={16} size={32} />
                 <IconButton icon="facebook_solid" colorIcon="default" sizeIcon={16} size={32} />
                 <IconButton icon="twitter_solid" colorIcon="default" sizeIcon={16} size={32} />
@@ -76,7 +80,7 @@ const CollectionPage = () => {
                 ))}
               </div>
               <p className={styles.text}>{text}</p>
-              <p className={styles['text-btn']} onClick={() => setIsModalOpen(true)}>Read more</p>
+              <p className={styles['text-btn']} onClick={() => setIsReadMore(true)}>Read more</p>
               <Button type="primary" >About collection</Button>
             </div>
           </div>
@@ -111,10 +115,10 @@ const CollectionPage = () => {
       <Modal
         width={1000}
         footer={false}
-        open={isModalOpen}
-        onCancel={() => setIsModalOpen(false)}
+        open={isReadMore}
+        onCancel={() => setIsReadMore(false)}
       >
-        <div className={styles.modal}>
+        <div className={styles['modal-read-more']}>
           <div className="modal-wrap">
             <p className={styles.title}>{title}</p>
             <p className={styles.subtitle}>{subtitle}</p>
@@ -153,6 +157,189 @@ const CollectionPage = () => {
                     <p className={styles.position}>{i.position}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
+      <Modal
+        width={604}
+        footer={false}
+        open={isMint}
+        onCancel={() => setIsMint(false)}
+      >
+        <div className={styles['modal-mint']}>
+          <div className="modal-wrap">
+            <p className={styles.title}>Minting collection</p>
+            <p className={styles.subtitle}>{title} Collection</p>
+            <div className={styles.form}>
+              <div className={styles['item']}>
+                <InputNumber
+                  min={0}
+                  size="large"
+                  controls={false}
+                  value={mintValue.count}
+                  placeholder="Amount NFTs"
+                  className={styles['input-number']}
+                  onChange={(value) => {
+                    if (value == null) {
+                      setMintValue(prev => ({...prev, count: 0}))
+                    }
+                    if (Number.isNaN(value) || !Number.isInteger(value)) return
+                    setMintValue(prev => ({...prev, count: (value || 0)}))
+                  }}
+                  prefix={<Icon name="collections_solid" fontSize={24} color="grey" className={styles['prefix-icon']} />}
+                />
+                <div className={styles.after}>
+                  <div className={styles['btn-plus']}>
+                    <Button className={styles['btn-plus__item']} onClick={() => setMintValue(prev => ({...prev, count: (prev.count || 0) + 1}))}>+1</Button>
+                    <Button className={styles['btn-plus__item']} onClick={() => setMintValue(prev => ({...prev, count: (prev.count || 0) + 5}))}>+5</Button>
+                    <Button className={styles['btn-plus__item']} onClick={() => setMintValue(prev => ({...prev, count: (prev.count || 0) + 10}))}>+10</Button>
+                  </div>
+                </div>
+              </div>
+              <div className={styles['item']}>
+                <InputNumber
+                  min={0}
+                  size="large"
+                  controls={false}
+                  value={mintValue.price}
+                  placeholder="0.1 ETH for 1 NFT"
+                  className={styles['input-number']}
+                  onChange={(value) => {
+                    if (Number.isNaN(value)) return
+                    setMintValue(prev => ({...prev, price: (value || 0)}))
+                  }}
+                  prefix={<Icon name="token_filled" fontSize={24} color="grey" className={styles['prefix-icon']} />}
+                />
+                <div className={styles.after}>
+                  <div className={styles.expression}>
+                    <div className={styles['expression__item']}>
+                      <span className={styles.label}>total</span>
+                      <p className={styles.value}>{(mintValue.count || 0) * (mintValue.price || 0)}</p>
+                    </div>
+                    <div className={styles['expression__item']}>
+                      <span className={styles.label}/>
+                      <p className={styles.value}>=</p>
+                    </div>
+                    <div className={styles['expression__item']}>
+                      <span className={styles.label}>price</span>
+                      <span className={styles.value}>{mintValue.price || 0}</span>
+                    </div>
+                    <div className={styles['expression__item']}>
+                      <span className={styles.label}/>
+                      <Icon name="close" fontSize={7} color="default" className={styles.value} />
+                    </div>
+                    <div className={styles['expression__item']}>
+                      <span className={styles.label}>count</span>
+                      <p className={styles.value}>{mintValue.count || 0}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles['item']}>
+                <Button
+                  type="primary"
+                  onClick={() => {
+                    setIsMint(false)
+                    setIsCongratulation(prev => ({...prev, open: true}))
+                  }}
+                  disabled={mintValue.count <= 0 || mintValue.price <= 0}
+                >
+                  MINT!!!
+                </Button>
+              </div>
+            </div>
+            <div className={styles.examples}>
+              <p>Examples</p>
+              <div>
+                <Image src="/assets/nft/6964-2.jpg" alt="example" width={124} height={124} />
+                <Image src="/assets/nft/911.jpg" alt="example" width={124} height={124} />
+                <Image src="/assets/nft/6964-2.jpg" alt="example" width={124} height={124} />
+                <Image src="/assets/nft/911.jpg" alt="example" width={124} height={124} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
+      <Modal
+        width={1212}
+        footer={false}
+        open={isCongratulation.open}
+        onCancel={() => setIsCongratulation({open: false, nested: false})}
+      >
+        <div className={styles['modal-congratulation']}>
+          <div className="modal-box-wrap">
+            <div className={styles['modal-congratulation-wrap']}>
+              <div className={styles['modal-congratulation-wrap__left-side']}>
+                {isCongratulation.nested ? (
+                  <div className={styles['second-screen']}>
+                    <div className={styles['second-screen__header']}>
+                      <p>Nested items</p>
+                      <IconButton icon="chevron-up-down_outlined" colorIcon="default" onClick={() => setIsCongratulation(prev => ({...prev, nested: false}))} />
+                    </div>
+                    <div className={styles['second-screen__content']}>
+                      {congratulation.nested.map(i => {
+                        return 'image' in i ? (
+                          <div key={i.title} className={`${styles['nested-item']} ${styles['nested-item_image']}`}>
+                            <Image className={styles.image} src={i.image} width={241} height={164} alt={i.image} />
+                            <span className={styles['nested-item__title']}>{i.title}</span>
+                            <p className={styles['nested-item__subtitle']}>{i.subtitle}</p>
+                          </div>
+                        ) : (
+                          <div key={i.title} className={styles['nested-item']}>
+                            <Icon name={i.icon} className={styles.icon} fontSize={64} color="grey" />
+                            <div>
+                              <span className={styles['nested-item__title']}>{i.title}</span>
+                              <p className={styles['nested-item__subtitle']}>{i.subtitle}</p>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                ): (
+                  <div className={styles['first-screen']}>
+                    <Image src={congratulation.image} alt={congratulation.image} width={550} height={550} />
+                    <Button className={styles['first-screen__button']} onClick={() => setIsCongratulation(prev => ({...prev, nested: true}))}>Open nested NFTs <Icon name="chevron-up-down_outlined" className={styles['first-screen__button-icon']} /></Button>
+                  </div>
+                )}
+              </div>
+              <div className={styles['modal-congratulation-wrap__right-side']}>
+                <p className={styles.title}>Congratulations</p>
+                <div className={styles['modal-congratulation-wrap__right-side__name']}>
+                  <span>Your NFT is minted</span>
+                  <p className={styles.subtitle}>{congratulation.name}</p>
+                </div>
+                <div className={styles.property}>
+                  <div className={`${styles['property__item']} ${styles['property__item_color']}`}>
+                    <span>color</span>
+                    <p>{congratulation.props.color}</p>
+                  </div>
+                  <div className={`${styles['property__item']} ${styles['property__item_location']}`}>
+                    <span>location</span>
+                    <p>{congratulation.props.location}</p>
+                  </div>
+                  <div className={`${styles['property__item']} ${styles['property__item_stick']}`}>
+                    <span>stick</span>
+                    <p>{congratulation.props.stick}</p>
+                  </div>
+                  <div className={`${styles['property__item']} ${styles['property__item_side']}`}>
+                    <span>side</span>
+                    <p>{congratulation.props.side}</p>
+                  </div>
+                </div>
+                <div className={styles['modal-congratulation-wrap__right-side__buttons']}>
+                  <Button type="primary">View in my collection</Button>
+                  <Link href="/" className={styles.link}>This Smart-contract</Link>
+                </div>
+                <div className={styles['modal-congratulation-wrap__right-side__ref-link-wrap']}>
+                  <p>Your referral link</p>
+                  <div>
+                    <Link href="/" className={styles.link}>{congratulation.referral}</Link>
+                    <Button size="small">Copy</Button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

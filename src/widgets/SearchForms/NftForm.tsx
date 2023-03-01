@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import styleForm from './Form.module.scss'
-import { Form, Input, InputNumber, Checkbox as CheckboxAntd } from 'antd'
+import { Form, InputNumber, Checkbox as CheckboxAntd } from 'antd'
 import IconButton from '@/components/IconButton'
 import Icon from '@/components/Icon'
 import Select from '@/components/Select'
@@ -8,16 +8,17 @@ import { optionsCryptoWallet, optionsTrending } from '../../../store'
 import RadioButton from '@/components/RadioButton'
 import Checkbox from '@/components/Checkbox'
 import Slider from '@/components/Slider'
+import Input from '@/components/Input'
 
 interface INftForm {
 
 }
 
 const NftForm: FC<INftForm> = () => {
-  const [form] = Form.useForm();
-  const [openFilter, setOpenFilter] = useState(false);
+  const [form] = Form.useForm()
   const defaultPrice: [number, number] = [0, 999999]
-  const [slider, setSlider] = useState<[number, number]>(defaultPrice);
+  const [openFilter, setOpenFilter] = useState(false)
+  const [slider, setSlider] = useState<[number, number]>(defaultPrice)
 
   return (
     <div className={styleForm.root}>
@@ -39,7 +40,7 @@ const NftForm: FC<INftForm> = () => {
           <Select options={optionsCryptoWallet} withPrefix />
         </Form.Item>
         <Form.Item name="search" className={styleForm.search}>
-          <Input placeholder="Search" prefix={<Icon name="search_outlined" className={styleForm['prefix-icon']} />} className={styleForm.input} />
+          <Input placeholder="Search" prefix={<Icon name="search_outlined" className={styleForm['prefix-icon']} fontSize={16} color="grey" />} className={styleForm.input} />
         </Form.Item>
         <Form.Item name="sortBy" className={styleForm.trending}>
           <Select options={optionsTrending} />

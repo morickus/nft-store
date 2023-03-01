@@ -22,35 +22,8 @@
       width: 100%;
     }
 
-    .input {
-      height: 40px;
-      padding: 0 12px;
-      box-shadow: none;
-      border-radius: 0;
-      border: 2px solid #F7F7F7;
-      font-family: 'Inter', sans-serif;
-
-      &:hover {
-        border-color: #F7F7F7;
-      }
-
-      .prefix-icon {
-        color: #D6D5D8;
-        font-size: 16px;
-        margin-right: 8px;
-      }
-
-      input {
-        font-size: 12px;
-        font-weight: 500;
-        line-height: 12px;
-        color: var(--black-color);
-
-        ::placeholder {
-          opacity: 1;
-          color: #D6D5D8;
-        }
-      }
+    .prefix-icon {
+      margin-right: 8px;
     }
 
     .button {
@@ -157,15 +130,9 @@
               }
 
               .input {
-                padding: 0;
                 width: 70px;
-                height: 36px;
-                border-radius: 0;
-                border: 2px solid #F7F7F7;
 
                 input {
-                  height: 32px;
-                  padding: 0 10px;
                   text-align: center;
                 }
               }

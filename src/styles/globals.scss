@@ -7,10 +7,11 @@
   --light-color: #FCFCFC;
   --red-color: #EB5757;
   --green-color: #17B158;
-  --callow-color: #27AE60;;
+  --callow-color: #27AE60;
   --orange-color: #FF813A;
   --pink-color: #FF66F0;
   --blue-color: #2D9CDB;
+  --grey-color: #D6D5D8;
 }
 
 * {
@@ -57,6 +58,10 @@ body {
 
 .modal-wrap {
   padding: 56px 36px;
+}
+
+.modal-box-wrap {
+  padding: 20px;
 }
 
 .title {
@@ -110,6 +115,10 @@ body {
     margin: 0 auto;
     max-width: 768px;
     padding: 96px 12px 80px;
+  }
+
+  .modal-box-wrap {
+    padding: 12px;
   }
 }
 

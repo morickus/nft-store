@@ -70,7 +70,7 @@ const NftNested: FC<INftNested> = (props) => {
                 </div>
               ) : (
                 <div key={i.title} className={styles['nested-wrap__item']}>
-                  <Icon name={i.icon} className={styles.icon} fontSize={64} color="primary" />
+                  <Icon name={i.icon} className={styles.icon} fontSize={64} color="grey" />
                   <div>
                     <span className={styles.title}>{i.title}</span>
                     <p className={styles.subtitle}>{i.subtitle}</p>

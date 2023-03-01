@@ -512,5 +512,38 @@ export const collectionPage = {
       position: 'Prod.manager',
       image: '/assets/team/Rectangle7300.jpg'
     }
-  ]
+  ],
+  congratulation: {
+    name: 'Kaleido Kids #441',
+    props: {
+      color: 'Sunrise',
+      location: 'Azerot',
+      stick: 'Bitcoin',
+      side: 'EVIL',
+    },
+    referral: 'https://app.cryptofairies.club/location/35/item',
+    image: '/assets/nft/911-big.jpg',
+    nested: [
+      {
+        image: '/assets/nft/2655.jpg',
+        title: 'Kaleido Kids',
+        subtitle: '#514'
+      },
+      {
+        icon: 'note_filled',
+        title: 'Imagine Dragons',
+        subtitle: 'Enemy'
+      },
+      {
+        icon: 'note_filled',
+        title: 'Linkin Park',
+        subtitle: 'Faint Lyrics'
+      },
+      {
+        icon: 'file_filled',
+        title: 'Some Doc',
+        subtitle: 'Title'
+      }
+    ] as Nested[],
+  }
 }

@@ -6,6 +6,30 @@
     "borderRadius": 0
   },
   "components": {
+    "Input": {
+      "colorBorder": "#F7F7F7",
+      "controlHeight": 40,
+      "fontSize": 12,
+      "lineWidth": 2,
+      "colorPrimaryHover": "#F7F7F7",
+      "colorPrimaryActive": "#F7F7F7",
+      "colorTextPlaceholder": "#D6D5D8",
+      "controlOutline": "rgba(5, 145, 255, 0)",
+      "controlHeightLG": 48,
+      "fontWeight": 500
+    },
+    "InputNumber": {
+      "colorTextPlaceholder": "#D6D5D8",
+      "colorBorder": "#F7F7F7",
+      "controlHeight": 36,
+      "fontSize": 12,
+      "lineWidth": 2,
+      "colorPrimaryHover": "#F7F7F7",
+      "colorPrimaryActive": "#F7F7F7",
+      "controlOutline": "rgba(5, 145, 255, 0)",
+      "controlHeightLG": 48,
+      "fontWeight": 500
+    },
     "Modal": {
       "paddingMD": 0,
       "margin": 10,

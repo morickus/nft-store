@@ -1,6 +1,6 @@
 import { IconNamesMap } from './types'
 
-export type IconColor = 'default' | 'primary' | 'white' | 'pink'
+export type IconColor = 'default' | 'primary' | 'white' | 'pink' | 'grey'
 
 export type IconNamesMap =
   'notify_solid'
@@ -88,6 +88,7 @@ export type IconNamesMap =
   | 'facebook_solid'
   | 'auction_outlined'
   | 'auction_filled'
+  | 'close'
 
 export interface IconProps {
   name: IconNamesMap

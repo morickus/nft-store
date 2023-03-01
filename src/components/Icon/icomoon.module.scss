@@ -109,6 +109,7 @@
           facebook_solid: "\e952",
           auction_outlined: "\e953",
           auction_filled: "\e954",
+          close: "\e955",
   );
 
   @each $name, $content in $icons {
@@ -123,7 +124,8 @@
           default: var(--black-color),
           primary: var(--primary-color),
           pink: var(--pink-color),
-          white: #FFFFFF
+          white: #FFFFFF,
+          grey: var(--grey-color)
   );
 
   @each $theme, $color in $colors {

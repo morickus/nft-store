@@ -75,7 +75,12 @@ const Tag = styled(Radio.Button)`
 
 const TabGroup = styled(Radio.Group)`
   padding: 2px;
+  display: flex;
   border: 2px solid #F7F7F7;
+  
+  span {
+    white-space: nowrap;
+  }
 
   @media (max-width: 767.98px) {
     width: 100%;
@@ -90,10 +95,10 @@ const TabGroup = styled(Radio.Group)`
 `;
 
 const Tab = styled(Radio.Button)`
-  height: 28px;
   font-weight: 700;
   line-height: 28px;
   border: none !important;
+  padding-inline: ${({ theme }) => theme.components.Radio.paddingContentHorizontal}px;
 
   &:before {
     display: none !important;

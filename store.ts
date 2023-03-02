@@ -58,35 +58,115 @@ export const nftItemsArray = [
     image: '/assets/nft/488.jpg',
     collection: 'KaleidoscopeKids',
     name: 'Kaleido Kids',
-    price: 0.042
+    price: 0.042,
+    highestBid: 0
   },
   {
     number: 911,
     image: '/assets/nft/911.jpg',
     collection: 'Kitaro World',
     name: 'Kitaro',
-    price: 0.48
+    price: 0.48,
+    highestBid: 0
   },
   {
     number: 14916,
     image: '/assets/nft/14916.jpg',
     collection: 'CloneX',
     name: 'CloneX',
-    price: 9.2
+    price: 9.2,
+    highestBid: 0
   },
   {
     number: 2655,
     image: '/assets/nft/2655.jpg',
     collection: 'BLOOM',
     name: 'BLOOM.',
-    price: 0.277
+    price: 0.277,
+    highestBid: 0
   },
   {
     number: 624,
     image: '/assets/nft/624.jpg',
     collection: 'BiPlane Bobo',
     name: 'BiPlane Bobo',
-    price: 0.042
+    price: 0.042,
+    highestBid: 0
+  }
+]
+
+export const nftTradeItemsArray = [
+  {
+    number: 488,
+    image: '/assets/nft/488.jpg',
+    collection: 'KaleidoscopeKids',
+    name: 'Kaleido Kids',
+    owner: '0x098j8k3sl212s00hd',
+    latestPrice: {
+      price: 16.2,
+      positive: true,
+      difference: 3.8
+    }
+  },
+  {
+    number: 911,
+    image: '/assets/nft/911.jpg',
+    collection: 'Kitaro World',
+    name: 'Kitaro',
+    owner: '0x098j8k3sl212s00hd',
+    latestPrice: {
+      price: 16.2,
+      positive: true,
+      difference: 4.2
+    }
+  },
+  {
+    number: 14916,
+    image: '/assets/nft/14916.jpg',
+    collection: 'CloneX',
+    name: 'CloneX',
+    owner: '0x098j8k3sl212s00hd',
+    latestPrice: {
+      price: 16.2,
+      positive: false,
+      difference: 5
+    }
+  },
+  {
+    number: 2655,
+    image: '/assets/nft/2655.jpg',
+    collection: 'BLOOM',
+    name: 'BLOOM.',
+    owner: '0x098j8k3sl212s00hd',
+    latestPrice: {
+      price: 16.2,
+      positive: true,
+      difference: 3.8
+    }
+  },
+  {
+    number: 624,
+    image: '/assets/nft/624.jpg',
+    collection: 'BiPlane Bobo',
+    name: 'BiPlane Bobo',
+    owner: '0x098j8k3sl212s00hd',
+    latestPrice: {
+      price: 16.2,
+      positive: true,
+      difference: 3.8
+    }
+  },
+  {
+    number: 488,
+    image: '/assets/nft/6964-2.jpg',
+    collection: 'KaleidoscopeKids',
+    name: 'Kaleido Kids',
+    owner: '0x098j8k3sl212s00hd',
+    latestPrice: {
+      price: 16.2,
+      positive: false,
+      difference: 2
+    }
   }
 ]
 
@@ -96,40 +176,66 @@ export const nftItemsTradingArray = [
     image: '/assets/nft/6964-1.jpg',
     collection: 'KaleidoscopeKids',
     name: 'Kaleido Kids',
-    price: 0.042
+    owner: '0x098j8k3sl212s00hd',
+    latestPrice: {
+      price: 16.2,
+      positive: true,
+      difference: 3.8
+    }
   },
   {
     number: 911,
     image: '/assets/nft/6964-2.jpg',
     collection: 'Kitaro World',
     name: 'Kitaro',
-    price: 0.48
+    owner: '0x098j8k3sl212s00hd',
+    latestPrice: {
+      price: 16.2,
+      positive: true,
+      difference: 3.8
+    }
   },
   {
     number: 14916,
     image: '/assets/nft/6964-3.jpg',
     collection: 'CloneX',
     name: 'CloneX',
-    price: 9.2
+    owner: '0x098j8k3sl212s00hd',
+    latestPrice: {
+      price: 16.2,
+      positive: true,
+      difference: 3.8
+    }
   },
   {
     number: 2655,
     image: '/assets/nft/6964-4.jpg',
     collection: 'BLOOM',
     name: 'BLOOM.',
-    price: 0.277
+    owner: '0x098j8k3sl212s00hd',
+    latestPrice: {
+      price: 16.2,
+      positive: true,
+      difference: 3.8
+    }
   },
   {
     number: 624,
     image: '/assets/nft/6964-5.jpg',
     collection: 'BiPlane Bobo',
     name: 'BiPlane Bobo',
-    price: 0.042
+    owner: '0x098j8k3sl212s00hd',
+    latestPrice: {
+      price: 16.2,
+      positive: true,
+      difference: 3.8
+    }
   }
 ]
 
 export const nftCollectionsArray = [
   {
+    id: 1,
     image: '/assets/collection/isekai-meta.jpg',
     ethereum: true,
     bitcoin: true,
@@ -140,6 +246,7 @@ export const nftCollectionsArray = [
     mintable: true
   },
   {
+    id: 1,
     image: '/assets/collection/project-j.jpg',
     ethereum: true,
     bitcoin: true,
@@ -150,6 +257,7 @@ export const nftCollectionsArray = [
     mintable: true
   },
   {
+    id: 1,
     image: '/assets/collection/mystics.jpg',
     ethereum: true,
     bitcoin: true,
@@ -160,6 +268,7 @@ export const nftCollectionsArray = [
     mintable: true
   },
   {
+    id: 1,
     image: '/assets/collection/stage-1-1.jpg',
     ethereum: true,
     bitcoin: true,
@@ -170,6 +279,7 @@ export const nftCollectionsArray = [
     mintable: true
   },
   {
+    id: 1,
     image: '/assets/collection/drji.jpg',
     ethereum: true,
     bitcoin: true,
@@ -180,6 +290,7 @@ export const nftCollectionsArray = [
     mintable: true
   },
   {
+    id: 1,
     image: '/assets/collection/fart.jpg',
     ethereum: true,
     bitcoin: true,

@@ -72,7 +72,7 @@ const CollectionPage = () => {
                 </div>
               </div>
               <div className={styles.props}>
-                {Object.keys(props).map((key, index) => (
+                {Object.keys(props).map(key => (
                   <div key={key} className={`${styles['props__item']} ${styles[`props__item_${key}`]}`}>
                     <span>{key}</span>
                     <p>{props[key as keys]} {(key == 'floor' || key == 'volume') && 'ETH'}</p>
@@ -129,7 +129,7 @@ const CollectionPage = () => {
             <div className={styles.block}>
               <p className={styles.heading}>Opportunities</p>
               <div className={styles.props}>
-                {Object.keys(props).map((key, index) => (
+                {Object.keys(props).map(key => (
                   <div key={key} className={`${styles['props__item']} ${styles[`props__item_${key}`]}`}>
                     <span>{key}</span>
                     <p>{props[key as keys]} {(key == 'floor' || key == 'volume') && 'ETH'}</p>

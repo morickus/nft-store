@@ -50,9 +50,9 @@
     "Radio": {
       "lineWidth": 2,
       "colorBorder": "#F7F7F7",
-      "controlHeight": 40,
+      "controlHeight": 28,
       "padding": 12,
-      "controlHeightSM": 28,
+      "paddingContentHorizontal": 12,
       "fontSize": 12
     },
     "Slider": {

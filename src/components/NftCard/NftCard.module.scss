@@ -52,6 +52,7 @@
     .grid {
       display: grid;
       margin-top: 16px;
+      grid-row-gap: 12px;
       grid-template-columns: 1fr 1fr;
     }
 
@@ -74,12 +75,22 @@
     }
 
     .text {
+      width: 1px;
       height: 12px;
-      display: block;
+      display: flex;
       margin-top: 8px;
       font-weight: 700;
       font-size: 12px;
       line-height: 12px;
+      white-space: nowrap;
+
+      .green {
+        color: var(--green-color);
+      }
+
+      .red {
+        color: var(--red-color);
+      }
     }
   }
 }
@@ -89,7 +100,15 @@
 }
 
 @media (max-width: map-get($media, lg)) {
-
+  .root {
+    .body {
+      .text {
+        .green, .red {
+          font-size: 10px;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: map-get($media, md)) {

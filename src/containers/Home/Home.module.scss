@@ -121,6 +121,9 @@
     }
 
     .buttons {
+      display: flex;
+      align-items: center;
+
       .label {
         color: #D6D5D8;
         font-size: 12px;

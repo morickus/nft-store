@@ -33,6 +33,10 @@
 
 @media (max-width: map-get($media, xl)) {
   .root {
+    .form {
+      margin-bottom: 60px;
+    }
+
     .wrapper-card {
       grid-template-columns: repeat(4, 1fr);
 
@@ -59,6 +63,10 @@
 
 @media (max-width: map-get($media, md)) {
   .root {
+    .form {
+      margin-bottom: 40px;
+    }
+
     .wrapper-card {
       grid-gap: 16px;
     }
@@ -92,6 +100,10 @@
 
 @media (max-width: map-get($media, xs)) {
   .root {
+    .title {
+      white-space: nowrap;
+      letter-spacing: -0.03em;
+    }
     .wrapper-card {
       grid-template-columns: repeat(1, 1fr);
 

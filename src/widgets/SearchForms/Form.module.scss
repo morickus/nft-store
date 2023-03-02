@@ -13,6 +13,41 @@
     display: flex;
     position: relative;
 
+    &.form-my-collection {
+      .wrap {
+        gap: 12px;
+        width: 100%;
+        display: flex;
+        position: relative;
+
+        .tabs-wrap {
+          display: block;
+
+          label {
+            &:not(:first-child) {
+              margin-left: 12px;
+            }
+          }
+        }
+      }
+
+      .tabs-wrap {
+        display: none;
+
+        .tabs {
+          padding: 4px;
+
+          span {
+            font-size: 12px;
+          }
+        }
+      }
+
+      .button {
+        display: none;
+      }
+    }
+
     .flex {
       gap: 12px;
       display: flex;
@@ -169,6 +204,28 @@
 @media (max-width: map-get($media, lg)) {
   .root {
     .form {
+      &.form-my-collection {
+        flex-direction: column;
+
+        .wrap {
+          .tabs-wrap {
+            display: none;
+          }
+        }
+
+        .tabs-wrap {
+          width: 100%;
+          display: block;
+
+          .tabs {
+            label {
+              width: 100%;
+              text-align: center;
+            }
+          }
+        }
+      }
+
       .filter-wrapper {
         &__form {
           grid-template-columns: repeat(2, 1fr);
@@ -214,6 +271,33 @@
         }
       }
     }
+
+    .form.form-my-collection {
+      .wrap {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .tabs-wrap {
+        display: none;
+      }
+
+      .button {
+        display: flex;
+      }
+
+      .filter-wrapper {
+        .tag {
+          display: grid;
+          grid-gap: 4px;
+          grid-template-columns: 1fr 1fr;
+
+          label {
+            text-align: center;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -221,6 +305,18 @@
   .root {
     .form {
       gap: 8px;
+
+      &.form-my-collection {
+        .wrap {
+          gap: 8px;
+        }
+
+        .filter-wrapper {
+          .tag {
+            grid-template-columns: 1fr;
+          }
+        }
+      }
 
       .flex {
         gap: 8px;

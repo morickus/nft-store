@@ -1,5 +1,5 @@
 import styles from './NftTrading.module.scss'
-import { nftItemsArray } from '../../../store'
+import { nftTradeItemsArray } from '../../../store'
 import NftCard from '@/components/NftCard'
 import Button from '@/components/Button'
 import NftForm from '@/widgets/SearchForms/NftForm'
@@ -14,8 +14,8 @@ const NftTrading = () => {
         </div>
         <div>
           <div className={styles['wrapper-card']}>
-            {[...nftItemsArray].map((i, index) => (
-              <NftCard key={index} {...i} />
+            {[...nftTradeItemsArray].map((i, index) => (
+              <NftCard key={index} {...i} buttons={<Button type="primary">Trade this</Button>}/>
             ))}
           </div>
           <div className={styles['wrapper-button']}>

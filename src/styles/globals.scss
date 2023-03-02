@@ -70,6 +70,10 @@ body {
   line-height: 42px;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 @media (max-width: map-get($media, xl)) {
   .container {
     max-width: 1440px;

@@ -6,6 +6,7 @@ import { convertingCount } from '@/utils'
 import Link from 'next/link'
 
 interface ICollectionCard {
+  id: number
   image: string
   ethereum: boolean
   bitcoin: boolean
@@ -20,6 +21,7 @@ interface ICollectionCard {
 
 const CollectionCard: FC<ICollectionCard> = (props) => {
   const {
+    id,
     image,
     ethereum,
     bitcoin,
@@ -50,29 +52,27 @@ const CollectionCard: FC<ICollectionCard> = (props) => {
   }
 
   return (
-    <Link href="/">
-      <div className={`${styles.root} ${styles[`size_${size}`]} ${className}`}>
-        <div className={styles.top}>
-          <Image src={image} alt={image} width={556} height={229} />
-          <div className={styles.panel}>
-            <div className={styles['panel__top']}>
-              {bitcoin && <Icon name="fin-assets_filled" className={styles.icon} fontSize={16} />}
-              {ethereum && <Icon name="token_filled" className={styles.icon} fontSize={16} />}
-              {!!status && statusRender(status)}
-            </div>
-            <div className={styles['panel__bottom']}>
-              <span>{convertingCount(countNft)} NFTs</span>
-            </div>
+    <Link href={`/collection/${id}`} className={`${styles.root} ${styles[`size_${size}`]} ${className}`}>
+      <div className={styles.top}>
+        <Image src={image} alt={image} width={556} height={229} />
+        <div className={styles.panel}>
+          <div className={styles['panel__top']}>
+            {bitcoin && <Icon name="fin-assets_filled" className={styles.icon} fontSize={16} />}
+            {ethereum && <Icon name="token_filled" className={styles.icon} fontSize={16} />}
+            {!!status && statusRender(status)}
+          </div>
+          <div className={styles['panel__bottom']}>
+            <span>{convertingCount(countNft)} NFTs</span>
           </div>
         </div>
-        <div className={styles.bottom}>
-          <div className={styles.left}>
-            <Image src={avatar} alt={avatar} width={32} height={32} />
-            <span className={styles.title}>{name}</span>
-          </div>
-          <div className={styles.right}>
-            <span className={`${styles.mintable} ${styles[`${mintable}`]}`}>mintable</span>
-          </div>
+      </div>
+      <div className={styles.bottom}>
+        <div className={styles.left}>
+          <Image src={avatar} alt={avatar} width={32} height={32} />
+          <span className={styles.title}>{name}</span>
+        </div>
+        <div className={styles.right}>
+          <span className={`${styles.mintable} ${styles[`${mintable}`]}`}>mintable</span>
         </div>
       </div>
     </Link>

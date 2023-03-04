@@ -21,7 +21,7 @@ const UsersForm: FC<IUsersForm> = () => {
         onValuesChange={(_, value) => console.log('form: ',value)}
       >
         <Form.Item name="search" className={styleForm.search}>
-          <Input placeholder="Search" prefix={<Icon name="search_outlined" className={styleForm['prefix-icon']} fontSize={16} color="grey" />} className={styleForm.input} />
+          <Input placeholder="Search" size="small" prefix={<Icon name="search_outlined" className={styleForm['prefix-icon']} fontSize={16} color="grey" />} className={styleForm.input} />
         </Form.Item>
         <IconButton icon="refresh_outlined" sizeIcon={16} onClick={() => form.resetFields()} />
       </Form>

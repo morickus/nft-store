@@ -1,6 +1,6 @@
 import { IconNamesMap } from './types'
 
-export type IconColor = 'default' | 'primary' | 'white' | 'pink' | 'grey'
+export type IconColor = 'default' | 'primary' | 'white' | 'pink' | 'grey' | 'green' | 'red'
 
 export type IconNamesMap =
   'notify_solid'

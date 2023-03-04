@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import styles from './styles.module.scss'
+import styles from './CollectionPage.module.scss'
 import { collectionPage, propsType } from '../../../store'
 import Image from 'next/image'
 import IconButton from '@/components/IconButton'
@@ -188,7 +188,7 @@ const CollectionPage = () => {
                     placeholder="Amount NFTs"
                     className={styles['input-number']}
                     formatter={(value) => `${value}`.replace(/[^0-9]/g, '')}
-                    prefix={<Icon name="collections_solid" fontSize={24} color="grey" className={styles['prefix-icon']} />}
+                    prefix={<Icon name="collections_solid" fontSize={24} color="grey" className="mr-16" />}
                   />
                 </Form.Item>
                 <div className={styles.after}>
@@ -207,7 +207,7 @@ const CollectionPage = () => {
                     controls={false}
                     placeholder="0.1 ETH for 1 NFT"
                     className={styles['input-number']}
-                    prefix={<Icon name="token_filled" fontSize={24} color="grey" className={styles['prefix-icon']} />}
+                    prefix={<Icon name="token_filled" fontSize={24} color="grey" className="mr-16" />}
                   />
                 </Form.Item>
                 <div className={styles.after}>

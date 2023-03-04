@@ -1,0 +1,61 @@
+@import '../../../styles/_vars.scss';
+
+.root {
+  .wrapper {
+    display: flex;
+    text-align: center;
+    padding: 56px 36px;
+    align-items: center;
+    flex-direction: column;
+
+    .icon {
+      margin-bottom: 36px;
+    }
+
+    .subtitle {
+      margin-top: 6px;
+    }
+
+    .text {
+      margin-top: 24px;
+    }
+
+    .button {
+      margin-top: 36px;
+    }
+  }
+}
+
+@media (max-width: map-get($media, xl)) {
+
+}
+
+@media (max-width: map-get($media, lg)) {
+
+}
+
+@media (max-width: map-get($media, md)) {
+
+}
+
+@media (max-width: map-get($media, sm)) {
+
+}
+
+@media (max-width: map-get($media, xs)) {
+  .root {
+    .wrapper {
+      padding-top: 24px;
+
+      .icon {
+        margin-bottom: 24px;
+      }
+
+      .subtitle {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 18px;
+      }
+    }
+  }
+}

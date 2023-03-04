@@ -51,7 +51,7 @@ const MyCollectionsForm: FC<IMyCollectionsForm> = () => {
             />
           </Form.Item>
           <Form.Item name="search" className={styleForm.search}>
-            <Input placeholder="Search" prefix={<Icon name="search_outlined" className={styleForm['prefix-icon']} fontSize={16} color="grey" />} className={styleForm.input} />
+            <Input placeholder="Search" size="small" prefix={<Icon name="search_outlined" className={styleForm['prefix-icon']} fontSize={16} color="grey" />} className={styleForm.input} />
           </Form.Item>
           <div className={styleForm.flex}>
             <div

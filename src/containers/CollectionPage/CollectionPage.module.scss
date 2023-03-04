@@ -375,12 +375,7 @@
         width: 360px;
 
         input {
-          height: 60px;
-          font-size: 18px;
-        }
-
-        .prefix-icon {
-          margin-right: 16px;
+          //font-size: 18px;
         }
       }
 
@@ -1105,6 +1100,10 @@
   }
 
   .modal-mint {
+    & > div {
+      padding-top: 36px !important;
+    }
+
     .form {
       margin-top: 24px;
 

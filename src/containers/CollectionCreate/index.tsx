@@ -8,12 +8,14 @@ import CheckCard from '@/components/CheckCard'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import Icon from '@/components/Icon'
+import AlertModal from '@/widgets/Models/AlertModal'
 
 const CollectionCreate = () => {
   const [form] = Form.useForm()
   const typeValue = Form.useWatch('type', form)
   const blockchainValue = Form.useWatch('blockchain', form)
   const [step, setStep] = useState<'blockchain' | 'type' | 'description' | 'preview'>('blockchain')
+  const [alertModal, setAlertModal] = useState(false)
 
   return (
     <div className={styles.root}>
@@ -100,6 +102,15 @@ const CollectionCreate = () => {
           </Form>
         </div>
       </div>
+      <AlertModal
+        width={630}
+        subtitle="Success"
+        visible={alertModal}
+        title="Create collection"
+        text="Your collection has been created."
+        onCancel={() => setAlertModal(false)}
+        button={{onClick: () => setAlertModal(false)}}
+      />
     </div>
   );
 };

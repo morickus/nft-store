@@ -35,7 +35,7 @@ const CollectionsForm: FC<ICollectionsForm> = () => {
           <Select options={optionsCryptoWallet} withPrefix />
         </Form.Item>
         <Form.Item name="search" className={styleForm.search}>
-          <Input placeholder="Search" prefix={<Icon name="search_outlined" className={styleForm['prefix-icon']} fontSize={16} color="grey" />} className={styleForm.input} />
+          <Input placeholder="Search" size="small" prefix={<Icon name="search_outlined" className={styleForm['prefix-icon']} fontSize={16} color="grey" />} className={styleForm.input} />
         </Form.Item>
         <Form.Item name="sortBy" className={styleForm.trending}>
           <Select options={optionsTrending} />
@@ -111,6 +111,7 @@ const CollectionsForm: FC<ICollectionsForm> = () => {
                     <InputNumber
                       min={1}
                       max={100}
+                      size="small"
                       controls={false}
                       placeholder="From"
                       className={styleForm['input']}
@@ -121,6 +122,7 @@ const CollectionsForm: FC<ICollectionsForm> = () => {
                     <InputNumber
                       min={1}
                       max={100}
+                      size="small"
                       controls={false}
                       placeholder="To"
                       className={styleForm['input']}

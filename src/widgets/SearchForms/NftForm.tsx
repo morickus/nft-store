@@ -36,7 +36,7 @@ const NftForm: FC<INftForm> = () => {
           <Select options={optionsCryptoWallet} withPrefix />
         </Form.Item>
         <Form.Item name="search" className={styleForm.search}>
-          <Input placeholder="Search" prefix={<Icon name="search_outlined" className={styleForm['prefix-icon']} fontSize={16} color="grey" />} className={styleForm.input} />
+          <Input placeholder="Search" size="small" prefix={<Icon name="search_outlined" className={styleForm['prefix-icon']} fontSize={16} color="grey" />} className={styleForm.input} />
         </Form.Item>
         <Form.Item name="sortBy" className={styleForm.trending}>
           <Select options={optionsTrending} />
@@ -109,6 +109,7 @@ const NftForm: FC<INftForm> = () => {
                   <Form.Item name={['price', 0]}>
                     <InputNumber
                       min={1}
+                      size="small"
                       max={999999}
                       controls={false}
                       placeholder="Min"
@@ -119,6 +120,7 @@ const NftForm: FC<INftForm> = () => {
                   <Form.Item name={['price', 1]}>
                     <InputNumber
                       min={1}
+                      size="small"
                       max={999999}
                       controls={false}
                       placeholder="Max"

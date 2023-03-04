@@ -125,7 +125,9 @@
           primary: var(--primary-color),
           pink: var(--pink-color),
           white: #FFFFFF,
-          grey: var(--grey-color)
+          grey: var(--grey-color),
+          green: var(--green-color),
+          red: var(--red-color)
   );
 
   @each $theme, $color in $colors {

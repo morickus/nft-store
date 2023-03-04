@@ -16,9 +16,7 @@ interface ICollectionsForm {
 
 const CollectionsForm: FC<ICollectionsForm> = () => {
   const [form] = Form.useForm()
-  const defaultQuantity: [number, number] = [10, 55]
   const [openFilter, setOpenFilter] = useState(false)
-  const [slider, setSlider] = useState<[number, number]>(defaultQuantity)
 
   return (
     <div className={styleForm.root}>
@@ -28,10 +26,7 @@ const CollectionsForm: FC<ICollectionsForm> = () => {
           wallet: 'eth',
           options: ['lazy'],
           sortBy: 'trending',
-          quantity: {
-            from: defaultQuantity[0],
-            to: defaultQuantity[1]
-          }
+          quantity: [10, 55]
         }}
         className={styleForm.form}
         onValuesChange={(_, value) => console.log('form: ',value)}
@@ -104,46 +99,34 @@ const CollectionsForm: FC<ICollectionsForm> = () => {
             <div className={styleForm['filter-wrapper__form-item']}>
               <p className={styleForm.label}>Quantity</p>
               <div className={styleForm['slider-wrapper']}>
-                <Form.List name="quantity">
-                  {() => (
-                    <>
-                      <Slider
-                        range
-                        max={100}
-                        value={slider}
-                        defaultValue={[defaultQuantity[0], defaultQuantity[1]]}
-                        className={styleForm['slider-wrapper__slider']}
-                        onChange={(value) => {
-                          setSlider(value)
-                          form.setFieldsValue({ quantity: { from: value[0], to: value[1] } });
-                        }}
-                      />
-                      <div className={styleForm['slider-wrapper__range-inputs']}>
-                        <Form.Item name="from">
-                          <InputNumber
-                            min={1}
-                            max={100}
-                            controls={false}
-                            placeholder="From"
-                            className={styleForm['input']}
-                            onChange={e => setSlider(prev => [e || 0, prev[1]])}
-                          />
-                        </Form.Item>
-                        <Icon name='arrow-right_outlined' className={styleForm.icon} />
-                        <Form.Item name="to">
-                          <InputNumber
-                            min={1}
-                            max={100}
-                            controls={false}
-                            placeholder="To"
-                            className={styleForm['input']}
-                            onChange={e => setSlider(prev => [prev[0], e || 100])}
-                          />
-                        </Form.Item>
-                      </div>
-                    </>
-                  )}
-                </Form.List>
+                <Form.Item name="quantity">
+                  <Slider
+                    range
+                    max={100}
+                    className={styleForm['slider-wrapper__slider']}
+                  />
+                </Form.Item>
+                <div className={styleForm['slider-wrapper__range-inputs']}>
+                  <Form.Item name={['quantity', 0]}>
+                    <InputNumber
+                      min={1}
+                      max={100}
+                      controls={false}
+                      placeholder="From"
+                      className={styleForm['input']}
+                    />
+                  </Form.Item>
+                  <Icon name='arrow-right_outlined' className={styleForm.icon} />
+                  <Form.Item name={['quantity', 1]}>
+                    <InputNumber
+                      min={1}
+                      max={100}
+                      controls={false}
+                      placeholder="To"
+                      className={styleForm['input']}
+                    />
+                  </Form.Item>
+                </div>
               </div>
             </div>
           </div>

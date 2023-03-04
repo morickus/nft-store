@@ -11,8 +11,8 @@ import Icon from '@/components/Icon'
 
 const CollectionCreate = () => {
   const [form] = Form.useForm()
-  const blockchainValue = Form.useWatch('blockchain', form)
   const typeValue = Form.useWatch('type', form)
+  const blockchainValue = Form.useWatch('blockchain', form)
   const [step, setStep] = useState<'blockchain' | 'type' | 'description' | 'preview'>('blockchain')
 
   return (

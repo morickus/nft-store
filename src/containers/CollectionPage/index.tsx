@@ -11,17 +11,19 @@ import RadioButton from '@/components/RadioButton'
 import { useRouter } from 'next/router'
 import NftCard from '@/components/NftCard'
 import Modal from '@/components/Modal'
-import { InputNumber } from 'antd'
+import { Form, InputNumber } from 'antd'
 
 const CollectionPage = () => {
   const router = useRouter()
   const { id } = router.query
+  const [form] = Form.useForm()
+  const countMint = Form.useWatch('count', form)
+  const priceMint = Form.useWatch('price', form)
   const [tab, setTab] = useState('items')
   const reWrapper = useRef<HTMLDivElement>(null)
   const [isReadMore, setIsReadMore] = useState(false)
   const [isMint, setIsMint] = useState(false)
   const [isCongratulation, setIsCongratulation] = useState({open: false, nested: false})
-  const [mintValue, setMintValue] = useState<{count: number | '', price: number | ''}>({count: '', price: ''})
   const { banner, logo, title, subtitle, creator, smart, props, text, price, items, description, aboutProject, team, congratulation } = collectionPage
 
   type keys = keyof propsType
@@ -172,51 +174,47 @@ const CollectionPage = () => {
           <div className="modal-wrap">
             <p className={styles.title}>Minting collection</p>
             <p className={styles.subtitle}>{title} Collection</p>
-            <div className={styles.form}>
+            <Form
+              form={form}
+              className={styles.form}
+              onValuesChange={(_, value) => console.log('form: ',value)}
+            >
               <div className={styles['item']}>
-                <InputNumber
-                  min={0}
-                  size="large"
-                  controls={false}
-                  value={mintValue.count}
-                  placeholder="Amount NFTs"
-                  className={styles['input-number']}
-                  onChange={(value) => {
-                    if (value == null) {
-                      setMintValue(prev => ({...prev, count: 0}))
-                    }
-                    if (Number.isNaN(value) || !Number.isInteger(value)) return
-                    setMintValue(prev => ({...prev, count: (value || 0)}))
-                  }}
-                  prefix={<Icon name="collections_solid" fontSize={24} color="grey" className={styles['prefix-icon']} />}
-                />
+                <Form.Item name="count">
+                  <InputNumber
+                    min={0}
+                    size="large"
+                    controls={false}
+                    placeholder="Amount NFTs"
+                    className={styles['input-number']}
+                    formatter={(value) => `${value}`.replace(/[^0-9]/g, '')}
+                    prefix={<Icon name="collections_solid" fontSize={24} color="grey" className={styles['prefix-icon']} />}
+                  />
+                </Form.Item>
                 <div className={styles.after}>
                   <div className={styles['btn-plus']}>
-                    <Button className={styles['btn-plus__item']} onClick={() => setMintValue(prev => ({...prev, count: (prev.count || 0) + 1}))}>+1</Button>
-                    <Button className={styles['btn-plus__item']} onClick={() => setMintValue(prev => ({...prev, count: (prev.count || 0) + 5}))}>+5</Button>
-                    <Button className={styles['btn-plus__item']} onClick={() => setMintValue(prev => ({...prev, count: (prev.count || 0) + 10}))}>+10</Button>
+                    <Button className={styles['btn-plus__item']} onClick={() => form.setFieldValue('count', countMint + 1)}>+1</Button>
+                    <Button className={styles['btn-plus__item']} onClick={() => form.setFieldValue('count', countMint + 5)}>+5</Button>
+                    <Button className={styles['btn-plus__item']} onClick={() => form.setFieldValue('count', countMint + 10)}>+10</Button>
                   </div>
                 </div>
               </div>
               <div className={styles['item']}>
-                <InputNumber
-                  min={0}
-                  size="large"
-                  controls={false}
-                  value={mintValue.price}
-                  placeholder="0.1 ETH for 1 NFT"
-                  className={styles['input-number']}
-                  onChange={(value) => {
-                    if (Number.isNaN(value)) return
-                    setMintValue(prev => ({...prev, price: (value || 0)}))
-                  }}
-                  prefix={<Icon name="token_filled" fontSize={24} color="grey" className={styles['prefix-icon']} />}
-                />
+                <Form.Item name="price">
+                  <InputNumber
+                    min={0}
+                    size="large"
+                    controls={false}
+                    placeholder="0.1 ETH for 1 NFT"
+                    className={styles['input-number']}
+                    prefix={<Icon name="token_filled" fontSize={24} color="grey" className={styles['prefix-icon']} />}
+                  />
+                </Form.Item>
                 <div className={styles.after}>
                   <div className={styles.expression}>
                     <div className={styles['expression__item']}>
                       <span className={styles.label}>total</span>
-                      <p className={styles.value}>{(mintValue.count || 0) * (mintValue.price || 0)}</p>
+                      <p className={styles.value}>{(countMint || 0) * (priceMint || 0)}</p>
                     </div>
                     <div className={styles['expression__item']}>
                       <span className={styles.label}/>
@@ -224,7 +222,7 @@ const CollectionPage = () => {
                     </div>
                     <div className={styles['expression__item']}>
                       <span className={styles.label}>price</span>
-                      <span className={styles.value}>{mintValue.price || 0}</span>
+                      <span className={styles.value}>{priceMint || 0}</span>
                     </div>
                     <div className={styles['expression__item']}>
                       <span className={styles.label}/>
@@ -232,7 +230,7 @@ const CollectionPage = () => {
                     </div>
                     <div className={styles['expression__item']}>
                       <span className={styles.label}>count</span>
-                      <p className={styles.value}>{mintValue.count || 0}</p>
+                      <p className={styles.value}>{countMint || 0}</p>
                     </div>
                   </div>
                 </div>
@@ -243,13 +241,14 @@ const CollectionPage = () => {
                   onClick={() => {
                     setIsMint(false)
                     setIsCongratulation(prev => ({...prev, open: true}))
+                    form.resetFields()
                   }}
-                  disabled={mintValue.count <= 0 || mintValue.price <= 0}
+                  disabled={!countMint || !priceMint || countMint <= 0 || priceMint <= 0}
                 >
                   MINT!!!
                 </Button>
               </div>
-            </div>
+            </Form>
             <div className={styles.examples}>
               <p>Examples</p>
               <div>

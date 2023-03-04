@@ -16,9 +16,7 @@ interface INftForm {
 
 const NftForm: FC<INftForm> = () => {
   const [form] = Form.useForm()
-  const defaultPrice: [number, number] = [0, 999999]
   const [openFilter, setOpenFilter] = useState(false)
-  const [slider, setSlider] = useState<[number, number]>(defaultPrice)
 
   return (
     <div className={styleForm.root}>
@@ -29,10 +27,7 @@ const NftForm: FC<INftForm> = () => {
           wallet: 'eth',
           options: ['lazy'],
           sortBy: 'trending',
-          price: {
-            min: defaultPrice[0],
-            max: defaultPrice[1]
-          }
+          price: [0, 999999]
         }}
         className={styleForm.form}
         onValuesChange={(_, value) => console.log('form: ',value)}
@@ -103,46 +98,34 @@ const NftForm: FC<INftForm> = () => {
             <div className={styleForm['filter-wrapper__form-item']}>
               <p className={styleForm.label}>Price</p>
               <div className={styleForm['slider-wrapper']}>
-                <Form.List name="price">
-                  {() => (
-                    <>
-                      <Slider
-                        range
-                        max={100}
-                        value={slider}
-                        defaultValue={[defaultPrice[0], defaultPrice[1]]}
-                        className={styleForm['slider-wrapper__slider']}
-                        onChange={(value) => {
-                          setSlider(value)
-                          form.setFieldsValue({ price: { min: value[0], max: value[1] } });
-                        }}
-                      />
-                      <div className={styleForm['slider-wrapper__range-inputs']}>
-                        <Form.Item name="min">
-                          <InputNumber
-                            min={1}
-                            max={999999}
-                            controls={false}
-                            placeholder="Min"
-                            className={styleForm['input']}
-                            onChange={e => setSlider(prev => [e || 0, prev[1]])}
-                          />
-                        </Form.Item>
-                        <Icon name='change-wallet_outlined' className={`${styleForm.icon} ${styleForm.rotate90}`} />
-                        <Form.Item name="max">
-                          <InputNumber
-                            min={1}
-                            max={999999}
-                            controls={false}
-                            placeholder="Max"
-                            className={styleForm['input']}
-                            onChange={e => setSlider(prev => [prev[0], e || 100])}
-                          />
-                        </Form.Item>
-                      </div>
-                    </>
-                  )}
-                </Form.List>
+                <Form.Item name="price">
+                  <Slider
+                    range
+                    max={100}
+                    className={styleForm['slider-wrapper__slider']}
+                  />
+                </Form.Item>
+                <div className={styleForm['slider-wrapper__range-inputs']}>
+                  <Form.Item name={['price', 0]}>
+                    <InputNumber
+                      min={1}
+                      max={999999}
+                      controls={false}
+                      placeholder="Min"
+                      className={styleForm['input']}
+                    />
+                  </Form.Item>
+                  <Icon name='change-wallet_outlined' className={`${styleForm.icon} ${styleForm.rotate90}`} />
+                  <Form.Item name={['price', 1]}>
+                    <InputNumber
+                      min={1}
+                      max={999999}
+                      controls={false}
+                      placeholder="Max"
+                      className={styleForm['input']}
+                    />
+                  </Form.Item>
+                </div>
               </div>
             </div>
           </div>

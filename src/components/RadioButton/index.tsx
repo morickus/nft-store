@@ -51,12 +51,12 @@ const Tag = styled(Radio.Button)`
   line-height: 32px;
   background: #FFFFFF;
   transition: all .3s ease;
-  border: 2px solid #F7F7F7;
+  border: 2px solid var(--light-gray-color);
   font-size: 12px !important;
   color: ${({ theme }) => theme.token.colorPrimary};
 
   &:hover {
-    background: #F7F7F7;
+    background: var(--light-gray-color);
   }
 
   &:active {
@@ -76,7 +76,7 @@ const Tag = styled(Radio.Button)`
 const TabGroup = styled(Radio.Group)`
   padding: 2px;
   display: flex;
-  border: 2px solid #F7F7F7;
+  border: 2px solid var(--light-gray-color);
   
   span {
     white-space: nowrap;

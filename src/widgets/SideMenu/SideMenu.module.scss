@@ -89,7 +89,7 @@
         }
 
         &:hover {
-          background: #F7F7F7;
+          background: var(--light-gray-color);
         }
 
         &.active {
@@ -120,7 +120,7 @@
         height: 2px;
         padding: 0 10px;
         margin: 24px -10px;
-        background: #F7F7F7;
+        background: var(--light-gray-color);
       }
     }
 

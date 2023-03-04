@@ -83,7 +83,7 @@
             .divider {
               width: 60px;
               height: 2px;
-              background: #F7F7F7;
+              background: var(--light-gray-color);
               margin: 0 24px 0 13px;
             }
           }
@@ -92,13 +92,13 @@
             display: flex;
             margin-top: 36px;
             width: fit-content;
-            border: 2px solid #F7F7F7;
+            border: 2px solid var(--light-gray-color);
 
             .item {
               padding: 24px;
 
               &:not(:last-child) {
-                border-right: 2px solid #F7F7F7;
+                border-right: 2px solid var(--light-gray-color);
               }
 
               .label {
@@ -209,7 +209,7 @@
           .block {
             margin-top: 24px;
             padding: 24px 24px 16px;
-            border: 2px solid #F7F7F7;
+            border: 2px solid var(--light-gray-color);
 
             .title {
               font-size: 18px;
@@ -243,7 +243,7 @@
               }
 
               &:not(:last-child) {
-                border-bottom: 1px solid #F7F7F7;
+                border-bottom: 1px solid var(--light-gray-color);
               }
 
               .user {
@@ -313,14 +313,14 @@
           .properties {
             padding: 12px;
             margin-top: 24px;
-            border: 2px solid #F7F7F7;
+            border: 2px solid var(--light-gray-color);
 
             &__item {
               height: 60px;
               display: flex;
               padding: 16px;
               align-items: center;
-              border: 2px solid #F7F7F7;
+              border: 2px solid var(--light-gray-color);
               justify-content: space-between;
 
               &:not(:last-child) {

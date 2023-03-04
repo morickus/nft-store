@@ -1,7 +1,7 @@
 .root {
   position: relative;
   background: #FFFFFF;
-  border: 2px solid #F7F7F7;
+  border: 2px solid var(--light-gray-color);
 
   .top {
     padding: 4px;
@@ -57,7 +57,7 @@
       align-items: center;
       background: #FFFFFF;
       padding: 5px 5px 5px 6px;
-      border: 1px solid #F7F7F7;
+      border: 1px solid var(--light-gray-color);
       transition: background .3s ease-in-out;
       box-shadow: 0 0 20px rgba(43, 43, 43, 0.05);
 
@@ -84,7 +84,7 @@
         margin-left: 6px;
         user-select: none;
         line-height: 10px;
-        background: #F7F7F7;
+        background: var(--light-gray-color);
         color: var(--primary-color);
       }
     }

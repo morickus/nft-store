@@ -61,7 +61,7 @@ const CheckboxBase = styled(CheckboxAntd)`
     .ant-checkbox-inner {
       padding: 2px;
       border-radius: 0;
-      border: 1px solid #F7F7F7;
+      border: 1px solid var(--light-gray-color);
 
       &:after {
         top: 50%;

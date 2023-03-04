@@ -18,7 +18,7 @@ const Modal: FC<ModalProps> = (props) => {
 };
 
 const ModalBase = styled(ModalAntd)`
-  border: 2px solid #F7F7F7;
+  border: 2px solid var(--light-gray-color);
   
   .ant-modal-close {
     top: 10px;

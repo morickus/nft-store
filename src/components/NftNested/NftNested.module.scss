@@ -111,7 +111,7 @@
       overflow: hidden;
       position: absolute;
       background: #FFFFFF;
-      border: 2px solid #F7F7F7;
+      border: 2px solid var(--light-gray-color);
       transition: height .3s ease;
 
       .nested-wrap {
@@ -162,7 +162,7 @@
           }
 
           &:not(&_image) {
-            border: 2px solid #F7F7F7;
+            border: 2px solid var(--light-gray-color);
           }
 
           .title {

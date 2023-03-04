@@ -18,6 +18,7 @@ const UsersForm: FC<IUsersForm> = () => {
         form={form}
         initialValues={{}}
         className={`${styleForm.form} ${styleForm['user-form']}`}
+        onValuesChange={(_, value) => console.log('form: ',value)}
       >
         <Form.Item name="search" className={styleForm.search}>
           <Input placeholder="Search" prefix={<Icon name="search_outlined" className={styleForm['prefix-icon']} fontSize={16} color="grey" />} className={styleForm.input} />

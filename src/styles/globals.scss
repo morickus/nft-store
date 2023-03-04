@@ -2,16 +2,17 @@
 @import './_vars.scss';
 
 :root {
-  --black-color: #1F1F1F;
-  --primary-color: #4F4CE8;
-  --light-color: #FCFCFC;
   --red-color: #EB5757;
-  --green-color: #17B158;
-  --callow-color: #27AE60;
-  --orange-color: #FF813A;
   --pink-color: #FF66F0;
   --blue-color: #2D9CDB;
   --grey-color: #D6D5D8;
+  --light-color: #FCFCFC;
+  --black-color: #1F1F1F;
+  --green-color: #17B158;
+  --callow-color: #27AE60;
+  --orange-color: #FF813A;
+  --primary-color: #4F4CE8;
+  --light-gray-color: #F7F7F7;
 }
 
 * {
@@ -56,6 +57,12 @@ body {
   padding: 144px 0 100px 96px;
 }
 
+.container-edit-page {
+  margin: 0 auto;
+  max-width: 996px;
+  padding: 144px 0 100px 96px;
+}
+
 .modal-wrap {
   padding: 56px 36px;
 }
@@ -68,6 +75,12 @@ body {
   font-size: 42px;
   font-weight: 900;
   line-height: 42px;
+}
+
+.subtitle {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 28px;
 }
 
 .underline {
@@ -84,6 +97,10 @@ body {
     max-width: 1440px;
     padding-right: 18px;
   }
+
+  .container-edit-page {
+    padding-left: 90px;
+  }
 }
 
 @media (max-width: map-get($media, lg)) {
@@ -99,6 +116,11 @@ body {
 
   .container-page {
     margin: 0 auto;
+    max-width: 1024px;
+    padding: 124px 12px 80px 84px;
+  }
+
+  .container-edit-page {
     max-width: 1024px;
     padding: 124px 12px 80px 84px;
   }
@@ -124,6 +146,11 @@ body {
   .modal-box-wrap {
     padding: 12px;
   }
+
+  .container-edit-page {
+    max-width: 768px;
+    padding: 96px 12px 80px;
+  }
 }
 
 @media (max-width: map-get($media, sm)) {
@@ -133,6 +160,10 @@ body {
 
   .container-page {
     padding: 96px 12px 60px;
+  }
+
+  .container-edit-page {
+    padding-bottom: 60px;
   }
 }
 

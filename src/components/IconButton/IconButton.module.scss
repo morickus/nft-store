@@ -5,10 +5,10 @@
   align-items: center;
   justify-content: center;
   transition: all .3s ease;
-  border: 2px solid #F7F7F7;
+  border: 2px solid var(--light-gray-color);
 
   &:hover {
-    background: #F7F7F7;
+    background: var(--light-gray-color);
   }
 
   &:active {

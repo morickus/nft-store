@@ -53,7 +53,7 @@ const SideMenu: FC<ISideMenu> = (props) => {
           </div>
         </nav>
         <div className={styles.banner}>
-          <Image src="/bored-ape.jpg" alt="bored-ape" width={197} height={265} />
+          <Image src="/assets/bored-ape.jpg" alt="bored-ape" width={197} height={265} />
         </div>
       </div>
     </div>

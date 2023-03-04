@@ -1,8 +1,8 @@
 import { ReactElement } from 'react'
-import Collections from '@/containers/Collections'
+import CollectionCreate from '@/containers/CollectionCreate'
 import MainLayout from '@/layouts/MainLayout'
 
-const Page = () => <Collections />
+const Page = () => <CollectionCreate />
 
 Page.getLayout = function getLayout(page: ReactElement) {
   return (

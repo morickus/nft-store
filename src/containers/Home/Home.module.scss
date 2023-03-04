@@ -222,7 +222,7 @@
           height: 2px;
           margin-left: 16px;
           margin-right: 47px;
-          background: #F7F7F7;
+          background: var(--light-gray-color);
         }
 
         .profit {
@@ -425,7 +425,7 @@
         &:not(:first-child) {
           margin-top: 20px;
           padding-top: 20px;
-          border-top: 1px solid #F7F7F7;
+          border-top: 1px solid var(--light-gray-color);
         }
 
         .content {

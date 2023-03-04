@@ -37,6 +37,7 @@ const MyCollectionsForm: FC<IMyCollectionsForm> = () => {
           tab: 'all',
         }}
         className={`${styleForm.form} ${styleForm['form-my-collection']}`}
+        onValuesChange={(_, value) => console.log('form: ',value)}
       >
         <div className={styleForm.wrap}>
           <Form.Item name="wallet">

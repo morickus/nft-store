@@ -2,7 +2,7 @@
 
 .select-dropdown-antd {
   padding: 0;
-  border: 2px solid #F7F7F7;
+  border: 2px solid var(--light-gray-color);
 
   &.select-antd-with-prefix {
     .ant-select-item-option {

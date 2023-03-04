@@ -34,6 +34,7 @@ const CollectionsForm: FC<ICollectionsForm> = () => {
           }
         }}
         className={styleForm.form}
+        onValuesChange={(_, value) => console.log('form: ',value)}
       >
         <Form.Item name="wallet">
           <Select options={optionsCryptoWallet} withPrefix />

@@ -71,10 +71,10 @@
       background: #FFFFFF;
       align-items: center;
       transition: all .3s ease;
-      border: 2px solid #F7F7F7;
+      border: 2px solid var(--light-gray-color);
 
       &:hover {
-        background: #F7F7F7;
+        background: var(--light-gray-color);
       }
 
       &:active {
@@ -114,7 +114,7 @@
       position: absolute;
       visibility: hidden;
       background: #FFFFFF;
-      border: 2px solid #F7F7F7;
+      border: 2px solid var(--light-gray-color);
       justify-content: space-between;
       z-index: map-get($z-index, modal);
       transition: visibility 0.3s linear, opacity .3s linear;

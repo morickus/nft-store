@@ -143,12 +143,12 @@
           display: flex;
           background: #FFFFFF;
           align-items: center;
-          border: 2px solid #F7F7F7;
+          border: 2px solid var(--light-gray-color);
           justify-content: space-between;
           transition: background .3s ease-in-out;
 
           &:hover {
-            background: #F7F7F7;
+            background: var(--light-gray-color);
           }
 
           &:active {
@@ -241,7 +241,7 @@
         padding: 12px;
         background: #FFFFFF;
         margin-bottom: 12px;
-        border: 2px solid #F7F7F7;
+        border: 2px solid var(--light-gray-color);
 
         .header {
           display: flex;
@@ -283,12 +283,12 @@
               user-select: none;
               align-items: center;
               justify-content: center;
-              border: 1px solid #F7F7F7;
+              border: 1px solid var(--light-gray-color);
               color: var(--primary-color);
               transition: background .3s ease-in-out;
 
               &:hover {
-                background: #F7F7F7;
+                background: var(--light-gray-color);
               }
 
               &:active {
@@ -315,7 +315,7 @@
               display: flex;
               background: #FFFFFF;
               align-items: center;
-              border: 1px solid #F7F7F7;
+              border: 1px solid var(--light-gray-color);
               justify-content: space-between;
 
               &:not(:first-child) {
@@ -351,11 +351,11 @@
             background: #FFFFFF;
             align-items: center;
             justify-content: center;
-            border: 2px solid #F7F7F7;
+            border: 2px solid var(--light-gray-color);
             transition: background .3s ease-in-out;
 
             &:hover {
-              background: #F7F7F7;
+              background: var(--light-gray-color);
             }
 
             &:active {
@@ -376,11 +376,11 @@
           background: #FFFFFF;
           align-items: center;
           justify-content: center;
-          border: 1px solid #F7F7F7;
+          border: 1px solid var(--light-gray-color);
           transition: background .3s ease-in-out;
 
           &:hover {
-            background: #F7F7F7;
+            background: var(--light-gray-color);
           }
 
           &:active {

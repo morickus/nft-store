@@ -658,3 +658,36 @@ export const collectionPage = {
     ] as Nested[],
   }
 }
+
+export const cryptoWallet = [
+  {
+    label: 'Ethereum',
+    value: 'eth',
+    image: '/icon/eth.png'
+  },
+  {
+    label: 'Flow',
+    value: 'flow',
+    image: '/icon/flow.png'
+  },
+  {
+    label: 'Immutable-x',
+    value: 'immu-x',
+    image: '/icon/immu-x.png'
+  },
+  {
+    label: 'Polygon',
+    value: 'polygon',
+    image: '/icon/polygon.png'
+  },
+  {
+    label: 'Solana',
+    value: 'solana',
+    image: '/icon/solana.png'
+  },
+  {
+    label: 'Tezos',
+    value: 'tezos',
+    image: '/icon/tezos.png'
+  }
+]

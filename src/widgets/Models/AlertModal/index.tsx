@@ -7,12 +7,11 @@ import Button from '@/components/Button'
 
 interface IAlertModal {
   type?: 'success' | 'warning' | 'error'
-  title?: string
-  subtitle?: string
-  textButton?: string
+  title?: string | ReactNode
+  subtitle?: string | ReactNode
   text?: string | ReactNode
   button?: {
-    text?: string
+    text?: string | ReactNode
     onClick(): void
   }
 }

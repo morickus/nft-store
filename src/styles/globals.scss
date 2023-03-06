@@ -97,6 +97,10 @@ body {
   margin-right: 16px;
 }
 
+.mr-13 {
+  margin-right: 13px;
+}
+
 @media (max-width: map-get($media, xl)) {
   .container {
     max-width: 1440px;

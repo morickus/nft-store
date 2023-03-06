@@ -177,6 +177,11 @@ const CollectionPage = () => {
             <Form
               form={form}
               className={styles.form}
+              onFinish={() => {
+                setIsMint(false)
+                setIsCongratulation(prev => ({...prev, open: true}))
+                form.resetFields()
+              }}
               onValuesChange={(_, value) => console.log('form: ',value)}
             >
               <div className={styles['item']}>
@@ -193,9 +198,9 @@ const CollectionPage = () => {
                 </Form.Item>
                 <div className={styles.after}>
                   <div className={styles['btn-plus']}>
-                    <Button className={styles['btn-plus__item']} onClick={() => form.setFieldValue('count', countMint + 1)}>+1</Button>
-                    <Button className={styles['btn-plus__item']} onClick={() => form.setFieldValue('count', countMint + 5)}>+5</Button>
-                    <Button className={styles['btn-plus__item']} onClick={() => form.setFieldValue('count', countMint + 10)}>+10</Button>
+                    <Button className={styles['btn-plus__item']} onClick={() => form.setFieldValue('count', (countMint || 0) + 1)}>+1</Button>
+                    <Button className={styles['btn-plus__item']} onClick={() => form.setFieldValue('count', (countMint || 0) + 5)}>+5</Button>
+                    <Button className={styles['btn-plus__item']} onClick={() => form.setFieldValue('count', (countMint || 0) + 10)}>+10</Button>
                   </div>
                 </div>
               </div>
@@ -238,11 +243,7 @@ const CollectionPage = () => {
               <div className={styles['item']}>
                 <Button
                   type="primary"
-                  onClick={() => {
-                    setIsMint(false)
-                    setIsCongratulation(prev => ({...prev, open: true}))
-                    form.resetFields()
-                  }}
+                  htmlType="submit"
                   disabled={!countMint || !priceMint || countMint <= 0 || priceMint <= 0}
                 >
                   MINT!!!

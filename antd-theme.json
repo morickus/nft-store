@@ -1,14 +1,25 @@
 {
   "token": {
-    "fontFamily": "'Inter', sans-serif",
+    "fontFamily": "Inter",
     "colorPrimary": "#4F4CE8",
     "colorTextBase": "#1F1F1F",
     "borderRadius": 0
   },
   "components": {
+    "Upload": {
+      "marginXS": 0,
+      "lineWidth": 2,
+      "lineType": "solid",
+      "colorBorder": "#D6D5D8",
+      "colorFillAlter": "rgba(0, 0, 0, 0)"
+    },
     "Input": {
       "colorBorder": "#F7F7F7",
-      "fontSize": 12,
+      "fontSizeXS": 12,
+      "lineHeightSM": 12,
+      "fontSize": 18,
+      "fontSizeSM": 12,
+      "fontSizeLG": 18,
       "lineWidth": 2,
       "colorPrimaryHover": "#F7F7F7",
       "colorPrimaryActive": "#F7F7F7",
@@ -17,12 +28,18 @@
       "controlHeight": 48,
       "controlHeightSM": 40,
       "controlHeightLG": 60,
-      "fontWeight": 500
+      "fontWeight": 500,
+      "paddingXXS": 0,
+      "inputPaddingVerticalSM": 12,
+      "controlPaddingHorizontalSM": 13
     },
     "InputNumber": {
       "colorTextPlaceholder": "#D6D5D8",
       "colorBorder": "#F7F7F7",
-      "fontSize": 12,
+      "fontSizeXS": 12,
+      "lineHeightSM": 12,
+      "fontSize": 18,
+      "fontSizeLG": 18,
       "lineWidth": 2,
       "colorPrimaryHover": "#F7F7F7",
       "colorPrimaryActive": "#F7F7F7",
@@ -30,7 +47,8 @@
       "controlHeight": 48,
       "controlHeightSM": 40,
       "controlHeightLG": 60,
-      "fontWeight": 500
+      "fontWeight": 500,
+      "paddingXXS": 0
     },
     "Modal": {
       "paddingMD": 0,

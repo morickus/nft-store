@@ -25,22 +25,58 @@ index 83199fd..a9a6f2c 100644
    return genSizeButtonStyle(largeToken, `${token.componentCls}-lg`);
  };
 diff --git a/node_modules/antd/es/input-number/style/index.js b/node_modules/antd/es/input-number/style/index.js
-index 436356a..e2cd143 100644
+index 436356a..03dbd93 100644
 --- a/node_modules/antd/es/input-number/style/index.js
 +++ b/node_modules/antd/es/input-number/style/index.js
-@@ -241,6 +241,7 @@ const genAffixWrapperStyles = token => {
+@@ -10,6 +10,7 @@ const genInputNumberStyles = token => {
+     colorBorder,
+     borderRadius,
+     fontSizeLG,
++    fontSizeSM,
+     controlHeightLG,
+     controlHeightSM,
+     colorError,
+@@ -50,6 +51,7 @@ const genInputNumberStyles = token => {
+       },
+       '&-sm': {
+         padding: 0,
++        fontSize: fontSizeSM,
+         borderRadius: borderRadiusSM,
+         [`input${componentCls}-input`]: {
+           height: controlHeightSM - 2 * lineWidth,
+@@ -231,7 +233,8 @@ const genAffixWrapperStyles = token => {
+     inputAffixPadding,
+     controlWidth,
+     borderRadiusLG,
+-    borderRadiusSM
++    borderRadiusSM,
++    fontWeight
+   } = token;
+   return {
+     [`${componentCls}-affix-wrapper`]: Object.assign(Object.assign(Object.assign({}, genBasicInputStyle(token)), genStatusStyle(token, `${componentCls}-affix-wrapper`)), {
+@@ -241,6 +244,7 @@ const genAffixWrapperStyles = token => {
        width: controlWidth,
        padding: 0,
        paddingInlineStart: inputPaddingHorizontal,
-+      fontWeight: token.fontWeight,
++      fontWeight: fontWeight,
        '&-lg': {
          borderRadius: borderRadiusLG
        },
 diff --git a/node_modules/antd/es/input/style/index.js b/node_modules/antd/es/input/style/index.js
-index 537cc33..990bad0 100644
+index 537cc33..107bed6 100644
 --- a/node_modules/antd/es/input/style/index.js
 +++ b/node_modules/antd/es/input/style/index.js
-@@ -104,6 +104,7 @@ export const genBasicInputStyle = token => Object.assign(Object.assign({
+@@ -53,7 +53,8 @@ const genInputLargeStyle = token => {
+ };
+ export const genInputSmallStyle = token => ({
+   padding: `${token.inputPaddingVerticalSM}px ${token.controlPaddingHorizontalSM - 1}px`,
+-  borderRadius: token.borderRadiusSM
++  borderRadius: token.borderRadiusSM,
++  fontSize: token.fontSizeSM
+ });
+ export const genStatusStyle = (token, parentCls) => {
+   const {
+@@ -104,6 +105,7 @@ export const genBasicInputStyle = token => Object.assign(Object.assign({
    padding: `${token.inputPaddingVertical}px ${token.inputPaddingHorizontal}px`,
    color: token.colorText,
    fontSize: token.fontSize,
@@ -48,3 +84,21 @@ index 537cc33..990bad0 100644
    lineHeight: token.lineHeight,
    backgroundColor: token.colorBgContainer,
    backgroundImage: 'none',
+@@ -408,7 +410,7 @@ const genInputStyle = token => {
+           height: token.controlHeightLG
+         },
+         [`&${componentCls}-sm`]: {
+-          height: controlHeightSM,
++          height: token.controlHeightSM,
+           paddingTop: colorSmallPadding,
+           paddingBottom: colorSmallPadding
+         }
+@@ -682,7 +684,7 @@ export function initInputToken(token) {
+     inputAffixPadding: token.paddingXXS,
+     inputPaddingVertical: Math.max(Math.round((token.controlHeight - token.fontSize * token.lineHeight) / 2 * 10) / 10 - token.lineWidth, 3),
+     inputPaddingVerticalLG: Math.ceil((token.controlHeightLG - token.fontSizeLG * token.lineHeightLG) / 2 * 10) / 10 - token.lineWidth,
+-    inputPaddingVerticalSM: Math.max(Math.round((token.controlHeightSM - token.fontSize * token.lineHeight) / 2 * 10) / 10 - token.lineWidth, 0),
++    inputPaddingVerticalSM: Math.max(Math.round((token.controlHeightSM - token.fontSizeSM * token.lineHeight) / 2 * 10) / 10 - token.lineWidth, 0),
+     inputPaddingHorizontal: token.paddingSM - token.lineWidth,
+     inputPaddingHorizontalSM: token.paddingXS - token.lineWidth,
+     inputPaddingHorizontalLG: token.controlPaddingHorizontal - token.lineWidth,

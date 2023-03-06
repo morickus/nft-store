@@ -691,3 +691,31 @@ export const cryptoWallet = [
     image: '/icon/tezos.png'
   }
 ]
+
+export const nftFunction = [
+  {
+    icon: 'collect_filled' as IconNamesMap,
+    label: 'Collect',
+    value: 'collect'
+  },
+  {
+    icon: 'stack_filled' as IconNamesMap,
+    label: 'Stack',
+    value: 'stack'
+  },
+  {
+    icon: 'game_filled' as IconNamesMap,
+    label: 'Gaming',
+    value: 'gaming'
+  },
+  {
+    icon: 'fin-assets_filled' as IconNamesMap,
+    label: 'Finance',
+    value: 'finance'
+  },
+  {
+    icon: 'logictics_filled' as IconNamesMap,
+    label: 'Logistics',
+    value: 'logistics'
+  }
+]

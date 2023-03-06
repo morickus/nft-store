@@ -9,9 +9,6 @@ const Input: FC<InputProps> = (props) => {
 };
 
 const InputBase = styled(InputAntd)`
-  input {
-    font-weight: 500;
-  }
 `;
 
 export default Input

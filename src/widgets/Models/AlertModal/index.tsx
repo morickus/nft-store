@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { FC, ReactNode, MouseEvent } from 'react'
 import { ModalProps } from 'antd'
 import Modal from '@/components/Modal'
 import styles from './AlertModal.module.scss'
@@ -6,18 +6,17 @@ import Icon from '@/components/Icon'
 import Button from '@/components/Button'
 
 interface IAlertModal {
-  type?: 'success' | 'warning' | 'error'
+  type?: 'success' | 'warning' | 'error' | false
   title?: string | ReactNode
   subtitle?: string | ReactNode
   text?: string | ReactNode
-  button?: {
-    text?: string | ReactNode
-    onClick(): void
-  }
+  button?: true | ReactNode
+
+  onCancel?(): void
 }
 
 const AlertModal: FC<IAlertModal & ModalProps> = (props) => {
-  const { children, type = 'success', title, subtitle, text, button } = props
+  const { children, type = 'success', title, subtitle, text, button = true, onCancel } = props
   let icon
 
   switch (type) {
@@ -37,7 +36,11 @@ const AlertModal: FC<IAlertModal & ModalProps> = (props) => {
         {subtitle && (<p className={`subtitle ${styles.subtitle}`}>{subtitle}</p>)}
         {children}
         {text && (<p className={`text ${styles.text}`}>{text}</p>)}
-        {button && (<Button className={styles.button} onClick={button.onClick}>{button.text || 'Close and check'}</Button>)}
+        {button && (
+          <div className={styles['button-wrap']}>
+            <Button onClick={() => onCancel && onCancel()}>Close and check</Button>
+          </div>
+        )}
       </div>
     </Modal>
   );

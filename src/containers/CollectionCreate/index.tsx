@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './CollectionCreate.module.scss'
 import RadioButton from '@/components/RadioButton'
 import Button from '@/components/Button'
-import { Form, Radio as RadioAntd, Input as InputAntd } from 'antd'
-import { cryptoWallet, nftFunction } from '../../../store'
+import { Form, Radio as RadioAntd, Input as InputAntd, RadioChangeEvent } from 'antd'
+import { collectionPage, cryptoWallet, nftFunction, propsType } from '../../../store'
 import CheckCard from '@/components/CheckCard'
 import styled from '@emotion/styled'
 import Image from 'next/image'
@@ -11,6 +11,10 @@ import Icon from '@/components/Icon'
 import AlertModal from '@/widgets/Models/AlertModal'
 import UploadImage from '@/components/UploadImage'
 import Input from '@/components/Input'
+import IconButton from '@/components/IconButton'
+import { cutWallet, getBase64 } from '@/utils'
+import { RcFile } from 'antd/es/upload/interface'
+import Link from 'next/link'
 
 const { TextArea } = InputAntd
 
@@ -19,8 +23,26 @@ const CollectionCreate = () => {
   const typeValue = Form.useWatch('type', form)
   const blockchainValue = Form.useWatch('blockchain', form)
   const functionalValue = Form.useWatch('functional', form)
+  const imageValue = Form.useWatch('image', form)
+  const logoValue = Form.useWatch('logo', form)
+  const nameValue = Form.useWatch('name', form)
+  const shortNameValue = Form.useWatch('shortName', form)
+  const descValue = Form.useWatch('desc', form)
   const [step, setStep] = useState<'blockchain' | 'type' | 'description' | 'preview'>('blockchain')
   const [alertModal, setAlertModal] = useState(false)
+  const [bannerUrl, setBannerUrl] = useState('')
+  const [logoUrl, setLogoUrl] = useState('')
+
+  useEffect(() => {
+    imageValue && getBase64(imageValue.file.originFileObj as RcFile, (url) => {
+      setBannerUrl(url)
+    })
+    logoValue && getBase64(logoValue.file.originFileObj as RcFile, (url) => {
+      setLogoUrl(url)
+    })
+  }, [imageValue, logoValue])
+
+  type keys = keyof propsType
 
   return (
     <div className={styles.root}>
@@ -38,6 +60,7 @@ const CollectionCreate = () => {
                   ]
                 }
                 value={step == 'preview' ? 'description' : step}
+                onChange={(e: RadioChangeEvent) => setStep(e.target.value)}
               />
             </div>
           </div>
@@ -48,7 +71,7 @@ const CollectionCreate = () => {
               type: 'simple'
             }}
             className={styles.form}
-            onFinish={v => console.log('value ',v)}
+            onFinish={() => setAlertModal(true)}
             onValuesChange={(_, value) => console.log('form: ',value)}
           >
             <div className={`${styles['form__item']} ${step !== 'blockchain' && styles.hide}`}>
@@ -108,7 +131,7 @@ const CollectionCreate = () => {
                   <UploadImage className={styles['upload-image']} size="large" maxSizeImage={20} resolution={{width: 1920, height: 400}} />
                 </Form.Item>
                 <div className={styles['upload-input-grid']}>
-                  <Form.Item name="avatar" valuePropName="valueImage" noStyle>
+                  <Form.Item name="logo" valuePropName="valueImage" noStyle>
                     <UploadImage className={styles['upload-image']} maxSizeImage={10} resolution={{width: 300, height: 300}} />
                   </Form.Item>
                   <div className={styles['inputs']}>
@@ -123,8 +146,8 @@ const CollectionCreate = () => {
                         </Form.Item>
                       </div>
                       <div className={styles['inputs__item']}>
-                        <label htmlFor="short-name">Short name</label>
-                        <Form.Item name="short-name">
+                        <label htmlFor="shortName">Short name</label>
+                        <Form.Item name="shortName">
                           <Input
                             placeholder="CLN"
                             prefix={<Icon name="txt_filled" fontSize={24} color="grey" className="mr-13" />}
@@ -178,6 +201,90 @@ const CollectionCreate = () => {
               </div>
               <Button type="primary" size="small" onClick={() => setStep('preview')}>View preview</Button>
             </div>
+            <div className={`${styles['form__item']} ${step !== 'preview' && styles.hide}`}>
+              <p className="subtitle">Appearance</p>
+              <div className={styles.preview}>
+                <div className={styles.header}>
+                  <div className={styles.banner}>
+                    <Image src={bannerUrl} alt="banner" layout="fill" className={styles.image} priority />
+                    <div className={styles.logo}>
+                      <Image src={logoUrl} alt="logo" width={80} height={80} />
+                    </div>
+                    <div className={styles.control}>
+                      <div>
+                        <IconButton icon="fin-assets_filled" colorIcon="default" sizeIcon={12} size={20} />
+                        <IconButton icon="token_filled" colorIcon="default" sizeIcon={12} size={20} />
+                      </div>
+                      <div>
+                        <Button size="small" className={styles.btn}>Read more</Button>
+                        <IconButton icon="discord_solid" colorIcon="default" sizeIcon={12} size={20} />
+                        <IconButton icon="facebook_solid" colorIcon="default" sizeIcon={12} size={20} />
+                        <IconButton icon="twitter_solid" colorIcon="default" sizeIcon={12} size={20} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles.description}>
+                    <span className={styles.title}>{nameValue}</span>
+                    <p className={styles.subtitle}>{shortNameValue}</p>
+                    <div className={styles.info}>
+                      <div>
+                        <span>By</span>
+                        <Link href="/">Dj.Snash</Link>
+                      </div>
+                      <div>
+                        <span>Smart-contract</span>
+                        <Link href="/">{cutWallet('0x0755gg553412341388ij')}</Link>
+                      </div>
+                    </div>
+                    <div className={styles.props}>
+                      {Object.keys(collectionPage.props).map(key => (
+                        <div key={key} className={`${styles['props__item']} ${styles[`props__item_${key}`]}`}>
+                          <span>{key}</span>
+                          <p>{collectionPage.props[key as keys]} {(key == 'floor' || key == 'volume') && 'ETH'}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <p className={styles.text}>{descValue}</p>
+                    <p className={styles['text-btn']}>Read more</p>
+                    <Button type="primary" className={styles.btn}>About collection</Button>
+                  </div>
+                  <div className={styles.content}>
+                    <div className={styles['tabs-skeleton']}>
+                      <div className={styles['tabs-skeleton__tab']} />
+                      <div className={styles['tabs-skeleton__tab']} />
+                      <div className={styles['tabs-skeleton__tab']} />
+                      <div className={styles['tabs-skeleton__tab']} />
+                      <div className={styles['tabs-skeleton__tab']} />
+                    </div>
+                    <div className={styles['cards-wrap']}>
+                      <div className={styles['cards-wrap__item']}>
+                        <div className={styles.img} />
+                        <div className={styles['skeleton']} />
+                      </div>
+                      <div className={styles['cards-wrap__item']}>
+                        <div className={styles.img} />
+                        <div className={styles['skeleton']} />
+                      </div>
+                      <div className={styles['cards-wrap__item']}>
+                        <div className={styles.img} />
+                        <div className={styles['skeleton']} />
+                      </div>
+                      <div className={styles['cards-wrap__item']}>
+                        <div className={styles.img} />
+                        <div className={styles['skeleton']} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles['wrap-submit']}>
+                <p>Do you like it?</p>
+                <div className={styles['wrap-submit__button']}>
+                  <p>Cost: <span>1000FD</span></p>
+                  <Button type="primary" htmlType="submit" onClick={() => setAlertModal(true)}>Create collection</Button>
+                </div>
+              </div>
+            </div>
           </Form>
         </div>
       </div>
@@ -188,7 +295,7 @@ const CollectionCreate = () => {
         title="Create collection"
         text="Your collection has been created."
         onCancel={() => setAlertModal(false)}
-        button={{onClick: () => setAlertModal(false)}}
+        button={true}
       />
     </div>
   );

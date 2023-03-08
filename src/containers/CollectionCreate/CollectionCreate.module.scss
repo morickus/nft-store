@@ -110,6 +110,10 @@
           margin: 24px 0;
           border: 2px solid var(--light-gray-color);
 
+          .flex {
+            width: 100%;
+          }
+
           .upload-image {
             height: 164px;
           }
@@ -594,14 +598,19 @@
         }
 
         .form-description {
+          .flex {
+            display: flex;
+            justify-content: center;
+          }
+
           .upload-input-grid {
             margin-top: 24px;
             grid-template-columns: 1fr;
+            justify-content: center;
 
             .upload-image {
               width: 150px;
               height: 150px;
-              margin: 0 auto;
             }
 
             .inputs {

@@ -19,15 +19,17 @@ import Link from 'next/link'
 const { TextArea } = InputAntd
 
 const CollectionCreate = () => {
-  const [form] = Form.useForm()
-  const typeValue = Form.useWatch('type', form)
-  const blockchainValue = Form.useWatch('blockchain', form)
-  const functionalValue = Form.useWatch('functional', form)
-  const imageValue = Form.useWatch('image', form)
-  const logoValue = Form.useWatch('logo', form)
-  const nameValue = Form.useWatch('name', form)
-  const shortNameValue = Form.useWatch('shortName', form)
-  const descValue = Form.useWatch('desc', form)
+  const [typeForm] = Form.useForm()
+  const [blockchainForm] = Form.useForm()
+  const [descriptionForm] = Form.useForm()
+  const typeValue = Form.useWatch('type', typeForm)
+  const logoValue = Form.useWatch('logo', descriptionForm)
+  const nameValue = Form.useWatch('name', descriptionForm)
+  const descValue = Form.useWatch('desc', descriptionForm)
+  const imageValue = Form.useWatch('image', descriptionForm)
+  const shortNameValue = Form.useWatch('shortName', descriptionForm)
+  const blockchainValue = Form.useWatch('blockchain', blockchainForm)
+  const functionalValue = Form.useWatch('functional', descriptionForm)
   const [step, setStep] = useState<'blockchain' | 'type' | 'description' | 'preview'>('blockchain')
   const [alertModal, setAlertModal] = useState(false)
   const [bannerUrl, setBannerUrl] = useState('')
@@ -64,228 +66,235 @@ const CollectionCreate = () => {
               />
             </div>
           </div>
-          <Form
-            form={form}
-            initialValues={{
-              blockchain: 'eth',
-              type: 'simple'
+          <Form.Provider
+            onFormFinish={(name, { values, forms }) => {
+              if (name === 'blockchainForm') {
+                setStep('type')
+              }
+              if (name === 'typeForm') {
+                setStep('description')
+              }
+              if (name === 'descriptionForm') {
+                setStep('preview')
+                const { blockchainForm, typeForm } = forms;
+                console.log('values ', {...values, ...blockchainForm.getFieldsValue(), ...typeForm.getFieldsValue()})
+              }
             }}
-            className={styles.form}
-            onFinish={() => setAlertModal(true)}
-            onValuesChange={(_, value) => console.log('form: ',value)}
           >
-            <div className={`${styles['form__item']} ${step !== 'blockchain' && styles.hide}`}>
-              <p className="subtitle">Blockchain network</p>
-              <Form.Item name="blockchain" noStyle>
-                <RadioGroup className={`${styles['radio-wrap']} ${styles['radio-wrap_blockchain']}`}>
-                  {cryptoWallet.map(i => (
-                    <Radio key={i.value} value={i.value}>
-                      <CheckCard checked={blockchainValue == i.value}>
-                        <div className={`${styles['radio-wrap__item']} ${blockchainValue == i.value && styles['radio-wrap__item_active']}`}>
-                          <Image src={i.image} alt={i.image} width={56} height={56} />
-                          <span>{i.label}</span>
+            <div className={styles.form}>
+              <Form form={blockchainForm} name="blockchainForm" initialValues={{ blockchain: 'eth' }} className={`${styles['form__item']} ${step !== 'blockchain' && styles.hide}`}>
+                <p className="subtitle">Blockchain network</p>
+                <Form.Item name="blockchain" noStyle>
+                  <RadioGroup className={`${styles['radio-wrap']} ${styles['radio-wrap_blockchain']}`}>
+                    {cryptoWallet.map(i => (
+                      <Radio key={i.value} value={i.value}>
+                        <CheckCard checked={blockchainValue == i.value}>
+                          <div className={`${styles['radio-wrap__item']} ${blockchainValue == i.value && styles['radio-wrap__item_active']}`}>
+                            <Image src={i.image} alt={i.image} width={56} height={56} />
+                            <span>{i.label}</span>
+                          </div>
+                        </CheckCard>
+                      </Radio>
+                    ))}
+                  </RadioGroup>
+                </Form.Item>
+                <Button type="primary" size="small" htmlType="submit">Next</Button>
+              </Form>
+              <Form form={typeForm} name="typeForm" initialValues={{ type: 'simple' }} className={`${styles['form__item']} ${step !== 'type' && styles.hide}`}>
+                <p className="subtitle">Type of items</p>
+                <Form.Item name="type" noStyle>
+                  <RadioGroup className={`${styles['radio-wrap']} ${styles['radio-wrap_type']}`}>
+                    <Radio value="simple">
+                      <CheckCard checked={typeValue == "simple"}>
+                        <div className={`${styles['radio-wrap__item']} ${typeValue == "simple" && styles['radio-wrap__item_active']}`}>
+                          <Icon name="file_filled" fontSize={100} color="grey" />
+                          <span>Simple</span>
+                          <p>If you want to highlight the uniqueness and individuality of your item</p>
                         </div>
                       </CheckCard>
                     </Radio>
-                  ))}
-                </RadioGroup>
-              </Form.Item>
-              <Button type="primary" size="small" onClick={() => setStep('type')}>Next</Button>
-            </div>
-            <div className={`${styles['form__item']} ${step !== 'type' && styles.hide}`}>
-              <p className="subtitle">Type of items</p>
-              <Form.Item name="type" noStyle>
-                <RadioGroup className={`${styles['radio-wrap']} ${styles['radio-wrap_type']}`}>
-                  <Radio value="simple">
-                    <CheckCard checked={typeValue == "simple"}>
-                      <div className={`${styles['radio-wrap__item']} ${typeValue == "simple" && styles['radio-wrap__item_active']}`}>
-                        <Icon name="file_filled" fontSize={100} color="grey" />
-                        <span>Simple</span>
-                        <p>If you want to highlight the uniqueness and individuality of your item</p>
-                      </div>
-                    </CheckCard>
-                  </Radio>
-                  <Radio value="multiple">
-                    <CheckCard checked={typeValue == "multiple"}>
-                      <div className={`${styles['radio-wrap__item']} ${typeValue == "multiple" && styles['radio-wrap__item_active']}`}>
-                        <div className={styles['radio-wrap__wrap-icon']}>
-                          <Icon name="file_filled" fontSize={25} color="grey" />
-                          <Icon name="file_filled" fontSize={50} color="grey" />
-                          <Icon name="file_filled" fontSize={100} color="grey" />
-                          <Icon name="file_filled" fontSize={50} color="grey" />
-                          <Icon name="file_filled" fontSize={25} color="grey" />
+                    <Radio value="multiple">
+                      <CheckCard checked={typeValue == "multiple"}>
+                        <div className={`${styles['radio-wrap__item']} ${typeValue == "multiple" && styles['radio-wrap__item_active']}`}>
+                          <div className={styles['radio-wrap__wrap-icon']}>
+                            <Icon name="file_filled" fontSize={25} color="grey" />
+                            <Icon name="file_filled" fontSize={50} color="grey" />
+                            <Icon name="file_filled" fontSize={100} color="grey" />
+                            <Icon name="file_filled" fontSize={50} color="grey" />
+                            <Icon name="file_filled" fontSize={25} color="grey" />
+                          </div>
+                          <span>Multiple</span>
+                          <p>If you want to share your NFT with a large number of community members</p>
                         </div>
-                        <span>Multiple</span>
-                        <p>If you want to share your NFT with a large number of community members</p>
-                      </div>
-                    </CheckCard>
-                  </Radio>
-                </RadioGroup>
-              </Form.Item>
-              <Button type="primary" size="small" onClick={() => setStep('description')}>Next</Button>
-            </div>
-            <div className={`${styles['form__item']} ${step !== 'description' && styles.hide}`}>
-              <p className="subtitle">Description</p>
-              <div className={styles['form-description']}>
-                <Form.Item name="image" valuePropName="valueImage">
-                  <UploadImage className={styles['upload-image']} size="large" maxSizeImage={20} resolution={{width: 1920, height: 400}} />
+                      </CheckCard>
+                    </Radio>
+                  </RadioGroup>
                 </Form.Item>
-                <div className={styles['upload-input-grid']}>
-                  <Form.Item name="logo" valuePropName="valueImage" noStyle>
-                    <UploadImage className={styles['upload-image']} maxSizeImage={10} resolution={{width: 300, height: 300}} />
+                <Button type="primary" size="small" htmlType="submit">Next</Button>
+              </Form>
+              <Form form={descriptionForm} name="descriptionForm" className={`${styles['form__item']} ${step !== 'description' && styles.hide}`}>
+                <p className="subtitle">Description</p>
+                <div className={styles['form-description']}>
+                  <Form.Item name="image" valuePropName="valueImage" rules={[{ required: true }]}>
+                    <UploadImage className={styles['upload-image']} size="large" maxSizeImage={20} resolution={{width: 1920, height: 400}} />
                   </Form.Item>
-                  <div className={styles['inputs']}>
-                    <div className={styles['inputs__flex']}>
-                      <div className={styles['inputs__item']}>
-                        <label htmlFor="name">Enter collection name</label>
-                        <Form.Item name="name">
-                          <Input
-                            placeholder="Cooool name"
-                            prefix={<Icon name="txt_filled" fontSize={24} color="grey" className="mr-13" />}
-                          />
-                        </Form.Item>
-                      </div>
-                      <div className={styles['inputs__item']}>
-                        <label htmlFor="shortName">Short name</label>
-                        <Form.Item name="shortName">
-                          <Input
-                            placeholder="CLN"
-                            prefix={<Icon name="txt_filled" fontSize={24} color="grey" className="mr-13" />}
-                          />
-                        </Form.Item>
-                      </div>
-                    </div>
-                    <div className={styles['inputs__item']}>
-                      <label htmlFor="short-desc">Short description</label>
-                      <div className={styles['prefix-wrap']}>
-                        <Icon name="txt_filled" fontSize={24} color="grey" className={styles['prefix-wrap__prefix']} />
-                        <Form.Item name="short-desc">
-                          <TextArea
-                            placeholder="My super collection"
-                            autoSize={{ minRows: 4, maxRows: 4 }}
-                          />
-                        </Form.Item>
-                      </div>
-                    </div>
-                    <div className={styles['inputs__item']}>
-                      <label htmlFor="short-desc">Full description</label>
-                      <div className={styles['prefix-wrap']}>
-                        <Icon name="txt_filled" fontSize={24} color="grey" className={styles['prefix-wrap__prefix']} />
-                        <Form.Item name="desc">
-                          <TextArea
-                            rows={7}
-                            placeholder="My super puper collection"
-                          />
-                        </Form.Item>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles['form-description__functional']}>
-                  <p className="subtitle">NFT functional</p>
-                  <Form.Item name="functional" noStyle>
-                    <RadioGroup className={styles['functional-wrap']}>
-                      {nftFunction.map(i => (
-                        <Radio key={i.value} value={i.value}>
-                          <CheckCard checked={functionalValue == i.value} icon={false}>
-                            <div className={`${styles['functional-wrap__item']} ${functionalValue == i.value && styles['functional-wrap__item_active']}`}>
-                              <Icon name={i.icon} fontSize={48} color="grey" />
-                              <p>{i.label}</p>
-                            </div>
-                          </CheckCard>
-                        </Radio>
-                      ))}
-                    </RadioGroup>
-                  </Form.Item>
-                </div>
-              </div>
-              <Button type="primary" size="small" onClick={() => setStep('preview')}>View preview</Button>
-            </div>
-            <div className={`${styles['form__item']} ${step !== 'preview' && styles.hide}`}>
-              <p className="subtitle">Appearance</p>
-              <div className={styles.preview}>
-                <div className={styles.header}>
-                  <div className={styles.banner}>
-                    <Image src={bannerUrl} alt="banner" layout="fill" className={styles.image} priority />
-                    <div className={styles.logo}>
-                      <Image src={logoUrl} alt="logo" width={80} height={80} />
-                    </div>
-                    <div className={styles.control}>
-                      <div>
-                        <IconButton icon="fin-assets_filled" colorIcon="default" sizeIcon={12} size={20} />
-                        <IconButton icon="token_filled" colorIcon="default" sizeIcon={12} size={20} />
-                      </div>
-                      <div>
-                        <Button size="small" className={styles.btn}>Read more</Button>
-                        <IconButton icon="discord_solid" colorIcon="default" sizeIcon={12} size={20} />
-                        <IconButton icon="facebook_solid" colorIcon="default" sizeIcon={12} size={20} />
-                        <IconButton icon="twitter_solid" colorIcon="default" sizeIcon={12} size={20} />
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.description}>
-                    <span className={styles.title}>{nameValue}</span>
-                    <p className={styles.subtitle}>{shortNameValue}</p>
-                    <div className={styles.info}>
-                      <div>
-                        <span>By</span>
-                        <Link href="/">Dj.Snash</Link>
-                      </div>
-                      <div>
-                        <span>Smart-contract</span>
-                        <Link href="/">{cutWallet('0x0755gg553412341388ij')}</Link>
-                      </div>
-                    </div>
-                    <div className={styles.props}>
-                      {Object.keys(collectionPage.props).map(key => (
-                        <div key={key} className={`${styles['props__item']} ${styles[`props__item_${key}`]}`}>
-                          <span>{key}</span>
-                          <p>{collectionPage.props[key as keys]} {(key == 'floor' || key == 'volume') && 'ETH'}</p>
+                  <div className={styles['upload-input-grid']}>
+                    <Form.Item name="logo" valuePropName="valueImage" className={styles.flex} rules={[{ required: true }]} shouldUpdate>
+                      <UploadImage className={styles['upload-image']} maxSizeImage={10} resolution={{width: 300, height: 300}} />
+                    </Form.Item>
+                    <div className={styles['inputs']}>
+                      <div className={styles['inputs__flex']}>
+                        <div className={styles['inputs__item']}>
+                          <label htmlFor="name">Enter collection name</label>
+                          <Form.Item name="name" rules={[{ required: true }]}>
+                            <Input
+                              placeholder="Cooool name"
+                              prefix={<Icon name="txt_filled" fontSize={24} color="grey" className="mr-13" />}
+                            />
+                          </Form.Item>
                         </div>
-                      ))}
+                        <div className={styles['inputs__item']}>
+                          <label htmlFor="shortName">Short name</label>
+                          <Form.Item name="shortName" rules={[{ required: true }]}>
+                            <Input
+                              placeholder="CLN"
+                              prefix={<Icon name="txt_filled" fontSize={24} color="grey" className="mr-13" />}
+                            />
+                          </Form.Item>
+                        </div>
+                      </div>
+                      <div className={styles['inputs__item']}>
+                        <label htmlFor="short-desc">Short description</label>
+                        <div className={styles['prefix-wrap']}>
+                          <Icon name="txt_filled" fontSize={24} color="grey" className={styles['prefix-wrap__prefix']} />
+                          <Form.Item name="short-desc" rules={[{ required: true }]}>
+                            <TextArea
+                              placeholder="My super collection"
+                              autoSize={{ minRows: 4, maxRows: 4 }}
+                            />
+                          </Form.Item>
+                        </div>
+                      </div>
+                      <div className={styles['inputs__item']}>
+                        <label htmlFor="short-desc">Full description</label>
+                        <div className={styles['prefix-wrap']}>
+                          <Icon name="txt_filled" fontSize={24} color="grey" className={styles['prefix-wrap__prefix']} />
+                          <Form.Item name="desc" rules={[{ required: true }]}>
+                            <TextArea
+                              rows={7}
+                              placeholder="My super puper collection"
+                            />
+                          </Form.Item>
+                        </div>
+                      </div>
                     </div>
-                    <p className={styles.text}>{descValue}</p>
-                    <p className={styles['text-btn']}>Read more</p>
-                    <Button type="primary" className={styles.btn}>About collection</Button>
                   </div>
-                  <div className={styles.content}>
-                    <div className={styles['tabs-skeleton']}>
-                      <div className={styles['tabs-skeleton__tab']} />
-                      <div className={styles['tabs-skeleton__tab']} />
-                      <div className={styles['tabs-skeleton__tab']} />
-                      <div className={styles['tabs-skeleton__tab']} />
-                      <div className={styles['tabs-skeleton__tab']} />
+                  <div className={styles['form-description__functional']}>
+                    <p className="subtitle">NFT functional</p>
+                    <Form.Item name="functional" className={styles.flex} rules={[{ required: true }]}>
+                      <RadioGroup className={styles['functional-wrap']}>
+                        {nftFunction.map(i => (
+                          <Radio key={i.value} value={i.value}>
+                            <CheckCard checked={functionalValue == i.value} icon={false}>
+                              <div className={`${styles['functional-wrap__item']} ${functionalValue == i.value && styles['functional-wrap__item_active']}`}>
+                                <Icon name={i.icon} fontSize={48} color="grey" />
+                                <p>{i.label}</p>
+                              </div>
+                            </CheckCard>
+                          </Radio>
+                        ))}
+                      </RadioGroup>
+                    </Form.Item>
+                  </div>
+                </div>
+                <Button type="primary" size="small" htmlType="submit">View preview</Button>
+              </Form>
+              <div className={`${styles['form__item']} ${step !== 'preview' && styles.hide}`}>
+                <p className="subtitle">Appearance</p>
+                <div className={styles.preview}>
+                  <div className={styles.header}>
+                    <div className={styles.banner}>
+                      {bannerUrl && (<Image src={bannerUrl} alt="banner" layout="fill" className={styles.image} priority />)}
+                      <div className={styles.logo}>
+                        {logoUrl && (<Image src={logoUrl} alt="logo" width={80} height={80} />)}
+                      </div>
+                      <div className={styles.control}>
+                        <div>
+                          <IconButton icon="fin-assets_filled" colorIcon="default" sizeIcon={12} size={20} />
+                          <IconButton icon="token_filled" colorIcon="default" sizeIcon={12} size={20} />
+                        </div>
+                        <div>
+                          <Button size="small" className={styles.btn}>Read more</Button>
+                          <IconButton icon="discord_solid" colorIcon="default" sizeIcon={12} size={20} />
+                          <IconButton icon="facebook_solid" colorIcon="default" sizeIcon={12} size={20} />
+                          <IconButton icon="twitter_solid" colorIcon="default" sizeIcon={12} size={20} />
+                        </div>
+                      </div>
                     </div>
-                    <div className={styles['cards-wrap']}>
-                      <div className={styles['cards-wrap__item']}>
-                        <div className={styles.img} />
-                        <div className={styles['skeleton']} />
+                    <div className={styles.description}>
+                      <span className={styles.title}>{nameValue}</span>
+                      <p className={styles.subtitle}>{shortNameValue}</p>
+                      <div className={styles.info}>
+                        <div>
+                          <span>By</span>
+                          <Link href="/">Dj.Snash</Link>
+                        </div>
+                        <div>
+                          <span>Smart-contract</span>
+                          <Link href="/">{cutWallet('0x0755gg553412341388ij')}</Link>
+                        </div>
                       </div>
-                      <div className={styles['cards-wrap__item']}>
-                        <div className={styles.img} />
-                        <div className={styles['skeleton']} />
+                      <div className={styles.props}>
+                        {Object.keys(collectionPage.props).map(key => (
+                          <div key={key} className={`${styles['props__item']} ${styles[`props__item_${key}`]}`}>
+                            <span>{key}</span>
+                            <p>{collectionPage.props[key as keys]} {(key == 'floor' || key == 'volume') && 'ETH'}</p>
+                          </div>
+                        ))}
                       </div>
-                      <div className={styles['cards-wrap__item']}>
-                        <div className={styles.img} />
-                        <div className={styles['skeleton']} />
+                      <p className={styles.text}>{descValue}</p>
+                      <p className={styles['text-btn']}>Read more</p>
+                      <Button type="primary" className={styles.btn}>About collection</Button>
+                    </div>
+                    <div className={styles.content}>
+                      <div className={styles['tabs-skeleton']}>
+                        <div className={styles['tabs-skeleton__tab']} />
+                        <div className={styles['tabs-skeleton__tab']} />
+                        <div className={styles['tabs-skeleton__tab']} />
+                        <div className={styles['tabs-skeleton__tab']} />
+                        <div className={styles['tabs-skeleton__tab']} />
                       </div>
-                      <div className={styles['cards-wrap__item']}>
-                        <div className={styles.img} />
-                        <div className={styles['skeleton']} />
+                      <div className={styles['cards-wrap']}>
+                        <div className={styles['cards-wrap__item']}>
+                          <div className={styles.img} />
+                          <div className={styles['skeleton']} />
+                        </div>
+                        <div className={styles['cards-wrap__item']}>
+                          <div className={styles.img} />
+                          <div className={styles['skeleton']} />
+                        </div>
+                        <div className={styles['cards-wrap__item']}>
+                          <div className={styles.img} />
+                          <div className={styles['skeleton']} />
+                        </div>
+                        <div className={styles['cards-wrap__item']}>
+                          <div className={styles.img} />
+                          <div className={styles['skeleton']} />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className={styles['wrap-submit']}>
-                <p>Do you like it?</p>
-                <div className={styles['wrap-submit__button']}>
-                  <p>Cost: <span>1000FD</span></p>
-                  <Button type="primary" htmlType="submit" onClick={() => setAlertModal(true)}>Create collection</Button>
+                <div className={styles['wrap-submit']}>
+                  <p>Do you like it?</p>
+                  <div className={styles['wrap-submit__button']}>
+                    <p>Cost: <span>1000FD</span></p>
+                    <Button type="primary" htmlType="submit" onClick={() => setAlertModal(true)}>Create collection</Button>
+                  </div>
                 </div>
               </div>
             </div>
-          </Form>
+          </Form.Provider>
         </div>
       </div>
       <AlertModal

@@ -46,6 +46,12 @@ const CollectionCreate = () => {
 
   type keys = keyof propsType
 
+  const tabs = [
+    {text: 'Blockchain', value: 'blockchain'},
+    {text: 'Type of collectible items', value: 'type'},
+    {text: 'Description', value: 'description'}
+  ]
+
   return (
     <div className={styles.root}>
       <div className="container-edit-page">
@@ -55,13 +61,10 @@ const CollectionCreate = () => {
             <div className={styles.tabs}>
               <RadioButton
                 buttons={
-                  [
-                    {text: 'Blockchain', value: 'blockchain'},
-                    {text: 'Type of collectible items', value: 'type'},
-                    {text: 'Description', value: 'description'}
-                  ]
+                  (typeValue && logoValue && nameValue && descValue && imageValue && shortNameValue && blockchainValue && functionalValue)
+                    ? [...tabs, {text: 'Preview', value: 'preview'}] : tabs
                 }
-                value={step == 'preview' ? 'description' : step}
+                value={step}
                 onChange={(e: RadioChangeEvent) => setStep(e.target.value)}
               />
             </div>

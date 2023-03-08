@@ -138,11 +138,11 @@ const CollectionCreate = () => {
               <Form form={descriptionForm} name="descriptionForm" className={`${styles['form__item']} ${step !== 'description' && styles.hide}`}>
                 <p className="subtitle">Description</p>
                 <div className={styles['form-description']}>
-                  <Form.Item name="image" valuePropName="valueImage" rules={[{ required: true }]}>
+                  <Form.Item name="image" valuePropName="valueImage" rules={[{ required: true, message: 'Incorrect image resolution. Max res. 1920 x 400.' }]}>
                     <UploadImage className={styles['upload-image']} size="large" maxSizeImage={20} resolution={{width: 1920, height: 400}} />
                   </Form.Item>
                   <div className={styles['upload-input-grid']}>
-                    <Form.Item name="logo" valuePropName="valueImage" className={styles.flex} rules={[{ required: true }]} shouldUpdate>
+                    <Form.Item name="logo" valuePropName="valueImage" className={styles.flex} rules={[{ required: true, message: 'Incorrect image resolution. Max res. 300 x 300.' }]} shouldUpdate>
                       <UploadImage className={styles['upload-image']} maxSizeImage={10} resolution={{width: 300, height: 300}} />
                     </Form.Item>
                     <div className={styles['inputs']}>

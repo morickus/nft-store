@@ -25,6 +25,7 @@ const CollectionCreate = () => {
   const typeValue = Form.useWatch('type', typeForm)
   const logoValue = Form.useWatch('logo', descriptionForm)
   const nameValue = Form.useWatch('name', descriptionForm)
+  const shortDescValue = Form.useWatch('short-desc', descriptionForm)
   const descValue = Form.useWatch('desc', descriptionForm)
   const imageValue = Form.useWatch('image', descriptionForm)
   const shortNameValue = Form.useWatch('shortName', descriptionForm)
@@ -61,7 +62,7 @@ const CollectionCreate = () => {
             <div className={styles.tabs}>
               <RadioButton
                 buttons={
-                  (typeValue && logoValue && nameValue && descValue && imageValue && shortNameValue && blockchainValue && functionalValue)
+                  (typeValue && logoValue && nameValue && shortDescValue && descValue && imageValue && shortNameValue && blockchainValue && functionalValue)
                     ? [...tabs, {text: 'Preview', value: 'preview'}] : tabs
                 }
                 value={step}
@@ -179,7 +180,7 @@ const CollectionCreate = () => {
                         </div>
                       </div>
                       <div className={styles['inputs__item']}>
-                        <label htmlFor="short-desc">Full description</label>
+                        <label htmlFor="desc">Full description</label>
                         <div className={styles['prefix-wrap']}>
                           <Icon name="txt_filled" fontSize={24} color="grey" className={styles['prefix-wrap__prefix']} />
                           <Form.Item name="desc" rules={[{ required: true }]}>

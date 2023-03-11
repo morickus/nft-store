@@ -61,15 +61,17 @@ const NftPage = () => {
                 {(tab === 'overview' || tab === 'properties') ? (
                   <>
                     <div className={styles['price-wrap']}>
-                      <div className={`${styles.item}`}>
+                      <div className={styles.item}>
                         <span className={styles.label}>Price</span>
                         <p>{price.eth} ETH</p>
                         <span>${price.dollar.toLocaleString('en')}</span>
                       </div>
-                      <div className={`${styles.item}`}>
-                        <span className={styles.label}>Highest&nbsp;<span className={styles.black}>floor bid</span></span>
-                        <p>{price.highestBid} wETH</p>
-                        <span>by <span className={styles.link}>{cutWallet(price.highestBidBy)}</span></span>
+                      <div className={styles.item}>
+                        <div>
+                          <span className={styles.label}>Highest&nbsp;<span className={styles.black}>floor bid</span></span>
+                          <p>{price.highestBid} wETH</p>
+                          <span>by <span className={styles.link}>{cutWallet(price.highestBidBy)}</span></span>
+                        </div>
                       </div>
                     </div>
                     <div className={styles['buttons-price-wrap']}>

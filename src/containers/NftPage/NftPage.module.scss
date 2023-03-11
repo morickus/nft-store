@@ -102,6 +102,7 @@
               }
 
               .label {
+                display: block;
                 font-size: 12px;
                 font-weight: 700;
                 line-height: 12px;
@@ -123,6 +124,7 @@
               }
 
               p + span {
+                display: block;
                 font-weight: 600;
                 font-size: 12px;
                 line-height: 12px;
@@ -272,17 +274,17 @@
                   }
 
                   span {
-                    color: #D6D5D8;
+                    color: var(--grey-color);
                   }
                 }
               }
 
               .date {
-                color: #D6D5D8;
                 font-size: 12px;
                 font-weight: 500;
                 line-height: 12px;
                 text-align: center;
+                color: var(--grey-color);
               }
 
               .price {
@@ -303,8 +305,8 @@
                 }
 
                 p {
-                  color: #D6D5D8;
                   font-weight: 500;
+                  color: var(--grey-color);
                 }
               }
             }
@@ -341,8 +343,8 @@
                   }
 
                   span {
-                    color: #D6D5D8;
                     font-weight: 600;
+                    color: var(--grey-color);
                   }
 
                   p {
@@ -551,12 +553,16 @@
 
             .price-wrap {
               .item {
+                width: 100%;
+
                 &:first-child {
-                  padding-right: 82px;
+                  padding-right: 0;
                 }
 
                 &:last-child {
-                  padding-left: 82px;
+                  display: flex;
+                  padding-left: 0;
+                  justify-content: flex-end;
                 }
               }
             }
@@ -639,6 +645,8 @@
 
             .price-wrap {
               .item {
+                width: fit-content;
+
                 &:first-child {
                   padding-left: 12px;
                   padding-right: 14px;
@@ -646,6 +654,8 @@
 
                 &:last-child {
                   padding-left: 14px;
+                  padding-right: 12px;
+                  justify-content: center;
                 }
               }
             }

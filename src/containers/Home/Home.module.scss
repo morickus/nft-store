@@ -125,12 +125,12 @@
       align-items: center;
 
       .label {
-        color: #D6D5D8;
         font-size: 12px;
         margin-left: 8px;
         font-weight: 700;
         line-height: 12px;
         user-select: none;
+        color: var(--grey-color);
       }
     }
   }
@@ -242,9 +242,9 @@
             height: 24px;
             padding: 4px;
             display: flex;
-            color: #FCFCFC;
             margin-left: 18px;
             justify-content: center;
+            color: var(--light-color);
             background: var(--green-color);
           }
         }

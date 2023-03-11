@@ -93,12 +93,16 @@ body {
   text-decoration: underline;
 }
 
-.mr-16 {
-  margin-right: 16px;
+.mr-8 {
+  margin-right: 8px;
 }
 
 .mr-13 {
   margin-right: 13px;
+}
+
+.mr-16 {
+  margin-right: 16px;
 }
 
 .mt-24 {
@@ -186,5 +190,7 @@ body {
 }
 
 @media (max-width: map-get($media, xs)) {
-
+  .after-expression {
+    display: none;
+  }
 }

@@ -65,7 +65,9 @@
       "colorBorder": "#F7F7F7",
       "controlItemBgActive": "#FFFFFF",
       "colorPrimary": "#4F4CE8",
-      "controlHeight": 40
+      "controlHeight": 40,
+      "controlHeightLG": 48,
+      "fontSizeLG": 18
     },
     "Radio": {
       "lineWidth": 2,

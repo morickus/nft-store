@@ -43,10 +43,8 @@ const Select: FC<ISelect & SelectProps> = (props) => {
         </Option>
       ))}
     </SelectBase>
-  );
-};
-
-export default Select
+  )
+}
 
 const SelectBase = styled(SelectAntd)`${({ theme: { components: { Select: s } } }) => css`
   width: max-content !important;
@@ -141,4 +139,6 @@ const SelectBase = styled(SelectAntd)`${({ theme: { components: { Select: s } } 
       inset-inline-end: 8px;
     }
   }
-`}`;
+`}`
+
+export default Select

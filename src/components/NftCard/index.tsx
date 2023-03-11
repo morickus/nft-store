@@ -16,8 +16,7 @@ interface INftCard {
   owner?: string
   latestPrice?: {
     price: number
-    positive: boolean
-    difference: number
+    extraPay: number
   }
 }
 
@@ -65,8 +64,8 @@ const NftCard: FC<INftCard> = (props) => {
               <span className={styles.label}>Latest price</span>
               <p className={styles.text}>
                 {latestPrice.price} ETH&nbsp;
-                <span className={latestPrice.positive ? styles.green : styles.red}>
-                  {latestPrice.positive ? '+' : '-'}&nbsp;{latestPrice.difference}&nbsp;ETH
+                <span className={(latestPrice.extraPay) > 0 ? styles.green : styles.red}>
+                  {(latestPrice.extraPay) > 0 ? '+' : ''}&nbsp;{latestPrice.extraPay}&nbsp;ETH
                 </span>
               </p>
             </div>

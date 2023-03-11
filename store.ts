@@ -104,8 +104,7 @@ export const nftTradeItemsArray = [
     owner: '0x098j8k3sl212s00hd',
     latestPrice: {
       price: 16.2,
-      positive: true,
-      difference: 3.8
+      extraPay: 3.8
     }
   },
   {
@@ -116,8 +115,7 @@ export const nftTradeItemsArray = [
     owner: '0x098j8k3sl212s00hd',
     latestPrice: {
       price: 16.2,
-      positive: true,
-      difference: 4.2
+      extraPay: 4.2
     }
   },
   {
@@ -128,8 +126,7 @@ export const nftTradeItemsArray = [
     owner: '0x098j8k3sl212s00hd',
     latestPrice: {
       price: 16.2,
-      positive: false,
-      difference: 5
+      extraPay: -5
     }
   },
   {
@@ -140,8 +137,7 @@ export const nftTradeItemsArray = [
     owner: '0x098j8k3sl212s00hd',
     latestPrice: {
       price: 16.2,
-      positive: true,
-      difference: 3.8
+      extraPay: 3.8
     }
   },
   {
@@ -152,8 +148,7 @@ export const nftTradeItemsArray = [
     owner: '0x098j8k3sl212s00hd',
     latestPrice: {
       price: 16.2,
-      positive: true,
-      difference: 3.8
+      extraPay: 3.8
     }
   },
   {
@@ -164,8 +159,7 @@ export const nftTradeItemsArray = [
     owner: '0x098j8k3sl212s00hd',
     latestPrice: {
       price: 16.2,
-      positive: false,
-      difference: 2
+      extraPay: -2
     }
   }
 ]
@@ -179,8 +173,7 @@ export const nftItemsTradingArray = [
     owner: '0x098j8k3sl212s00hd',
     latestPrice: {
       price: 16.2,
-      positive: true,
-      difference: 3.8
+      extraPay: 3.8
     }
   },
   {
@@ -191,8 +184,7 @@ export const nftItemsTradingArray = [
     owner: '0x098j8k3sl212s00hd',
     latestPrice: {
       price: 16.2,
-      positive: true,
-      difference: 3.8
+      extraPay: 3.8
     }
   },
   {
@@ -203,8 +195,7 @@ export const nftItemsTradingArray = [
     owner: '0x098j8k3sl212s00hd',
     latestPrice: {
       price: 16.2,
-      positive: true,
-      difference: 3.8
+      extraPay: 3.8
     }
   },
   {
@@ -215,8 +206,7 @@ export const nftItemsTradingArray = [
     owner: '0x098j8k3sl212s00hd',
     latestPrice: {
       price: 16.2,
-      positive: true,
-      difference: 3.8
+      extraPay: 3.8
     }
   },
   {
@@ -227,8 +217,7 @@ export const nftItemsTradingArray = [
     owner: '0x098j8k3sl212s00hd',
     latestPrice: {
       price: 16.2,
-      positive: true,
-      difference: 3.8
+      extraPay: 3.8
     }
   }
 ]
@@ -475,7 +464,7 @@ export const nftPage = {
     eth: 70,
     dollar: 84000,
     highestBid: 4,
-    highestBidBy: 'by 0x902df023dghde3t4gredsefweduh33'
+    highestBidBy: '0x902df023dghde3t4gredsefweduh33'
   },
   name: 'Kaleido Kids',
   description: 'DigiDaigaku is a collection of 2022 unique characters developed by Limit Break, a company founded by world famous game designers Gabriel Leydon and Halbert Nakagawa. The story...',

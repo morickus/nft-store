@@ -86,6 +86,13 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+
+                i:nth-child(1), i:nth-child(5) {
+                  opacity: .5;
+                }
+                i:nth-child(2), i:nth-child(4) {
+                  opacity: .75;
+                }
               }
 
               span {

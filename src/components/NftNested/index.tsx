@@ -24,10 +24,12 @@ interface INftNested {
   panel?: {
     like: number
   }
+
+  classNamePanel?: string
 }
 
 const NftNested: FC<INftNested> = (props) => {
-  const { image, nested, panel } = props
+  const { image, nested, panel, classNamePanel } = props
   const [nestedOpen, setNestedOpen] = useState(false)
 
   return (
@@ -35,7 +37,7 @@ const NftNested: FC<INftNested> = (props) => {
       <div className={styles['top-side']}>
         <Image src={image} alt={image} width={550} height={600} />
         {panel && (
-          <div className={styles.panel}>
+          <div className={`${styles.panel} ${classNamePanel}`}>
             <div className={styles['panel__item']}>
               <Icon name="like_outlined" fontSize={12} color="white" />
               <span>{panel.like}</span>

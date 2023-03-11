@@ -9,12 +9,14 @@ import styled from '@emotion/styled'
 import Image from 'next/image'
 import Icon from '@/components/Icon'
 import AlertModal from '@/widgets/Models/AlertModal'
-import UploadImage from '@/components/UploadImage'
 import Input from '@/components/Input'
 import IconButton from '@/components/IconButton'
 import { cutWallet, getBase64 } from '@/utils'
 import { RcFile } from 'antd/es/upload/interface'
 import Link from 'next/link'
+import dynamic from "next/dynamic"
+
+const UploadImage = dynamic(() => import('@/components/UploadImage'), { ssr: false })
 
 const { TextArea } = InputAntd
 
@@ -25,7 +27,7 @@ const CollectionCreate = () => {
   const typeValue = Form.useWatch('type', typeForm)
   const logoValue = Form.useWatch('logo', descriptionForm)
   const nameValue = Form.useWatch('name', descriptionForm)
-  const shortDescValue = Form.useWatch('short-desc', descriptionForm)
+  const shortDescValue = Form.useWatch('shortDesc', descriptionForm)
   const descValue = Form.useWatch('desc', descriptionForm)
   const imageValue = Form.useWatch('image', descriptionForm)
   const shortNameValue = Form.useWatch('shortName', descriptionForm)
@@ -139,18 +141,18 @@ const CollectionCreate = () => {
               <Form form={descriptionForm} name="descriptionForm" className={`${styles['form__item']} ${step !== 'description' && styles.hide}`}>
                 <p className="subtitle">Description</p>
                 <div className={styles['form-description']}>
-                  <Form.Item name="image" valuePropName="valueImage" rules={[{ required: true, message: 'Incorrect image resolution. Max res. 1920 x 400.' }]}>
+                  <Form.Item name="image" valuePropName="valueImage" rules={[{ required: true, message: 'Image is required' }]}>
                     <UploadImage className={styles['upload-image']} size="large" maxSizeImage={20} resolution={{width: 1920, height: 400}} />
                   </Form.Item>
                   <div className={styles['upload-input-grid']}>
-                    <Form.Item name="logo" valuePropName="valueImage" className={styles.flex} rules={[{ required: true, message: 'Incorrect image resolution. Max res. 300 x 300.' }]} shouldUpdate>
+                    <Form.Item name="logo" valuePropName="valueImage" className={styles.flex} rules={[{ required: true, message: 'Logo is required' }]}>
                       <UploadImage className={styles['upload-image']} maxSizeImage={10} resolution={{width: 300, height: 300}} />
                     </Form.Item>
                     <div className={styles['inputs']}>
                       <div className={styles['inputs__flex']}>
                         <div className={styles['inputs__item']}>
                           <label htmlFor="name">Enter collection name</label>
-                          <Form.Item name="name" rules={[{ required: true }]}>
+                          <Form.Item name="name" rules={[{ required: true, message: 'Name is required' }]}>
                             <Input
                               placeholder="Cooool name"
                               prefix={<Icon name="txt_filled" fontSize={24} color="grey" className="mr-13" />}
@@ -159,7 +161,7 @@ const CollectionCreate = () => {
                         </div>
                         <div className={styles['inputs__item']}>
                           <label htmlFor="shortName">Short name</label>
-                          <Form.Item name="shortName" rules={[{ required: true }]}>
+                          <Form.Item name="shortName" rules={[{ required: true, message: 'Short name is required' }]}>
                             <Input
                               placeholder="CLN"
                               prefix={<Icon name="txt_filled" fontSize={24} color="grey" className="mr-13" />}
@@ -168,10 +170,10 @@ const CollectionCreate = () => {
                         </div>
                       </div>
                       <div className={styles['inputs__item']}>
-                        <label htmlFor="short-desc">Short description</label>
+                        <label htmlFor="shortDesc">Short description</label>
                         <div className={styles['prefix-wrap']}>
                           <Icon name="txt_filled" fontSize={24} color="grey" className={styles['prefix-wrap__prefix']} />
-                          <Form.Item name="short-desc" rules={[{ required: true }]}>
+                          <Form.Item name="shortDesc" rules={[{ required: true, message: 'Short description is required' }]}>
                             <TextArea
                               placeholder="My super collection"
                               autoSize={{ minRows: 4, maxRows: 4 }}
@@ -183,7 +185,7 @@ const CollectionCreate = () => {
                         <label htmlFor="desc">Full description</label>
                         <div className={styles['prefix-wrap']}>
                           <Icon name="txt_filled" fontSize={24} color="grey" className={styles['prefix-wrap__prefix']} />
-                          <Form.Item name="desc" rules={[{ required: true }]}>
+                          <Form.Item name="desc" rules={[{ required: true, message: 'Full description is required' }]}>
                             <TextArea
                               rows={7}
                               placeholder="My super puper collection"
@@ -195,7 +197,7 @@ const CollectionCreate = () => {
                   </div>
                   <div className={styles['form-description__functional']}>
                     <p className="subtitle">NFT functional</p>
-                    <Form.Item name="functional" className={styles.flex} rules={[{ required: true }]}>
+                    <Form.Item name="functional" className={styles.flex} rules={[{ required: true, message: 'NFT functional is required' }]}>
                       <RadioGroup className={styles['functional-wrap']}>
                         {nftFunction.map(i => (
                           <Radio key={i.value} value={i.value}>
@@ -235,56 +237,56 @@ const CollectionCreate = () => {
                         </div>
                       </div>
                     </div>
-                    <div className={styles.description}>
-                      <span className={styles.title}>{nameValue}</span>
-                      <p className={styles.subtitle}>{shortNameValue}</p>
-                      <div className={styles.info}>
-                        <div>
-                          <span>By</span>
-                          <Link href="/">Dj.Snash</Link>
-                        </div>
-                        <div>
-                          <span>Smart-contract</span>
-                          <Link href="/">{cutWallet('0x0755gg553412341388ij')}</Link>
-                        </div>
+                  </div>
+                  <div className={styles.description}>
+                    <span className={styles.title}>{nameValue}</span>
+                    <p className={styles.subtitle}>{shortNameValue}</p>
+                    <div className={styles.info}>
+                      <div>
+                        <span>By</span>
+                        <Link href="/">Dj.Snash</Link>
                       </div>
-                      <div className={styles.props}>
-                        {Object.keys(collectionPage.props).map(key => (
-                          <div key={key} className={`${styles['props__item']} ${styles[`props__item_${key}`]}`}>
-                            <span>{key}</span>
-                            <p>{collectionPage.props[key as keys]} {(key == 'floor' || key == 'volume') && 'ETH'}</p>
-                          </div>
-                        ))}
+                      <div>
+                        <span>Smart-contract</span>
+                        <Link href="/">{cutWallet('0x0755gg553412341388ij')}</Link>
                       </div>
-                      <p className={styles.text}>{descValue}</p>
-                      <p className={styles['text-btn']}>Read more</p>
-                      <Button type="primary" className={styles.btn}>About collection</Button>
                     </div>
-                    <div className={styles.content}>
-                      <div className={styles['tabs-skeleton']}>
-                        <div className={styles['tabs-skeleton__tab']} />
-                        <div className={styles['tabs-skeleton__tab']} />
-                        <div className={styles['tabs-skeleton__tab']} />
-                        <div className={styles['tabs-skeleton__tab']} />
-                        <div className={styles['tabs-skeleton__tab']} />
+                    <div className={styles.props}>
+                      {Object.keys(collectionPage.props).map(key => (
+                        <div key={key} className={`${styles['props__item']} ${styles[`props__item_${key}`]}`}>
+                          <span>{key}</span>
+                          <p>{collectionPage.props[key as keys]} {(key == 'floor' || key == 'volume') && 'ETH'}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <p className={styles.text}>{descValue}</p>
+                    <p className={styles['text-btn']}>Read more</p>
+                    <Button type="primary" className={styles.btn}>About collection</Button>
+                  </div>
+                  <div className={styles.content}>
+                    <div className={styles['tabs-skeleton']}>
+                      <div className={styles['tabs-skeleton__tab']} />
+                      <div className={styles['tabs-skeleton__tab']} />
+                      <div className={styles['tabs-skeleton__tab']} />
+                      <div className={styles['tabs-skeleton__tab']} />
+                      <div className={styles['tabs-skeleton__tab']} />
+                    </div>
+                    <div className={styles['cards-wrap']}>
+                      <div className={styles['cards-wrap__item']}>
+                        <div className={styles.img} />
+                        <div className={styles['skeleton']} />
                       </div>
-                      <div className={styles['cards-wrap']}>
-                        <div className={styles['cards-wrap__item']}>
-                          <div className={styles.img} />
-                          <div className={styles['skeleton']} />
-                        </div>
-                        <div className={styles['cards-wrap__item']}>
-                          <div className={styles.img} />
-                          <div className={styles['skeleton']} />
-                        </div>
-                        <div className={styles['cards-wrap__item']}>
-                          <div className={styles.img} />
-                          <div className={styles['skeleton']} />
-                        </div>
-                        <div className={styles['cards-wrap__item']}>
-                          <div className={styles.img} />
-                          <div className={styles['skeleton']} />
-                        </div>
+                      <div className={styles['cards-wrap__item']}>
+                        <div className={styles.img} />
+                        <div className={styles['skeleton']} />
+                      </div>
+                      <div className={styles['cards-wrap__item']}>
+                        <div className={styles.img} />
+                        <div className={styles['skeleton']} />
+                      </div>
+                      <div className={styles['cards-wrap__item']}>
+                        <div className={styles.img} />
+                        <div className={styles['skeleton']} />
                       </div>
                     </div>
                   </div>

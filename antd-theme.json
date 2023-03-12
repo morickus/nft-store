@@ -100,10 +100,10 @@
       "colorTextTertiary": "rgba(0, 0, 0, 0.05)"
     },
     "Checkbox": {
-      "colorBorder": "#F7F7F7",
+      "colorBorder": "#D6D5D8",
       "colorText": "#1F1F1F",
-      "colorPrimaryHover": "#4F4CE8",
-      "colorPrimaryBorder": "#4F4CE8",
+      "colorPrimaryHover": "#D6D5D8",
+      "colorPrimaryBorder": "#D6D5D8",
       "controlInteractiveSize": 18,
       "fontSize": 12,
       "marginXS": 0,

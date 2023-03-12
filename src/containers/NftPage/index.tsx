@@ -53,7 +53,7 @@ const NftPage = () => {
                   <div className={styles['user-wrap__user']}>
                     <Image src={creator.avatar} alt={creator.avatar} width={36} height={36} />
                     <div className={styles.text}>
-                      <span>Owner</span>
+                      <span>Creator</span>
                       <p>{cutWallet(creator.wallet)}</p>
                     </div>
                   </div>

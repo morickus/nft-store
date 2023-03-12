@@ -27,16 +27,20 @@ const NftCreate = () => {
   const [ercForm] = Form.useForm()
   const [saleForm] = Form.useForm()
   const [descriptionForm] = Form.useForm()
+
   const ercValue = Form.useWatch('type', ercForm)
-  const [imageUrl, setImageUrl] = useState('')
   const priceValue = Form.useWatch('price', saleForm) || 0
   const nameValue = Form.useWatch('name', descriptionForm)
   const descValue = Form.useWatch('desc', descriptionForm)
   const imageValue = Form.useWatch('image', descriptionForm)
-  const [alertModal, setAlertModal] = useState(false)
+  const royaltiesValue = Form.useWatch('royalties', saleForm)
   const saleMethodValue = Form.useWatch('saleMethod', saleForm)
+  const minimumBidValue = Form.useWatch('minimumBid', saleForm)
   const shortDescValue = Form.useWatch('shortDesc', descriptionForm)
   const propertiesValue = Form.useWatch('properties', descriptionForm)
+
+  const [imageUrl, setImageUrl] = useState('')
+  const [alertModal, setAlertModal] = useState(false)
   const [step, setStep] = useState<'erc' | 'description' | 'sale' | 'preview'>('erc')
 
   useEffect(() => {
@@ -111,7 +115,7 @@ const NftCreate = () => {
             <div className={styles.tabs}>
               <RadioButton
                 buttons={
-                  (ercValue && nameValue && shortDescValue && descValue && imageValue && saleMethodValue && priceValue)
+                  (ercValue && nameValue && shortDescValue && descValue && imageValue && saleMethodValue && priceValue && minimumBidValue && royaltiesValue !== undefined)
                     ? [...tabs, {text: 'Preview', value: 'preview'}] : tabs
                 }
                 value={step}
@@ -358,7 +362,7 @@ const NftCreate = () => {
                             placeholder="0 ETH"
                             className={styles['input-number']}
                             formatter={(value) => `${value || 0} ETH`}
-                            parser={(value) => value!.replace('ETH', '')}
+                            parser={(value) => value!.replace(' ETH', '')}
                             prefix={<Icon name="token_filled" fontSize={24} color="primary" className="mr-13" />}
                           />
                         </Form.Item>

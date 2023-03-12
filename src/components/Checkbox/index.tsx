@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import styled from '@emotion/styled'
 import { Checkbox as CheckboxAntd, CheckboxProps } from 'antd'
 
 interface ICheckbox {
-  label?: string
+  label?: string | ReactNode
 }
 
 const Checkbox: FC<ICheckbox & CheckboxProps> = (props) => {
@@ -57,11 +57,15 @@ const CheckboxBase = styled(CheckboxAntd)`
         opacity: 1 !important;
       }
     }
+    
+    &+span {
+      padding-inline-end: 0;
+    }
 
     .ant-checkbox-inner {
       padding: 2px;
       border-radius: 0;
-      border: 1px solid var(--light-gray-color);
+      border: 1px solid ${({ theme }) => theme.components.Checkbox.colorBorder};
 
       &:after {
         top: 50%;

@@ -1,0 +1,143 @@
+@import '../../styles/_vars.scss';
+
+.root {
+  .user {
+    display: flex;
+    align-items: center;
+
+    img {
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    .text {
+      text-align: left;
+      margin-left: 8px;
+
+      span {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 12px;
+        color: var(--grey-color);
+      }
+
+      p {
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 12px;
+      }
+    }
+  }
+
+  .nft {
+    width: 124px;
+    padding: 6px;
+    margin-top: 12px;
+    position: relative;
+    background: #FFFFFF;
+    border: 2px solid #F7F7F7;
+
+    img {
+      display: flex;
+    }
+
+    .placeholder-img {
+      height: 108px;
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--light-color);
+      transition: background .3s ease;
+
+      &:hover {
+        background: var(--light-gray-color);
+      }
+
+      p {
+        margin-top: 2px;
+        font-size: 10px;
+        font-weight: 700;
+        user-select: none;
+        line-height: 10px;
+      }
+    }
+
+    .price {
+      font-size: 12px;
+      margin-top: 6px;
+      font-weight: 700;
+      line-height: 12px;
+
+      &_placeholder {
+        color: var(--grey-color);
+      }
+    }
+
+    .nft-selection-window {
+      top: -2px;
+      z-index: 1;
+      left: 138px;
+      max-height: 360px;
+      position: absolute;
+      overflow-y: scroll;
+      background: #FFFFFF;
+      border: 2px solid var(--light-gray-color);
+      box-shadow: 0 0 20px 5px rgba(43, 43, 43, 0.05);
+
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nft-selection-window-wrap {
+        padding: 8px;
+        display: grid;
+        grid-gap: 8px;
+        grid-template-columns: 124px 124px 124px;
+
+        &__item {
+          padding: 6px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($media, xl)) {
+
+}
+
+@media (max-width: map-get($media, lg)) {
+
+}
+
+@media (max-width: map-get($media, md)) {
+
+}
+
+@media (max-width: map-get($media, sm)) {
+  .root {
+    .nft {
+      .nft-selection-window {
+        left: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($media, xs)) {
+  .root {
+    .nft {
+      .nft-selection-window {
+        .nft-selection-window-wrap {
+          grid-template-columns: 124px 124px;
+        }
+      }
+    }
+  }
+}

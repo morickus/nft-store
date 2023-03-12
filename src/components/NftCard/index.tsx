@@ -13,7 +13,10 @@ interface INftCard {
   buttons?: ReactNode
   price?: number
   highestBid?: number
-  owner?: string
+  owner?: {
+    avatar: string
+    wallet: string
+  }
   latestPrice?: {
     price: number
     extraPay: number
@@ -56,7 +59,7 @@ const NftCard: FC<INftCard> = (props) => {
           {owner && (
             <div>
               <span className={styles.label}>Owner</span>
-              <p className={`${styles.text} underline`}>{cutWallet(owner, 4)}</p>
+              <p className={`${styles.text} underline`}>{cutWallet(owner.wallet, 4)}</p>
             </div>
           )}
           {latestPrice && (

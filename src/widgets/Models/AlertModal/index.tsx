@@ -1,4 +1,4 @@
-import { FC, ReactNode, MouseEvent } from 'react'
+import { FC, ReactNode } from 'react'
 import { ModalProps } from 'antd'
 import Modal from '@/components/Modal'
 import styles from './AlertModal.module.scss'
@@ -36,11 +36,11 @@ const AlertModal: FC<IAlertModal & ModalProps> = (props) => {
         {subtitle && (<p className={`subtitle ${styles.subtitle}`}>{subtitle}</p>)}
         {children}
         {text && (<p className={`text ${styles.text}`}>{text}</p>)}
-        {button && (
+        {button === true ? (
           <div className={styles['button-wrap']}>
             <Button onClick={() => onCancel && onCancel()}>Close and check</Button>
           </div>
-        )}
+        ) : button}
       </div>
     </Modal>
   );

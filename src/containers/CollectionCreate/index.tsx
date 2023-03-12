@@ -216,7 +216,7 @@ const CollectionCreate = () => {
                 <Button type="primary" size="small" htmlType="submit">View preview</Button>
               </Form>
               <div className={`${styles['form__item']} ${step !== 'preview' && styles.hide}`}>
-                <p className="subtitle">Appearance</p>
+                <p className="subtitle">Preview</p>
                 <div className={styles.preview}>
                   <div className={styles.header}>
                     <div className={styles.banner}>

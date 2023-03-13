@@ -36,8 +36,8 @@
 
 .content-wrap {
   width: 100%;
-  margin-top: 32px;
   max-width: 434px;
+  margin-top: 32px;
 
   &__top {
     padding-bottom: 18px;
@@ -126,33 +126,6 @@
     margin: 36px 0;
     text-align: left;
     flex-direction: column;
-
-    label:hover {
-      span {
-        color: var(--primary-color) !important;
-      }
-    }
-
-    span {
-      color: var(--black-color) !important;
-    }
-
-    .color-grey {
-      color: var(--grey-color);
-      transition: color .3s ease;
-
-      &:hover {
-        color: var(--primary-color);
-      }
-    }
-
-    &__link {
-      color: var(--primary-color);
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
   }
 
   .text {

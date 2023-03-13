@@ -107,7 +107,9 @@
       "controlInteractiveSize": 18,
       "fontSize": 12,
       "marginXS": 0,
-      "paddingXS": 6
+      "paddingXS": 6,
+      "lineHeight": 1,
+      "fontWeight": 500
     },
     "Button": {
       "fontWeight": 700,

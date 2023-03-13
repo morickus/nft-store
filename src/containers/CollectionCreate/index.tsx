@@ -155,7 +155,7 @@ const CollectionCreate = () => {
                           <Form.Item name="name" rules={[{ required: true, message: 'Name is required' }]}>
                             <Input
                               placeholder="Cooool name"
-                              prefix={<Icon name="txt_filled" fontSize={24} color="grey" className="mr-13" />}
+                              prefix={<Icon name="txt_filled" fontSize={24} color={nameValue ? 'primary' : 'grey'} className="mr-13" />}
                             />
                           </Form.Item>
                         </div>
@@ -164,7 +164,7 @@ const CollectionCreate = () => {
                           <Form.Item name="shortName" rules={[{ required: true, message: 'Short name is required' }]}>
                             <Input
                               placeholder="CLN"
-                              prefix={<Icon name="txt_filled" fontSize={24} color="grey" className="mr-13" />}
+                              prefix={<Icon name="txt_filled" fontSize={24} color={shortNameValue ? 'primary' : 'grey'} className="mr-13" />}
                             />
                           </Form.Item>
                         </div>
@@ -172,7 +172,7 @@ const CollectionCreate = () => {
                       <div className={styles['inputs__item']}>
                         <label htmlFor="shortDesc">Short description</label>
                         <div className={styles['prefix-wrap']}>
-                          <Icon name="txt_filled" fontSize={24} color="grey" className={styles['prefix-wrap__prefix']} />
+                          <Icon name="txt_filled" fontSize={24} color={shortDescValue ? 'primary' : 'grey'} className={styles['prefix-wrap__prefix']} />
                           <Form.Item name="shortDesc" rules={[{ required: true, message: 'Short description is required' }]}>
                             <TextArea
                               placeholder="My super collection"
@@ -184,7 +184,7 @@ const CollectionCreate = () => {
                       <div className={styles['inputs__item']}>
                         <label htmlFor="desc">Full description</label>
                         <div className={styles['prefix-wrap']}>
-                          <Icon name="txt_filled" fontSize={24} color="grey" className={styles['prefix-wrap__prefix']} />
+                          <Icon name="txt_filled" fontSize={24} color={descValue ? 'primary' : 'grey'} className={styles['prefix-wrap__prefix']} />
                           <Form.Item name="desc" rules={[{ required: true, message: 'Full description is required' }]}>
                             <TextArea
                               rows={7}

@@ -118,8 +118,8 @@ const NftTrading = () => {
               <p className={styles.text}>Your offer has been sent. We are waiting for a response from the user <Link href="/">{cutWallet(tradeNft.owner.wallet, 4)}.</Link></p>
             ) : (
               <div className={styles['checkbox-wrap']}>
-                <Checkbox checked={conditions.first} onClick={() => setConditions(prev => ({...prev, first: !prev.first}))} label={<p className={!conditions.first ? styles['color-grey'] : ''}>There are enough tokens to exchange</p>} />
-                <Checkbox checked={conditions.second} onClick={() => setConditions(prev => ({...prev, second: !prev.second}))} label={<p className={!conditions.second ? styles['color-grey'] : ''}>The selected nft will be passed to the user&nbsp;<Link href="/" className={styles['checkbox-wrap__link']}>{cutWallet(tradeNft.owner.wallet, 4)}</Link></p>} />
+                <Checkbox checked={conditions.first} onClick={() => setConditions(prev => ({...prev, first: !prev.first}))} label="There are enough tokens to exchange" />
+                <Checkbox checked={conditions.second} onClick={() => setConditions(prev => ({...prev, second: !prev.second}))} label={<p>The selected nft will be passed to the user&nbsp;<Link href="/">{cutWallet(tradeNft.owner.wallet, 4)}</Link></p>} />
               </div>
             )}
           </div>
@@ -168,8 +168,8 @@ const NftTrading = () => {
               </div>
             </div>
             <div className={styles['checkbox-wrap']}>
-              <Checkbox checked={conditions.first} onClick={() => setConditions(prev => ({...prev, first: !prev.first}))} label={<p className={!conditions.first ? styles['color-grey'] : ''}>There are enough tokens to exchange</p>} />
-              <Checkbox checked={conditions.second} onClick={() => setConditions(prev => ({...prev, second: !prev.second}))} label={<p className={!conditions.second ? styles['color-grey'] : ''}>The selected nft will be passed to the user&nbsp;<Link href="/" className={styles['checkbox-wrap__link']}>{cutWallet(requestNft.owner.owner.wallet, 4)}</Link></p>} />
+              <Checkbox checked={conditions.first} onClick={() => setConditions(prev => ({...prev, first: !prev.first}))} label="There are enough tokens to exchange" />
+              <Checkbox checked={conditions.second} onClick={() => setConditions(prev => ({...prev, second: !prev.second}))} label={<p>The selected nft will be passed to the user&nbsp;<Link href="/">{cutWallet(requestNft.owner.owner.wallet, 4)}</Link></p>} />
             </div>
           </div>
         </AlertModal>

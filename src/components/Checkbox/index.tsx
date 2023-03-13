@@ -21,15 +21,17 @@ const CheckboxBase = styled(CheckboxAntd)`
   align-items: center;
 
   & > span {
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 12px;
+    font-size: ${({ theme }) => theme.components.Checkbox.fontSize}px;
+    font-weight: ${({ theme }) => theme.components.Checkbox.fontWeight};
     transition: color .3s ease;
-  }
-  
-  &.ant-checkbox-wrapper-checked {
-    span {
+    
+    a {
+      text-decoration: underline;
       color: ${({ theme }) => theme.token.colorPrimary};
+      
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 
@@ -58,15 +60,11 @@ const CheckboxBase = styled(CheckboxAntd)`
       }
     }
     
-    &+span {
+    & + span {
       padding-inline-end: 0;
     }
 
     .ant-checkbox-inner {
-      padding: 2px;
-      border-radius: 0;
-      border: 1px solid ${({ theme }) => theme.components.Checkbox.colorBorder};
-
       &:after {
         top: 50%;
         left: 50%;

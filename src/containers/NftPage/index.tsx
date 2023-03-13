@@ -91,7 +91,7 @@ const NftPage = () => {
                       <Icon name="arrow-right_outlined" />
                     </div>
                     <div className={`${styles['buttons-active-wrap__item']} ${styles['green']}`}>
-                      <span>Exchange</span>
+                      <span>Trade</span>
                       <Icon name="trade_outlined" />
                     </div>
                     <div className={`${styles['buttons-active-wrap__item']} ${styles['red']}`}>

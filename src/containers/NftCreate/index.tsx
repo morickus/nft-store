@@ -100,10 +100,11 @@ const NftCreate = () => {
   }
 
   const checkRoyalties = (_: any, value: number) => {
-    if (value == 0 || value == 10 || value == 20 || value == 30 || value == 40 || value == 50) {
-      return Promise.resolve()
+    if (value > 50) {
+      return Promise.reject(new Error('Maximum is 50%'))
     }
-    return Promise.reject(new Error('Suggested: 0%, 10%, 20%, 30%. Maximum is 50%'))
+
+    return Promise.resolve()
   }
 
   return (
@@ -189,7 +190,7 @@ const NftCreate = () => {
                       <Form.Item name="name" rules={[{ required: true, message: 'Name is required' }]}>
                         <Input
                           placeholder="Cooool name"
-                          prefix={<Icon name="txt_filled" fontSize={24} color="grey" className="mr-13" />}
+                          prefix={<Icon name="txt_filled" fontSize={24} color={nameValue ? 'primary' : 'grey'} className="mr-13" />}
                         />
                       </Form.Item>
                     </div>
@@ -206,7 +207,7 @@ const NftCreate = () => {
                     <div className={styles.field}>
                       <label className={styles.label} htmlFor="shortDesc">Short description</label>
                       <div className={styles['prefix-wrap']}>
-                        <Icon name="txt_filled" fontSize={24} color="grey" className={styles['prefix-wrap__prefix']} />
+                        <Icon name="txt_filled" fontSize={24} color={shortDescValue ? 'primary' : 'grey'} className={styles['prefix-wrap__prefix']} />
                         <Form.Item name="shortDesc" rules={[{ required: true, message: 'Short description is required' }]}>
                           <TextArea
                             placeholder="My super NFT"
@@ -218,7 +219,7 @@ const NftCreate = () => {
                     <div className={styles.field}>
                       <label className={styles.label} htmlFor="desc">Full description</label>
                       <div className={styles['prefix-wrap']}>
-                        <Icon name="txt_filled" fontSize={24} color="grey" className={styles['prefix-wrap__prefix']} />
+                        <Icon name="txt_filled" fontSize={24} color={descValue ? 'primary' : 'grey'} className={styles['prefix-wrap__prefix']} />
                         <Form.Item name="desc" rules={[{ required: true, message: 'Full description is required' }]}>
                           <TextArea
                             rows={4}
@@ -241,7 +242,7 @@ const NftCreate = () => {
                           <Form.List name="properties">
                             {(fields, { add, remove }) => (
                               <>
-                                {fields.map((field) => (
+                                {fields.map((field, index) => (
                                   <Form.Item key={field.key}>
                                     <div className={styles['properties__item']}>
                                       <Form.Item
@@ -264,7 +265,7 @@ const NftCreate = () => {
                                         <Input
                                           size="small"
                                           placeholder="Title"
-                                          prefix={<Icon name="txt_filled" fontSize={16} color="grey" className="mr-8" />}
+                                          prefix={<Icon name="txt_filled" fontSize={16} color={propertiesValue[index].title ? 'primary' : 'grey'} className="mr-8" />}
                                         />
                                       </Form.Item>
                                       <Form.Item
@@ -279,7 +280,7 @@ const NftCreate = () => {
                                           size="small"
                                           placeholder="15"
                                           className={styles['input-number']}
-                                          prefix={<Icon name="txt_filled" fontSize={16} color="grey" className="mr-8" />}
+                                          prefix={<Icon name="txt_filled" fontSize={16} color={propertiesValue[index].size ? 'primary' : 'grey'} className="mr-8" />}
                                         />
                                       </Form.Item>
                                       <IconButton icon="delete_filled" colorIcon="red" sizeIcon={18} size={40} onClick={() => remove(field.name)} />
@@ -307,7 +308,7 @@ const NftCreate = () => {
               <Form
                 form={saleForm}
                 name="saleForm"
-                initialValues={{ saleMethod: 'fixed-price', price: 10, date: '3', startingDate: 'right-after-listing', freeMinting: false }}
+                initialValues={{ saleMethod: 'fixed-price', date: '3', startingDate: 'right-after-listing', freeMinting: false }}
                 className={`${styles['form__item']} ${step !== 'sale' && styles.hide}`}
               >
                 <p className="subtitle">Sale props</p>
@@ -361,9 +362,9 @@ const NftCreate = () => {
                             controls={false}
                             placeholder="0 ETH"
                             className={styles['input-number']}
-                            formatter={(value) => `${value || 0} ETH`}
+                            formatter={(value) => !!value ? `${value || 0} ETH` : ''}
                             parser={(value) => value!.replace(' ETH', '')}
-                            prefix={<Icon name="token_filled" fontSize={24} color="primary" className="mr-13" />}
+                            prefix={<Icon name="token_filled" fontSize={24} color={priceValue ? 'primary' : 'grey'} className="mr-13" />}
                           />
                         </Form.Item>
                         <div className={styles['expression__after']}>
@@ -413,7 +414,7 @@ const NftCreate = () => {
                           controls={false}
                           placeholder="Minimum bid"
                           className={styles['input-number']}
-                          prefix={<Icon name="token_filled" fontSize={24} color="grey" className="mr-13" />}
+                          prefix={<Icon name="token_filled" fontSize={24} color={minimumBidValue ? 'primary' : 'grey'} className="mr-13" />}
                         />
                       </Form.Item>
                     </div>
@@ -449,7 +450,7 @@ const NftCreate = () => {
                           controls={false}
                           placeholder="10"
                           className={styles['input-number']}
-                          prefix={<Icon name="Discount-Square_filled" fontSize={24} color="grey" className="mr-13" />}
+                          prefix={<Icon name="Discount-Square_filled" fontSize={24} color={royaltiesValue ? 'primary' : 'grey'} className="mr-13" />}
                         />
                       </Form.Item>
                       <p className={styles.footnote}>Suggested: 0%, 10%, 20%, 30%. Maximum is 50%</p>

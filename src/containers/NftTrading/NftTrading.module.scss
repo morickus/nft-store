@@ -1,4 +1,4 @@
-@import '../../styles/_vars.scss';
+@import '../../styles/utils/vars';
 
 .root {
   .form {
@@ -123,7 +123,7 @@
   .checkbox-wrap {
     gap: 8px;
     display: flex;
-    margin: 36px 0;
+    margin-top: 36px;
     text-align: left;
     flex-direction: column;
   }
@@ -153,34 +153,6 @@
 .wrap-button {
   gap: 24px;
   display: flex;
-
-  &__button {
-    border: none;
-    color: #FFFFFF;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 8px 16px;
-    line-height: 24px;
-    transition: filter .3s ease;
-
-    &:not(:disabled):hover {
-      filter: brightness(90%)
-    }
-
-    &_success {
-      background: var(--green-color);
-    }
-
-    &_rejection {
-      background: var(--red-color);
-    }
-
-    &:disabled {
-      cursor: default;
-      background: var(--grey-color);
-    }
-  }
 }
 
 @media (max-width: map-get($media, xl)) {

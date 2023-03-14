@@ -8,7 +8,7 @@ import CheckCard from '@/components/CheckCard'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import Icon from '@/components/Icon'
-import AlertModal from '@/widgets/Modals/AlertModal'
+import TemplateModal from '@/widgets/Modals/TemplateModal'
 import Input from '@/components/Input'
 import IconButton from '@/components/IconButton'
 import { cutWallet, getBase64 } from '@/utils'
@@ -34,7 +34,7 @@ const CollectionCreate = () => {
   const blockchainValue = Form.useWatch('blockchain', blockchainForm)
   const functionalValue = Form.useWatch('functional', descriptionForm)
   const [step, setStep] = useState<'blockchain' | 'type' | 'description' | 'preview'>('blockchain')
-  const [alertModal, setAlertModal] = useState(false)
+  const [templateModal, setTemplateModal] = useState(false)
   const [bannerUrl, setBannerUrl] = useState('')
   const [logoUrl, setLogoUrl] = useState('')
 
@@ -295,7 +295,7 @@ const CollectionCreate = () => {
                   <p>Do you like it?</p>
                   <div className={styles['wrap-submit__button']}>
                     <p>Cost: <span>1000FD</span></p>
-                    <Button type="primary" htmlType="submit" onClick={() => setAlertModal(true)}>Create collection</Button>
+                    <Button type="primary" htmlType="submit" onClick={() => setTemplateModal(true)}>Create collection</Button>
                   </div>
                 </div>
               </div>
@@ -303,13 +303,13 @@ const CollectionCreate = () => {
           </Form.Provider>
         </div>
       </div>
-      <AlertModal
+      <TemplateModal
         width={630}
-        open={alertModal}
+        open={templateModal}
         subtitle="Success"
         title="Create collection"
         text="Your collection has been created."
-        onCancel={() => setAlertModal(false)}
+        onCancel={() => setTemplateModal(false)}
         button={true}
       />
     </div>

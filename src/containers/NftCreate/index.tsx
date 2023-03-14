@@ -7,7 +7,7 @@ import CheckCard from '@/components/CheckCard'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import Icon from '@/components/Icon'
-import AlertModal from '@/widgets/Modals/AlertModal'
+import TemplateModal from '@/widgets/Modals/TemplateModal'
 import Input from '@/components/Input'
 import IconButton from '@/components/IconButton'
 import Select from '@/components/Select/base'
@@ -40,7 +40,7 @@ const NftCreate = () => {
   const propertiesValue = Form.useWatch('properties', descriptionForm)
 
   const [imageUrl, setImageUrl] = useState('')
-  const [alertModal, setAlertModal] = useState(false)
+  const [templateModal, setTemplateModal] = useState(false)
   const [step, setStep] = useState<'erc' | 'description' | 'sale' | 'preview'>('erc')
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const NftCreate = () => {
   const { collection, owner, price } = nftPage
 
   const wallet = {
-    img: '/metamask.svg',
+    img: '/wallet/metamask.svg',
     name: 'Ethereum',
     wallet: '0x6dkfed9339dd0hh',
     eth: 134.1,
@@ -106,7 +106,7 @@ const NftCreate = () => {
 
     return Promise.resolve()
   }
-
+  console.log('priceValue ',priceValue)
   return (
     <div className={styles.root}>
       <div className="container-edit-page">
@@ -356,40 +356,44 @@ const NftCreate = () => {
                     </div>
                     <div className={styles.field}>
                       <label className={styles.label} htmlFor="price">Price</label>
-                      <div className={styles['expression']}>
-                        <Form.Item name="price" rules={[{ validator: checkPrice }]}>
-                          <InputNumber
-                            controls={false}
-                            placeholder="0 ETH"
-                            className={styles['input-number']}
-                            formatter={(value) => !!value ? `${value || 0} ETH` : ''}
-                            parser={(value) => value!.replace(' ETH', '')}
-                            prefix={<Icon name="token_filled" fontSize={24} color={priceValue ? 'primary' : 'grey'} className="mr-13" />}
-                          />
-                        </Form.Item>
-                        <div className={styles['expression__after']}>
-                          <div className={styles['expression__item']}>
-                            <span className={styles.label}>U’ll receive</span>
-                            <p className={styles.value}>{priceValue - priceValue * (feePercent * 0.01)}</p>
-                          </div>
-                          <div className={styles['expression__item']}>
-                            <span className={styles.label}/>
-                            <p className={styles.value}>=</p>
-                          </div>
-                          <div className={styles['expression__item']}>
-                            <span className={styles.label}>price</span>
-                            <span className={styles.value}>{priceValue}</span>
-                          </div>
-                          <div className={styles['expression__item']}>
-                            <span className={styles.label}/>
-                            <span className={styles.value}>-</span>
-                          </div>
-                          <div className={styles['expression__item']}>
-                            <span className={styles.label}>fee</span>
-                            <p className={styles.value}>{feePercent}%</p>
-                          </div>
-                        </div>
-                      </div>
+                      <Form.Item name="price" rules={[{ validator: checkPrice }]}>
+                        <InputNumber
+                          min={0}
+                          controls={false}
+                          placeholder="0 ETH"
+                          className={styles['input-number']}
+                          formatter={(value) => !!value ? `${value || 0} ETH` : ''}
+                          // @ts-ignore
+                          parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
+                          prefix={<>
+                            <Icon name="token_filled" fontSize={24} color={priceValue ? 'primary' : 'grey'} className="mr-13" />
+                            <div className="after-input-number">
+                              <div className="expression">
+                                <div className="expression__item">
+                                  <span className="expression__label">U’ll receive</span>
+                                  <p className="expression__value">{priceValue - priceValue * (feePercent * 0.01)}</p>
+                                </div>
+                                <div className="expression__item">
+                                  <span className="expression__label"/>
+                                  <p className="expression__value">=</p>
+                                </div>
+                                <div className="expression__item">
+                                  <span className="expression__label">price</span>
+                                  <span className="expression__value">{priceValue || 0}</span>
+                                </div>
+                                <div className="expression__item">
+                                  <span className="expression__label"/>
+                                  <Icon name="close" fontSize={7} color="default" className="expression__value" />
+                                </div>
+                                <div className="expression__item">
+                                  <span className="expression__label">fee</span>
+                                  <p className="expression__value">{feePercent || 0}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </>}
+                        />
+                      </Form.Item>
                     </div>
                     <div className={styles.field}>
                       <label className={styles.label} htmlFor="date">Date of listing expiration</label>
@@ -437,7 +441,7 @@ const NftCreate = () => {
                         <label className={styles.label} htmlFor="freeMinting">Free minting</label>
                         <p className={styles.footnote}>Bids below this amount won’t be allowed.</p>
                       </div>
-                      <Form.Item name="freeMinting">
+                      <Form.Item name="freeMinting" valuePropName="checked">
                         <Switch />
                       </Form.Item>
                     </div>
@@ -450,7 +454,7 @@ const NftCreate = () => {
                           controls={false}
                           placeholder="10"
                           className={styles['input-number']}
-                          prefix={<Icon name="Discount-Square_filled" fontSize={24} color={royaltiesValue ? 'primary' : 'grey'} className="mr-13" />}
+                          prefix={<Icon name="Discount-Square_filled" fontSize={24} color={(royaltiesValue !== null && royaltiesValue >= 0) ? 'primary' : 'grey'} className="mr-13" />}
                         />
                       </Form.Item>
                       <p className={styles.footnote}>Suggested: 0%, 10%, 20%, 30%. Maximum is 50%</p>
@@ -553,20 +557,20 @@ const NftCreate = () => {
                 </div>
                 <div className={styles['wrap-submit']}>
                   <p>Do you like it?</p>
-                  <Button type="primary" size="small" htmlType="submit" onClick={() => setAlertModal(true)}>Create NFT</Button>
+                  <Button type="primary" size="small" htmlType="submit" onClick={() => setTemplateModal(true)}>Create NFT</Button>
                 </div>
               </div>
             </div>
           </Form.Provider>
         </div>
       </div>
-      <AlertModal
+      <TemplateModal
         width={630}
-        open={alertModal}
+        open={templateModal}
         subtitle="Success"
         title="Create NFT item"
         text="Your NFT item(s) has been created."
-        onCancel={() => setAlertModal(false)}
+        onCancel={() => setTemplateModal(false)}
         button={true}
       />
     </div>

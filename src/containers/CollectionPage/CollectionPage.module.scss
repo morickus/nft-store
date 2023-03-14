@@ -1,4 +1,4 @@
-@import '../../styles/_vars.scss';
+@import '../../styles/utils/vars';
 
 .root {
   .sticky-wrap {
@@ -374,57 +374,6 @@
 
       .input-number {
         width: 360px;
-      }
-
-      .after {
-        top: 50%;
-        z-index: 1;
-        right: 12px;
-        user-select: none;
-        position: absolute;
-        background: #FFFFFF;
-        transform: translateY(-50%);
-
-        .expression {
-          display: flex;
-          margin-top: 5px;
-
-          &__item {
-            position: relative;
-            margin-right: 10.5px;
-
-            .label {
-              left: 50%;
-              top: -8px;
-              height: 7px;
-              display: block;
-              font-size: 7px;
-              font-weight: 700;
-              line-height: 7px;
-              position: absolute;
-              text-transform: uppercase;
-              transform: translateX(-50%);
-              color: rgba(38, 35, 63, 0.3);
-            }
-
-            .value {
-              display: block;
-              font-size: 12px;
-              font-weight: 700;
-              line-height: 12px;
-            }
-          }
-        }
-
-        .btn-plus {
-          gap: 4px;
-          display: flex;
-
-          &__item {
-            padding: 0;
-            width: 40px;
-          }
-        }
       }
     }
   }
@@ -1107,10 +1056,6 @@
       .item {
         .input-number {
           width: 272px;
-        }
-
-        .after {
-          display: none;
         }
       }
     }

@@ -185,7 +185,7 @@ const CollectionPage = () => {
               onValuesChange={(_, value) => console.log('form: ',value)}
             >
               <div className={styles['item']}>
-                <Form.Item name="count" rules={[{ required: true }]}>
+                <Form.Item name="count">
                   <div>
                     <InputNumber
                       min={0}
@@ -195,61 +195,64 @@ const CollectionPage = () => {
                       placeholder="Amount NFTs"
                       className={styles['input-number']}
                       formatter={(value) => `${value}`.replace(/[^0-9]/g, '')}
-                      prefix={<Icon name="collections_solid" fontSize={24} color="grey" className="mr-16" />}
+                      prefix={<Icon name="collections_solid" fontSize={24} color={countMint ? 'primary' : 'grey'} className="mr-16" />}
                     />
-                    <div className={styles.after}>
-                      <div className={styles['btn-plus']}>
-                        <Button className={styles['btn-plus__item']} onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 1)}>+1</Button>
-                        <Button className={styles['btn-plus__item']} onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 5)}>+5</Button>
-                        <Button className={styles['btn-plus__item']} onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 10)}>+10</Button>
+                    <div className="after-input-number d-xs-none">
+                      <div className="btn-plus">
+                        <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 1)}>+1</Button>
+                        <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 5)}>+5</Button>
+                        <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 10)}>+10</Button>
                       </div>
                     </div>
                   </div>
                 </Form.Item>
               </div>
               <div className={styles['item']}>
-                <Form.Item name="price" rules={[{ required: true }]}>
-                  <div>
-                    <InputNumber
-                      min={0}
-                      size="large"
-                      controls={false}
-                      placeholder="0.1 ETH for 1 NFT"
-                      className={styles['input-number']}
-                      prefix={<Icon name="token_filled" fontSize={24} color="grey" className="mr-16" />}
-                    />
-                    <div className={styles.after}>
-                      <div className={styles.expression}>
-                        <div className={styles['expression__item']}>
-                          <span className={styles.label}>total</span>
-                          <p className={styles.value}>{(countMint || 0) * (priceMint || 0)}</p>
-                        </div>
-                        <div className={styles['expression__item']}>
-                          <span className={styles.label}/>
-                          <p className={styles.value}>=</p>
-                        </div>
-                        <div className={styles['expression__item']}>
-                          <span className={styles.label}>price</span>
-                          <span className={styles.value}>{priceMint || 0}</span>
-                        </div>
-                        <div className={styles['expression__item']}>
-                          <span className={styles.label}/>
-                          <Icon name="close" fontSize={7} color="default" className={styles.value} />
-                        </div>
-                        <div className={styles['expression__item']}>
-                          <span className={styles.label}>count</span>
-                          <p className={styles.value}>{countMint || 0}</p>
+                <Form.Item name="price">
+                  <InputNumber
+                    min={0}
+                    size="large"
+                    controls={false}
+                    placeholder="0.1 ETH for 1 NFT"
+                    className={styles['input-number']}
+                    formatter={(value) => !!value ? `${value || 0} ETH` : ''}
+                    // @ts-ignore
+                    parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
+                    prefix={<>
+                      <Icon name="token_filled" fontSize={24} color={priceMint ? 'primary' : 'grey'} className="mr-16" />
+                      <div className="after-input-number d-xs-none">
+                        <div className="expression">
+                          <div className="expression__item">
+                            <span className="expression__label">total</span>
+                            <p className="expression__value">{(countMint || 0) * (priceMint || 0)}</p>
+                          </div>
+                          <div className="expression__item">
+                            <span className="expression__label"/>
+                            <p className="expression__value">=</p>
+                          </div>
+                          <div className="expression__item">
+                            <span className="expression__label">price</span>
+                            <span className="expression__value">{priceMint || 0}</span>
+                          </div>
+                          <div className="expression__item">
+                            <span className="expression__label"/>
+                            <Icon name="close" fontSize={7} color="default" className="expression__value" />
+                          </div>
+                          <div className="expression__item">
+                            <span className="expression__label">count</span>
+                            <p className="expression__value">{countMint || 0}</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    </>}
+                  />
                 </Form.Item>
               </div>
               <div className={styles['item']}>
                 <Button
                   type="primary"
                   htmlType="submit"
-                  // disabled={!countMint || !priceMint || countMint <= 0 || priceMint <= 0}
+                  disabled={!countMint || !priceMint || countMint <= 0 || priceMint <= 0}
                 >
                   MINT!!!
                 </Button>

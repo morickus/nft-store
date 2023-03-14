@@ -1,4 +1,4 @@
-@import '../../styles/_vars.scss';
+@import '../../styles/utils/vars';
 
 .root {
   .wrapper {
@@ -297,50 +297,6 @@
                       line-height: 16px;
                       text-align: center;
                       white-space: pre-line;
-                    }
-                  }
-                }
-              }
-
-              .expression {
-                position: relative;
-
-                &__after {
-                  top: 23px;
-                  z-index: 1;
-                  right: 12px;
-                  display: flex;
-                  user-select: none;
-                  position: absolute;
-                  background: #FFFFFF;
-
-                  .expression__item {
-                    position: relative;
-
-                    &:not(:last-child) {
-                      margin-right: 8.5px;
-                    }
-
-                    .label {
-                      left: 50%;
-                      top: -8px;
-                      height: 7px;
-                      display: block;
-                      font-size: 7px;
-                      font-weight: 700;
-                      line-height: 7px;
-                      position: absolute;
-                      white-space: nowrap;
-                      text-transform: uppercase;
-                      transform: translateX(-50%);
-                      color: rgba(38, 35, 63, 0.3);
-                    }
-
-                    .value {
-                      display: block;
-                      font-size: 12px;
-                      font-weight: 700;
-                      line-height: 12px;
                     }
                   }
                 }

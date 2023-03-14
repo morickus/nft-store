@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-@import './_vars.scss';
+@import 'utils/vars';
 
 :root {
   --red-color: #EB5757;
@@ -113,6 +113,59 @@ body {
   cursor: pointer;
 }
 
+.after-input-number {
+  top: 50%;
+  z-index: 1;
+  right: 12px;
+  user-select: none;
+  position: absolute;
+  background: #FFFFFF;
+  transform: translateY(-50%);
+
+  .expression {
+    display: flex;
+    margin-top: 5px;
+
+    &__item {
+      position: relative;
+      margin-right: 10.5px;
+    }
+
+    &__label {
+      left: 50%;
+      top: -8px;
+      height: 7px;
+      display: block;
+      font-size: 7px;
+      font-weight: 700;
+      line-height: 7px;
+      position: absolute;
+      white-space: nowrap;
+      text-transform: uppercase;
+      transform: translateX(-50%);
+      color: rgba(38, 35, 63, 0.3);
+    }
+
+    &__value {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 12px;
+      color: var(--black-color);
+    }
+  }
+
+  .btn-plus {
+    gap: 4px;
+    display: flex;
+
+    &__item {
+      padding: 0;
+      width: 40px;
+    }
+  }
+}
+
 @media (max-width: map-get($media, xl)) {
   .container {
     max-width: 1440px;
@@ -194,7 +247,11 @@ body {
 }
 
 @media (max-width: map-get($media, xs)) {
-  .after-expression {
+  .d-xs-none {
+    display: none;
+  }
+
+  .after-input-number.hide-xs {
     display: none;
   }
 }

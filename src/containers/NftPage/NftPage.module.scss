@@ -1,4 +1,4 @@
-@import '../../styles/_vars.scss';
+@import '../../styles/utils/vars';
 
 .root {
   .wrapper {
@@ -94,6 +94,16 @@
             width: fit-content;
             border: 2px solid var(--light-gray-color);
 
+            &.price-wrap_sale {
+              .item {
+                padding: 16px 24px;
+
+                .btn {
+                  display: block;
+                }
+              }
+            }
+
             .item {
               padding: 24px;
 
@@ -139,6 +149,11 @@
                 &:hover {
                   color: #5350FF;
                 }
+              }
+
+              .btn {
+                display: none;
+                margin-top: 8px;
               }
             }
           }
@@ -207,6 +222,10 @@
       .content-wrap {
         margin-top: 60px;
 
+        .tabs {
+          width: fit-content;
+        }
+
         .content {
           .block {
             margin-top: 24px;
@@ -235,6 +254,18 @@
               padding: 12px 0;
               align-items: center;
               justify-content: space-between;
+
+              &.bids-wrap__item_sale {
+                &:hover {
+                  .price {
+                    display: none;
+                  }
+
+                  .btn {
+                    display: block;
+                  }
+                }
+              }
 
               &:first-child {
                 padding-top: 0;
@@ -309,6 +340,10 @@
                   color: var(--grey-color);
                 }
               }
+
+              .btn {
+                display: none;
+              }
             }
           }
 
@@ -366,6 +401,19 @@
         }
       }
     }
+  }
+}
+
+.nft-form {
+  max-width: 360px;
+  margin-top: 36px;
+
+  .input {
+    width: 100%;
+  }
+
+  .checkbox {
+    margin: 16px 0 36px;
   }
 }
 
@@ -504,6 +552,7 @@
           margin-top: 56px;
 
           .tabs {
+            width: 100%;
             display: flex;
             justify-content: center;
           }
@@ -578,11 +627,11 @@
               }
 
               & > div {
-                width: 56px;
-                height: 56px;
+                width: 56px !important;
+                height: 56px !important;
 
                 i {
-                  font-size: 24px;
+                  font-size: 24px !important;
                 }
               }
             }
@@ -695,6 +744,14 @@
           }
         }
       }
+    }
+  }
+
+  .nft-form {
+    margin-top: 24px;
+
+    .checkbox {
+      margin-bottom: 24px;
     }
   }
 }

@@ -21,6 +21,7 @@ const CheckboxBase = styled(CheckboxAntd)`
   align-items: center;
 
   & > span {
+    text-align: left;
     font-size: ${({ theme }) => theme.components.Checkbox.fontSize}px;
     font-weight: ${({ theme }) => theme.components.Checkbox.fontWeight};
     transition: color .3s ease;

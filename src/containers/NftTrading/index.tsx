@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { INft, IOwner, nftTradeItemsArray } from '../../../store'
 import NftForm from '@/widgets/SearchForms/NftForm'
-import AlertModal from '@/widgets/Modals/AlertModal'
+import TemplateModal from '@/widgets/Modals/TemplateModal'
 import ChooseNft from '@/components/ChooseNft'
 import styles from './NftTrading.module.scss'
 import NftCard from '@/components/NftCard'
@@ -60,7 +60,7 @@ const NftTrading = () => {
       </div>
       {/*TODO: refactoring this*/}
       {!!tradeNft && (
-        <AlertModal
+        <TemplateModal
           width={630}
           open={!!tradeNft}
           title="NFT trading"
@@ -76,7 +76,7 @@ const NftTrading = () => {
             setTradeNftForm(defaultTradeNftForm)
             setTradeNft(undefined)
           }}
-          type={stepModal == 'success' ? 'success' : false}
+          icon={stepModal == 'success' ? 'success' : false}
           subtitle={<span className={styles['modal-subtitle']}><span>KaleidoKids #488</span><Icon name="trade_outlined-1" fontSize={18} color="grey" /><span>Otherdeed #666</span></span>}
           button={stepModal == 'success' ? true : <Button disabled={!conditions.first || !conditions.second || !nftId} onClick={() => setStepModal('success')} type="primary">Send an offer</Button>}
         >
@@ -123,10 +123,10 @@ const NftTrading = () => {
               </div>
             )}
           </div>
-        </AlertModal>
+        </TemplateModal>
       )}
       {!!requestNft && stepModal == 'init' && (
-        <AlertModal
+        <TemplateModal
           width={630}
           open={!!requestNft}
           title="NFT trading"
@@ -134,18 +134,18 @@ const NftTrading = () => {
             setConditions(defaultConditions)
             setRequestNft(undefined)
           }}
-          type={false}
+          icon={false}
           subtitle={<span className={styles['modal-subtitle']}><span>KaleidoKids #488</span><Icon name="trade_outlined-1" fontSize={18} color="grey" /><span>Otherdeed #666</span></span>}
           button={(
             <div className={styles['wrap-button']}>
-              <button className={`${styles['wrap-button__button']} ${styles['wrap-button__button_success']}`} disabled={!conditions.first || !conditions.second} onClick={() => {
+              <Button type="primary" safety className={styles['wrap-button__button']} disabled={!conditions.first || !conditions.second} onClick={() => {
                 setConditions(defaultConditions)
                 setStepModal('success')
-              }}>I agree</button>
-              <button className={`${styles['wrap-button__button']} ${styles['wrap-button__button_rejection']}`} onClick={() => {
+              }}>I agree</Button>
+              <Button type="primary" danger className={styles['wrap-button__button']} onClick={() => {
                 setConditions(defaultConditions)
                 setStepModal('rejection')
-              }}>Not want</button>
+              }}>Not want</Button>
             </div>
           )}
         >
@@ -172,15 +172,15 @@ const NftTrading = () => {
               <Checkbox checked={conditions.second} onClick={() => setConditions(prev => ({...prev, second: !prev.second}))} label={<p>The selected nft will be passed to the user&nbsp;<Link href="/">{cutWallet(requestNft.owner.owner.wallet, 4)}</Link></p>} />
             </div>
           </div>
-        </AlertModal>
+        </TemplateModal>
       )}
       {!!requestNft && (stepModal == 'success' || stepModal == 'rejection') && (
-        <AlertModal
+        <TemplateModal
           width={630}
           button={true}
           open={!!requestNft}
           subtitle="Otherdeed #666"
-          type={stepModal == 'rejection' ? 'error' : 'success'}
+          icon={stepModal == 'rejection' ? 'error' : 'success'}
           title={stepModal == 'rejection' ? 'Rejection' : 'Success'}
           text={stepModal == 'rejection' ? 'You canceled the exchange' : 'Congratulations! Now you are the owner of this NFT'}
           onCancel={() => {
@@ -189,7 +189,7 @@ const NftTrading = () => {
           }}
         >
           <ChooseNft nft={requestNft.owner} belong="Owner" className={styles['choose-nft']} />
-        </AlertModal>
+        </TemplateModal>
       )}
     </div>
   );

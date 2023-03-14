@@ -358,8 +358,8 @@
           overflow: hidden;
           user-select: none;
           pointer-events: none;
-          border: 2px solid #F7F7F7;
           grid-template-columns: 1fr 400px;
+          border: 2px solid var(--light-gray-color);
 
           .left-side {
             .header {

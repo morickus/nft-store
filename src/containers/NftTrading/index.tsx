@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { INft, IOwner, nftTradeItemsArray } from '../../../store'
 import NftForm from '@/widgets/SearchForms/NftForm'
-import AlertModal from '@/widgets/Models/AlertModal'
+import AlertModal from '@/widgets/Modals/AlertModal'
 import ChooseNft from '@/components/ChooseNft'
 import styles from './NftTrading.module.scss'
 import NftCard from '@/components/NftCard'

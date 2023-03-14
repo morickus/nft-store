@@ -7,7 +7,7 @@ import CheckCard from '@/components/CheckCard'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import Icon from '@/components/Icon'
-import AlertModal from '@/widgets/Models/AlertModal'
+import AlertModal from '@/widgets/Modals/AlertModal'
 import Input from '@/components/Input'
 import IconButton from '@/components/IconButton'
 import Select from '@/components/Select/base'
@@ -58,7 +58,7 @@ const NftCreate = () => {
   const { collection, owner, price } = nftPage
 
   const wallet = {
-    img: '/fox.svg',
+    img: '/metamask.svg',
     name: 'Ethereum',
     wallet: '0x6dkfed9339dd0hh',
     eth: 134.1,

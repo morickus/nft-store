@@ -220,7 +220,7 @@
           overflow: hidden;
           user-select: none;
           pointer-events: none;
-          border: 2px solid #F7F7F7;
+          border: 2px solid var(--light-gray-color);
 
           .header {
             .banner {

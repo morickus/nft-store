@@ -1,0 +1,115 @@
+@import '../../styles/utils/vars.scss';
+
+.root {
+  padding: 12px;
+  text-align: left;
+  border: 2px solid var(--light-gray-color);
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__left-side {
+      display: flex;
+      align-items: center;
+
+      .info {
+        margin-left: 12px;
+
+        &__name {
+          opacity: 0.2;
+          font-size: 9px;
+          font-weight: 500;
+          line-height: 9px;
+        }
+
+        &__wallet {
+          font-size: 10px;
+          margin-top: 1px;
+          font-weight: 600;
+          line-height: 10px;
+        }
+      }
+    }
+
+    &__right-side {
+      .btn {
+        height: 26px;
+        padding: 0 8.5px;
+        line-height: 15px;
+        border-width: 1px !important;
+      }
+
+      .status {
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 10px;
+
+        color: var(--green-color);
+      }
+    }
+  }
+
+  .body {
+    margin-top: 12px;
+
+    .name {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 18px;
+      margin-bottom: 8px;
+    }
+
+    .wallets {
+      gap: 6px;
+      display: flex;
+      flex-direction: column;
+
+      &__item {
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 2px solid var(--light-gray-color);
+
+        .balance {
+          display: flex;
+          align-items: center;
+
+          p {
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 6px;
+            line-height: 12px;
+          }
+        }
+      }
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 12px;
+    }
+  }
+}
+
+@media (max-width: map-get($media, xl)) {
+
+}
+
+@media (max-width: map-get($media, lg)) {
+
+}
+
+@media (max-width: map-get($media, md)) {
+
+}
+
+@media (max-width: map-get($media, sm)) {
+
+}
+
+@media (max-width: map-get($media, xs)) {
+
+}

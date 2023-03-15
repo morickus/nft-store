@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import styles from './NftCreate.module.scss'
 import RadioButton from '@/components/RadioButton'
 import Button from '@/components/Button'
-import { Form, Radio as RadioAntd, Input as InputAntd, RadioChangeEvent, InputNumber } from 'antd'
+import { Form, Radio, Input as InputAntd, RadioChangeEvent, InputNumber } from 'antd'
 import CheckCard from '@/components/CheckCard'
-import styled from '@emotion/styled'
 import Image from 'next/image'
 import Icon from '@/components/Icon'
 import TemplateModal from '@/widgets/Modals/TemplateModal'
@@ -18,6 +17,7 @@ import { IconNamesMap } from '@/components/Icon/types'
 import Switch from '@/components/Switch'
 import NftNested from '@/components/NftNested'
 import { nftPage } from '../../../store'
+import Wallet from '@/components/Wallet'
 
 const UploadImage = dynamic(() => import('@/components/UploadImage'), { ssr: false })
 
@@ -56,14 +56,6 @@ const NftCreate = () => {
   ]
 
   const { collection, owner, price } = nftPage
-
-  const wallet = {
-    img: '/wallet/metamask.svg',
-    name: 'Ethereum',
-    wallet: '0x6dkfed9339dd0hh',
-    eth: 134.1,
-    wEth: 1233.5
-  }
 
   const saleMethod = [
     {
@@ -106,7 +98,7 @@ const NftCreate = () => {
 
     return Promise.resolve()
   }
-  console.log('priceValue ',priceValue)
+
   return (
     <div className={styles.root}>
       <div className="container-edit-page">
@@ -150,8 +142,8 @@ const NftCreate = () => {
               <Form form={ercForm} name="ercForm" initialValues={{ type: '721' }} className={`${styles['form__item']} ${step !== 'erc' && styles.hide}`}>
                 <p className="subtitle">ERC standart</p>
                 <Form.Item name="type" noStyle>
-                  <RadioGroup className={styles['radio-wrap']}>
-                    <Radio value="721">
+                  <Radio.Group className={styles['radio-wrap']}>
+                    <Radio value="721" className="ant-radio-hide">
                       <CheckCard checked={ercValue == "721"}>
                         <div className={`${styles['radio-wrap__item']} ${ercValue == "721" && styles['radio-wrap__item_active']}`}>
                           <Icon name="image_solid" fontSize={56} color="grey" />
@@ -159,7 +151,7 @@ const NftCreate = () => {
                         </div>
                       </CheckCard>
                     </Radio>
-                    <Radio value="1155">
+                    <Radio value="1155" className="ant-radio-hide">
                       <CheckCard checked={ercValue == "1155"}>
                         <div className={`${styles['radio-wrap__item']} ${ercValue == "1155" && styles['radio-wrap__item_active']}`}>
                           <div className={styles['radio-wrap__wrap-icon']}>
@@ -173,7 +165,7 @@ const NftCreate = () => {
                         </div>
                       </CheckCard>
                     </Radio>
-                  </RadioGroup>
+                  </Radio.Group>
                 </Form.Item>
                 <Button type="primary" size="small" htmlType="submit">Next</Button>
               </Form>
@@ -316,33 +308,14 @@ const NftCreate = () => {
                   <div className={styles['left-side']}>
                     <div className={styles.field}>
                       <label className={styles.label}>Wallet</label>
-                      <div className={styles.wallet}>
-                        <div className={styles['wallet__header']}>
-                          <div>
-                            <Image src={wallet.img} alt={wallet.img} width={32} height={32} />
-                            <div className={styles.info}>
-                              <p className={styles['info__name']}>{wallet.name}</p>
-                              <p className={styles['info__wallet']}>{cutWallet(wallet.wallet, 4)}</p>
-                            </div>
-                          </div>
-                          <Icon name="copy_filled" color="primary" fontSize={18} />
-                        </div>
-                        <div className={styles['wallet__item']}>
-                          <Icon name="token_filled" fontSize={18} />
-                          <span>{wallet.eth} ETH</span>
-                        </div>
-                        <div className={styles['wallet__item']}>
-                          <Icon name="token_filled" color="pink" fontSize={18} />
-                          <span>{wallet.eth} ETH</span>
-                        </div>
-                      </div>
+                      <Wallet />
                     </div>
                     <div className={`${styles.field} ${styles['sale-method']}`}>
                       <label className={styles.label} htmlFor="saleMethod">Sale method</label>
                       <Form.Item name="saleMethod">
-                        <RadioGroup className={styles['sale-method-wrap']}>
+                        <Radio.Group className={styles['sale-method-wrap']}>
                           {saleMethod.map(i => (
-                            <Radio key={i.value} value={i.value}>
+                            <Radio key={i.value} value={i.value} className="ant-radio-hide">
                               <CheckCard checked={saleMethodValue == i.value} icon={false}>
                                 <div className={`${styles['sale-method-wrap__item']} ${saleMethodValue == i.value && styles['sale-method-wrap__item_active']}`}>
                                   <Icon name={i.icon} fontSize={32} color="grey" />
@@ -351,7 +324,7 @@ const NftCreate = () => {
                               </CheckCard>
                             </Radio>
                           ))}
-                        </RadioGroup>
+                        </Radio.Group>
                       </Form.Item>
                     </div>
                     <div className={styles.field}>
@@ -576,19 +549,5 @@ const NftCreate = () => {
     </div>
   );
 };
-
-const RadioGroup = styled(RadioAntd.Group)``
-const Radio = styled(RadioAntd)`
-  margin: 0;
-  
-  .ant-radio {
-    display: none;
-  }
-
-  .ant-radio + span {
-    width: 100%;
-    padding: 0;
-  }
-`;
 
 export default NftCreate

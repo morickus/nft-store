@@ -9,7 +9,7 @@ const Modal: FC<ModalProps> = (props) => {
   return (
     <ModalBase
       centered
-      closeIcon={<IconButton icon="close_outlined" colorIcon="default" sizeIcon={16} size={36} />}
+      closeIcon={<IconButton icon="close_outlined" colorIcon="default" sizeIcon={16} size={40} />}
       {...props}
     >
       {children}

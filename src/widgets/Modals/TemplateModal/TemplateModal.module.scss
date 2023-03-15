@@ -1,6 +1,8 @@
 @import '../../../styles/utils/vars';
 
 .root {
+  position: relative;
+
   .wrapper {
     display: flex;
     text-align: center;
@@ -32,6 +34,13 @@
     .button-wrap {
       margin-top: 36px;
     }
+  }
+
+  .icon-back {
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    transform: rotate(180deg);
   }
 }
 

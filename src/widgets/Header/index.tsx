@@ -7,10 +7,8 @@ import Icon from '@/components/Icon'
 import Bell from '@/components/Bell'
 import Avatar from '@/components/Avatar'
 import LanguageSelector from '@/components/LanguageSelector'
-import Image from 'next/image'
-import Switch from '@/components/Switch'
-import { cutWallet } from '@/utils'
 import dynamic from 'next/dynamic'
+import Wallet from '@/components/Wallet'
 
 const ConnectWallet = dynamic(() => import('@/widgets/Modals/ConnectWallet'), { ssr: false })
 
@@ -109,44 +107,7 @@ const Header: FC<IHeader> = (props) => {
             </nav>
           </div>
           <div className={styles.bottom}>
-            <div className={styles['wallet-wrap']}>
-              <div className={styles.header}>
-                <div className={styles['left-side']}>
-                  <Image src="/wallet/metamask.svg" alt="fox" width={24} height={24} />
-                  <div className={styles.text}>
-                    <span className={styles.name}>Ethereum</span>
-                    <span className={styles.number}>{cutWallet('0x6dw23s23dw42s232ew2de4bzw23e23ads23flf2d0hh')}</span>
-                  </div>
-                </div>
-                <div className={styles['right-side']}>
-                  <div className={styles.button}>
-                    <span>Copy</span>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.body}>
-                <span className={styles.name}>Ethereum</span>
-                <div className={styles.wallet}>
-                  <div className={styles['wallet__item']}>
-                    <div className={styles.balance}>
-                      <Icon name="token_filled" className={styles.icon} fontSize={14} />
-                      <span>134.1 ETH</span>
-                    </div>
-                    <Switch defaultChecked />
-                  </div>
-                  <div className={styles['wallet__item']}>
-                    <div className={styles.balance}>
-                      <Icon name="token_filled" className={styles.icon} color="pink" fontSize={14} />
-                      <span>1233.5 wETH</span>
-                    </div>
-                    <Switch />
-                  </div>
-                </div>
-                <div className={styles.button}>
-                  <span>Другие сети</span>
-                </div>
-              </div>
-            </div>
+            <Wallet isButton isSwitch />
             <div className={styles.buttons}>
               <div className={styles['buttons__item']}>
                 <span className={styles.text}>Подключить</span>

@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 import NftCard from '@/components/NftCard'
 import Modal from '@/components/Modal'
 import { Form, InputNumber } from 'antd'
+import MintModal from '@/widgets/Modals/MintModal'
 
 const CollectionPage = () => {
   const router = useRouter()
@@ -23,7 +24,7 @@ const CollectionPage = () => {
   const reWrapper = useRef<HTMLDivElement>(null)
   const [isReadMore, setIsReadMore] = useState(false)
   const [isMint, setIsMint] = useState(false)
-  const [isCongratulation, setIsCongratulation] = useState({open: false, nested: false})
+  const [isCongratulation, setIsCongratulation] = useState(false)
   const { banner, logo, title, subtitle, creator, smart, props, text, price, items, description, aboutProject, team, congratulation } = collectionPage
 
   type keys = keyof propsType
@@ -179,7 +180,7 @@ const CollectionPage = () => {
               className={styles.form}
               onFinish={() => {
                 setIsMint(false)
-                setIsCongratulation(prev => ({...prev, open: true}))
+                setIsCongratulation(true)
                 form.resetFields()
               }}
               onValuesChange={(_, value) => console.log('form: ',value)}
@@ -270,89 +271,19 @@ const CollectionPage = () => {
           </div>
         </div>
       </Modal>
-      <Modal
-        width={1212}
-        footer={false}
-        open={isCongratulation.open}
-        onCancel={() => setIsCongratulation({open: false, nested: false})}
-      >
-        <div className={styles['modal-congratulation']}>
-          <div className="modal-box-wrap">
-            <div className={styles['modal-congratulation-wrap']}>
-              <div className={styles['modal-congratulation-wrap__left-side']}>
-                {isCongratulation.nested ? (
-                  <div className={styles['second-screen']}>
-                    <div className={styles['second-screen__header']}>
-                      <p>Nested items</p>
-                      <IconButton icon="chevron-up-down_outlined" colorIcon="default" onClick={() => setIsCongratulation(prev => ({...prev, nested: false}))} />
-                    </div>
-                    <div className={styles['second-screen__content']}>
-                      {congratulation.nested.map(i => {
-                        return 'image' in i ? (
-                          <div key={i.title} className={`${styles['nested-item']} ${styles['nested-item_image']}`}>
-                            <Image className={styles.image} src={i.image} width={241} height={164} alt={i.image} />
-                            <span className={styles['nested-item__title']}>{i.title}</span>
-                            <p className={styles['nested-item__subtitle']}>{i.subtitle}</p>
-                          </div>
-                        ) : (
-                          <div key={i.title} className={styles['nested-item']}>
-                            <Icon name={i.icon} className={styles.icon} fontSize={64} color="grey" />
-                            <div>
-                              <span className={styles['nested-item__title']}>{i.title}</span>
-                              <p className={styles['nested-item__subtitle']}>{i.subtitle}</p>
-                            </div>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </div>
-                ): (
-                  <div className={styles['first-screen']}>
-                    <Image src={congratulation.image} alt={congratulation.image} width={550} height={550} />
-                    <Button className={styles['first-screen__button']} onClick={() => setIsCongratulation(prev => ({...prev, nested: true}))}>Open nested NFTs <Icon name="chevron-up-down_outlined" className={styles['first-screen__button-icon']} /></Button>
-                  </div>
-                )}
-              </div>
-              <div className={styles['modal-congratulation-wrap__right-side']}>
-                <p className={styles.title}>Congratulations</p>
-                <div className={styles['modal-congratulation-wrap__right-side__name']}>
-                  <span>Your NFT is minted</span>
-                  <p className={styles.subtitle}>{congratulation.name}</p>
-                </div>
-                <div className={styles.property}>
-                  <div className={`${styles['property__item']} ${styles['property__item_color']}`}>
-                    <span>color</span>
-                    <p>{congratulation.props.color}</p>
-                  </div>
-                  <div className={`${styles['property__item']} ${styles['property__item_location']}`}>
-                    <span>location</span>
-                    <p>{congratulation.props.location}</p>
-                  </div>
-                  <div className={`${styles['property__item']} ${styles['property__item_stick']}`}>
-                    <span>stick</span>
-                    <p>{congratulation.props.stick}</p>
-                  </div>
-                  <div className={`${styles['property__item']} ${styles['property__item_side']}`}>
-                    <span>side</span>
-                    <p>{congratulation.props.side}</p>
-                  </div>
-                </div>
-                <div className={styles['modal-congratulation-wrap__right-side__buttons']}>
-                  <Button type="primary">View in my collection</Button>
-                  <Link href="/" className={styles.link}>This Smart-contract</Link>
-                </div>
-                <div className={styles['modal-congratulation-wrap__right-side__ref-link-wrap']}>
-                  <p>Your referral link</p>
-                  <div>
-                    <Link href="/" className={styles.link}>{congratulation.referral}</Link>
-                    <Button size="small">Copy</Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Modal>
+      <MintModal
+        modalProps={{
+          open: isCongratulation,
+          onCancel: () => setIsCongratulation(false)
+        }}
+        label="Your NFT is minted"
+        title="Congratulations"
+        name={congratulation.name}
+        image={congratulation.image}
+        nested={congratulation.nested}
+        property={congratulation.props}
+        referral={congratulation.referral}
+      />
     </div>
   );
 };

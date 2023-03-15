@@ -89,3 +89,16 @@
     }
   }
 }
+
+.ant-radio-hide {
+  margin: 0;
+
+  .ant-radio {
+    display: none;
+  }
+
+  .ant-radio + span {
+    width: 100%;
+    padding: 0;
+  }
+}

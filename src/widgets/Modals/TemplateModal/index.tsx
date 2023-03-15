@@ -4,6 +4,7 @@ import Modal from '@/components/Modal'
 import styles from './TemplateModal.module.scss'
 import Icon from '@/components/Icon'
 import Button from '@/components/Button'
+import IconButton from '@/components/IconButton'
 
 interface ITemplateModal {
   icon?: 'success' | 'warning' | 'error' | false
@@ -12,11 +13,12 @@ interface ITemplateModal {
   text?: string | ReactNode
   button?: true | ReactNode
 
+  onBack?(): void
   onCancel?(): void
 }
 
 const TemplateModal: FC<ITemplateModal & ModalProps> = (props) => {
-  const { children, icon = 'success', title, subtitle, text, button = true, onCancel } = props
+  const { children, icon = 'success', title, subtitle, text, button = true, onCancel, onBack } = props
   let iconRender
 
   switch (icon) {
@@ -30,6 +32,7 @@ const TemplateModal: FC<ITemplateModal & ModalProps> = (props) => {
 
   return (
     <Modal className={styles.root} footer={false} {...props} title={false}>
+      {onBack && <IconButton icon="chevron-left-right_outlined" sizeIcon={24} size={40} colorIcon="default" onClick={onBack} className={styles['icon-back']} />}
       <div className={styles.wrapper}>
         {iconRender}
         {title && (<p className="title">{title}</p>)}

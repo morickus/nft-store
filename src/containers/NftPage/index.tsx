@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './NftPage.module.scss'
 import { useRouter } from 'next/router'
 import NftNested from '@/components/NftNested'
@@ -14,9 +14,12 @@ import utc from 'dayjs/plugin/utc'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import Icon from '@/components/Icon'
 import TemplateModal from '@/widgets/Modals/TemplateModal'
-import { Form, InputNumber } from 'antd'
+import { Form, InputNumber, Radio } from 'antd'
 import Checkbox from '@/components/Checkbox'
 import Input from '@/components/Input'
+import CheckCard from '@/components/CheckCard'
+import Wallet from '@/components/Wallet'
+import MintModal from '@/widgets/Modals/MintModal'
 
 dayjs.extend(relativeTime)
 dayjs.extend(utc);
@@ -25,23 +28,50 @@ const NftPage = () => {
   const router = useRouter()
   const { id } = router.query
   const [sellNftForm] = Form.useForm()
+  const [tradeNftForm] = Form.useForm()
   const [transferNftForm] = Form.useForm()
+  const [purchaseNftForm] = Form.useForm()
   const [tab, setTab] = useState('overview')
   const [statusNft, setStatusNft] = useState<'sale'>()
   const priceValue = Form.useWatch('price', sellNftForm)
   const userIdValue = Form.useWatch('userId', transferNftForm)
   const conditionSellValue = Form.useWatch('condition', sellNftForm)
   const conditionTransferValue = Form.useWatch('condition', transferNftForm)
-  const { image, name, number, collection, owner, creator, price, description, bids, properties, like, nested } = nftPage
+  const surchargeValue = Form.useWatch('surcharge', tradeNftForm)
+  const nftIdValue = Form.useWatch('nftId', tradeNftForm)
+  const exchangeValue = Form.useWatch('exchange', tradeNftForm)
+  const conditionTradeValue = Form.useWatch('condition', tradeNftForm)
+  const gasValue = Form.useWatch('gas', purchaseNftForm)
+  const purchaseTradeValue = Form.useWatch('condition', purchaseNftForm)
+  const { image, name, number, collection, owner, creator, price, description, bids, properties, like, nested, property, referral } = nftPage
 
   const [sellNftModal, setSellNftModal] = useState(false)
   const [sellNftSuccessModal, setSellNftSuccessModal] = useState(false)
+
   const [transferNftModal, setTransferNftModal] = useState(false)
   const [transferNftSuccessModal, setTransferNftSuccessModal] = useState(false)
+
   const [removeSellModal, setRemoveSellModal] = useState(false)
   const [removeSellSuccessModal, setRemoveSellSuccessModal] = useState(false)
 
+  const defaultTradeNftValue = { main: false, nestedId: [] }
+  const [tradeNftModal, setTradeNftModal] = useState(false)
+  const [tradeNftValue, setTradeNftValue] = useState<{main: boolean, nestedId: number[]}>(defaultTradeNftValue)
+  const [tradeNftFormModal, setTradeNftFormModal] = useState(false)
+  const [tradeNftSuccessModal, setTradeNftSuccessModal] = useState(false)
+
+  const [purchaseNftModal, setPurchaseNftModal] = useState(false)
+  const [purchaseNftRejectModal, setPurchaseNftRejectModal] = useState(false)
+  const [purchaseSuccessModal, setPurchaseSuccessModal] = useState(false)
+
   const gas = 0.2
+  const recommended = 6
+
+  useEffect(() => {
+    if (exchangeValue == 'free-exchange') {
+      tradeNftForm.resetFields(['nftId'])
+    }
+  }, [tradeNftForm, exchangeValue])
 
   return (
     <>
@@ -98,7 +128,7 @@ const NftPage = () => {
                         </div>
                       </div>
                       <div className={styles['buttons-price-wrap']}>
-                        <Button type="primary">ButNow for {price.eth} ETH</Button>
+                        <Button type="primary" onClick={() => setPurchaseNftModal(true)}>ButNow for {price.eth} ETH</Button>
                         <IconButton icon="cart_filled" sizeIcon={18} />
                         <Button>Place a bid</Button>
                       </div>
@@ -113,7 +143,7 @@ const NftPage = () => {
                         <span>Transfer</span>
                         <Icon name="arrow-right_outlined" />
                       </div>
-                      <div className={`${styles['buttons-active-wrap__item']} ${styles['green']}`}>
+                      <div className={`${styles['buttons-active-wrap__item']} ${styles['green']}`} onClick={() => setTradeNftModal(true)}>
                         <span>Trade</span>
                         <Icon name="trade_outlined" />
                       </div>
@@ -217,14 +247,19 @@ const NftPage = () => {
           setSellNftModal(false)
         }}
       >
-        <Form form={sellNftForm} className={styles['nft-form']} onFinish={() => {
-          // TODO: replace static
-          setStatusNft('sale')
+        <Form
+          form={sellNftForm}
+          className={styles['nft-form']}
+          initialValues={{condition: true}}
+          onFinish={() => {
+            // TODO: replace static
+            setStatusNft('sale')
 
-          sellNftForm.resetFields()
-          setSellNftSuccessModal(true)
-          setSellNftModal(false)
-        }}>
+            sellNftForm.resetFields()
+            setSellNftSuccessModal(true)
+            setSellNftModal(false)
+          }}
+        >
           <Form.Item name="price">
             <InputNumber
               min={0}
@@ -267,7 +302,7 @@ const NftPage = () => {
           <Form.Item name="condition" valuePropName="checked" className={styles['checkbox']}>
             <Checkbox label={<p>You confirm that when you sell the NFT, you will lose it.  You agree to all <Link href="/">policies</Link> and <Link href="/">blah blah blah.</Link></p>} />
           </Form.Item>
-          <Button disabled={priceValue <= 0 || !conditionSellValue} type="primary" htmlType="submit">Sell for {(priceValue || 0) + gas} ETH</Button>
+          <Button disabled={priceValue || 0 <= 0 || !conditionSellValue} type="primary" htmlType="submit">Sell for {(priceValue || 0) + gas} ETH</Button>
         </Form>
       </TemplateModal>
       <TemplateModal
@@ -277,7 +312,7 @@ const NftPage = () => {
         open={sellNftSuccessModal}
         subtitle="Kaleido Kids #488"
         onCancel={() => setSellNftSuccessModal(false)}
-        text="Your NFT is for sale. You can view the NFT page on the market."
+        text={<>Your NFT is for sale. You can view the NFT <br/>page on the market.</>}
       />
       <TemplateModal
         width={626}
@@ -291,7 +326,7 @@ const NftPage = () => {
           setTransferNftModal(false)
         }}
       >
-        <Form form={transferNftForm} className={styles['nft-form']} onFinish={() => {
+        <Form form={transferNftForm} className={styles['nft-form']} initialValues={{condition: true}} onFinish={() => {
           transferNftForm.resetFields()
           setTransferNftSuccessModal(true)
           setTransferNftModal(false)
@@ -317,7 +352,7 @@ const NftPage = () => {
         open={transferNftSuccessModal}
         title="NFT has been transferred"
         onCancel={() => setTransferNftSuccessModal(false)}
-        text={<>Your NFT has been passed to the user <Link href="/">0x000...20df.</Link> You can view it from this user.</>}
+        text={<>Your NFT has been passed to the user <Link href="/">0x000...20df.</Link><br/>You can view it from this user.</>}
       />
       <TemplateModal
         width={604}
@@ -330,7 +365,7 @@ const NftPage = () => {
           setRemoveSellModal(false)
           setRemoveSellSuccessModal(true)
         }}>Remove from sale</Button>}
-        text={<>Do you really want to remove your NFT from sale?<br/><br/>If this NFT is listed on other platforms, you must manually check and cancel it there as well. You can put it on sale anytime.</>}
+        text={<>Do you really want to remove your NFT from sale?<br/><br/>If this NFT is listed on other platforms, you must <br/>manually check and cancel it there as well. You can <br/>put it on sale anytime.</>}
       />
       <TemplateModal
         width={604}
@@ -340,6 +375,239 @@ const NftPage = () => {
         open={removeSellSuccessModal}
         text="Your NFT was taken down from sale."
         onCancel={() => setRemoveSellSuccessModal(false)}
+      />
+      <TemplateModal
+        width={1300}
+        icon={false}
+        title="NFT Trade"
+        open={tradeNftModal}
+        subtitle="Kaleido Kids #488"
+        onCancel={() => {
+          setTradeNftValue(defaultTradeNftValue)
+          setTradeNftModal(false)
+        }}
+        button={false}
+      >
+        <div className={styles['nft-trade-modal']}>
+          <p className={styles['nft-trade-modal__title']}>Choose what you want to trade</p>
+          <div className={styles['nft-trade-modal__wrap']}>
+            <div className={styles['left-side']}>
+              <div className={styles['left-side__header']}>
+                <p>Main NFT</p>
+              </div>
+              <CheckCard
+                checked={tradeNftValue?.main}
+                className={styles['left-side__body']}
+                onClick={() => setTradeNftValue(prev => ({...prev, main: !prev?.main}))}
+              >
+                <Image src={image} alt={image} width={602} height={516} />
+              </CheckCard>
+            </div>
+            <div className={styles['right-side']}>
+              <div className={styles['right-side__header']}>
+                <p>Nested NFT</p>
+              </div>
+              <div className={styles['nested-wrap']}>
+                {nested.map(i => {
+                  const check = tradeNftValue.nestedId.some(e => e == i.id)
+                  return (
+                    <CheckCard
+                      key={i.id}
+                      checked={check}
+                      onClick={() => setTradeNftValue(prev => ({
+                        ...prev,
+                        nestedId: check ? prev.nestedId.filter(e => e != i.id) : [...prev.nestedId, i.id]
+                      }))}
+                    >
+                      {'image' in i ? (
+                        <div key={i.title} className={`${styles['nested-wrap__item']} ${styles['nested-wrap__item_image']}`}>
+                          <Image className={styles.image} src={i.image} width={172} height={130} alt={i.image} />
+                          <span className={styles.title}>{i.title}</span>
+                          <p className={styles.subtitle}>{i.subtitle}</p>
+                        </div>
+                        ) : (
+                        <div key={i.title} className={styles['nested-wrap__item']}>
+                          <Icon name={i.icon} className={styles.icon} fontSize={56} color="grey" />
+                          <div>
+                            <span className={styles.title}>{i.title}</span>
+                            <p className={styles.subtitle}>{i.subtitle}</p>
+                          </div>
+                        </div>
+                        )
+                      }
+                    </CheckCard>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+          <Button
+            size="small"
+            type="primary"
+            disabled={!tradeNftValue.main && tradeNftValue.nestedId.length == 0}
+            onClick={() => {
+              setTradeNftModal(false)
+              setTradeNftFormModal(true)
+            }}
+          >
+            Continue
+          </Button>
+        </div>
+      </TemplateModal>
+      <TemplateModal
+        width={626}
+        icon={false}
+        title="NFT Trade"
+        open={tradeNftFormModal}
+        subtitle="Kaleido Kids #488"
+        onBack={() => {
+          setTradeNftModal(true)
+          setTradeNftFormModal(false)
+        }}
+        onCancel={() => {
+          setTradeNftValue(defaultTradeNftValue)
+          setTradeNftFormModal(false)
+        }}
+        button={false}
+      >
+        <Form
+          form={tradeNftForm}
+          className={styles['nft-form']}
+          initialValues={{condition: true, extra: 'i-pay-extra', exchange: 'to-another-nft'}}
+          onFinish={() => {
+            tradeNftForm.resetFields()
+            setTradeNftValue(defaultTradeNftValue)
+            setTradeNftFormModal(false)
+            setTradeNftSuccessModal(true)
+          }}
+        >
+          <p className={styles['nft-form__subtitle']}>You chose Nested NFT - <Link href="/">Kaleido Kids #514</Link></p>
+          <Form.Item name="extra">
+            <RadioButton
+              className={styles['nft-form__tabs']}
+              buttons={
+                [
+                  {text: 'I pay extra', value: 'i-pay-extra'},
+                  {text: 'Pay me extra', value: 'pay-me-extra'}
+                ]
+              }
+            />
+          </Form.Item>
+          <Form.Item name="surcharge">
+            <InputNumber
+              min={0}
+              size="large"
+              controls={false}
+              placeholder="Surcharge"
+              className={styles['input']}
+              formatter={(value) => !!value ? `${value || 0} ETH` : ''}
+              // @ts-ignore
+              parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
+              prefix={<Icon name="token_filled" fontSize={24} color={surchargeValue ? 'primary' : 'grey'} className="mr-16" />}
+            />
+          </Form.Item>
+          <div />
+          <Form.Item name="exchange">
+            <RadioButton
+              className={styles['nft-form__tabs']}
+              buttons={
+                [
+                  {text: 'To another NFT', value: 'to-another-nft'},
+                  {text: 'Free exchange', value: 'free-exchange'}
+                ]
+              }
+            />
+          </Form.Item>
+          <Form.Item name="nftId">
+            <Input
+              size="large"
+              placeholder="NFT ID"
+              className={styles['input']}
+              disabled={exchangeValue == 'free-exchange'}
+              prefix={<Icon name="image_solid" fontSize={24} color={nftIdValue ? 'primary' : 'grey'} className="mr-16" />}
+            />
+          </Form.Item>
+          <Form.Item name="condition" valuePropName="checked" className={styles['checkbox']}>
+            <Checkbox label={<p>You confirm that when you sell the NFT, you will lose it. You agree to all <Link href="/">policies</Link> and <Link href="/">blah blah blah.</Link></p>} />
+          </Form.Item>
+          <Button disabled={!surchargeValue || !conditionTradeValue || (exchangeValue !== 'free-exchange' && !nftIdValue)} type="primary" htmlType="submit" className={styles.submit}>Transfer</Button>
+        </Form>
+      </TemplateModal>
+      <TemplateModal
+        width={626}
+        icon="success"
+        title={<>NFT is exposed <br/>to free trade</>}
+        subtitle="Kaleido Kids #488"
+        open={tradeNftSuccessModal}
+        text={<>Your NFT is exposed to free trade. <br/>Check it out on the <Link href="/">NFT trade page.</Link></>}
+        onCancel={() => setTradeNftSuccessModal(false)}
+      />
+      <TemplateModal
+        width={604}
+        icon={false}
+        button={false}
+        title="NFT Purchase"
+        open={purchaseNftModal}
+        subtitle="Kaleido Kids #488"
+        onCancel={() => {
+          purchaseNftForm.resetFields()
+          setPurchaseNftModal(false)
+        }}
+      >
+        <Form form={purchaseNftForm} className={styles['nft-form']} initialValues={{condition: true}} onFinish={() => {
+          // if reject setPurchaseNftRejectModal
+
+          purchaseNftForm.resetFields()
+          setPurchaseSuccessModal(true)
+          setPurchaseNftModal(false)
+        }}>
+          <p className={styles['nft-form__subtitle']}>You are about to purchase a <Link href="/">Kaleido Kids #488</Link> from <Link href="/">0x10c41a3e9...4322</Link></p>
+          <Wallet headerSuffix="status" />
+          <Form.Item name="gas">
+            <InputNumber
+              min={0}
+              size="large"
+              controls={false}
+              placeholder="Gas cost"
+              className={styles['input']}
+              formatter={(value) => !!value ? `${value || 0} ETH` : ''}
+              // @ts-ignore
+              parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
+              prefix={<>
+                <Icon name="token_filled" fontSize={24} color={gasValue ? 'primary' : 'grey'} className="mr-16" />
+                <div className="after-input-number">
+                  <p className={styles['input__after-text']}>{recommended} recommended</p>
+                </div>
+              </>}
+            />
+          </Form.Item>
+          <Form.Item name="condition" valuePropName="checked" className={styles['checkbox']}>
+            <Checkbox label={<p>You confirm that when you sell the NFT, you will lose it.  You agree to all <Link href="/">policies</Link> and <Link href="/">blah blah blah.</Link></p>} />
+          </Form.Item>
+          <Button disabled={!purchaseTradeValue} type="primary" htmlType="submit" className={styles.submit}>Buy for {price.eth} ETH</Button>
+        </Form>
+      </TemplateModal>
+      <TemplateModal
+        width={626}
+        icon="warning"
+        title="Not enough tokens"
+        open={purchaseNftRejectModal}
+        text={<>There are not enough funds to purchase NFT. <br/>Please top up your wallet.</>}
+        onCancel={() => setPurchaseNftRejectModal(false)}
+      />
+      <MintModal
+        modalProps={{
+          open: purchaseSuccessModal,
+          onCancel: () => setPurchaseSuccessModal(false)
+        }}
+        title="Successfully"
+        label="You have acquired NFT"
+        text="You have acquired NFT Kaleido Kids #488. Check NFT out in your collections."
+        name={name}
+        image={image}
+        // nested={nested}
+        property={property}
+        referral={referral}
       />
     </>
   );

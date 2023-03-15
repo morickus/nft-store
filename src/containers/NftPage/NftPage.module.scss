@@ -405,15 +405,181 @@
 }
 
 .nft-form {
+  display: grid;
+  grid-gap: 12px;
   max-width: 360px;
   margin-top: 36px;
 
   .input {
     width: 100%;
+    font-size: 18px;
+
+    &__after-text {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 12px;
+      color: var(--primary-color);
+    }
   }
 
   .checkbox {
-    margin: 16px 0 36px;
+    margin-bottom: 24px;
+  }
+
+  a {
+    text-decoration: underline;
+    color: var(--primary-color);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &__tabs {
+    & > label {
+      width: 100%;
+    }
+  }
+
+  .submit {
+    margin: 0 auto;
+    width: fit-content;
+  }
+}
+
+.nft-trade-modal {
+  padding-top: 20px;
+
+  &__title {
+    font-size: 18px;
+    line-height: 18px;
+  }
+
+  &__wrap {
+    display: grid;
+    margin: 36px 0;
+    grid-gap: 24px;
+    grid-template-columns: 604px 604px;
+
+    .left-side {
+      &__header {
+        padding: 16px 0 12px;
+        border: 2px solid var(--light-gray-color);
+        border-bottom: none;
+
+        p {
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 18px;
+        }
+      }
+
+      &__body {
+        height: 516px;
+        display: flex;
+        overflow: hidden;
+
+        img {
+          top: 50%;
+          width: 100%;
+          height: auto;
+          position: absolute;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+    .right-side {
+      border: 2px solid var(--light-gray-color);
+
+      &__header {
+        padding: 16px 0 12px;
+
+        p {
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 18px;
+        }
+      }
+
+      .nested-wrap {
+        display: grid;
+        grid-gap: 16px;
+        padding: 0 14px 14px 34px;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        &__item {
+          height: 130px;
+          display: flex;
+          overflow: hidden;
+          text-align: center;
+          flex-direction: column;
+          justify-content: space-between;
+
+          &_image {
+            position: relative;
+            justify-content: flex-end;
+
+            &:before {
+              z-index: 1;
+              width: 100%;
+              content: '';
+              height: 100%;
+              position: absolute;
+              background: linear-gradient(180deg, rgba(30, 30, 30, 0) 0%, #282828 100%);
+            }
+
+            .image {
+              top: 50%;
+              left: 50%;
+              width: 172px;
+              height: auto;
+              position: absolute;
+              transform: translate(-50%, -50%);
+            }
+
+            .subtitle, .title {
+              z-index: 1;
+              color: #FFFFFF;
+            }
+
+            .subtitle {
+              margin-bottom: 6px;
+            }
+          }
+
+          .title {
+            margin: 0 auto;
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            overflow: hidden;
+            line-height: 16px;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: calc(100% - 26px);
+          }
+
+          .subtitle {
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 12px;
+            margin-bottom: 6px;
+            white-space: nowrap;
+          }
+
+          .icon {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -471,6 +637,26 @@
               margin-top: 16px;
             }
           }
+        }
+      }
+    }
+  }
+
+  .nft-trade-modal {
+    &__wrap {
+      grid-template-columns: 452px 452px;
+
+      .left-side {
+        &__body {
+          height: 452px;
+        }
+      }
+
+      .right-side {
+        .nested-wrap {
+          grid-gap: 20px;
+          padding: 0 40px 24px 40px;
+          grid-template-columns: 1fr 1fr;
         }
       }
     }
@@ -570,6 +756,25 @@
       }
     }
   }
+
+  .nft-trade-modal {
+    &__wrap {
+      grid-template-columns: 324px 324px;
+
+      .left-side {
+        &__body {
+          height: 324px;
+        }
+      }
+
+      .right-side {
+        .nested-wrap {
+          grid-gap: 8px;
+          padding: 0 10px 10px 10px;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: map-get($media, sm)) {
@@ -658,6 +863,25 @@
 
         .content-wrap {
           margin-top: 36px;
+        }
+      }
+    }
+  }
+
+  .nft-trade-modal {
+    &__wrap {
+      grid-gap: 16px;
+      grid-template-columns: 432px;
+
+      .left-side {
+        &__body {
+          height: 261px;
+        }
+      }
+
+      .right-side {
+        .nested-wrap {
+          grid-template-columns: repeat(3, 1fr);
         }
       }
     }
@@ -751,7 +975,31 @@
     margin-top: 24px;
 
     .checkbox {
-      margin-bottom: 24px;
+      margin-bottom: 12px;
+    }
+  }
+
+  .nft-trade-modal {
+    &__wrap {
+      grid-template-columns: 272px;
+
+      .left-side {
+        &__body {
+          height: 200px;
+        }
+      }
+
+      .right-side {
+        .nested-wrap {
+          grid-template-columns: repeat(2, 120px);
+
+          &__item {
+            .title {
+              width: calc(100% - 18px);
+            }
+          }
+        }
+      }
     }
   }
 }

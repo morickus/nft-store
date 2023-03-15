@@ -218,59 +218,6 @@
                 }
               }
 
-              .wallet {
-                padding: 12px;
-                border: 2px solid var(--light-gray-color);
-
-                &__header {
-                  display: flex;
-                  align-items: center;
-                  justify-content: space-between;
-
-                  & > div {
-                    display: flex;
-
-                    .info {
-                      margin-left: 12px;
-
-                      &__name {
-                        opacity: 0.2;
-                        font-size: 14px;
-                        font-weight: 500;
-                        line-height: 14px;
-                      }
-
-                      &__wallet {
-                        font-size: 16px;
-                        margin-top: 2px;
-                        font-weight: 600;
-                        line-height: 16px;
-                      }
-                    }
-                  }
-
-                  i {
-                    cursor: pointer;
-                  }
-                }
-
-                &__item {
-                  display: flex;
-                  padding: 8px 6px;
-                  margin-top: 10px;
-                  align-items: center;
-                  border: 2px solid var(--light-gray-color);
-
-                  span {
-                    display: block;
-                    font-size: 16px;
-                    font-weight: 600;
-                    margin-left: 6px;
-                    line-height: 16px;
-                  }
-                }
-              }
-
               .sale-method {
                 &-wrap {
                   display: grid;

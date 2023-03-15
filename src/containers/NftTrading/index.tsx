@@ -17,7 +17,7 @@ const NftTrading = () => {
   const [requestNft, setRequestNft] = useState<{me: INft, owner: INft}>()
   const [stepModal, setStepModal] = useState<'init' | 'success' | 'rejection'>('init')
 
-  const defaultConditions = {first: false, second: false}
+  const defaultConditions = {first: true, second: true}
   const [conditions, setConditions] = useState(defaultConditions)
   const defaultTradeNftForm = {nftId: undefined, extraPay: undefined}
   const [tradeNftForm, setTradeNftForm] = useState<{nftId: undefined | number, extraPay: undefined | number}>(defaultTradeNftForm)

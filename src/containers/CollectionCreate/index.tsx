@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react'
 import styles from './CollectionCreate.module.scss'
 import RadioButton from '@/components/RadioButton'
 import Button from '@/components/Button'
-import { Form, Radio as RadioAntd, Input as InputAntd, RadioChangeEvent } from 'antd'
+import { Form, Radio, Input as InputAntd, RadioChangeEvent } from 'antd'
 import { collectionPage, cryptoWallet, nftFunction, propsType } from '../../../store'
 import CheckCard from '@/components/CheckCard'
-import styled from '@emotion/styled'
 import Image from 'next/image'
 import Icon from '@/components/Icon'
 import TemplateModal from '@/widgets/Modals/TemplateModal'
@@ -91,9 +90,9 @@ const CollectionCreate = () => {
               <Form form={blockchainForm} name="blockchainForm" initialValues={{ blockchain: 'eth' }} className={`${styles['form__item']} ${step !== 'blockchain' && styles.hide}`}>
                 <p className="subtitle">Blockchain network</p>
                 <Form.Item name="blockchain" noStyle>
-                  <RadioGroup className={`${styles['radio-wrap']} ${styles['radio-wrap_blockchain']}`}>
+                  <Radio.Group className={`${styles['radio-wrap']} ${styles['radio-wrap_blockchain']}`}>
                     {cryptoWallet.map(i => (
-                      <Radio key={i.value} value={i.value}>
+                      <Radio key={i.value} value={i.value} className="ant-radio-hide">
                         <CheckCard checked={blockchainValue == i.value}>
                           <div className={`${styles['radio-wrap__item']} ${blockchainValue == i.value && styles['radio-wrap__item_active']}`}>
                             <Image src={i.image} alt={i.image} width={56} height={56} />
@@ -102,15 +101,15 @@ const CollectionCreate = () => {
                         </CheckCard>
                       </Radio>
                     ))}
-                  </RadioGroup>
+                  </Radio.Group>
                 </Form.Item>
                 <Button type="primary" size="small" htmlType="submit">Next</Button>
               </Form>
               <Form form={typeForm} name="typeForm" initialValues={{ type: 'simple' }} className={`${styles['form__item']} ${step !== 'type' && styles.hide}`}>
                 <p className="subtitle">Type of items</p>
                 <Form.Item name="type" noStyle>
-                  <RadioGroup className={`${styles['radio-wrap']} ${styles['radio-wrap_type']}`}>
-                    <Radio value="simple">
+                  <Radio.Group className={`${styles['radio-wrap']} ${styles['radio-wrap_type']}`}>
+                    <Radio value="simple" className="ant-radio-hide">
                       <CheckCard checked={typeValue == "simple"}>
                         <div className={`${styles['radio-wrap__item']} ${typeValue == "simple" && styles['radio-wrap__item_active']}`}>
                           <Icon name="file_filled" fontSize={100} color="grey" />
@@ -119,7 +118,7 @@ const CollectionCreate = () => {
                         </div>
                       </CheckCard>
                     </Radio>
-                    <Radio value="multiple">
+                    <Radio value="multiple" className="ant-radio-hide">
                       <CheckCard checked={typeValue == "multiple"}>
                         <div className={`${styles['radio-wrap__item']} ${typeValue == "multiple" && styles['radio-wrap__item_active']}`}>
                           <div className={styles['radio-wrap__wrap-icon']}>
@@ -134,7 +133,7 @@ const CollectionCreate = () => {
                         </div>
                       </CheckCard>
                     </Radio>
-                  </RadioGroup>
+                  </Radio.Group>
                 </Form.Item>
                 <Button type="primary" size="small" htmlType="submit">Next</Button>
               </Form>
@@ -198,9 +197,9 @@ const CollectionCreate = () => {
                   <div className={styles['form-description__functional']}>
                     <p className="subtitle">NFT functional</p>
                     <Form.Item name="functional" className={styles.flex} rules={[{ required: true, message: 'NFT functional is required' }]}>
-                      <RadioGroup className={styles['functional-wrap']}>
+                      <Radio.Group className={styles['functional-wrap']}>
                         {nftFunction.map(i => (
-                          <Radio key={i.value} value={i.value}>
+                          <Radio key={i.value} value={i.value} className="ant-radio-hide">
                             <CheckCard checked={functionalValue == i.value} icon={false}>
                               <div className={`${styles['functional-wrap__item']} ${functionalValue == i.value && styles['functional-wrap__item_active']}`}>
                                 <Icon name={i.icon} fontSize={48} color="grey" />
@@ -209,7 +208,7 @@ const CollectionCreate = () => {
                             </CheckCard>
                           </Radio>
                         ))}
-                      </RadioGroup>
+                      </Radio.Group>
                     </Form.Item>
                   </div>
                 </div>
@@ -315,19 +314,5 @@ const CollectionCreate = () => {
     </div>
   );
 };
-
-const RadioGroup = styled(RadioAntd.Group)``
-const Radio = styled(RadioAntd)`
-  margin: 0;
-  
-  .ant-radio {
-    display: none;
-  }
-
-  .ant-radio + span {
-    width: 100%;
-    padding: 0;
-  }
-`;
 
 export default CollectionCreate

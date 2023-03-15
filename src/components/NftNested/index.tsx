@@ -5,12 +5,14 @@ import Icon from '@/components/Icon'
 import Image from 'next/image'
 
 interface NestedItem {
+  id: number
   icon: IconNamesMap
   title: string
   subtitle: string
 }
 
 interface NestedNftItem {
+  id: number
   image: string
   title: string
   subtitle: string

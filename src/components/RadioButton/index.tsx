@@ -95,6 +95,7 @@ const TabGroup = styled(Radio.Group)`
 `;
 
 const Tab = styled(Radio.Button)`
+  font-size: ${({ theme }) => theme.components.Radio.fontSize}px !important;
   font-weight: 700;
   line-height: 28px;
   border: none !important;
@@ -129,7 +130,7 @@ const Tab = styled(Radio.Button)`
 
   @media (max-width: 479.98px) {
     height: 40px;
-    font-size: 16px;
+    font-size: 16px !important;
     line-height: 40px;
 
     &:not(:first-child) {

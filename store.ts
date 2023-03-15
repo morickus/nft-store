@@ -491,21 +491,25 @@ export const nftPage = {
   image: '/assets/nft/6964-3-1.jpg',
   nested: [
     {
+      id: 1,
       image: '/assets/nft/2655.jpg',
       title: 'Kaleido Kids',
       subtitle: '#514'
     },
     {
+      id: 2,
       icon: 'note_filled',
       title: 'Imagine Dragons',
       subtitle: 'Enemy'
     },
     {
+      id: 3,
       icon: 'note_filled',
       title: 'Linkin Park',
       subtitle: 'Faint Lyrics'
     },
     {
+      id: 4,
       icon: 'file_filled',
       title: 'Some Doc',
       subtitle: 'Title'
@@ -625,7 +629,14 @@ export const nftPage = {
       text: '24 powerpoints',
       value: 24
     }
-  ]
+  ],
+  referral: 'https://app.cryptofairies.club/location/35/item',
+  property: {
+    color: 'Mild',
+    location: 'DAO MAO',
+    stick: 'Samurai',
+    side: 'GOODNESS',
+  } as props,
 }
 
 export type propsType = {
@@ -634,6 +645,13 @@ export type propsType = {
   items: string
   users: string
   owners: string
+}
+
+export interface props {
+  color: string
+  location: string
+  stick: string
+  side: string
 }
 
 export const collectionPage = {
@@ -689,21 +707,25 @@ export const collectionPage = {
     image: '/assets/nft/911-big.jpg',
     nested: [
       {
+        id: 1,
         image: '/assets/nft/2655.jpg',
         title: 'Kaleido Kids',
         subtitle: '#514'
       },
       {
+        id: 2,
         icon: 'note_filled',
         title: 'Imagine Dragons',
         subtitle: 'Enemy'
       },
       {
+        id: 3,
         icon: 'note_filled',
         title: 'Linkin Park',
         subtitle: 'Faint Lyrics'
       },
       {
+        id: 4,
         icon: 'file_filled',
         title: 'Some Doc',
         subtitle: 'Title'

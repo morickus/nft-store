@@ -596,11 +596,9 @@ const NftPage = () => {
         onCancel={() => setPurchaseNftRejectModal(false)}
       />
       <MintModal
-        modalProps={{
-          open: purchaseSuccessModal,
-          onCancel: () => setPurchaseSuccessModal(false)
-        }}
-        title="Successfully"
+        open={purchaseSuccessModal}
+        onCancel={() => setPurchaseSuccessModal(false)}
+        heading="Successfully"
         label="You have acquired NFT"
         text="You have acquired NFT Kaleido Kids #488. Check NFT out in your collections."
         name={name}

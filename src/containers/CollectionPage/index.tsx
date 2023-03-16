@@ -272,12 +272,10 @@ const CollectionPage = () => {
         </div>
       </Modal>
       <MintModal
-        modalProps={{
-          open: isCongratulation,
-          onCancel: () => setIsCongratulation(false)
-        }}
+        open={isCongratulation}
+        onCancel={() => setIsCongratulation(false)}
         label="Your NFT is minted"
-        title="Congratulations"
+        heading="Congratulations"
         name={congratulation.name}
         image={congratulation.image}
         nested={congratulation.nested}

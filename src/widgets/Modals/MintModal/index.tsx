@@ -11,7 +11,7 @@ import { Nested } from '@/components/NftNested'
 import { props } from '../../../../store'
 
 interface IMintModal {
-  title: string
+  heading: string
   image: string
   name: string
   label: string
@@ -19,19 +19,17 @@ interface IMintModal {
   referral: string
   nested?: Nested[]
   property: props
-  modalProps: ModalProps
 }
 
-const MintModal: FC<IMintModal> = (props) => {
-  const { title, nested, image, name, property, referral, modalProps, label, text } = props
+const MintModal: FC<IMintModal & ModalProps> = (props) => {
+  const { heading, nested, image, name, property, referral, label, text } = props
   const [toggleNested, setToggleNested] = useState(false)
-  console.log('modalProps ',modalProps)
 
   return (
     <Modal
       width={1212}
       footer={false}
-      {...modalProps}
+      {...props}
     >
       <div className={styles.root}>
         <div className="modal-box-wrap">
@@ -75,7 +73,7 @@ const MintModal: FC<IMintModal> = (props) => {
               )}
             </div>
             <div className={styles['right-side']}>
-              <p className={styles.title}>{title}</p>
+              <p className={styles.title}>{heading}</p>
               <div className={styles['right-side__name']}>
                 <span>{label}</span>
                 <p className={styles.subtitle}>{name}</p>

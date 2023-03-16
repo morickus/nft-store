@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 
 const Modal: FC<ModalProps> = (props) => {
   const { children } = props
-  console.log('props ',props)
+
   return (
     <ModalBase
       centered

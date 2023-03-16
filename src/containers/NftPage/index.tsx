@@ -116,7 +116,7 @@ const NftPage = () => {
                           <span className={styles.label}>Price</span>
                           <p>{price.eth} ETH</p>
                           <span>${price.dollar.toLocaleString('en')}</span>
-                          <Button className={styles.btn} onClick={() => setRemoveSellModal(true)}>Remove from sale</Button>
+                          <Button className={styles.btn} onClick={() => setRemoveSellModal(true)}>Remove</Button>
                         </div>
                         <div className={styles.item}>
                           <div>
@@ -302,7 +302,7 @@ const NftPage = () => {
           <Form.Item name="condition" valuePropName="checked" className={styles['checkbox']}>
             <Checkbox label={<p>You confirm that when you sell the NFT, you will lose it.  You agree to all <Link href="/">policies</Link> and <Link href="/">blah blah blah.</Link></p>} />
           </Form.Item>
-          <Button disabled={priceValue || 0 <= 0 || !conditionSellValue} type="primary" htmlType="submit">Sell for {(priceValue || 0) + gas} ETH</Button>
+          <Button disabled={(priceValue || 0) <= 0 || !conditionSellValue} type="primary" htmlType="submit">Sell for {(priceValue || 0) + gas} ETH</Button>
         </Form>
       </TemplateModal>
       <TemplateModal
@@ -562,7 +562,7 @@ const NftPage = () => {
           setPurchaseNftModal(false)
         }}>
           <p className={styles['nft-form__subtitle']}>You are about to purchase a <Link href="/">Kaleido Kids #488</Link> from <Link href="/">0x10c41a3e9...4322</Link></p>
-          <Wallet headerSuffix="status" />
+          <Wallet />
           <Form.Item name="gas">
             <InputNumber
               min={0}

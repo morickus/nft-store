@@ -9,11 +9,10 @@ import Switch from '@/components/Switch'
 interface IWallet {
   isSwitch?: boolean
   isButton?: boolean
-  headerSuffix?: 'copy' | 'status'
 }
 
 const Wallet: FC<IWallet> = (props) => {
-  const { isButton, isSwitch, headerSuffix = 'copy' } = props
+  const { isButton, isSwitch } = props
 
   const wallet = {
     img: '/wallet/metamask.svg',
@@ -34,11 +33,7 @@ const Wallet: FC<IWallet> = (props) => {
           </div>
         </div>
         <div className={styles['header__right-side']}>
-          {headerSuffix == 'copy' ? (
-            <Button size="small" className={styles.btn}>Copy</Button>
-          ) : (
-            <p className={styles.status}>connected</p>
-          )}
+          <Button size="small" className={styles.btn}>Copy</Button>
         </div>
       </div>
       <div className={styles.body}>

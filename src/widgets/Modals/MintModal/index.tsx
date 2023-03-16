@@ -25,6 +25,7 @@ interface IMintModal {
 const MintModal: FC<IMintModal> = (props) => {
   const { title, nested, image, name, property, referral, modalProps, label, text } = props
   const [toggleNested, setToggleNested] = useState(false)
+  console.log('modalProps ',modalProps)
 
   return (
     <Modal

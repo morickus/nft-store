@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import styleForm from './Form.module.scss'
-import { Form, InputNumber, Checkbox as CheckboxAntd } from 'antd'
+import { Form, Checkbox as CheckboxAntd } from 'antd'
 import IconButton from '@/components/IconButton'
 import Icon from '@/components/Icon'
 import Select from '@/components/Select'
@@ -9,6 +9,7 @@ import RadioButton from '@/components/RadioButton'
 import Checkbox from '@/components/Checkbox'
 import Slider from '@/components/Slider'
 import Input from '@/components/Input'
+import InputNumber from '@/components/InputNumber'
 
 interface ICollectionsForm {
 

@@ -19,6 +19,8 @@ Button.defaultProps = {
 };
 
 const ButtonOther = styled(ButtonAntd)`
+  display: flex;
+  align-items: center;
   font-weight: ${({ theme }) => theme.components.Button.fontWeight};
   background: ${(props: IButton & ButtonProps) => (props.safety ? ({ theme }) => theme.components.Button.colorSafety : ({ theme }) => theme.token.colorPrimary)};
   
@@ -34,6 +36,8 @@ const ButtonOther = styled(ButtonAntd)`
 `;
 
 const ButtonDefault = styled(ButtonAntd)`${({ theme: { components: { Button: btn } } }) => css`
+  display: flex;
+  align-items: center;
   font-weight: ${btn.fontWeight};
   border: 2px solid var(--light-gray-color) !important;
   

@@ -224,7 +224,7 @@ const NftCreate = () => {
                     <div className={styles.properties}>
                       <Button
                         className={`${styles.toggle} ${propertiesValue?.length > 0 && styles.hide}`}
-                        onClick={() => descriptionForm.setFieldValue('properties', [{}, {}, {}, {}])}
+                        onClick={() => descriptionForm.setFieldValue('properties', [undefined, undefined, undefined, undefined])}
                       >
                         Add unique properties
                       </Button>
@@ -257,7 +257,7 @@ const NftCreate = () => {
                                         <Input
                                           size="small"
                                           placeholder="Title"
-                                          prefix={<Icon name="txt_filled" fontSize={16} color={propertiesValue[index].title ? 'primary' : 'grey'} className="mr-8" />}
+                                          prefix={<Icon name="txt_filled" fontSize={16} color={propertiesValue[index]?.title ? 'primary' : 'grey'} className="mr-8" />}
                                         />
                                       </Form.Item>
                                       <Form.Item
@@ -272,7 +272,7 @@ const NftCreate = () => {
                                           size="small"
                                           placeholder="15"
                                           className={styles['input-number']}
-                                          prefix={<Icon name="txt_filled" fontSize={16} color={propertiesValue[index].size ? 'primary' : 'grey'} className="mr-8" />}
+                                          prefix={<Icon name="txt_filled" fontSize={16} color={propertiesValue[index]?.size ? 'primary' : 'grey'} className="mr-8" />}
                                         />
                                       </Form.Item>
                                       <IconButton icon="delete_filled" colorIcon="red" sizeIcon={18} size={40} onClick={() => remove(field.name)} />
@@ -356,11 +356,11 @@ const NftCreate = () => {
                                 </div>
                                 <div className="expression__item">
                                   <span className="expression__label"/>
-                                  <Icon name="close" fontSize={7} color="default" className="expression__value" />
+                                  <span className="expression__value">-</span>
                                 </div>
                                 <div className="expression__item">
                                   <span className="expression__label">fee</span>
-                                  <p className="expression__value">{feePercent || 0}</p>
+                                  <p className="expression__value">{feePercent || 0}%</p>
                                 </div>
                               </div>
                             </div>

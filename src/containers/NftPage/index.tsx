@@ -277,7 +277,7 @@ const NftPage = () => {
                 min={0}
                 size="large"
                 controls={false}
-                placeholder="0.1 ETH for 1 NFT"
+                placeholder="10 ETH"
                 className={styles['input']}
                 formatter={(value) => !!value ? `${value || 0} ETH` : ''}
                 // @ts-ignore
@@ -303,7 +303,7 @@ const NftPage = () => {
                         <p className="expression__value">+</p>
                       </div>
                       <div className="expression__item">
-                        <span className="expression__label">count</span>
+                        <span className="expression__label">gas</span>
                         <p className="expression__value">{gas}</p>
                       </div>
                     </div>

@@ -53,6 +53,12 @@ const SelectBase = styled(SelectAntd)`${({ theme: { components: { Select: s } } 
     .ant-select-selector {
       .ant-select-selection-item {
         padding-inline-end: 0;
+        span {
+          span {
+            justify-content: center;
+          }
+        }
+        
         .option-icon {
           display: block;
         }
@@ -112,7 +118,6 @@ const SelectBase = styled(SelectAntd)`${({ theme: { components: { Select: s } } 
         }
         span {
           width: 83px;
-          justify-content: center;
         }
         .space {
           width: 16px;

@@ -22,8 +22,8 @@ const ModalBase = styled(ModalAntd)`
   
   .ant-modal-close {
     top: 10px;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     inset-inline-end: 10px;
   }
 

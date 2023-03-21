@@ -1,3 +1,4 @@
+import 'antd/dist/reset.css';
 import '@/styles/antd.scss';
 import '@/styles/globals.scss';
 import { ThemeProvider } from '@emotion/react';

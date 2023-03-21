@@ -167,125 +167,125 @@ const CollectionPage = () => {
           </div>
         </Modal>
       )}
-      {isMint && (
-        <Modal
-          width={604}
-          footer={false}
-          open={isMint}
-          onCancel={() => setIsMint(false)}
-        >
-          <div className={styles['modal-mint']}>
-            <div className="modal-wrap">
-              <p className={styles.title}>Minting collection</p>
-              <p className={styles.subtitle}>{title} Collection</p>
-              <Form
-                form={form}
-                className={styles.form}
-                onFinish={() => {
-                  setIsMint(false)
-                  setIsCongratulation(true)
-                  form.resetFields()
-                }}
-                onValuesChange={(_, value) => console.log('form: ',value)}
-              >
-                <div className={styles['item']}>
-                  <Form.Item name="count">
-                    <div>
-                      <InputNumber
-                        min={0}
-                        size="large"
-                        controls={false}
-                        value={countMint}
-                        placeholder="Amount NFTs"
-                        className={styles['input-number']}
-                        formatter={(value) => `${value}`.replace(/[^0-9]/g, '')}
-                        prefix={<Icon name="collections_solid" fontSize={24} color={countMint ? 'primary' : 'grey'} className="mr-16" />}
-                      />
-                      <div className="after-input-number d-xs-none">
-                        <div className="btn-plus">
-                          <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 1)}>+1</Button>
-                          <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 5)}>+5</Button>
-                          <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 10)}>+10</Button>
-                        </div>
-                      </div>
-                    </div>
-                  </Form.Item>
-                </div>
-                <div className={styles['item']}>
-                  <Form.Item name="price">
+      <Modal
+        width={604}
+        footer={false}
+        open={isMint}
+        onCancel={() => setIsMint(false)}
+      >
+        <div className={styles['modal-mint']}>
+          <div className="modal-wrap">
+            <p className={styles.title}>Minting collection</p>
+            <p className={styles.subtitle}>{title} Collection</p>
+            <Form
+              form={form}
+              className={styles.form}
+              onFinish={() => {
+                setIsMint(false)
+                setIsCongratulation(true)
+                form.resetFields()
+              }}
+              onValuesChange={(_, value) => console.log('form: ',value)}
+            >
+              <div className={styles['item']}>
+                <Form.Item name="count">
+                  <div>
                     <InputNumber
                       min={0}
                       size="large"
                       controls={false}
-                      placeholder="0.1 ETH for 1 NFT"
+                      value={countMint}
+                      placeholder="Amount NFTs"
                       className={styles['input-number']}
-                      formatter={(value) => !!value ? `${value || 0} ETH` : ''}
-                      // @ts-ignore
-                      parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
-                      prefix={<>
-                        <Icon name="token_filled" fontSize={24} color={priceMint ? 'primary' : 'grey'} className="mr-16" />
-                        <div className="after-input-number d-xs-none">
-                          <div className="expression">
-                            <div className="expression__item">
-                              <span className="expression__label">total</span>
-                              <p className="expression__value">{(countMint || 0) * (priceMint || 0)}</p>
-                            </div>
-                            <div className="expression__item">
-                              <span className="expression__label"/>
-                              <p className="expression__value">=</p>
-                            </div>
-                            <div className="expression__item">
-                              <span className="expression__label">price</span>
-                              <span className="expression__value">{priceMint || 0}</span>
-                            </div>
-                            <div className="expression__item">
-                              <span className="expression__label"/>
-                              <Icon name="close" fontSize={7} color="default" className="expression__value" />
-                            </div>
-                            <div className="expression__item">
-                              <span className="expression__label">count</span>
-                              <p className="expression__value">{countMint || 0}</p>
-                            </div>
+                      formatter={(value) => `${value}`.replace(/[^0-9]/g, '')}
+                      prefix={<Icon name="collections_solid" fontSize={24} color={countMint ? 'primary' : 'grey'} className="mr-16" />}
+                    />
+                    <div className="after-input-number d-xs-none">
+                      <div className="btn-plus">
+                        <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 1)}>+1</Button>
+                        <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 5)}>+5</Button>
+                        <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 10)}>+10</Button>
+                      </div>
+                    </div>
+                  </div>
+                </Form.Item>
+              </div>
+              <div className={styles['item']}>
+                <Form.Item name="price">
+                  <InputNumber
+                    min={0}
+                    size="large"
+                    controls={false}
+                    placeholder="0.1 ETH for 1 NFT"
+                    className={styles['input-number']}
+                    formatter={(value) => !!value ? `${value || 0} ETH` : ''}
+                    // @ts-ignore
+                    parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
+                    prefix={<>
+                      <Icon name="token_filled" fontSize={24} color={priceMint ? 'primary' : 'grey'} className="mr-16" />
+                      <div className="after-input-number d-xs-none">
+                        <div className="expression">
+                          <div className="expression__item">
+                            <span className="expression__label">total</span>
+                            <p className="expression__value">{(countMint || 0) * (priceMint || 0)}</p>
+                          </div>
+                          <div className="expression__item">
+                            <span className="expression__label"/>
+                            <p className="expression__value">=</p>
+                          </div>
+                          <div className="expression__item">
+                            <span className="expression__label">price</span>
+                            <span className="expression__value">{priceMint || 0}</span>
+                          </div>
+                          <div className="expression__item">
+                            <span className="expression__label"/>
+                            <Icon name="close" fontSize={7} color="default" className="expression__value" />
+                          </div>
+                          <div className="expression__item">
+                            <span className="expression__label">count</span>
+                            <p className="expression__value">{countMint || 0}</p>
                           </div>
                         </div>
-                      </>}
-                    />
-                  </Form.Item>
-                </div>
-                <div className={styles['item']}>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    disabled={!countMint || !priceMint || countMint <= 0 || priceMint <= 0}
-                  >
-                    MINT!!!
-                  </Button>
-                </div>
-              </Form>
-              <div className={styles.examples}>
-                <p>Examples</p>
-                <div>
-                  <Image src="/assets/nft/6964-2.jpg" alt="example" width={124} height={124} />
-                  <Image src="/assets/nft/911.jpg" alt="example" width={124} height={124} />
-                  <Image src="/assets/nft/6964-2.jpg" alt="example" width={124} height={124} />
-                  <Image src="/assets/nft/911.jpg" alt="example" width={124} height={124} />
-                </div>
+                      </div>
+                    </>}
+                  />
+                </Form.Item>
+              </div>
+              <div className={styles['item']}>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  disabled={!countMint || !priceMint || countMint <= 0 || priceMint <= 0}
+                >
+                  MINT!!!
+                </Button>
+              </div>
+            </Form>
+            <div className={styles.examples}>
+              <p>Examples</p>
+              <div>
+                <Image src="/assets/nft/6964-2.jpg" alt="example" width={124} height={124} />
+                <Image src="/assets/nft/911.jpg" alt="example" width={124} height={124} />
+                <Image src="/assets/nft/6964-2.jpg" alt="example" width={124} height={124} />
+                <Image src="/assets/nft/911.jpg" alt="example" width={124} height={124} />
               </div>
             </div>
           </div>
-        </Modal>
+        </div>
+      </Modal>
+      {isCongratulation && (
+        <MintModal
+          open={isCongratulation}
+          onCancel={() => setIsCongratulation(false)}
+          label="Your NFT is minted"
+          heading="Congratulations"
+          name={congratulation.name}
+          image={congratulation.image}
+          nested={congratulation.nested}
+          property={congratulation.props}
+          referral={congratulation.referral}
+        />
       )}
-      <MintModal
-        open={isCongratulation}
-        onCancel={() => setIsCongratulation(false)}
-        label="Your NFT is minted"
-        heading="Congratulations"
-        name={congratulation.name}
-        image={congratulation.image}
-        nested={congratulation.nested}
-        property={congratulation.props}
-        referral={congratulation.referral}
-      />
     </div>
   );
 };

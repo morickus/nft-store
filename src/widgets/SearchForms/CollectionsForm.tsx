@@ -9,7 +9,9 @@ import RadioButton from '@/components/RadioButton'
 import Checkbox from '@/components/Checkbox'
 import Slider from '@/components/Slider'
 import Input from '@/components/Input'
-import InputNumber from '@/components/InputNumber'
+import dynamic from 'next/dynamic'
+
+const InputNumber = dynamic(() => import('@/components/InputNumber'), { ssr: false })
 
 interface ICollectionsForm {
 

@@ -17,9 +17,14 @@
       margin: 12px 0 60px;
       justify-content: flex-end;
 
-      .icon {
-        font-size: 18px;
-        margin-right: 10px;
+      &__btn {
+        display: flex;
+        align-items: center;
+
+        .icon {
+          font-size: 18px;
+          margin-right: 10px;
+        }
       }
     }
   }

@@ -275,19 +275,17 @@ const CollectionPage = () => {
           </div>
         </Modal>
       )}
-      {isCongratulation && (
-        <MintModal
-          open={isCongratulation}
-          onCancel={() => setIsCongratulation(false)}
-          label="Your NFT is minted"
-          heading="Congratulations"
-          name={congratulation.name}
-          image={congratulation.image}
-          nested={congratulation.nested}
-          property={congratulation.props}
-          referral={congratulation.referral}
-        />
-      )}
+      <MintModal
+        open={isCongratulation}
+        onCancel={() => setIsCongratulation(false)}
+        label="Your NFT is minted"
+        heading="Congratulations"
+        name={congratulation.name}
+        image={congratulation.image}
+        nested={congratulation.nested}
+        property={congratulation.props}
+        referral={congratulation.referral}
+      />
     </div>
   );
 };

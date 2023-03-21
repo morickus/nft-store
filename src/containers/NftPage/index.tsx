@@ -14,14 +14,17 @@ import utc from 'dayjs/plugin/utc'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import Icon from '@/components/Icon'
 import TemplateModal from '@/widgets/Modals/TemplateModal'
-import { Form, InputNumber, Radio } from 'antd'
+import { Form } from 'antd'
 import Checkbox from '@/components/Checkbox'
-import Input from '@/components/Input'
 import CheckCard from '@/components/CheckCard'
 import Wallet from '@/components/Wallet'
 import MintModal from '@/widgets/Modals/MintModal'
 import ChooseNft from '@/components/ChooseNft'
 import Switch from '@/components/Switch'
+import dynamic from 'next/dynamic'
+
+const InputNumber = dynamic(() => import('@/components/InputNumber'), { ssr: false })
+const Input = dynamic(() => import('@/components/Input'), { ssr: false })
 
 dayjs.extend(relativeTime)
 dayjs.extend(utc);

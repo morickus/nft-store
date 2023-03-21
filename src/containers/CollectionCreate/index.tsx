@@ -8,7 +8,6 @@ import CheckCard from '@/components/CheckCard'
 import Image from 'next/image'
 import Icon from '@/components/Icon'
 import TemplateModal from '@/widgets/Modals/TemplateModal'
-import Input from '@/components/Input'
 import IconButton from '@/components/IconButton'
 import { cutWallet, getBase64 } from '@/utils'
 import { RcFile } from 'antd/es/upload/interface'
@@ -16,6 +15,7 @@ import Link from 'next/link'
 import dynamic from "next/dynamic"
 
 const UploadImage = dynamic(() => import('@/components/UploadImage'), { ssr: false })
+const Input = dynamic(() => import('@/components/Input'), { ssr: false })
 
 const { TextArea } = InputAntd
 

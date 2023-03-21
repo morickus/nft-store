@@ -3,7 +3,9 @@ import styleForm from './Form.module.scss'
 import { Form } from 'antd'
 import IconButton from '@/components/IconButton'
 import Icon from '@/components/Icon'
-import Input from '@/components/Input'
+import dynamic from 'next/dynamic'
+
+const Input = dynamic(() => import('@/components/Input'), { ssr: false })
 
 interface IUsersForm {
 

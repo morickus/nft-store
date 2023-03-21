@@ -8,10 +8,10 @@ import { optionsCryptoWallet, optionsTrending } from '../../../store'
 import RadioButton from '@/components/RadioButton'
 import Checkbox from '@/components/Checkbox'
 import Slider from '@/components/Slider'
-import Input from '@/components/Input'
 import dynamic from 'next/dynamic'
 
 const InputNumber = dynamic(() => import('@/components/InputNumber'), { ssr: false })
+const Input = dynamic(() => import('@/components/Input'), { ssr: false })
 
 interface ICollectionsForm {
 

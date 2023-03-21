@@ -6,7 +6,9 @@ import Icon from '@/components/Icon'
 import Select from '@/components/Select'
 import { optionsCryptoWallet } from '../../../store'
 import RadioButton from '@/components/RadioButton'
-import Input from '@/components/Input'
+import dynamic from 'next/dynamic'
+
+const Input = dynamic(() => import('@/components/Input'), { ssr: false })
 
 interface IMyCollectionsForm {
 

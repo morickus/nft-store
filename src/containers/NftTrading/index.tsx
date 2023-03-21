@@ -8,9 +8,11 @@ import NftCard from '@/components/NftCard'
 import Button from '@/components/Button'
 import Icon from '@/components/Icon'
 import Checkbox from '@/components/Checkbox'
-import { InputNumber } from 'antd'
 import { cutWallet } from '@/utils'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
+
+const InputNumber = dynamic(() => import('@/components/InputNumber'), { ssr: false })
 
 const NftTrading = () => {
   const [tradeNft, setTradeNft] = useState<INft>()
@@ -100,7 +102,7 @@ const NftTrading = () => {
                         className={styles['choose-nft-wrap__input-extra-pay']}
                         value={tradeNftForm.extraPay ? tradeNftForm.extraPay : ''}
                         formatter={(value) => !!value ? `${Number(value) > 0 ? '+' : ''}${value || 0} ETH` : ''}
-                        onChange={(value) => setTradeNftForm(prev => ({...prev, extraPay: value ? value : undefined}))}
+                        onChange={(value) => setTradeNftForm(prev => ({...prev, extraPay: value ? Number(value) : undefined}))}
                         parser={(value) => !!value ? Number(value!.replace(' ETH', '').replace('+', '')) : 0}
                       />
                       <Icon name="edit_filled" fontSize={16} color="primary" className={styles['edit-icon']} />

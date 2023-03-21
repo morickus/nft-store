@@ -10,9 +10,12 @@ import Icon from '@/components/Icon'
 import RadioButton from '@/components/RadioButton'
 import { useRouter } from 'next/router'
 import NftCard from '@/components/NftCard'
-import Modal from '@/components/Modal'
+// import Modal from '@/components/Modal'
 import { Form, InputNumber } from 'antd'
 import MintModal from '@/widgets/Modals/MintModal'
+import dynamic from 'next/dynamic'
+
+const Modal = dynamic(() => import('@/components/Modal'), { ssr: false })
 
 const CollectionPage = () => {
   const router = useRouter()

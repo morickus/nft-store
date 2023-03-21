@@ -317,7 +317,7 @@ const NftPage = () => {
             <Form.Item name="condition" valuePropName="checked" className={styles['checkbox']}>
               <Checkbox label={<p>You confirm that when you sell the NFT, you will lose it.  You agree to all <Link href="/">policies</Link> and <Link href="/">blah blah blah.</Link></p>} />
             </Form.Item>
-            <Button disabled={(priceValue || 0) <= 0 || !conditionSellValue} type="primary" htmlType="submit">Sell for {(priceValue || 0) + gas} ETH</Button>
+            <Button disabled={(priceValue || 0) <= 0 || !conditionSellValue} type="primary" htmlType="submit" className={styles.submit}>Sell for {(priceValue || 0) + gas} ETH</Button>
           </Form>
         </TemplateModal>
       )}
@@ -362,7 +362,7 @@ const NftPage = () => {
             <Form.Item name="condition" valuePropName="checked" className={styles['checkbox']}>
               <Checkbox label={<p>You confirm that when you sell the NFT, you will lose it.  You agree to all <Link href="/">policies</Link> and <Link href="/">blah blah blah.</Link></p>} />
             </Form.Item>
-            <Button disabled={!userIdValue || !conditionTransferValue} type="primary" htmlType="submit">Transfer</Button>
+            <Button disabled={!userIdValue || !conditionTransferValue} type="primary" htmlType="submit" className={styles.submit}>Transfer</Button>
           </Form>
         </TemplateModal>
       )}
@@ -386,10 +386,12 @@ const NftPage = () => {
           open={removeSellModal}
           subtitle={`${name} #${number}`}
           onCancel={() => setRemoveSellModal(false)}
-          button={<Button type="primary" onClick={() => {
-            setRemoveSellModal(false)
-            setRemoveSellSuccessModal(true)
-          }}>Remove from sale</Button>}
+          button={(
+            <Button type="primary" onClick={() => {
+              setRemoveSellModal(false)
+              setRemoveSellSuccessModal(true)
+            }}>Remove from sale</Button>
+          )}
           maxWidthText={388}
           text={<>Do you really want to remove your NFT from sale?<br/><br/>If this NFT is listed on other platforms, you must manually check and cancel it there as well. You can put it on sale anytime.</>}
         />

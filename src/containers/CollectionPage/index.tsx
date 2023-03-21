@@ -84,7 +84,7 @@ const CollectionPage = () => {
               </div>
               <p className={styles.text}>{text}</p>
               <p className={styles['text-btn']} onClick={() => setIsReadMore(true)}>Read more</p>
-              <Button type="primary" >About collection</Button>
+              <Button type="primary" onClick={() => setIsReadMore(true)}>About collection</Button>
             </div>
           </div>
         </div>
@@ -115,173 +115,179 @@ const CollectionPage = () => {
           </div>
         </div>
       </div>
-      <Modal
-        width={1000}
-        footer={false}
-        open={isReadMore}
-        onCancel={() => setIsReadMore(false)}
-      >
-        <div className={styles['modal-read-more']}>
-          <div className="modal-wrap">
-            <p className={styles.title}>{title}</p>
-            <p className={styles.subtitle}>{subtitle}</p>
-            <div className={styles.block}>
-              <p className={styles.heading}>Description</p>
-              <p className={styles.text}>{description}</p>
-            </div>
-            <div className={styles.block}>
-              <p className={styles.heading}>Opportunities</p>
-              <div className={styles.props}>
-                {Object.keys(props).map(key => (
-                  <div key={key} className={`${styles['props__item']} ${styles[`props__item_${key}`]}`}>
-                    <span>{key}</span>
-                    <p>{props[key as keys]} {(key == 'floor' || key == 'volume') && 'ETH'}</p>
-                  </div>
-                ))}
+      {isReadMore && (
+        <Modal
+          width={1000}
+          footer={false}
+          open={isReadMore}
+          onCancel={() => setIsReadMore(false)}
+        >
+          <div className={styles['modal-read-more']}>
+            <div className="modal-wrap">
+              <p className={styles.title}>{title}</p>
+              <p className={styles.subtitle}>{subtitle}</p>
+              <div className={styles.block}>
+                <p className={styles.heading}>Description</p>
+                <p className={styles.text}>{description}</p>
               </div>
-              <Button className={styles.button}>Manual</Button>
-            </div>
-            <div className={styles.block}>
-              <p className={styles.heading}>About project</p>
-              <p className={styles.text}>{aboutProject}</p>
-              <div className={styles.social}>
-                <IconButton icon="discord_solid" colorIcon="default" sizeIcon={16} size={32} />
-                <IconButton icon="facebook_solid" colorIcon="default" sizeIcon={16} size={32} />
-                <IconButton icon="twitter_solid" colorIcon="default" sizeIcon={16} size={32} />
+              <div className={styles.block}>
+                <p className={styles.heading}>Opportunities</p>
+                <div className={styles.props}>
+                  {Object.keys(props).map(key => (
+                    <div key={key} className={`${styles['props__item']} ${styles[`props__item_${key}`]}`}>
+                      <span>{key}</span>
+                      <p>{props[key as keys]} {(key == 'floor' || key == 'volume') && 'ETH'}</p>
+                    </div>
+                  ))}
+                </div>
+                <Button className={styles.button}>Manual</Button>
               </div>
-            </div>
-            <div className={styles.block}>
-              <p className={styles.heading}>Our team</p>
-              <div className={styles.team}>
-                {team.map(i => (
-                  <div key={i.image} className={styles.item}>
-                    <Image src={i.image} alt={i.image} width={150} height={150} />
-                    <p className={styles.name}>{i.name}</p>
-                    <p className={styles.position}>{i.position}</p>
-                  </div>
-                ))}
+              <div className={styles.block}>
+                <p className={styles.heading}>About project</p>
+                <p className={styles.text}>{aboutProject}</p>
+                <div className={styles.social}>
+                  <IconButton icon="discord_solid" colorIcon="default" sizeIcon={16} size={32} />
+                  <IconButton icon="facebook_solid" colorIcon="default" sizeIcon={16} size={32} />
+                  <IconButton icon="twitter_solid" colorIcon="default" sizeIcon={16} size={32} />
+                </div>
+              </div>
+              <div className={styles.block}>
+                <p className={styles.heading}>Our team</p>
+                <div className={styles.team}>
+                  {team.map(i => (
+                    <div key={i.image} className={styles.item}>
+                      <Image src={i.image} alt={i.image} width={150} height={150} />
+                      <p className={styles.name}>{i.name}</p>
+                      <p className={styles.position}>{i.position}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </Modal>
-      <Modal
-        width={604}
-        footer={false}
-        open={isMint}
-        onCancel={() => setIsMint(false)}
-      >
-        <div className={styles['modal-mint']}>
-          <div className="modal-wrap">
-            <p className={styles.title}>Minting collection</p>
-            <p className={styles.subtitle}>{title} Collection</p>
-            <Form
-              form={form}
-              className={styles.form}
-              onFinish={() => {
-                setIsMint(false)
-                setIsCongratulation(true)
-                form.resetFields()
-              }}
-              onValuesChange={(_, value) => console.log('form: ',value)}
-            >
-              <div className={styles['item']}>
-                <Form.Item name="count">
-                  <div>
+        </Modal>
+      )}
+      {isMint && (
+        <Modal
+          width={604}
+          footer={false}
+          open={isMint}
+          onCancel={() => setIsMint(false)}
+        >
+          <div className={styles['modal-mint']}>
+            <div className="modal-wrap">
+              <p className={styles.title}>Minting collection</p>
+              <p className={styles.subtitle}>{title} Collection</p>
+              <Form
+                form={form}
+                className={styles.form}
+                onFinish={() => {
+                  setIsMint(false)
+                  setIsCongratulation(true)
+                  form.resetFields()
+                }}
+                onValuesChange={(_, value) => console.log('form: ',value)}
+              >
+                <div className={styles['item']}>
+                  <Form.Item name="count">
+                    <div>
+                      <InputNumber
+                        min={0}
+                        size="large"
+                        controls={false}
+                        value={countMint}
+                        placeholder="Amount NFTs"
+                        className={styles['input-number']}
+                        formatter={(value) => `${value}`.replace(/[^0-9]/g, '')}
+                        prefix={<Icon name="collections_solid" fontSize={24} color={countMint ? 'primary' : 'grey'} className="mr-16" />}
+                      />
+                      <div className="after-input-number d-xs-none">
+                        <div className="btn-plus">
+                          <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 1)}>+1</Button>
+                          <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 5)}>+5</Button>
+                          <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 10)}>+10</Button>
+                        </div>
+                      </div>
+                    </div>
+                  </Form.Item>
+                </div>
+                <div className={styles['item']}>
+                  <Form.Item name="price">
                     <InputNumber
                       min={0}
                       size="large"
                       controls={false}
-                      value={countMint}
-                      placeholder="Amount NFTs"
+                      placeholder="0.1 ETH for 1 NFT"
                       className={styles['input-number']}
-                      formatter={(value) => `${value}`.replace(/[^0-9]/g, '')}
-                      prefix={<Icon name="collections_solid" fontSize={24} color={countMint ? 'primary' : 'grey'} className="mr-16" />}
-                    />
-                    <div className="after-input-number d-xs-none">
-                      <div className="btn-plus">
-                        <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 1)}>+1</Button>
-                        <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 5)}>+5</Button>
-                        <Button className="btn-plus__item" onClick={() => form.setFieldValue('count', (Number(countMint) || 0) + 10)}>+10</Button>
-                      </div>
-                    </div>
-                  </div>
-                </Form.Item>
-              </div>
-              <div className={styles['item']}>
-                <Form.Item name="price">
-                  <InputNumber
-                    min={0}
-                    size="large"
-                    controls={false}
-                    placeholder="0.1 ETH for 1 NFT"
-                    className={styles['input-number']}
-                    formatter={(value) => !!value ? `${value || 0} ETH` : ''}
-                    // @ts-ignore
-                    parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
-                    prefix={<>
-                      <Icon name="token_filled" fontSize={24} color={priceMint ? 'primary' : 'grey'} className="mr-16" />
-                      <div className="after-input-number d-xs-none">
-                        <div className="expression">
-                          <div className="expression__item">
-                            <span className="expression__label">total</span>
-                            <p className="expression__value">{(countMint || 0) * (priceMint || 0)}</p>
-                          </div>
-                          <div className="expression__item">
-                            <span className="expression__label"/>
-                            <p className="expression__value">=</p>
-                          </div>
-                          <div className="expression__item">
-                            <span className="expression__label">price</span>
-                            <span className="expression__value">{priceMint || 0}</span>
-                          </div>
-                          <div className="expression__item">
-                            <span className="expression__label"/>
-                            <Icon name="close" fontSize={7} color="default" className="expression__value" />
-                          </div>
-                          <div className="expression__item">
-                            <span className="expression__label">count</span>
-                            <p className="expression__value">{countMint || 0}</p>
+                      formatter={(value) => !!value ? `${value || 0} ETH` : ''}
+                      // @ts-ignore
+                      parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
+                      prefix={<>
+                        <Icon name="token_filled" fontSize={24} color={priceMint ? 'primary' : 'grey'} className="mr-16" />
+                        <div className="after-input-number d-xs-none">
+                          <div className="expression">
+                            <div className="expression__item">
+                              <span className="expression__label">total</span>
+                              <p className="expression__value">{(countMint || 0) * (priceMint || 0)}</p>
+                            </div>
+                            <div className="expression__item">
+                              <span className="expression__label"/>
+                              <p className="expression__value">=</p>
+                            </div>
+                            <div className="expression__item">
+                              <span className="expression__label">price</span>
+                              <span className="expression__value">{priceMint || 0}</span>
+                            </div>
+                            <div className="expression__item">
+                              <span className="expression__label"/>
+                              <Icon name="close" fontSize={7} color="default" className="expression__value" />
+                            </div>
+                            <div className="expression__item">
+                              <span className="expression__label">count</span>
+                              <p className="expression__value">{countMint || 0}</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </>}
-                  />
-                </Form.Item>
-              </div>
-              <div className={styles['item']}>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  disabled={!countMint || !priceMint || countMint <= 0 || priceMint <= 0}
-                >
-                  MINT!!!
-                </Button>
-              </div>
-            </Form>
-            <div className={styles.examples}>
-              <p>Examples</p>
-              <div>
-                <Image src="/assets/nft/6964-2.jpg" alt="example" width={124} height={124} />
-                <Image src="/assets/nft/911.jpg" alt="example" width={124} height={124} />
-                <Image src="/assets/nft/6964-2.jpg" alt="example" width={124} height={124} />
-                <Image src="/assets/nft/911.jpg" alt="example" width={124} height={124} />
+                      </>}
+                    />
+                  </Form.Item>
+                </div>
+                <div className={styles['item']}>
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    disabled={!countMint || !priceMint || countMint <= 0 || priceMint <= 0}
+                  >
+                    MINT!!!
+                  </Button>
+                </div>
+              </Form>
+              <div className={styles.examples}>
+                <p>Examples</p>
+                <div>
+                  <Image src="/assets/nft/6964-2.jpg" alt="example" width={124} height={124} />
+                  <Image src="/assets/nft/911.jpg" alt="example" width={124} height={124} />
+                  <Image src="/assets/nft/6964-2.jpg" alt="example" width={124} height={124} />
+                  <Image src="/assets/nft/911.jpg" alt="example" width={124} height={124} />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </Modal>
-      <MintModal
-        open={isCongratulation}
-        onCancel={() => setIsCongratulation(false)}
-        label="Your NFT is minted"
-        heading="Congratulations"
-        name={congratulation.name}
-        image={congratulation.image}
-        nested={congratulation.nested}
-        property={congratulation.props}
-        referral={congratulation.referral}
-      />
+        </Modal>
+      )}
+      {isCongratulation && (
+        <MintModal
+          open={isCongratulation}
+          onCancel={() => setIsCongratulation(false)}
+          label="Your NFT is minted"
+          heading="Congratulations"
+          name={congratulation.name}
+          image={congratulation.image}
+          nested={congratulation.nested}
+          property={congratulation.props}
+          referral={congratulation.referral}
+        />
+      )}
     </div>
   );
 };

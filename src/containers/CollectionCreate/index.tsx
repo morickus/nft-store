@@ -302,15 +302,17 @@ const CollectionCreate = () => {
           </Form.Provider>
         </div>
       </div>
-      <TemplateModal
-        width={630}
-        open={templateModal}
-        subtitle="Success"
-        title="Create collection"
-        text="Your collection has been created."
-        onCancel={() => setTemplateModal(false)}
-        button={true}
-      />
+      {templateModal && (
+        <TemplateModal
+          width={630}
+          open={templateModal}
+          subtitle="Success"
+          title="Create collection"
+          text="Your collection has been created."
+          onCancel={() => setTemplateModal(false)}
+          button={true}
+        />
+      )}
     </div>
   );
 };

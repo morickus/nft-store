@@ -537,15 +537,17 @@ const NftCreate = () => {
           </Form.Provider>
         </div>
       </div>
-      <TemplateModal
-        width={630}
-        open={templateModal}
-        subtitle="Success"
-        title="Create NFT item"
-        text="Your NFT item(s) has been created."
-        onCancel={() => setTemplateModal(false)}
-        button={true}
-      />
+      {templateModal && (
+        <TemplateModal
+          width={630}
+          open={templateModal}
+          subtitle="Success"
+          title="Create NFT item"
+          text="Your NFT item(s) has been created."
+          onCancel={() => setTemplateModal(false)}
+          button={true}
+        />
+      )}
     </div>
   );
 };

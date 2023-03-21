@@ -124,7 +124,7 @@ const Header: FC<IHeader> = (props) => {
           </div>
         </div>
       </div>
-      <ConnectWallet open={walletModal} onCancel={() => setWalletModal(false)} />
+      {walletModal && (<ConnectWallet open={walletModal} onCancel={() => setWalletModal(false)} />)}
     </>
   );
 };

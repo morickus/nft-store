@@ -170,7 +170,7 @@ const NftPage = () => {
                       ]
                     }
                     onChange={(e) => setTab(e.target.value)}
-                    defaultValue="overview"
+                    value={tab}
                   />
                 </div>
                 <div className={styles.content}>
@@ -259,6 +259,7 @@ const NftPage = () => {
               sellNftForm.resetFields()
               setSellNftSuccessModal(true)
               setSellNftModal(false)
+              setTab('overview')
             }}
           >
             <Form.Item name="price">

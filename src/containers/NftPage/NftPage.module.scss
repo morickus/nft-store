@@ -252,15 +252,12 @@
               gap: 12px;
               display: flex;
               padding: 12px 0;
+              position: relative;
               align-items: center;
               justify-content: space-between;
 
               &.bids-wrap__item_sale {
                 &:hover {
-                  .price {
-                    display: none;
-                  }
-
                   .btn {
                     display: block;
                   }
@@ -342,7 +339,9 @@
               }
 
               .btn {
+                right: 0;
                 display: none;
+                position: absolute;
               }
             }
           }
@@ -635,6 +634,25 @@
 
             .properties {
               margin-top: 16px;
+            }
+
+            .bids-wrap {
+              &__item {
+                padding: 12px 0 48px;
+
+                &:last-child {
+                  padding-bottom: 36px;
+
+                  .btn {
+                    bottom: 0;
+                  }
+                }
+
+                .btn {
+                  bottom: 12px;
+                  display: block;
+                }
+              }
             }
           }
         }

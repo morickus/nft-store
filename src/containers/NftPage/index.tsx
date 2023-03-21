@@ -20,6 +20,8 @@ import Input from '@/components/Input'
 import CheckCard from '@/components/CheckCard'
 import Wallet from '@/components/Wallet'
 import MintModal from '@/widgets/Modals/MintModal'
+import ChooseNft from '@/components/ChooseNft'
+import Switch from '@/components/Switch'
 
 dayjs.extend(relativeTime)
 dayjs.extend(utc);
@@ -28,6 +30,7 @@ const NftPage = () => {
   const router = useRouter()
   const { id } = router.query
   const [sellNftForm] = Form.useForm()
+  const [bindNftForm] = Form.useForm()
   const [tradeNftForm] = Form.useForm()
   const [transferNftForm] = Form.useForm()
   const [purchaseNftForm] = Form.useForm()
@@ -43,10 +46,14 @@ const NftPage = () => {
   const conditionTradeValue = Form.useWatch('condition', tradeNftForm)
   const gasValue = Form.useWatch('gas', purchaseNftForm)
   const purchaseTradeValue = Form.useWatch('condition', purchaseNftForm)
+  const bidValue = Form.useWatch('bid', bindNftForm)
   const { image, name, number, collection, owner, creator, price, description, bids, properties, like, nested, property, referral } = nftPage
 
   const [sellNftModal, setSellNftModal] = useState(false)
   const [sellNftSuccessModal, setSellNftSuccessModal] = useState(false)
+
+  const [replayNftModal, setReplayNftModal] = useState(false)
+  const [replayNftSuccessModal, setReplayNftSuccessModal] = useState(false)
 
   const [transferNftModal, setTransferNftModal] = useState(false)
   const [transferNftSuccessModal, setTransferNftSuccessModal] = useState(false)
@@ -63,6 +70,9 @@ const NftPage = () => {
   const [purchaseNftModal, setPurchaseNftModal] = useState(false)
   const [purchaseNftRejectModal, setPurchaseNftRejectModal] = useState(false)
   const [purchaseSuccessModal, setPurchaseSuccessModal] = useState(false)
+
+  const [bidNftModal, setBidModal] = useState(false)
+  const [bidNftSuccessModal, setBidNftSuccessModal] = useState(false)
 
   const gas = 0.2
   const recommended = 6
@@ -123,14 +133,14 @@ const NftPage = () => {
                             <span className={styles.label}>Highest&nbsp;<span className={styles.black}>floor bid</span></span>
                             <p>{price.highestBid} wETH</p>
                             <span>by <span className={styles.link}>{cutWallet(price.highestBidBy)}</span></span>
-                            <Button type="primary" className={styles.btn}>Reply to offer</Button>
+                            <Button type="primary" className={styles.btn} onClick={() => setReplayNftModal(true)}>Reply to offer</Button>
                           </div>
                         </div>
                       </div>
                       <div className={styles['buttons-price-wrap']}>
                         <Button type="primary" onClick={() => setPurchaseNftModal(true)}>ButNow for {price.eth} ETH</Button>
                         <IconButton icon="cart_filled" sizeIcon={18} />
-                        <Button>Place a bid</Button>
+                        <Button onClick={() => setBidModal(true)}>Place a bid</Button>
                       </div>
                     </>
                   ) : (
@@ -219,7 +229,7 @@ const NftPage = () => {
                               <span>{i.price.wEth} wETH</span>
                               <p>${i.price.dollar.toLocaleString('en')}</p>
                             </div>
-                            <Button type="primary" size="small" className={styles.btn}>Reply to offer</Button>
+                            <Button type="primary" size="small" className={styles.btn} onClick={() => setReplayNftModal(true)}>Reply to offer</Button>
                           </div>
                         ))}
                       </div>
@@ -242,7 +252,7 @@ const NftPage = () => {
           button={false}
           title="NFT Sale"
           open={sellNftModal}
-          subtitle="Kaleido Kids #488"
+          subtitle={`${name} #${number}`}
           onCancel={() => {
             sellNftForm.resetFields()
             setSellNftModal(false)
@@ -314,9 +324,10 @@ const NftPage = () => {
           icon="success"
           title="NFT up for sale"
           open={sellNftSuccessModal}
-          subtitle="Kaleido Kids #488"
+          subtitle={`${name} #${number}`}
           onCancel={() => setSellNftSuccessModal(false)}
-          text={<>Your NFT is for sale. You can view the NFT <br/>page on the market.</>}
+          maxWidthText={360}
+          text={<>Your NFT is for sale. You can view the NFT page on the market.</>}
         />
       )}
       {transferNftModal && (
@@ -326,7 +337,7 @@ const NftPage = () => {
           button={false}
           title="NFT Transfer"
           open={transferNftModal}
-          subtitle="Kaleido Kids #488"
+          subtitle={`${name} #${number}`}
           onCancel={() => {
             transferNftForm.resetFields()
             setTransferNftModal(false)
@@ -356,11 +367,12 @@ const NftPage = () => {
         <TemplateModal
           width={626}
           icon="success"
-          subtitle="Kaleido Kids #488"
+          subtitle={`${name} #${number}`}
           open={transferNftSuccessModal}
           title="NFT has been transferred"
           onCancel={() => setTransferNftSuccessModal(false)}
-          text={<>Your NFT has been passed to the user <Link href="/">0x000...20df.</Link><br/>You can view it from this user.</>}
+          maxWidthText={402}
+          text={<>Your NFT has been passed to the user <Link href="/">0x000...20df.</Link> You can view it from this user.</>}
         />
       )}
       {removeSellModal &&(
@@ -369,13 +381,14 @@ const NftPage = () => {
           icon={false}
           title="Remove sale"
           open={removeSellModal}
-          subtitle="Kaleido Kids #488"
+          subtitle={`${name} #${number}`}
           onCancel={() => setRemoveSellModal(false)}
           button={<Button type="primary" onClick={() => {
             setRemoveSellModal(false)
             setRemoveSellSuccessModal(true)
           }}>Remove from sale</Button>}
-          text={<>Do you really want to remove your NFT from sale?<br/><br/>If this NFT is listed on other platforms, you must <br/>manually check and cancel it there as well. You can <br/>put it on sale anytime.</>}
+          maxWidthText={388}
+          text={<>Do you really want to remove your NFT from sale?<br/><br/>If this NFT is listed on other platforms, you must manually check and cancel it there as well. You can put it on sale anytime.</>}
         />
       )}
       {removeSellSuccessModal && (
@@ -383,7 +396,7 @@ const NftPage = () => {
           width={604}
           icon="success"
           title="Remove sale"
-          subtitle="Kaleido Kids #488"
+          subtitle={`${name} #${number}`}
           open={removeSellSuccessModal}
           text="Your NFT was taken down from sale."
           onCancel={() => setRemoveSellSuccessModal(false)}
@@ -395,7 +408,7 @@ const NftPage = () => {
           icon={false}
           title="NFT Trade"
           open={tradeNftModal}
-          subtitle="Kaleido Kids #488"
+          subtitle={`${name} #${number}`}
           onCancel={() => {
             setTradeNftValue(defaultTradeNftValue)
             setTradeNftModal(false)
@@ -475,7 +488,7 @@ const NftPage = () => {
           icon={false}
           title="NFT Trade"
           open={tradeNftFormModal}
-          subtitle="Kaleido Kids #488"
+          subtitle={`${name} #${number}`}
           onBack={() => {
             setTradeNftModal(true)
             setTradeNftFormModal(false)
@@ -555,9 +568,10 @@ const NftPage = () => {
           width={626}
           icon="success"
           title={<>NFT is exposed <br/>to free trade</>}
-          subtitle="Kaleido Kids #488"
+          subtitle={`${name} #${number}`}
           open={tradeNftSuccessModal}
-          text={<>Your NFT is exposed to free trade. <br/>Check it out on the <Link href="/">NFT trade page.</Link></>}
+          maxWidthText={296}
+          text={<>Your NFT is exposed to free trade. Check it out on the <Link href="/">NFT trade page.</Link></>}
           onCancel={() => setTradeNftSuccessModal(false)}
         />
       )}
@@ -568,7 +582,7 @@ const NftPage = () => {
           button={false}
           title="NFT Purchase"
           open={purchaseNftModal}
-          subtitle="Kaleido Kids #488"
+          subtitle={`${name} #${number}`}
           onCancel={() => {
             purchaseNftForm.resetFields()
             setPurchaseNftModal(false)
@@ -581,7 +595,7 @@ const NftPage = () => {
             setPurchaseSuccessModal(true)
             setPurchaseNftModal(false)
           }}>
-            <p className={styles['nft-form__subtitle']}>You are about to purchase a <Link href="/">Kaleido Kids #488</Link> from <Link href="/">0x10c41a3e9...4322</Link></p>
+            <p className={styles['nft-form__subtitle']}>You are about to purchase a <Link href="/">{`${name} #${number}`}</Link> from <Link href="/">0x10c41a3e9...4322</Link></p>
             <Wallet />
             <Form.Item name="gas">
               <InputNumber
@@ -614,7 +628,8 @@ const NftPage = () => {
           icon="warning"
           title="Not enough tokens"
           open={purchaseNftRejectModal}
-          text={<>There are not enough funds to purchase NFT. <br/>Please top up your wallet.</>}
+          maxWidthText={360}
+          text={<>There are not enough funds to purchase NFT. Please top up your wallet.</>}
           onCancel={() => setPurchaseNftRejectModal(false)}
         />
       )}
@@ -624,12 +639,105 @@ const NftPage = () => {
           onCancel={() => setPurchaseSuccessModal(false)}
           heading="Successfully"
           label="You have acquired NFT"
-          text="You have acquired NFT Kaleido Kids #488. Check NFT out in your collections."
+          text={`You have acquired NFT ${name} #${number}. Check NFT out in your collections.`}
           name={name}
           image={image}
           // nested={nested}
           property={property}
           referral={referral}
+        />
+      )}
+      {replayNftModal && (
+        <TemplateModal
+          width={630}
+          icon={false}
+          open={replayNftModal}
+          title="Reply to offer"
+          subtitle="Otherdeed #666"
+          onCancel={() => setReplayNftModal(false)}
+          maxWidthText={308}
+          text={<>Are you sure you want to sell <Link href="/">NFT#666</Link> to user <Link href="/">Kim 0x09...11df</Link> for <span className={styles['primary-text']}>16.2 ETH</span> ?</>}
+          button={(
+            <div className={styles['wrap-button']}>
+              <Button type="primary" safety className={styles['wrap-button__button']} onClick={() => {
+                setReplayNftModal(false)
+                setReplayNftSuccessModal(true)
+              }}>Yes, I sure</Button>
+              <Button type="primary" danger className={styles['wrap-button__button']} onClick={() => setReplayNftModal(false)}>Not, I keep it</Button>
+            </div>
+          )}
+        >
+          <div className={styles['modal-wrap']}>
+            <ChooseNft nft={nftPage} belong="You" />
+          </div>
+        </TemplateModal>
+      )}
+      {replayNftSuccessModal && (
+        <TemplateModal
+          width={630}
+          title="Your NFT is sold"
+          subtitle="Success"
+          open={replayNftSuccessModal}
+          maxWidthText={360}
+          text="Your NFT is sold. +16.2 ETH in the piggy bank"
+          onCancel={() => setReplayNftSuccessModal(false)}
+        />
+      )}
+      {bidNftModal && (
+        <TemplateModal
+          width={604}
+          icon={false}
+          button={false}
+          title="Place a bid"
+          open={bidNftModal}
+          subtitle={`${name} #${number}`}
+          onCancel={() => {
+            bindNftForm.resetFields()
+            setBidModal(false)
+          }}
+        >
+          <Form form={bindNftForm} className={styles['nft-form']} initialValues={{condition: true}} onFinish={() => {
+            bindNftForm.resetFields()
+            setBidNftSuccessModal(true)
+            setBidModal(false)
+          }}>
+            <p className={styles['nft-form__subtitle']}>You are about to purchase a <Link href="/">{`${name} #${number}`}</Link> from <Link href="/">0x10c41a3e9...4322</Link></p>
+            <Wallet />
+            <Form.Item name="bid">
+              <InputNumber
+                min={0}
+                size="large"
+                controls={false}
+                placeholder="Your bid"
+                className={styles['input']}
+                formatter={(value) => !!value ? `${value || 0} ETH` : ''}
+                // @ts-ignore
+                parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
+                prefix={<Icon name="token_filled" fontSize={24} color={bidValue ? 'primary' : 'grey'} className="mr-16" />}
+              />
+            </Form.Item>
+            <div className={styles['wrap-field-switch']}>
+              <div className={styles['wrap-field-switch__text']}>
+                <p className={styles['nft-form__label']}>Gas cost</p>
+                <p className={styles['wrap-field-switch__sub-label']}>Use recommended gas cost</p>
+              </div>
+              <Switch checked={true} />
+            </div>
+            <Form.Item name="condition" valuePropName="checked" className={styles['checkbox']}>
+              <Checkbox label={<p>You confirm that when you sell the NFT, you will lose it. You agree to all <Link href="/">policies</Link> and <Link href="/">blah blah blah.</Link></p>} />
+            </Form.Item>
+            <Button disabled={!bidValue} type="primary" htmlType="submit" className={styles.submit}>Place a bid of {bidValue || 0} ETH</Button>
+          </Form>
+        </TemplateModal>
+      )}
+      {bidNftSuccessModal && (
+        <TemplateModal
+          width={630}
+          title="Bid placed"
+          subtitle="Success"
+          open={bidNftSuccessModal}
+          text="Your bid is placed, good luck!"
+          onCancel={() => setBidNftSuccessModal(false)}
         />
       )}
     </>

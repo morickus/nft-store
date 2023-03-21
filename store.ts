@@ -521,6 +521,7 @@ export const nftPage = {
     name: 'KaleidoscopeKids'
   },
   owner: {
+    name: '',
     avatar: '/assets/avatar/avatar-12.png',
     wallet: '0x097df08623412412312312300hd'
   },

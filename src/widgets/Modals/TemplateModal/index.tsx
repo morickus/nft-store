@@ -12,13 +12,14 @@ interface ITemplateModal {
   subtitle?: string | ReactNode
   text?: string | ReactNode
   button?: true | ReactNode
+  maxWidthText?: number
 
   onBack?(): void
   onCancel?(): void
 }
 
 const TemplateModal: FC<ITemplateModal & ModalProps> = (props) => {
-  const { children, icon = 'success', title, subtitle, text, button = true, onCancel, onBack } = props
+  const { children, icon = 'success', title, subtitle, text, button = true, onCancel, onBack, maxWidthText } = props
   let iconRender
 
   switch (icon) {
@@ -38,7 +39,7 @@ const TemplateModal: FC<ITemplateModal & ModalProps> = (props) => {
         {title && (<p className="title">{title}</p>)}
         {subtitle && (<p className={`subtitle ${styles.subtitle}`}>{subtitle}</p>)}
         {children}
-        {text && (<p className={`text ${styles.text}`}>{text}</p>)}
+        {text && (<p className={`text ${styles.text}`} style={{maxWidth: maxWidthText}}>{text}</p>)}
         {button && (
           <div className={styles['button-wrap']}>
             {button === true ? (<Button onClick={() => onCancel && onCancel()}>Close and check</Button>) : button}

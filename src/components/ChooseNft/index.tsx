@@ -7,7 +7,7 @@ import { INft, IOwner, nftTradeItemsArray } from '../../../store'
 import CheckCard from '@/components/CheckCard'
 
 interface IChooseNft {
-  belong?: 'Me' | 'Owner'
+  belong?: string
   className?: string
   nft: INft | {owner: IOwner}
   edit?: {

@@ -14,7 +14,7 @@ import utc from 'dayjs/plugin/utc'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import Icon from '@/components/Icon'
 import TemplateModal from '@/widgets/Modals/TemplateModal'
-import { Form } from 'antd'
+import { DatePicker, Form } from 'antd'
 import Checkbox from '@/components/Checkbox'
 import CheckCard from '@/components/CheckCard'
 import Wallet from '@/components/Wallet'
@@ -27,7 +27,7 @@ const InputNumber = dynamic(() => import('@/components/InputNumber'), { ssr: fal
 const Input = dynamic(() => import('@/components/Input'), { ssr: false })
 
 dayjs.extend(relativeTime)
-dayjs.extend(utc);
+dayjs.extend(utc)
 
 const NftPage = () => {
   const router = useRouter()
@@ -35,6 +35,7 @@ const NftPage = () => {
   const [sellNftForm] = Form.useForm()
   const [bindNftForm] = Form.useForm()
   const [tradeNftForm] = Form.useForm()
+  const [auctionNftForm] = Form.useForm()
   const [transferNftForm] = Form.useForm()
   const [purchaseNftForm] = Form.useForm()
   const [tab, setTab] = useState('overview')
@@ -48,8 +49,18 @@ const NftPage = () => {
   const exchangeValue = Form.useWatch('exchange', tradeNftForm)
   const conditionTradeValue = Form.useWatch('condition', tradeNftForm)
   const gasValue = Form.useWatch('gas', purchaseNftForm)
-  const purchaseTradeValue = Form.useWatch('condition', purchaseNftForm)
+  const conditionPurchaseValue = Form.useWatch('condition', purchaseNftForm)
   const bidValue = Form.useWatch('bid', bindNftForm)
+  const conditionBindValue = Form.useWatch('condition', bindNftForm)
+  const startBidValue = Form.useWatch('startBid', auctionNftForm)
+  const redemptionPriceValue = Form.useWatch('redemptionPrice', auctionNftForm)
+  const bidsStepValue = Form.useWatch('bidsStep', auctionNftForm)
+  const startAtValue = Form.useWatch('startAt', auctionNftForm)
+  const startAuctionValue = Form.useWatch('startAuction', auctionNftForm)
+  const endAuctionValue = Form.useWatch('endAuction', auctionNftForm)
+  const endAtTimerValue = Form.useWatch('endAtTimer', auctionNftForm)
+  const endAtValue = Form.useWatch('endAt', auctionNftForm)
+  const conditionAuctionValue = Form.useWatch('condition', auctionNftForm)
   const { image, name, number, collection, owner, creator, price, description, bids, properties, like, nested, property, referral } = nftPage
 
   const [sellNftModal, setSellNftModal] = useState(false)
@@ -77,6 +88,9 @@ const NftPage = () => {
   const [bidNftModal, setBidModal] = useState(false)
   const [bidNftSuccessModal, setBidNftSuccessModal] = useState(false)
 
+  const [auctionNftModal, setAuctionNftModal] = useState(false)
+  const [auctionNftSuccessModal, setAuctionNftSuccessModal] = useState(false)
+
   const gas = 0.2
   const recommended = 6
 
@@ -85,6 +99,12 @@ const NftPage = () => {
       tradeNftForm.resetFields(['nftId'])
     }
   }, [tradeNftForm, exchangeValue])
+
+  useEffect(() => {
+    if (startAuctionValue == 'immediately') {
+      auctionNftForm.resetFields(['startAt'])
+    }
+  }, [auctionNftForm, startAuctionValue])
 
   return (
     <>
@@ -148,22 +168,23 @@ const NftPage = () => {
                     </>
                   ) : (
                     <div className={styles['buttons-active-wrap']}>
-                      <div className={`${styles['buttons-active-wrap__item']} ${styles['primary']}`} onClick={() => setSellNftModal(true)}>
+                      <Button type="primary" className={styles['buttons-active-wrap__item']} onClick={() => setSellNftModal(true)}>
                         <span>Sell</span>
-                        <Icon name="token_filled" />
-                      </div>
-                      <div className={`${styles['buttons-active-wrap__item']} ${styles['blue']}`} onClick={() => setTransferNftModal(true)}>
+                        <Icon name="token_filled" color="white" />
+                      </Button>
+                      <Button type="primary" className={`${styles['buttons-active-wrap__item']} ${styles['blue']}`} onClick={() => setTransferNftModal(true)}>
                         <span>Transfer</span>
-                        <Icon name="arrow-right_outlined" />
-                      </div>
-                      <div className={`${styles['buttons-active-wrap__item']} ${styles['green']}`} onClick={() => setTradeNftModal(true)}>
+                        <Icon name="arrow-right_outlined" color="white" />
+                      </Button>
+                      <Button type="primary" safety className={styles['buttons-active-wrap__item']} onClick={() => setTradeNftModal(true)}>
                         <span>Trade</span>
-                        <Icon name="trade_outlined" />
-                      </div>
-                      <div className={`${styles['buttons-active-wrap__item']} ${styles['red']}`}>
+                        <Icon name="trade_outlined" color="white" />
+                      </Button>
+                      <Button type="primary" danger className={styles['buttons-active-wrap__item']}>
                         <span>Burn</span>
-                        <Icon name="fire_filled" />
-                      </div>
+                        <Icon name="fire_filled" color="white" />
+                      </Button>
+                      <Button type="primary" className={styles['buttons-active-wrap__item']} onClick={() => setAuctionNftModal(true)}>Action</Button>
                     </div>
                   )}
                 </div>
@@ -283,7 +304,6 @@ const NftPage = () => {
                 placeholder="10 ETH"
                 className={styles['input']}
                 formatter={(value) => !!value ? `${value || 0} ETH` : ''}
-                // @ts-ignore
                 parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
                 prefix={<>
                   <Icon name="token_filled" fontSize={24} color={priceValue ? 'primary' : 'grey'} className="mr-16" />
@@ -535,7 +555,6 @@ const NftPage = () => {
                 placeholder="Surcharge"
                 className={styles['input']}
                 formatter={(value) => !!value ? `${value || 0} ETH` : ''}
-                // @ts-ignore
                 parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
                 prefix={<Icon name="token_filled" fontSize={24} color={surchargeValue ? 'primary' : 'grey'} className="mr-16" />}
               />
@@ -610,7 +629,6 @@ const NftPage = () => {
                 placeholder="Gas cost"
                 className={styles['input']}
                 formatter={(value) => !!value ? `${value || 0} ETH` : ''}
-                // @ts-ignore
                 parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
                 prefix={<>
                   <Icon name="token_filled" fontSize={24} color={gasValue ? 'primary' : 'grey'} className="mr-16" />
@@ -623,7 +641,7 @@ const NftPage = () => {
             <Form.Item name="condition" valuePropName="checked" className={styles['checkbox']}>
               <Checkbox label={<p>You confirm that when you sell the NFT, you will lose it.  You agree to all <Link href="/">policies</Link> and <Link href="/">blah blah blah.</Link></p>} />
             </Form.Item>
-            <Button disabled={!purchaseTradeValue} type="primary" htmlType="submit" className={styles.submit}>Buy for {price.eth} ETH</Button>
+            <Button disabled={!conditionPurchaseValue} type="primary" htmlType="submit" className={styles.submit}>Buy for {price.eth} ETH</Button>
           </Form>
         </TemplateModal>
       )}
@@ -716,7 +734,6 @@ const NftPage = () => {
                 placeholder="Your bid"
                 className={styles['input']}
                 formatter={(value) => !!value ? `${value || 0} ETH` : ''}
-                // @ts-ignore
                 parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
                 prefix={<Icon name="token_filled" fontSize={24} color={bidValue ? 'primary' : 'grey'} className="mr-16" />}
               />
@@ -731,7 +748,7 @@ const NftPage = () => {
             <Form.Item name="condition" valuePropName="checked" className={styles['checkbox']}>
               <Checkbox label={<p>You confirm that when you sell the NFT, you will lose it. You agree to all <Link href="/">policies</Link> and <Link href="/">blah blah blah.</Link></p>} />
             </Form.Item>
-            <Button disabled={!bidValue} type="primary" htmlType="submit" className={styles.submit}>Place a bid of {bidValue || 0} ETH</Button>
+            <Button disabled={!conditionBindValue || !bidValue} type="primary" htmlType="submit" className={styles.submit}>Place a bid of {bidValue || 0} ETH</Button>
           </Form>
         </TemplateModal>
       )}
@@ -743,6 +760,165 @@ const NftPage = () => {
           open={bidNftSuccessModal}
           text="Your bid is placed, good luck!"
           onCancel={() => setBidNftSuccessModal(false)}
+        />
+      )}
+      {auctionNftModal && (
+        <TemplateModal
+          width={604}
+          icon={false}
+          title="NFT Auction"
+          open={auctionNftModal}
+          subtitle={`${name} #${number}`}
+          onCancel={() => {
+            auctionNftForm.resetFields()
+            setAuctionNftModal(false)
+          }}
+          button={false}
+        >
+          <Form
+            form={auctionNftForm}
+            className={styles['nft-form']}
+            initialValues={{condition: true, startAuction: 'immediately', endAuction: 'timer'}}
+            onFinish={() => {
+              auctionNftForm.resetFields()
+              setAuctionNftModal(false)
+              setAuctionNftSuccessModal(true)
+            }}
+          >
+            <Form.Item name="startBid">
+              <InputNumber
+                min={0}
+                size="large"
+                controls={false}
+                placeholder="Start bid price"
+                className={styles['input']}
+                formatter={(value) => !!value ? `${value || 0} ETH` : ''}
+                parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
+                prefix={<Icon name="token_filled" fontSize={24} color={startBidValue ? 'primary' : 'grey'} className="mr-16" />}
+              />
+            </Form.Item>
+            <Form.Item name="redemptionPrice">
+              <InputNumber
+                min={0}
+                size="large"
+                controls={false}
+                placeholder="Redemption price (not obligatory)"
+                className={styles['input']}
+                formatter={(value) => !!value ? `${value || 0} ETH` : ''}
+                parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
+                prefix={<Icon name="token_filled" fontSize={24} color={redemptionPriceValue ? 'primary' : 'grey'} className="mr-16" />}
+              />
+            </Form.Item>
+            <Form.Item name="bidsStep">
+              <InputNumber
+                min={0}
+                size="large"
+                controls={false}
+                placeholder="Bids step"
+                className={styles['input']}
+                prefix={<Icon name="Discount-Square_filled" fontSize={24} color={bidsStepValue ? 'primary' : 'grey'} className="mr-16" />}
+              />
+            </Form.Item>
+            <div />
+            <div>
+              <p className={styles['nft-form__label']}>Start of the auction</p>
+              <Form.Item name="startAuction">
+                <RadioButton
+                  className={styles['nft-form__tabs']}
+                  buttons={
+                    [
+                      {text: 'Immediately', value: 'immediately'},
+                      {text: 'Put aside', value: 'put-aside'}
+                    ]
+                  }
+                />
+              </Form.Item>
+            </div>
+            <Form.Item name="startAt">
+              <DatePicker
+                showNow={false}
+                disabled={startAuctionValue == 'immediately'}
+                suffixIcon={<Icon name="timer-calendar" fontSize={24} color={startAtValue ? 'primary' : 'grey'} />}
+                className={`${styles['input']} ${styles['input-prefix']}`}
+                placeholder="Date and time"
+                format="YYYY-MM-DD HH:mm:ss"
+                showTime={{ defaultValue: dayjs('00:00:00', 'HH:mm:ss')}}
+              />
+            </Form.Item>
+            <div />
+            <div>
+              <p className={styles['nft-form__label']}>End of the auction</p>
+              <Form.Item name="endAuction">
+                <RadioButton
+                  className={styles['nft-form__tabs']}
+                  buttons={
+                    [
+                      {text: 'Timer', value: 'timer'},
+                      {text: 'Date and time', value: 'date-time'}
+                    ]
+                  }
+                />
+              </Form.Item>
+            </div>
+            {endAuctionValue == 'timer' ? (
+              <Form.Item name="endAtTimer">
+                <InputNumber
+                  min={0}
+                  size="large"
+                  controls={false}
+                  placeholder="2 hours"
+                  className={styles['input']}
+                  formatter={(value) => !!value ? `${value || 0} hours` : ''}
+                  parser={(value) => !!value ? Number(value!.replace(' hours', '')) : 0}
+                  prefix={<Icon name="timer-calendar" fontSize={24} color={endAtTimerValue ? 'primary' : 'grey'} className="mr-16" />}
+                />
+              </Form.Item>
+            ) : (
+              <Form.Item name="endAt">
+                <DatePicker
+                  showNow={false}
+                  suffixIcon={<Icon name="timer-calendar" fontSize={24} color={endAtValue ? 'primary' : 'grey'} />}
+                  className={`${styles['input']} ${styles['input-prefix']}`}
+                  placeholder="Date and time"
+                  format="YYYY-MM-DD HH:mm:ss"
+                  showTime={{ defaultValue: dayjs('00:00:00', 'HH:mm:ss')}}
+                />
+              </Form.Item>
+            )}
+            <div />
+            <div className={styles['wrap-field-switch']}>
+              <div className={styles['wrap-field-switch__text']}>
+                <p className={styles['nft-form__label']}>Nested NFT</p>
+                <p className={styles['wrap-field-switch__sub-label']}>Expose together with nested NFT</p>
+              </div>
+              <Form.Item name="nestedNft" valuePropName="checked">
+                <Switch />
+              </Form.Item>
+            </div>
+            <div />
+            <Form.Item name="condition" valuePropName="checked" className={styles['checkbox']}>
+              <Checkbox label={<p>You confirm that when you sell the NFT, you will lose it. You agree to all <Link href="/">policies</Link> and <Link href="/">blah blah blah.</Link></p>} />
+            </Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className={styles.submit}
+              disabled={!conditionAuctionValue || !startBidValue || !bidsStepValue || (startAuctionValue == 'immediately' ? false : !startAtValue) || (endAuctionValue == 'timer' ? !endAtTimerValue : !endAtValue)}
+            >
+              Confirm the auction
+            </Button>
+          </Form>
+        </TemplateModal>
+      )}
+      {auctionNftSuccessModal && (
+        <TemplateModal
+          width={630}
+          title="Settings completed"
+          subtitle="Success"
+          open={auctionNftSuccessModal}
+          maxWidthText={320}
+          text="The auction has been created. Check the page of your NFT lot"
+          onCancel={() => setAuctionNftSuccessModal(false)}
         />
       )}
     </>

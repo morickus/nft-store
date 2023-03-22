@@ -174,41 +174,25 @@
 
             &__item {
               display: flex;
-              cursor: pointer;
-              padding: 8px 16px;
               align-items: center;
               justify-content: center;
-              transition: filter .3s ease;
-              box-shadow: 0 0 20px rgba(43, 43, 43, 0.05);
-
-              &:hover {
-                filter: brightness(90%);
-              }
-
-              span {
-                color: #FFFFFF;
-                font-size: 16px;
-                font-weight: 700;
-                line-height: 24px;
-              }
 
               i {
-                color: #FFFFFF;
-                font-size: 16px;
                 margin-left: 6px;
               }
 
-              &.primary {
-                background: var(--primary-color);
-              }
               &.blue {
+                transition: all .3s ease;
                 background: var(--blue-color);
-              }
-              &.green {
-                background: var(--callow-color);
-              }
-              &.red {
-                background: var(--red-color);
+
+                &:hover {
+                  opacity: .7;
+                }
+
+                &:active {
+                  opacity: 1;
+                  filter: brightness(90%);
+                }
               }
             }
           }
@@ -411,6 +395,7 @@
 
   &__label {
     font-size: 14px;
+    text-align: left;
     font-weight: 700;
     line-height: 14px;
     margin-bottom: 6px;
@@ -419,6 +404,22 @@
   .input {
     width: 100%;
     font-size: 18px;
+
+    &.input-prefix {
+      & > div {
+        gap: 16px;
+        display: flex;
+        flex-direction: row-reverse;
+
+        & > span {
+          margin-left: 0;
+        }
+      }
+    }
+
+    input {
+      font-size: 18px;
+    }
 
     &__after-text {
       font-size: 12px;
@@ -893,20 +894,6 @@
 
                 i {
                   font-size: 24px !important;
-                }
-              }
-            }
-
-            .buttons-active-wrap {
-              &__item {
-                padding: 16px;
-
-                span, i {
-                  font-size: 18px;
-                }
-
-                i {
-                  margin-left: 8px;
                 }
               }
             }

@@ -110,6 +110,7 @@
           auction_outlined: "\e953",
           auction_filled: "\e954",
           close: "\e955",
+          timer-calendar: "\e956",
   );
 
   @each $name, $content in $icons {

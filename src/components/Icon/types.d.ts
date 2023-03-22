@@ -89,6 +89,7 @@ export type IconNamesMap =
   | 'auction_outlined'
   | 'auction_filled'
   | 'close'
+  | 'timer-calendar'
 
 export interface IconProps {
   name: IconNamesMap

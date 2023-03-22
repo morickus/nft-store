@@ -337,7 +337,6 @@ const NftCreate = () => {
                           placeholder="0 ETH"
                           className={styles['input-number']}
                           formatter={(value) => !!value ? `${value || 0} ETH` : ''}
-                          // @ts-ignore
                           parser={(value) => !!value ? Number(value!.replace(' ETH', '')) : 0}
                           prefix={<>
                             <Icon name="token_filled" fontSize={24} color={priceValue ? 'primary' : 'grey'} className="mr-13" />

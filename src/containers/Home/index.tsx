@@ -1,11 +1,13 @@
 import styles from './Home.module.scss'
-import Button from '@/components/Button'
 import { nftCollectionsArray, nftItemsArray, nftItemsTradingArray, users } from '../../../store'
 import NftCard from '@/components/NftCard'
 import CollectionCard from '@/components/CollectionCard'
 import Image from 'next/image'
 import UserCard from '@/components/UserCard'
 import RadioButton from '@/components/RadioButton'
+import dynamic from 'next/dynamic'
+
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 
 const Home = () => {
   return (

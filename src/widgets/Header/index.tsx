@@ -2,7 +2,6 @@ import { FC, useState } from 'react'
 import styles from './Header.module.scss'
 import { menuArray } from '../../../store'
 import Link from 'next/link'
-import Button from '@/components/Button'
 import Icon from '@/components/Icon'
 import Bell from '@/components/Bell'
 import Avatar from '@/components/Avatar'
@@ -10,6 +9,7 @@ import LanguageSelector from '@/components/LanguageSelector'
 import dynamic from 'next/dynamic'
 import Wallet from '@/components/Wallet'
 
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 const ConnectWallet = dynamic(() => import('@/widgets/Modals/ConnectWallet'), { ssr: false })
 
 interface IHeader {

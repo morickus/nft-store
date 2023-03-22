@@ -3,8 +3,10 @@ import { ModalProps } from 'antd'
 import Modal from '@/components/Modal'
 import styles from './TemplateModal.module.scss'
 import Icon from '@/components/Icon'
-import Button from '@/components/Button'
 import IconButton from '@/components/IconButton'
+import dynamic from 'next/dynamic'
+
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 
 interface ITemplateModal {
   icon?: 'success' | 'warning' | 'error' | false

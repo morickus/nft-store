@@ -7,7 +7,6 @@ import Image from 'next/image'
 import IconButton from '@/components/IconButton'
 import Link from 'next/link'
 import { cutWallet } from '@/utils'
-import Button from '@/components/Button'
 import RadioButton from '@/components/RadioButton'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
@@ -23,6 +22,7 @@ import ChooseNft from '@/components/ChooseNft'
 import Switch from '@/components/Switch'
 import dynamic from 'next/dynamic'
 
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 const InputNumber = dynamic(() => import('@/components/InputNumber'), { ssr: false })
 const Input = dynamic(() => import('@/components/Input'), { ssr: false })
 

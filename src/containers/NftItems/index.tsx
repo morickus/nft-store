@@ -1,8 +1,10 @@
 import styles from './NftItems.module.scss'
 import { nftItemsArray } from '../../../store'
 import NftCard from '@/components/NftCard'
-import Button from '@/components/Button'
 import NftForm from '@/widgets/SearchForms/NftForm'
+import dynamic from 'next/dynamic'
+
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 
 const NftItems = () => {
   return (

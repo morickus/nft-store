@@ -1,8 +1,10 @@
 import styles from './Users.module.scss'
 import { users } from '../../../store'
-import Button from '@/components/Button'
 import UsersForm from '@/widgets/SearchForms/UsersForm'
 import UserCard from '@/components/UserCard'
+import dynamic from 'next/dynamic'
+
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 
 const Users = () => {
   return (

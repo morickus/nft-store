@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './NftCreate.module.scss'
 import RadioButton from '@/components/RadioButton'
-import Button from '@/components/Button'
 import { Form, Radio, Input as InputAntd, RadioChangeEvent } from 'antd'
 import CheckCard from '@/components/CheckCard'
 import Image from 'next/image'
@@ -18,6 +17,7 @@ import NftNested from '@/components/NftNested'
 import { nftPage } from '../../../store'
 import Wallet from '@/components/Wallet'
 
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 const UploadImage = dynamic(() => import('@/components/UploadImage'), { ssr: false })
 const InputNumber = dynamic(() => import('@/components/InputNumber'), { ssr: false })
 const Input = dynamic(() => import('@/components/Input'), { ssr: false })

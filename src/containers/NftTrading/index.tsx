@@ -5,13 +5,13 @@ import TemplateModal from '@/widgets/Modals/TemplateModal'
 import ChooseNft from '@/components/ChooseNft'
 import styles from './NftTrading.module.scss'
 import NftCard from '@/components/NftCard'
-import Button from '@/components/Button'
 import Icon from '@/components/Icon'
 import Checkbox from '@/components/Checkbox'
 import { cutWallet } from '@/utils'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 const InputNumber = dynamic(() => import('@/components/InputNumber'), { ssr: false })
 
 const NftTrading = () => {

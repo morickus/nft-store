@@ -1,9 +1,11 @@
 import styles from './Collections.module.scss'
 import { nftCollectionsArray } from '../../../store'
 import CollectionCard from '@/components/CollectionCard'
-import Button from '@/components/Button'
 import Icon from '@/components/Icon'
 import CollectionsForm from '@/widgets/SearchForms/CollectionsForm'
+import dynamic from 'next/dynamic'
+
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 
 const Collections = () => {
   return (

@@ -1,9 +1,11 @@
 import { FC, ReactNode } from 'react'
 import Image from 'next/image'
 import styles from './NftCard.module.scss'
-import Button from "@/components/Button"
 import IconButton from '@/components/IconButton'
 import { cutWallet } from '@/utils'
+import dynamic from 'next/dynamic'
+
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 
 interface INftCard {
   number: number

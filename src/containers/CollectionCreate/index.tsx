@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './CollectionCreate.module.scss'
 import RadioButton from '@/components/RadioButton'
-import Button from '@/components/Button'
 import { Form, Radio, Input as InputAntd, RadioChangeEvent } from 'antd'
 import { collectionPage, cryptoWallet, nftFunction, propsType } from '../../../store'
 import CheckCard from '@/components/CheckCard'
@@ -14,6 +13,7 @@ import { RcFile } from 'antd/es/upload/interface'
 import Link from 'next/link'
 import dynamic from "next/dynamic"
 
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 const UploadImage = dynamic(() => import('@/components/UploadImage'), { ssr: false })
 const Input = dynamic(() => import('@/components/Input'), { ssr: false })
 

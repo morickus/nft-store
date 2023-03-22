@@ -3,7 +3,6 @@ import styles from './CollectionPage.module.scss'
 import { collectionPage, propsType } from '../../../store'
 import Image from 'next/image'
 import IconButton from '@/components/IconButton'
-import Button from '@/components/Button'
 import Link from 'next/link'
 import { cutWallet } from '@/utils'
 import Icon from '@/components/Icon'
@@ -13,6 +12,7 @@ import NftCard from '@/components/NftCard'
 import { Form } from 'antd'
 import dynamic from 'next/dynamic'
 
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 const Modal = dynamic(() => import('@/components/Modal'), { ssr: false })
 const MintModal = dynamic(() => import('@/widgets/Modals/MintModal'), { ssr: false })
 const InputNumber = dynamic(() => import('@/components/InputNumber'), { ssr: false })

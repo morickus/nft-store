@@ -3,8 +3,10 @@ import styles from './Wallet.module.scss'
 import Image from 'next/image'
 import { cutWallet } from '@/utils'
 import Icon from '@/components/Icon'
-import Button from '@/components/Button'
 import Switch from '@/components/Switch'
+import dynamic from 'next/dynamic'
+
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 
 interface IWallet {
   isSwitch?: boolean

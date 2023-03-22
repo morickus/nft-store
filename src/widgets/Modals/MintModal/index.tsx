@@ -3,12 +3,14 @@ import styles from './MintModal.module.scss'
 import IconButton from '@/components/IconButton'
 import Image from 'next/image'
 import Icon from '@/components/Icon'
-import Button from '@/components/Button'
 import Link from 'next/link'
 import Modal from '@/components/Modal'
 import { ModalProps } from 'antd'
 import { Nested } from '@/components/NftNested'
 import { props } from '../../../../store'
+import dynamic from 'next/dynamic'
+
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 
 interface IMintModal {
   heading: string

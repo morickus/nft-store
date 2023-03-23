@@ -27,7 +27,13 @@ export const sideMenuArray = [
     iconActive: 'trade_solid' as IconNamesMap
   },
   {
-    href: '/user',
+    href: '/auction',
+    text: 'NFT auction',
+    icon: 'auction_outlined' as IconNamesMap,
+    iconActive: 'auction_filled' as IconNamesMap
+  },
+  {
+    href: '/users',
     text: 'TOP users',
     icon: 'square-user_stroke' as IconNamesMap,
     iconActive: 'square-user_solid' as IconNamesMap
@@ -115,6 +121,14 @@ export interface INft {
   owner: IOwner
   price: number
   extraPay?: number
+  auction?: {
+    startBid: number
+    currentBid?: number
+    bidStep?: number
+    redemption: number
+    startAt: Date
+    endAt: Date
+  }
 }
 
 export const nftTradeItemsArray: INft[] = [
@@ -130,7 +144,14 @@ export const nftTradeItemsArray: INft[] = [
       wallet: '0x097df08623412412312312300hd'
     },
     price: 16.2,
-    extraPay: 3.8
+    extraPay: 3.8,
+    auction: {
+      startBid: 20,
+      currentBid: 120,
+      redemption: 200,
+      startAt: new Date(new Date().getTime() - 86400000),
+      endAt: new Date(new Date().getTime() + 186400000),
+    }
   },
   {
     id: 2,
@@ -144,7 +165,14 @@ export const nftTradeItemsArray: INft[] = [
       wallet: '0x097df08623412412312312300hd'
     },
     price: 16.2,
-    extraPay: 4.2
+    extraPay: 4.2,
+    auction: {
+      startBid: 20,
+      currentBid: 120,
+      redemption: 200,
+      startAt: new Date(new Date().getTime() - 86400000),
+      endAt: new Date(new Date().getTime() + 46400000),
+    }
   },
   {
     id: 3,
@@ -158,7 +186,13 @@ export const nftTradeItemsArray: INft[] = [
       wallet: '0x097df08623412412312312300hd'
     },
     price: 16.2,
-    extraPay: -5
+    extraPay: -5,
+    auction: {
+      startBid: 20,
+      redemption: 200,
+      startAt: new Date(new Date().getTime() + 86400000),
+      endAt: new Date(new Date().getTime() + 186400000),
+    }
   },
   {
     id: 4,
@@ -172,7 +206,13 @@ export const nftTradeItemsArray: INft[] = [
       wallet: '0x097df08623412412312312300hd'
     },
     price: 16.2,
-    extraPay: 3.8
+    extraPay: 3.8,
+    auction: {
+      startBid: 20,
+      redemption: 200,
+      startAt: new Date(new Date().getTime() + 86400000),
+      endAt: new Date(new Date().getTime() + 186400000),
+    }
   },
   {
     id: 5,
@@ -186,7 +226,13 @@ export const nftTradeItemsArray: INft[] = [
       wallet: '0x097df08623412412312312300hd'
     },
     price: 16.2,
-    extraPay: 3.8
+    extraPay: 3.8,
+    auction: {
+      startBid: 20,
+      redemption: 200,
+      startAt: new Date(new Date().getTime() + 86400000),
+      endAt: new Date(new Date().getTime() + 186400000),
+    }
   },
   {
     id: 6,
@@ -200,7 +246,13 @@ export const nftTradeItemsArray: INft[] = [
       wallet: '0x097df08623412412312312300hd'
     },
     price: 16.2,
-    extraPay: -2
+    extraPay: -2,
+    auction: {
+      startBid: 20,
+      redemption: 200,
+      startAt: new Date(new Date().getTime() + 86400000),
+      endAt: new Date(new Date().getTime() + 186400000),
+    }
   }
 ]
 

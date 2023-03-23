@@ -3,6 +3,18 @@
 .root {
   width: 100%;
 
+  &.primary {
+    border: 3px solid var(--primary-color);
+
+    .body {
+      .text.primary {
+        font-weight: 900;
+        font-style: italic;
+        color: var(--primary-color);
+      }
+    }
+  }
+
   &:hover {
     .header .buttons {
       transform: translate(-50%, 0);
@@ -52,7 +64,7 @@
     .grid {
       display: grid;
       margin-top: 16px;
-      grid-row-gap: 12px;
+      grid-row-gap: 16px;
       grid-template-columns: 1fr 1fr;
     }
 
@@ -90,6 +102,10 @@
 
       .red {
         color: var(--red-color);
+      }
+
+      &.font-width-400 {
+        font-weight: 400;
       }
     }
   }

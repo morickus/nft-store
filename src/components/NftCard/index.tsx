@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import Image from 'next/image'
 import styles from './NftCard.module.scss'
 import IconButton from '@/components/IconButton'
@@ -6,6 +6,7 @@ import { cutWallet } from '@/utils'
 import dynamic from 'next/dynamic'
 import { INft } from '../../../store'
 import NftTradingModal from '@/widgets/Modals/NftTradingModal'
+import dayjs from 'dayjs'
 
 const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 
@@ -37,6 +38,12 @@ interface ITradingNftCard extends INftCard {
 
 interface IAuctionNftCard extends INftCard {
   type: 'auction'
+  startBid: number
+  currentBid?: number
+  bidStep?: number
+  redemption: number
+  startAt: Date
+  endAt: Date
 }
 
 type NftCardType = IDefaultNftCard | ITradingNftCard | IAuctionNftCard
@@ -44,6 +51,17 @@ type NftCardType = IDefaultNftCard | ITradingNftCard | IAuctionNftCard
 const NftCard: FC<NftCardType> = (props) => {
   const { id, type = 'default', number, image, collection, name } = props
   const [tradeNft, setTradeNft] = useState<INft>()
+  const [primary, setPrimary] = useState(false)
+
+  useEffect(() => {
+    if (props.type === "auction" && dayjs(props.startAt).isBefore(dayjs())) {
+      const diffHours = dayjs(props.endAt).diff(dayjs(), 'hours')
+      if (diffHours <= 12) {
+        setPrimary(true)
+      }
+    }
+    // @ts-ignore
+  }, [props.endAt, props.startAt, props.type])
 
   const renderProperty = () => {
     switch (props.type) {
@@ -65,12 +83,48 @@ const NftCard: FC<NftCardType> = (props) => {
           </>
         )
       }
-      case "auction":
-        return (
-          <div>
+      case "auction": {
+        const { startBid, currentBid, bidStep = 5, redemption, startAt, endAt } = props
+        const auctionStart = dayjs(startAt).isBefore(dayjs())
+        if (!auctionStart) {
+          return (
+            <>
+              <div>
+                <span className={styles.label}>Start bid</span>
+                <p className={styles.text}>{startBid} ETH</p>
+              </div>
+              <div>
+                <span className={styles.label}>Redemption</span>
+                <p className={styles.text}>{redemption} ETH</p>
+              </div>
+              <div>
+                <span className={styles.label}>Timer</span>
+                <p className={`${styles.text} ${styles['font-width-400']}`}>Auction starts in {dayjs(startAt).format('DD.MM.YYYY in HH:mm')}</p>
+              </div>
+            </>
+          )
+        }
 
-          </div>
+        const diffHours = dayjs(endAt).diff(dayjs(), 'hours')
+        return (
+          <>
+            <div>
+              <span className={styles.label}>Current bid</span>
+              <p className={styles.text}>{currentBid} ETH</p>
+            </div>
+            <div>
+              <span className={styles.label}>Bid step</span>
+              <p className={styles.text}>min {bidStep} ETH</p>
+            </div>
+            <div>
+              <span className={styles.label}>Timer</span>
+              <p className={`${styles.text} ${styles['font-width-400']} ${diffHours < 61 && styles['primary']}`}>
+                Auction ends in {diffHours > 61 ? dayjs(endAt).format('DD.MM.YYYY in HH:mm') : `${diffHours}h`}
+              </p>
+            </div>
+          </>
         )
+      }
       default: {
         const { price, highestBid } = props
         return (
@@ -93,7 +147,7 @@ const NftCard: FC<NftCardType> = (props) => {
 
   return (
     <>
-      <div className={styles.root}>
+      <div className={`${styles.root} ${primary && styles.primary}`}>
         <div className={styles.header}>
           <Image src={image} alt={name} width={323} height={280} />
           <div className={styles.buttons}>

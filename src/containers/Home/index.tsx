@@ -62,7 +62,7 @@ const Home = () => {
           <div className={styles.flex}>
             <div className={styles['nft-items-wrapper']}>
               {nftItemsTradingArray.map(i => (
-                <NftCard key={i.number} {...i} buttons={<Button type="primary" onClick={() => {}}>Trade this</Button>} />
+                <NftCard key={i.number} type="trading" {...i} />
               ))}
             </div>
             <Button size="large">view all</Button>

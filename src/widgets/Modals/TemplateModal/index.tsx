@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic'
 
 const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 
-interface ITemplateModal {
+export interface ITemplateModal extends ModalProps {
   icon?: 'success' | 'warning' | 'error' | false
   title?: string | ReactNode
   subtitle?: string | ReactNode
@@ -20,7 +20,7 @@ interface ITemplateModal {
   onCancel?(): void
 }
 
-const TemplateModal: FC<ITemplateModal & ModalProps> = (props) => {
+const TemplateModal: FC<ITemplateModal> = (props) => {
   const { children, icon = 'success', title, subtitle, text, button = true, onCancel, onBack, maxWidthText } = props
   let iconRender
 

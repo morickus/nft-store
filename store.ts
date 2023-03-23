@@ -54,6 +54,7 @@ export const menuArray = [
 
 export const nftItemsArray = [
   {
+    id: 1,
     number: 488,
     image: '/assets/nft/488.jpg',
     collection: 'KaleidoscopeKids',
@@ -62,6 +63,7 @@ export const nftItemsArray = [
     highestBid: 0
   },
   {
+    id: 1,
     number: 911,
     image: '/assets/nft/911.jpg',
     collection: 'Kitaro World',
@@ -70,6 +72,7 @@ export const nftItemsArray = [
     highestBid: 0
   },
   {
+    id: 1,
     number: 14916,
     image: '/assets/nft/14916.jpg',
     collection: 'CloneX',
@@ -78,6 +81,7 @@ export const nftItemsArray = [
     highestBid: 0
   },
   {
+    id: 1,
     number: 2655,
     image: '/assets/nft/2655.jpg',
     collection: 'BLOOM',
@@ -86,6 +90,7 @@ export const nftItemsArray = [
     highestBid: 0
   },
   {
+    id: 1,
     number: 624,
     image: '/assets/nft/624.jpg',
     collection: 'BiPlane Bobo',
@@ -107,11 +112,9 @@ export interface INft {
   image: string
   collection: string
   name: string
-  owner: IOwner,
-  latestPrice: {
-    price: number
-    extraPay: number
-  }
+  owner: IOwner
+  price: number
+  extraPay?: number
 }
 
 export const nftTradeItemsArray: INft[] = [
@@ -126,10 +129,8 @@ export const nftTradeItemsArray: INft[] = [
       avatar: '/assets/avatar/avatar-11.png',
       wallet: '0x097df08623412412312312300hd'
     },
-    latestPrice: {
-      price: 16.2,
-      extraPay: 3.8
-    }
+    price: 16.2,
+    extraPay: 3.8
   },
   {
     id: 2,
@@ -142,10 +143,8 @@ export const nftTradeItemsArray: INft[] = [
       avatar: '/assets/avatar/avatar-12.png',
       wallet: '0x097df08623412412312312300hd'
     },
-    latestPrice: {
-      price: 16.2,
-      extraPay: 4.2
-    }
+    price: 16.2,
+    extraPay: 4.2
   },
   {
     id: 3,
@@ -158,10 +157,8 @@ export const nftTradeItemsArray: INft[] = [
       avatar: '/assets/avatar/avatar-10.png',
       wallet: '0x097df08623412412312312300hd'
     },
-    latestPrice: {
-      price: 16.2,
-      extraPay: -5
-    }
+    price: 16.2,
+    extraPay: -5
   },
   {
     id: 4,
@@ -174,10 +171,8 @@ export const nftTradeItemsArray: INft[] = [
       avatar: '/assets/avatar/avatar-9.png',
       wallet: '0x097df08623412412312312300hd'
     },
-    latestPrice: {
-      price: 16.2,
-      extraPay: 3.8
-    }
+    price: 16.2,
+    extraPay: 3.8
   },
   {
     id: 5,
@@ -190,10 +185,8 @@ export const nftTradeItemsArray: INft[] = [
       avatar: '/assets/avatar/avatar-8.png',
       wallet: '0x097df08623412412312312300hd'
     },
-    latestPrice: {
-      price: 16.2,
-      extraPay: 3.8
-    }
+    price: 16.2,
+    extraPay: 3.8
   },
   {
     id: 6,
@@ -206,83 +199,81 @@ export const nftTradeItemsArray: INft[] = [
       avatar: '/assets/avatar/avatar-7.png',
       wallet: '0x097df08623412412312312300hd'
     },
-    latestPrice: {
-      price: 16.2,
-      extraPay: -2
-    }
+    price: 16.2,
+    extraPay: -2
   }
 ]
 
 export const nftItemsTradingArray = [
   {
+    id: 1,
     number: 488,
     image: '/assets/nft/6964-1.jpg',
     collection: 'KaleidoscopeKids',
     name: 'Kaleido Kids',
     owner: {
+      name: '',
       avatar: '/assets/avatar/avatar-12.png',
       wallet: '0x097df08623412412312312300hd'
     },
-    latestPrice: {
-      price: 16.2,
-      extraPay: 3.8
-    }
+    price: 16.2,
+    extraPay: 3.8
   },
   {
+    id: 1,
     number: 911,
     image: '/assets/nft/6964-2.jpg',
     collection: 'Kitaro World',
     name: 'Kitaro',
     owner: {
+      name: '',
       avatar: '/assets/avatar/avatar-12.png',
       wallet: '0x097df08623412412312312300hd'
     },
-    latestPrice: {
-      price: 16.2,
-      extraPay: 3.8
-    }
+    price: 16.2,
+    extraPay: 3.8
   },
   {
+    id: 1,
     number: 14916,
     image: '/assets/nft/6964-3.jpg',
     collection: 'CloneX',
     name: 'CloneX',
     owner: {
+      name: '',
       avatar: '/assets/avatar/avatar-12.png',
       wallet: '0x097df08623412412312312300hd'
     },
-    latestPrice: {
-      price: 16.2,
-      extraPay: 3.8
-    }
+    price: 16.2,
+    extraPay: 3.8
   },
   {
+    id: 1,
     number: 2655,
     image: '/assets/nft/6964-4.jpg',
     collection: 'BLOOM',
     name: 'BLOOM.',
     owner: {
+      name: '',
       avatar: '/assets/avatar/avatar-12.png',
       wallet: '0x097df08623412412312312300hd'
     },
-    latestPrice: {
-      price: 16.2,
-      extraPay: 3.8
-    }
+    price: 16.2,
+    extraPay: 3.8
   },
   {
+    id: 1,
     number: 624,
     image: '/assets/nft/6964-5.jpg',
     collection: 'BiPlane Bobo',
     name: 'BiPlane Bobo',
     owner: {
+      name: '',
       avatar: '/assets/avatar/avatar-12.png',
       wallet: '0x097df08623412412312312300hd'
     },
-    latestPrice: {
-      price: 16.2,
-      extraPay: 3.8
-    }
+    price: 16.2,
+    extraPay: 3.8
   }
 ]
 

@@ -38,8 +38,8 @@ const ChooseNft: FC<IChooseNft> = (props) => {
             <p>Choose NFT</p>
           </div>
         )}
-        {'latestPrice' in nft ? (
-          <p className={styles.price}>{nft!.latestPrice.price} EHT</p>
+        {'price' in nft ? (
+          <p className={styles.price}>{nft!.price} EHT</p>
           ) : (
           <p className={`${styles.price} ${styles['price_placeholder']}`}>0.0 EHT</p>
         )}

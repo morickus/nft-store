@@ -28,7 +28,6 @@ const NftCreate = () => {
   const [ercForm] = Form.useForm()
   const [saleForm] = Form.useForm()
   const [descriptionForm] = Form.useForm()
-
   const ercValue = Form.useWatch('type', ercForm)
   const priceValue = Form.useWatch('price', saleForm) || 0
   const nameValue = Form.useWatch('name', descriptionForm)

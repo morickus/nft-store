@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 import Home from '@/containers/Home'
-import MainLayout from "@/layouts/MainLayout";
+import MainLayout from '@/layouts/MainLayout'
 
 const Page = () => <Home />
 

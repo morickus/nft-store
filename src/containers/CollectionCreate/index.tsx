@@ -32,8 +32,9 @@ const CollectionCreate = () => {
   const shortNameValue = Form.useWatch('shortName', descriptionForm)
   const blockchainValue = Form.useWatch('blockchain', blockchainForm)
   const functionalValue = Form.useWatch('functional', descriptionForm)
+
   const [step, setStep] = useState<'blockchain' | 'type' | 'description' | 'preview'>('blockchain')
-  const [templateModal, setTemplateModal] = useState(false)
+  const [modal, setModal] = useState(false)
   const [bannerUrl, setBannerUrl] = useState('')
   const [logoUrl, setLogoUrl] = useState('')
 
@@ -137,7 +138,11 @@ const CollectionCreate = () => {
                 </Form.Item>
                 <Button type="primary" size="small" htmlType="submit">Next</Button>
               </Form>
-              <Form form={descriptionForm} name="descriptionForm" className={`${styles['form__item']} ${step !== 'description' && styles.hide}`}>
+              <Form
+                form={descriptionForm}
+                name="descriptionForm"
+                className={`${styles['form__item']} ${step !== 'description' && styles.hide}`}
+              >
                 <p className="subtitle">Description</p>
                 <div className={styles['form-description']}>
                   <Form.Item name="image" valuePropName="valueImage" rules={[{ required: true, message: 'Image is required' }]}>
@@ -294,7 +299,7 @@ const CollectionCreate = () => {
                   <p>Do you like it?</p>
                   <div className={styles['wrap-submit__button']}>
                     <p>Cost: <span>1000FD</span></p>
-                    <Button type="primary" htmlType="submit" onClick={() => setTemplateModal(true)}>Create collection</Button>
+                    <Button type="primary" htmlType="submit" onClick={() => setModal(true)}>Create collection</Button>
                   </div>
                 </div>
               </div>
@@ -302,17 +307,15 @@ const CollectionCreate = () => {
           </Form.Provider>
         </div>
       </div>
-      {templateModal && (
-        <TemplateModal
-          width={630}
-          open={templateModal}
-          subtitle="Success"
-          title="Create collection"
-          text="Your collection has been created."
-          onCancel={() => setTemplateModal(false)}
-          button={true}
-        />
-      )}
+      <TemplateModal
+        width={630}
+        open={modal}
+        subtitle="Success"
+        title="Create collection"
+        text="Your collection has been created."
+        onCancel={() => setModal(false)}
+        button={true}
+      />
     </div>
   );
 };

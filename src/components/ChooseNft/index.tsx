@@ -39,9 +39,9 @@ const ChooseNft: FC<IChooseNft> = (props) => {
           </div>
         )}
         {'price' in nft ? (
-          <p className={styles.price}>{nft!.price} EHT</p>
+          <p className={styles.price}>{nft!.price} ETH</p>
           ) : (
-          <p className={`${styles.price} ${styles['price_placeholder']}`}>0.0 EHT</p>
+          <p className={`${styles.price} ${styles['price_placeholder']}`}>0.0 ETH</p>
         )}
         {!!edit && openSelectNft && (
           <div className={styles['nft-selection-window']}>

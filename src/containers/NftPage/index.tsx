@@ -380,7 +380,7 @@ const NftPage = () => {
               />
             </Form.Item>
             <Form.Item name="condition" valuePropName="checked" className={styles['checkbox']}>
-              <Checkbox label={<p>You confirm that when you sell the NFT, you will lose it.  You agree to all <Link href="/">policies</Link> and <Link href="/">blah blah blah.</Link></p>} />
+              <Checkbox label={<p>You confirm that when you sell the NFT, you will lose it. You agree to all <Link href="/">policies</Link> and <Link href="/">blah blah blah.</Link></p>} />
             </Form.Item>
             <Button disabled={!userIdValue || !conditionTransferValue} type="primary" htmlType="submit" className={styles.submit}>Transfer</Button>
           </Form>

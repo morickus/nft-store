@@ -36,7 +36,7 @@ const CheckboxBase = styled(CheckboxAntd)`
     }
   }
 
-  &:hover {
+  &:not(:has(a:hover)):hover {
     span {
       color: ${({ theme }) => theme.token.colorPrimary};
     }

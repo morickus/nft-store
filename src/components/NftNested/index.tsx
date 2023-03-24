@@ -37,7 +37,7 @@ const NftNested: FC<INftNested> = (props) => {
   return (
     <div className={styles.root}>
       <div className={styles['top-side']}>
-        {image && <Image src={image} alt={image} width={550} height={600} />}
+        {image && <Image src={image} alt={image} className={styles['top-side__image']} width={550} height={600} />}
         {panel && (
           <div className={`${styles.panel} ${classNamePanel}`}>
             <div className={styles['panel__item']}>

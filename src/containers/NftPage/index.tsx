@@ -155,7 +155,7 @@ const NftPage = () => {
                           <div>
                             <span className={styles.label}>Highest&nbsp;<span className={styles.black}>floor bid</span></span>
                             <p>{price.highestBid} wETH</p>
-                            <span>by <span className={styles.link}>{cutWallet(price.highestBidBy)}</span></span>
+                            <span>by <Link href="/" className="link">{cutWallet(price.highestBidBy)}</Link></span>
                             <Button type="primary" className={styles.btn} onClick={() => setReplayNftModal(true)}>Reply to offer</Button>
                           </div>
                         </div>
@@ -184,7 +184,7 @@ const NftPage = () => {
                         <span>Burn</span>
                         <Icon name="fire_filled" color="white" />
                       </Button>
-                      <Button type="primary" className={styles['buttons-active-wrap__item']} onClick={() => setAuctionNftModal(true)}>Action</Button>
+                      <Button type="primary" className={styles['buttons-active-wrap__item']} onClick={() => setAuctionNftModal(true)}>Auction</Button>
                     </div>
                   )}
                 </div>

@@ -113,6 +113,15 @@ body {
   cursor: pointer;
 }
 
+.link {
+  text-decoration: underline;
+  color: var(--primary-color);
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .after-input-number {
   top: 50%;
   z-index: 1;

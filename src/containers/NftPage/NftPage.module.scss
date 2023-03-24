@@ -140,17 +140,6 @@
                 line-height: 12px;
               }
 
-              .link {
-                cursor: pointer;
-                transition: color .3s ease;
-                text-decoration: underline;
-                color: var(--primary-color);
-
-                &:hover {
-                  color: #5350FF;
-                }
-              }
-
               .btn {
                 display: none;
                 margin-top: 8px;
@@ -535,7 +524,7 @@
         display: grid;
         grid-gap: 16px;
         padding: 0 14px 14px 34px;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, minmax(174px, 1fr));
 
         &__item {
           height: 130px;
@@ -713,7 +702,7 @@
         .nested-wrap {
           grid-gap: 20px;
           padding: 0 40px 24px 40px;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: minmax(174px, 1fr) minmax(174px, 1fr);
         }
       }
     }
@@ -816,7 +805,7 @@
 
   .nft-trade-modal {
     &__wrap {
-      grid-template-columns: 324px 324px;
+      grid-template-columns: 360px 360px;
 
       .left-side {
         &__body {
@@ -828,6 +817,7 @@
         .nested-wrap {
           grid-gap: 8px;
           padding: 0 10px 10px 10px;
+          grid-template-columns: minmax(164px, 1fr) minmax(164px, 1fr);;
         }
       }
     }
@@ -924,7 +914,7 @@
 
       .right-side {
         .nested-wrap {
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(3, minmax(130px, 1fr));
         }
       }
     }
@@ -1034,7 +1024,7 @@
 
       .right-side {
         .nested-wrap {
-          grid-template-columns: repeat(2, 120px);
+          grid-template-columns: repeat(2, minmax(120px, 1fr));
 
           &__item {
             .title {

@@ -108,7 +108,7 @@ const NftCreate = () => {
             <div className={styles.tabs}>
               <RadioButton
                 buttons={
-                  (ercValue && nameValue && shortDescValue && descValue && imageValue && saleMethodValue && priceValue && minimumBidValue && royaltiesValue !== undefined)
+                  (ercValue && nameValue && shortDescValue && descValue && imageValue && saleMethodValue && priceValue && minimumBidValue)
                     ? [...tabs, {text: 'Preview', value: 'preview'}] : tabs
                 }
                 value={step}
